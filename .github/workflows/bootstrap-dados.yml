@@ -1,0 +1,29 @@
+name: Completar arquivos de dados
+on:
+  push:
+    paths:
+      - ".bootstrap/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  completar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruir arquivos exatamente
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .bootstrap/geo_*.b64 | tr -d '\n\r ' | base64 -d | xz -dc > dados/municipios_mt.geojson
+          cat .bootstrap/validacao.b64 | tr -d '\n\r ' | base64 -d | gzip -dc > dados/validacao_referencia.csv
+          test "$(git hash-object dados/municipios_mt.geojson)" = "b0b36ef7c461b04b30b3190a7540b46ee6ad6f99"
+          test "$(git hash-object dados/validacao_referencia.csv)" = "605d0262dd0b4f74068eb0f1095bd7e1948792da"
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap-dados.yml
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "Completa arquivos originais do Chuva MT"
+          git push
