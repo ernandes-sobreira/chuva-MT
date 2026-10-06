@@ -1,0 +1,57 @@
+name: Atualizar chuva mensal
+
+on:
+  schedule:
+    # dias 3, 13 e 23 de cada mes, 09:17 UTC. O script so grava quando o mes esta completo no Earth Engine.
+    - cron: "17 9 3,13,23 * *"
+  workflow_dispatch:
+    inputs:
+      refazer:
+        description: "Recalcular todos os meses desde 2026"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-chuva
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Calcular meses novos no Earth Engine
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+          CHIRPS_COLECAO: ${{ vars.CHIRPS_COLECAO }}
+        run: |
+          if [ "${{ inputs.refazer }}" = "true" ]; then
+            python scripts/atualizar_chuva.py --refazer
+          else
+            python scripts/atualizar_chuva.py
+          fi
+
+      - name: Gravar no repositorio se houver mes novo
+        run: |
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add dados/
+          if git diff --cached --quiet -- dados/mensal; then
+            echo "Sem mes novo. Nada a gravar."
+          else
+            git commit -m "Atualiza chuva mensal (automatico)"
+            git push
+          fi
