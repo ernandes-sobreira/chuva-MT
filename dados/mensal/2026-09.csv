@@ -1,0 +1,143 @@
+CD_MUN,NM_MUN,ano,mes,chuva_mm,situacao
+5100102,Acorizal,2026,9,101.1,preliminar
+5100201,Água Boa,2026,9,58.24,preliminar
+5100250,Alta Floresta,2026,9,64.04,preliminar
+5100300,Alto Araguaia,2026,9,67.63,preliminar
+5100359,Alto Boa Vista,2026,9,71.41,preliminar
+5100409,Alto Garças,2026,9,55.43,preliminar
+5100508,Alto Paraguai,2026,9,91.64,preliminar
+5100607,Alto Taquari,2026,9,72.63,preliminar
+5100805,Apiacás,2026,9,47.95,preliminar
+5101001,Araguaiana,2026,9,62.91,preliminar
+5101209,Araguainha,2026,9,73.36,preliminar
+5101258,Araputanga,2026,9,66.89,preliminar
+5101308,Arenápolis,2026,9,100.46,preliminar
+5101407,Aripuanã,2026,9,45.12,preliminar
+5101605,Barão de Melgaço,2026,9,57.65,preliminar
+5101704,Barra do Bugres,2026,9,98.06,preliminar
+5101803,Barra do Garças,2026,9,60.03,preliminar
+5101837,Boa Esperança do Norte,2026,9,63.21,preliminar
+5101852,Bom Jesus do Araguaia,2026,9,73.08,preliminar
+5101902,Brasnorte,2026,9,56.16,preliminar
+5102504,Cáceres,2026,9,43.5,preliminar
+5102603,Campinápolis,2026,9,77.58,preliminar
+5102637,Campo Novo do Parecis,2026,9,101.34,preliminar
+5102678,Campo Verde,2026,9,82.58,preliminar
+5102686,Campos de Júlio,2026,9,74.1,preliminar
+5102694,Canabrava do Norte,2026,9,53.88,preliminar
+5102702,Canarana,2026,9,45.24,preliminar
+5102793,Carlinda,2026,9,87.72,preliminar
+5102850,Castanheira,2026,9,24.38,preliminar
+5103007,Chapada dos Guimarães,2026,9,117.04,preliminar
+5103056,Cláudia,2026,9,50.26,preliminar
+5103106,Cocalinho,2026,9,39.4,preliminar
+5103205,Colíder,2026,9,72.79,preliminar
+5103254,Colniza,2026,9,68.21,preliminar
+5103304,Comodoro,2026,9,54.96,preliminar
+5103353,Confresa,2026,9,52.05,preliminar
+5103361,Conquista D'Oeste,2026,9,76.73,preliminar
+5103379,Cotriguaçu,2026,9,35.89,preliminar
+5103403,Cuiabá,2026,9,93.76,preliminar
+5103437,Curvelândia,2026,9,71.18,preliminar
+5103452,Denise,2026,9,89.12,preliminar
+5103502,Diamantino,2026,9,101.02,preliminar
+5103601,Dom Aquino,2026,9,66.54,preliminar
+5103700,Feliz Natal,2026,9,51.73,preliminar
+5103809,Figueirópolis D'Oeste,2026,9,42.45,preliminar
+5103858,Gaúcha do Norte,2026,9,56.72,preliminar
+5103908,General Carneiro,2026,9,36.74,preliminar
+5103957,Glória D'Oeste,2026,9,47.0,preliminar
+5104104,Guarantã do Norte,2026,9,43.26,preliminar
+5104203,Guiratinga,2026,9,48.78,preliminar
+5104500,Indiavaí,2026,9,58.18,preliminar
+5104526,Ipiranga do Norte,2026,9,74.96,preliminar
+5104542,Itanhangá,2026,9,77.64,preliminar
+5104559,Itaúba,2026,9,43.67,preliminar
+5104609,Itiquira,2026,9,66.06,preliminar
+5104807,Jaciara,2026,9,42.39,preliminar
+5104906,Jangada,2026,9,66.59,preliminar
+5105002,Jauru,2026,9,61.44,preliminar
+5105101,Juara,2026,9,44.49,preliminar
+5105150,Juína,2026,9,43.48,preliminar
+5105176,Juruena,2026,9,23.77,preliminar
+5105200,Juscimeira,2026,9,41.8,preliminar
+5105234,Lambari D'Oeste,2026,9,63.59,preliminar
+5105259,Lucas do Rio Verde,2026,9,71.46,preliminar
+5105309,Luciara,2026,9,50.75,preliminar
+5105507,Vila Bela da Santíssima Trindade,2026,9,46.34,preliminar
+5105580,Marcelândia,2026,9,49.85,preliminar
+5105606,Matupá,2026,9,57.38,preliminar
+5105622,Mirassol d'Oeste,2026,9,63.39,preliminar
+5105903,Nobres,2026,9,122.28,preliminar
+5106000,Nortelândia,2026,9,108.09,preliminar
+5106109,Nossa Senhora do Livramento,2026,9,70.62,preliminar
+5106158,Nova Bandeirantes,2026,9,31.66,preliminar
+5106174,Nova Nazaré,2026,9,38.78,preliminar
+5106182,Nova Lacerda,2026,9,67.05,preliminar
+5106190,Nova Santa Helena,2026,9,60.12,preliminar
+5106208,Nova Brasilândia,2026,9,86.38,preliminar
+5106216,Nova Canaã do Norte,2026,9,56.29,preliminar
+5106224,Nova Mutum,2026,9,75.29,preliminar
+5106232,Nova Olímpia,2026,9,145.5,preliminar
+5106240,Nova Ubiratã,2026,9,48.88,preliminar
+5106257,Nova Xavantina,2026,9,57.7,preliminar
+5106265,Novo Mundo,2026,9,61.49,preliminar
+5106273,Novo Horizonte do Norte,2026,9,31.54,preliminar
+5106281,Novo São Joaquim,2026,9,57.07,preliminar
+5106299,Paranaíta,2026,9,61.08,preliminar
+5106307,Paranatinga,2026,9,71.93,preliminar
+5106315,Novo Santo Antônio,2026,9,53.6,preliminar
+5106372,Pedra Preta,2026,9,41.81,preliminar
+5106422,Peixoto de Azevedo,2026,9,62.78,preliminar
+5106455,Planalto da Serra,2026,9,61.02,preliminar
+5106505,Poconé,2026,9,58.96,preliminar
+5106653,Pontal do Araguaia,2026,9,45.29,preliminar
+5106703,Ponte Branca,2026,9,67.9,preliminar
+5106752,Pontes e Lacerda,2026,9,38.63,preliminar
+5106778,Porto Alegre do Norte,2026,9,55.89,preliminar
+5106802,Porto dos Gaúchos,2026,9,63.93,preliminar
+5106828,Porto Esperidião,2026,9,29.97,preliminar
+5106851,Porto Estrela,2026,9,50.69,preliminar
+5107008,Poxoréu,2026,9,37.88,preliminar
+5107040,Primavera do Leste,2026,9,74.36,preliminar
+5107065,Querência,2026,9,71.51,preliminar
+5107107,São José dos Quatro Marcos,2026,9,57.45,preliminar
+5107156,Reserva do Cabaçal,2026,9,87.22,preliminar
+5107180,Ribeirão Cascalheira,2026,9,54.57,preliminar
+5107198,Ribeirãozinho,2026,9,72.4,preliminar
+5107206,Rio Branco,2026,9,71.56,preliminar
+5107248,Santa Carmem,2026,9,65.6,preliminar
+5107263,Santo Afonso,2026,9,118.87,preliminar
+5107297,São José do Povo,2026,9,39.76,preliminar
+5107305,São José do Rio Claro,2026,9,74.5,preliminar
+5107354,São José do Xingu,2026,9,97.43,preliminar
+5107404,São Pedro da Cipa,2026,9,26.12,preliminar
+5107578,Rondolândia,2026,9,72.7,preliminar
+5107602,Rondonópolis,2026,9,40.45,preliminar
+5107701,Rosário Oeste,2026,9,98.64,preliminar
+5107743,Santa Cruz do Xingu,2026,9,78.89,preliminar
+5107750,Salto do Céu,2026,9,95.62,preliminar
+5107768,Santa Rita do Trivelato,2026,9,56.95,preliminar
+5107776,Santa Terezinha,2026,9,21.91,preliminar
+5107792,Santo Antônio do Leste,2026,9,87.4,preliminar
+5107800,Santo Antônio de Leverger,2026,9,43.46,preliminar
+5107859,São Félix do Araguaia,2026,9,64.23,preliminar
+5107875,Sapezal,2026,9,80.98,preliminar
+5107883,Serra Nova Dourada,2026,9,59.3,preliminar
+5107909,Sinop,2026,9,51.9,preliminar
+5107925,Sorriso,2026,9,56.71,preliminar
+5107941,Tabaporã,2026,9,39.94,preliminar
+5107958,Tangará da Serra,2026,9,91.75,preliminar
+5108006,Tapurah,2026,9,81.83,preliminar
+5108055,Terra Nova do Norte,2026,9,88.31,preliminar
+5108105,Tesouro,2026,9,36.36,preliminar
+5108204,Torixoréu,2026,9,58.45,preliminar
+5108303,União do Sul,2026,9,57.9,preliminar
+5108352,Vale de São Domingos,2026,9,94.14,preliminar
+5108402,Várzea Grande,2026,9,90.62,preliminar
+5108501,Vera,2026,9,79.46,preliminar
+5108600,Vila Rica,2026,9,34.43,preliminar
+5108808,Nova Guarita,2026,9,81.81,preliminar
+5108857,Nova Marilândia,2026,9,118.2,preliminar
+5108907,Nova Maringá,2026,9,59.87,preliminar
+5108956,Nova Monte Verde,2026,9,23.26,preliminar
