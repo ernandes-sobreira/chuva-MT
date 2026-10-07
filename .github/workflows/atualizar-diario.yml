@@ -1,0 +1,52 @@
+name: Atualizar chuva diária
+
+on:
+  schedule:
+    # todos os dias, 10:27 UTC = 06:27 em Mato Grosso (UTC-4)
+    - cron: "27 10 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/atualizar_diario.py"
+      - ".github/workflows/atualizar-diario.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-chuva-diaria
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Calcular chuva diária no Earth Engine
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+          DIARIO_COLECAO: ${{ vars.DIARIO_COLECAO }}
+          DIARIO_BANDA: ${{ vars.DIARIO_BANDA }}
+        run: python scripts/atualizar_diario.py
+
+      - name: Gravar dados diários no repositório
+        run: |
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add dados/diario.json
+          if git diff --cached --quiet -- dados/diario.json; then
+            echo "Sem mudança em dados/diario.json."
+          else
+            git commit -m "Atualiza chuva diária (automatico)"
+            git push
+          fi
