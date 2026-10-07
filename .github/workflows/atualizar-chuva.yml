@@ -2,8 +2,8 @@ name: Atualizar chuva mensal
 
 on:
   schedule:
-    # verifica todos os dias, 09:17 UTC. O script so grava quando um mes esta completo no Earth Engine.
-    - cron: "17 9 * * *"
+    # dias 3, 13 e 23 de cada mes, 09:17 UTC. O script so grava quando o mes esta completo no Earth Engine.
+    - cron: "17 9 3,13,23 * *"
   workflow_dispatch:
     inputs:
       refazer:
