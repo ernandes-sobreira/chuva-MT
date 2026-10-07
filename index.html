@@ -44,7 +44,7 @@ p{margin:0}
 .scope{background:linear-gradient(90deg,#eaf3fd,#e6f6f2 55%,#fdf3de);border-bottom:1px solid var(--line)}
 .scope-in{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end}
 .field{display:flex;flex-direction:column;gap:3px;font-size:.74rem;color:var(--ink2);font-weight:700;letter-spacing:.06em;text-transform:uppercase;min-width:0}
-select,input[type=search],input[type=number],input[type=text]{font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px;min-height:40px;text-transform:none;letter-spacing:0;font-weight:500;max-width:100%}
+select,input[type=search],input[type=number],input[type=text],input[type=date],input[type=month]{font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px;min-height:40px;text-transform:none;letter-spacing:0;font-weight:500;max-width:100%}
 .scope .now{margin-left:auto;font-family:var(--display);font-weight:600;font-size:.98rem;color:var(--ink);align-self:center;text-align:right;min-width:0}
 .scope .now small{display:block;font-family:var(--body);font-weight:500;color:var(--ink2);font-size:.86rem}
 
@@ -58,6 +58,22 @@ select,input[type=search],input[type=number],input[type=text]{font:inherit;font-
 .col{display:flex;flex-direction:column;gap:18px;min-width:0}
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .card.soft{background:var(--panel);border-color:transparent}
+.download-card{padding:22px;background:linear-gradient(145deg,#fff 0%,#f8fbff 100%);border-color:#d7e3f1;box-shadow:0 10px 30px rgba(18,35,58,.05)}
+.download-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.download-head h2{margin-bottom:2px}
+.download-badge{display:inline-flex;align-items:center;gap:7px;background:var(--wet-soft);color:var(--wet);border-radius:999px;padding:6px 10px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.download-badge:before{content:"↓";font-size:1rem}
+.download-grid{display:grid;grid-template-columns:minmax(210px,1.35fr) minmax(180px,1fr) minmax(220px,1.25fr);gap:14px 16px;align-items:end;margin-top:4px}
+.download-grid .field{gap:5px}
+.download-grid .field select,.download-grid .field input{width:100%;box-sizing:border-box;background:#fff}
+.download-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-column:1 / span 2}
+.download-action{display:flex;align-items:end;height:100%}
+.download-action .btn{width:100%;min-height:46px;font-family:var(--display);font-weight:700}
+.download-preview{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#eef5fd;border:1px solid #d7e6f7;border-radius:12px;padding:10px 12px;color:var(--ink2);font-size:.9rem}
+.download-preview b{color:var(--ink)}
+.download-preview .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+@media(max-width:850px){.download-grid{grid-template-columns:1fr 1fr}.download-grid #dlMunWrap{grid-column:1/-1}.download-dates{grid-column:1/-1}.download-action{grid-column:1/-1}}
+@media(max-width:560px){.download-grid{grid-template-columns:1fr}.download-grid #dlMunWrap,.download-dates,.download-action{grid-column:1}.download-dates{grid-template-columns:1fr}.download-card{padding:17px}}
 .chead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
 .chead .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0;max-width:100%}
 .chead .ctl .field{max-width:100%}
@@ -426,9 +442,12 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
     <p class="note">A página procura no seu Drive os arquivos CSV cujo nome começa com <code>MT_CHIRPS_MENSAL</code>, lê os meses posteriores a dezembro de 2025 e guarda aqui. Depois da primeira busca, ela repete a verificação sozinha cada vez que você abrir a página.</p>
     <p id="drvMsg" class="say" hidden></p>
   </div>
-  <div class="card">
-    <div class="chead"><div><h2>Baixar dados</h2><p class="note">Monte o arquivo que precisa. O download funciona diretamente no navegador, sem login.</p></div></div>
-    <div class="ctl" style="justify-content:flex-start;align-items:end;flex-wrap:wrap">
+  <div class="card download-card">
+    <div class="download-head">
+      <div><h2>Baixar dados</h2><p class="note">Escolha exatamente o recorte que precisa e gere o CSV no navegador.</p></div>
+      <span class="download-badge">CSV pronto para análise</span>
+    </div>
+    <div class="download-grid">
       <label class="field">Série<select id="dlSerie">
         <option value="mensal">CHIRPS · mensal / histórico</option>
         <option value="diario">GSMaP · diário / agora</option>
@@ -439,12 +458,17 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
         <option value="todos">Todos os 142 municípios</option>
         <option value="atual">Recorte selecionado no topo</option>
       </select></label>
-      <label class="field" id="dlMunWrap" hidden>Município<select id="dlMun"></select></label>
-      <label class="field" id="dlIniWrap">De<input id="dlIni" type="month"></label>
-      <label class="field" id="dlFimWrap">Até<input id="dlFim" type="month"></label>
-      <button class="btn" id="btnDownload" type="button">Baixar CSV</button>
+      <label class="field" id="dlMunWrap" hidden>Município
+        <input type="search" id="dlMunDownload" list="dlMunDownloadList" placeholder="Digite o nome do município" autocomplete="off">
+        <datalist id="dlMunDownloadList"></datalist>
+      </label>
+      <div class="download-dates">
+        <label class="field">De<input id="dlIni" type="month"></label>
+        <label class="field">Até<input id="dlFim" type="month"></label>
+      </div>
+      <div class="download-action"><button class="btn" id="btnDownload" type="button">Baixar CSV</button></div>
     </div>
-    <p class="note" id="dlInfo">Escolha a série, a área e o período.</p>
+    <div class="download-preview" id="dlInfo"><span class="dot"></span><span>Escolha a série, a área e o período.</span></div>
   </div>
   <div class="card">
     <h2>Meses carregados além da série de referência</h2>
@@ -1200,9 +1224,14 @@ function dlUnitValue(u,y,m){
   let sa=0,sx=0,n=0;for(const i of u.idx){const v=mval(i,y,m);if(v!=null){sa+=MUN[i].a;sx+=MUN[i].a*v;n++;}}
   return n&&sa?sx/sa:null;
 }
+function dlPickMun(){
+  const q=$("dlMunDownload").value.trim().toLocaleLowerCase("pt");
+  if(!q)return null;
+  return MUN.find(m=>m.c==q||m.n.toLocaleLowerCase("pt")==q)||MUN.find(m=>m.n.toLocaleLowerCase("pt").startsWith(q))||null;
+}
 function dlAreaUnit(mode){
   if(mode=="uf")return unidade("uf");
-  if(mode=="mun"){const c=$("dlMun").value||MUN[0].c;return unidade("mun",c);}
+  if(mode=="mun"){const m=dlPickMun();return m?unidade("mun",m.c):null;}
   return U();
 }
 function dlMonthlySource(k){
@@ -1211,7 +1240,11 @@ function dlMonthlySource(k){
 }
 function syncDownloadBuilder(reset){
   const serie=$("dlSerie").value||"mensal",area=$("dlArea").value||"uf";
-  if(!$("dlMun").options.length)$("dlMun").innerHTML=MUN.map(m=>'<option value="'+m.c+'">'+esc(m.n)+'</option>').join("");
+  if(!$("dlMunDownloadList").children.length)$("dlMunDownloadList").innerHTML=MUN.map(m=>'<option value="'+esc(m.n)+'"></option>').join("");
+  if(!$("dlMunDownload").value){
+    const cur=S.tipo=="mun"&&IDX[S.id]!=null?MUN[IDX[S.id]]:MUN.find(m=>m.n=="Cáceres")||MUN[0];
+    $("dlMunDownload").value=cur.n;
+  }
   $("dlMunWrap").hidden=area!="mun";
   const daily=serie=="diario",keys=daily?dayKeys():dlMonthKeys();
   $("dlIni").type=daily?"date":"month";$("dlFim").type=daily?"date":"month";
@@ -1220,9 +1253,10 @@ function syncDownloadBuilder(reset){
     if(reset||!$("dlIni").value||$("dlIni").value<keys[0]||$("dlIni").value>keys[keys.length-1])$("dlIni").value=daily?keys[Math.max(0,keys.length-30)]:keys[0];
     if(reset||!$("dlFim").value||$("dlFim").value<keys[0]||$("dlFim").value>keys[keys.length-1])$("dlFim").value=keys[keys.length-1];
   }
-  const src=daily?"GSMaP diário/NRT":"CHIRPS mensal",where=area=="todos"?"142 municípios":area=="uf"?"Mato Grosso":area=="mun"?($("dlMun").selectedOptions[0]?.textContent||"município"):"recorte atual: "+U().nome;
-  $("dlInfo").textContent=keys.length?src+" · "+where+" · dados disponíveis de "+keys[0]+" a "+keys[keys.length-1]+".":"Ainda não há dados disponíveis para esta série.";
-  $("btnDownload").disabled=!keys.length;
+  const mun=area=="mun"?dlPickMun():null,src=daily?"GSMaP diário/NRT":"CHIRPS mensal",where=area=="todos"?"142 municípios":area=="uf"?"Mato Grosso":area=="mun"?(mun?mun.n:"escolha um município"):"recorte atual: "+U().nome;
+  const ok=keys.length&&(area!="mun"||!!mun);
+  $("dlInfo").innerHTML='<span class="dot"></span><span>'+(keys.length?'<b>'+esc(src)+'</b> · '+esc(where)+' · disponível de <b>'+keys[0]+'</b> a <b>'+keys[keys.length-1]+'</b>.':'Ainda não há dados disponíveis para esta série.')+'</span>';
+  $("btnDownload").disabled=!ok;
 }
 async function baixarSelecao(){
   const serie=$("dlSerie").value,area=$("dlArea").value,ini=$("dlIni").value,fim=$("dlFim").value;
@@ -1235,7 +1269,7 @@ async function baixarSelecao(){
       for(const k of keys){const y=+k.slice(0,4),m=+k.slice(5,7)-1,src=dlMonthlySource(k);for(let i=0;i<NM;i++){const x=mval(i,y,m);if(x==null)continue;const z=MUN[i];lines.push([z.c,z.n,z.meso,z.rgi,z.bio,y,m+1,k,x,src.fonte,src.preliminar?"preliminar":"definitivo"].map(csvCell).join(";"));}}
       filename="chuva_CHIRPS_mensal_MT_142_municipios_"+ini+"_a_"+fim+".csv";
     }else{
-      const u=dlAreaUnit(area),head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","ano","mes","data","chuva_mm","metodo_agregacao","fonte","status"];lines.push(head.join(";"));
+      const u=dlAreaUnit(area);if(!u){$("dlInfo").innerHTML='<span class="dot"></span><span>Escolha um município válido na lista.</span>';return;}const head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","ano","mes","data","chuva_mm","metodo_agregacao","fonte","status"];lines.push(head.join(";"));
       for(const k of keys){const y=+k.slice(0,4),m=+k.slice(5,7)-1,x=dlUnitValue(u,y,m),src=dlMonthlySource(k);if(x==null)continue;lines.push([u.tipo,u.id,u.nome,u.idx.length,y,m+1,k,x,u.idx.length>1?"media_ponderada_area_municipal":"media_espacial_municipal",src.fonte,src.preliminar?"preliminar":"definitivo"].map(csvCell).join(";"));}
       filename="chuva_CHIRPS_mensal_"+slug(u.nome)+"_"+ini+"_a_"+fim+".csv";
     }
@@ -1247,7 +1281,7 @@ async function baixarSelecao(){
       for(const k of keys){const e=DAILY.dias[k];for(let i=0;i<NM;i++){const z=MUN[i],x=e&&e.v&&e.v[z.c];if(x==null)continue;lines.push([z.c,z.n,z.meso,z.rgi,z.bio,k,+x,meta.fonte||"JAXA GSMaP v8 operational (NRT)","provisorio_NRT",meta.fuso_dia||"UTC-4"].map(csvCell).join(";"));}}
       filename="chuva_GSMaP_diaria_MT_142_municipios_"+ini+"_a_"+fim+".csv";
     }else{
-      const u=dlAreaUnit(area),head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","data","chuva_mm","metodo_agregacao","fonte","status","fuso_dia"];lines.push(head.join(";"));
+      const u=dlAreaUnit(area);if(!u){$("dlInfo").innerHTML='<span class="dot"></span><span>Escolha um município válido na lista.</span>';return;}const head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","data","chuva_mm","metodo_agregacao","fonte","status","fuso_dia"];lines.push(head.join(";"));
       for(const k of keys){const e=DAILY.dias[k],v=MUN.map(m=>{const x=e&&e.v&&e.v[m.c];return x==null?null:+x;}),x=dayUval(u,v);if(x==null)continue;lines.push([u.tipo,u.id,u.nome,u.idx.length,k,x,u.idx.length>1?"media_ponderada_area_municipal":"media_espacial_municipal",meta.fonte||"JAXA GSMaP v8 operational (NRT)","provisorio_NRT",meta.fuso_dia||"UTC-4"].map(csvCell).join(";"));}
       filename="chuva_GSMaP_diaria_"+slug(u.nome)+"_"+ini+"_a_"+fim+".csv";
     }
@@ -1270,7 +1304,8 @@ function rDados(){
 }
 $("dlSerie").addEventListener("change",()=>syncDownloadBuilder(true));
 $("dlArea").addEventListener("change",()=>syncDownloadBuilder(false));
-$("dlMun").addEventListener("change",()=>syncDownloadBuilder(false));
+$("dlMunDownload").addEventListener("input",()=>syncDownloadBuilder(false));
+$("dlMunDownload").addEventListener("change",()=>syncDownloadBuilder(false));
 $("dlIni").addEventListener("change",()=>syncDownloadBuilder(false));
 $("dlFim").addEventListener("change",()=>syncDownloadBuilder(false));
 $("btnDownload").addEventListener("click",baixarSelecao);
