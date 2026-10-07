@@ -63,6 +63,11 @@ select,input[type=search],input[type=number],input[type=text],input[type=date],i
 .download-head h2{margin-bottom:2px}
 .download-badge{display:inline-flex;align-items:center;gap:7px;background:var(--wet-soft);color:var(--wet);border-radius:999px;padding:6px 10px;font-size:.8rem;font-weight:700;white-space:nowrap}
 .download-badge:before{content:"↓";font-size:1rem}
+.download-series{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#eef3f8;border:1px solid var(--line);border-radius:14px;padding:5px;margin-top:2px}
+.download-series button{border:0;background:transparent;color:var(--ink2);border-radius:10px;min-height:44px;padding:8px 14px;font-family:var(--display);font-size:.9rem;font-weight:700;cursor:pointer}
+.download-series button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 3px 12px rgba(18,35,58,.09)}
+.download-series button small{display:block;font-family:var(--body);font-size:.72rem;font-weight:600;color:var(--muted);margin-top:1px}
+.download-series button[aria-pressed=true] small{color:var(--accent-d)}
 .download-grid{display:grid;grid-template-columns:minmax(210px,1.35fr) minmax(180px,1fr) minmax(220px,1.25fr);gap:14px 16px;align-items:end;margin-top:4px}
 .download-grid .field{gap:5px}
 .download-grid .field select,.download-grid .field input{width:100%;box-sizing:border-box;background:#fff}
@@ -73,7 +78,7 @@ select,input[type=search],input[type=number],input[type=text],input[type=date],i
 .download-preview b{color:var(--ink)}
 .download-preview .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 auto}
 @media(max-width:850px){.download-grid{grid-template-columns:1fr 1fr}.download-grid #dlMunWrap{grid-column:1/-1}.download-dates{grid-column:1/-1}.download-action{grid-column:1/-1}}
-@media(max-width:560px){.download-grid{grid-template-columns:1fr}.download-grid #dlMunWrap,.download-dates,.download-action{grid-column:1}.download-dates{grid-template-columns:1fr}.download-card{padding:17px}}
+@media(max-width:560px){.download-series{grid-template-columns:1fr}.download-grid{grid-template-columns:1fr}.download-grid #dlMunWrap,.download-dates,.download-action{grid-column:1}.download-dates{grid-template-columns:1fr}.download-card{padding:17px}}
 .chead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
 .chead .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-width:0;max-width:100%}
 .chead .ctl .field{max-width:100%}
@@ -447,11 +452,12 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
       <div><h2>Baixar dados</h2><p class="note">Escolha exatamente o recorte que precisa e gere o CSV no navegador.</p></div>
       <span class="download-badge">CSV pronto para análise</span>
     </div>
+    <div class="download-series" role="group" aria-label="Série para download">
+      <button type="button" data-dlserie="mensal" aria-pressed="true">MENSAL / HISTÓRICO<small>CHIRPS · 1996 até o presente</small></button>
+      <button type="button" data-dlserie="diario" aria-pressed="false">DIÁRIO / AGORA<small>GSMaP · até 1 ano diário</small></button>
+      <select id="dlSerie" hidden aria-hidden="true"><option value="mensal">mensal</option><option value="diario">diario</option></select>
+    </div>
     <div class="download-grid">
-      <label class="field">Série<select id="dlSerie">
-        <option value="mensal">CHIRPS · mensal / histórico</option>
-        <option value="diario">GSMaP · diário / agora</option>
-      </select></label>
       <label class="field">Área<select id="dlArea">
         <option value="uf">Mato Grosso · média estadual</option>
         <option value="mun">Um município</option>
@@ -1240,6 +1246,7 @@ function dlMonthlySource(k){
 }
 function syncDownloadBuilder(reset){
   const serie=$("dlSerie").value||"mensal",area=$("dlArea").value||"uf";
+  document.querySelectorAll("[data-dlserie]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.dlserie==serie));
   if(!$("dlMunDownloadList").children.length)$("dlMunDownloadList").innerHTML=MUN.map(m=>'<option value="'+esc(m.n)+'"></option>').join("");
   if(!$("dlMunDownload").value){
     const cur=S.tipo=="mun"&&IDX[S.id]!=null?MUN[IDX[S.id]]:MUN.find(m=>m.n=="Cáceres")||MUN[0];
@@ -1302,6 +1309,10 @@ function rDados(){
   $("btnCsv").hidden=false;
   syncDownloadBuilder(false);
 }
+document.querySelectorAll("[data-dlserie]").forEach(b=>b.addEventListener("click",()=>{
+  $("dlSerie").value=b.dataset.dlserie;
+  syncDownloadBuilder(true);
+}));
 $("dlSerie").addEventListener("change",()=>syncDownloadBuilder(true));
 $("dlArea").addEventListener("change",()=>syncDownloadBuilder(false));
 $("dlMunDownload").addEventListener("input",()=>syncDownloadBuilder(false));
