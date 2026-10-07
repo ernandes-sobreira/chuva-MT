@@ -337,6 +337,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
             <option value="30d">Últimos 30 dias</option>
             <option value="mtd">Acumulado do mês</option>
           </select></label>
+          <button class="btn ghost sm" id="btnDayCsv" type="button">Baixar este mapa (CSV)</button>
         </div>
       </div>
       <div class="mapbox"><svg class="mapa" id="mapDay" role="img" aria-label="Mapa da chuva diária por município de Mato Grosso"></svg></div>
@@ -424,6 +425,26 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
     <div class="chead"><h2>Puxar do Google Drive</h2><button class="btn" id="btnDrive" type="button">Buscar meses novos no Drive</button></div>
     <p class="note">A página procura no seu Drive os arquivos CSV cujo nome começa com <code>MT_CHIRPS_MENSAL</code>, lê os meses posteriores a dezembro de 2025 e guarda aqui. Depois da primeira busca, ela repete a verificação sozinha cada vez que você abrir a página.</p>
     <p id="drvMsg" class="say" hidden></p>
+  </div>
+  <div class="card">
+    <div class="chead"><div><h2>Baixar dados</h2><p class="note">Monte o arquivo que precisa. O download funciona diretamente no navegador, sem login.</p></div></div>
+    <div class="ctl" style="justify-content:flex-start;align-items:end;flex-wrap:wrap">
+      <label class="field">Série<select id="dlSerie">
+        <option value="mensal">CHIRPS · mensal / histórico</option>
+        <option value="diario">GSMaP · diário / agora</option>
+      </select></label>
+      <label class="field">Área<select id="dlArea">
+        <option value="uf">Mato Grosso · média estadual</option>
+        <option value="mun">Um município</option>
+        <option value="todos">Todos os 142 municípios</option>
+        <option value="atual">Recorte selecionado no topo</option>
+      </select></label>
+      <label class="field" id="dlMunWrap" hidden>Município<select id="dlMun"></select></label>
+      <label class="field" id="dlIniWrap">De<input id="dlIni" type="month"></label>
+      <label class="field" id="dlFimWrap">Até<input id="dlFim" type="month"></label>
+      <button class="btn" id="btnDownload" type="button">Baixar CSV</button>
+    </div>
+    <p class="note" id="dlInfo">Escolha a série, a área e o período.</p>
   </div>
   <div class="card">
     <h2>Meses carregados além da série de referência</h2>
@@ -583,6 +604,19 @@ const f0=v=>nf(v,0), f1=v=>nf(v,1), f2=v=>nf(v,2), f3=v=>nf(v,3);
 const sg=(v,d)=>v==null||!isFinite(v)?"sem dado":(v>0?"+":"")+nf(v,d==null?1:d);
 const fp=p=>p==null||!isFinite(p)?"sem dado":p<0.001?"menor que 0,001":nf(p,3);
 function lista(a){return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" e "+a[a.length-1];}
+function slug(s){return String(s||"dados").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9_-]+/g,"_").replace(/^_+|_+$/g,"").slice(0,80)||"dados";}
+function csvCell(v){
+  if(v==null||v===""||(typeof v=="number"&&!isFinite(v)))return "";
+  let s=typeof v=="number"?String(Math.round(v*100)/100).replace(".",","):String(v);
+  if(/[;"\r\n]/.test(s))s='"'+s.replace(/"/g,'""')+'"';
+  return s;
+}
+async function baixarArquivo(filename,text,mime){
+  mime=mime||"text/csv;charset=utf-8";
+  if(DL&&DL.save){try{await DL.save({filename,data:text});return;}catch(_){}}
+  const blob=new Blob([text],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
 
 /* periodos: inicio (0 a 11) e duracao em meses; o ano do rotulo e o do ultimo mes */
 const PERIODOS=[];
@@ -971,6 +1005,13 @@ $("selDayMet").addEventListener("change",e=>{S.dayMet=e.target.value;saveUI();rD
 $("rankDay").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)selMun(+b.dataset.i);});
 $("btnCopyDay").addEventListener("click",()=>{const t=$("resumoDay").textContent,b=$("btnCopyDay"),done=()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1600);};try{navigator.clipboard.writeText(t).then(done);}catch(_){}});
 
+$("btnDayCsv").addEventListener("click",async()=>{
+  if(!DAILY||!S.dayDate)return;
+  const a=dayAgg(S.dayDate,S.dayMet),meta=DAILY._meta||{},head=["CD_MUN","NM_MUN","mesorregiao","regiao_intermediaria","bioma_predominante","periodo","inicio","fim","chuva_mm","fonte","status"];
+  const body=MUN.map((m,i)=>[m.c,m.n,m.meso,m.rgi,m.bio,dayModeLabel(S.dayMet,S.dayDate),a.range.start,S.dayDate,a.v[i],meta.fonte||"JAXA GSMaP v8 operational (NRT)","provisorio_NRT"].map(csvCell).join(";")).join("\r\n");
+  await baixarArquivo("chuva_diaria_MT_"+S.dayDate+"_"+S.dayMet+"_por_municipio.csv","\ufeff"+head.join(";")+"\r\n"+body);
+});
+
 /* ================= COMPARAR ================= */
 function rComparar(){
   const p=P(),u=U(),ys=years(),a=S.a,b=S.b,lim=dominio(p,S.met);
@@ -1152,6 +1193,69 @@ $("inpRet").addEventListener("change",e=>{const v=parseFloat(e.target.value);if(
 /* ================= DADOS ================= */
 const COLS=[["n","Município"],["x","Chuva (mm)"],["mean","Média (mm)"],["anom","Anomalia (mm)"],["pct","Anomalia (%)"],["z","z"],["spi","SPI"],["rw","Posição"],["sit","Situação"]];
 function tabRows(){const p=P(),y=S.year;return MUN.map((m,i)=>{const c=classe(i,p,y);return c?{n:m.n,c:m.c,meso:m.meso,x:c.x,mean:c.mean,anom:c.anom,pct:c.pct,z:mmetric(i,p,y,"z"),spi:mmetric(i,p,y,"spi"),rw:c.rw,tot:c.n,sit:c.sit,cls:c.c}:{n:m.n,c:m.c,meso:m.meso,x:null,mean:mref(i,p).mean,anom:null,pct:null,z:null,spi:null,rw:null,sit:"Sem dado",cls:"n"};});}
+function dlMonthKeys(){
+  const out=[];for(let y=Y0;y<=lastYear();y++)for(let m=0;m<12;m++)if(MUN.some((_,i)=>mval(i,y,m)!=null))out.push(y+"-"+String(m+1).padStart(2,"0"));return out;
+}
+function dlUnitValue(u,y,m){
+  let sa=0,sx=0,n=0;for(const i of u.idx){const v=mval(i,y,m);if(v!=null){sa+=MUN[i].a;sx+=MUN[i].a*v;n++;}}
+  return n&&sa?sx/sa:null;
+}
+function dlAreaUnit(mode){
+  if(mode=="uf")return unidade("uf");
+  if(mode=="mun"){const c=$("dlMun").value||MUN[0].c;return unidade("mun",c);}
+  return U();
+}
+function dlMonthlySource(k){
+  const y=+k.slice(0,4),m=+k.slice(5,7),e=EXTRA[k];
+  return {fonte:y<=YREF?"CHIRPS · série de referência 1996–2025":(e&&e.fonte)||"CHIRPS",preliminar:!!(e&&e.preliminar)};
+}
+function syncDownloadBuilder(reset){
+  const serie=$("dlSerie").value||"mensal",area=$("dlArea").value||"uf";
+  if(!$("dlMun").options.length)$("dlMun").innerHTML=MUN.map(m=>'<option value="'+m.c+'">'+esc(m.n)+'</option>').join("");
+  $("dlMunWrap").hidden=area!="mun";
+  const daily=serie=="diario",keys=daily?dayKeys():dlMonthKeys();
+  $("dlIni").type=daily?"date":"month";$("dlFim").type=daily?"date":"month";
+  if(keys.length){
+    $("dlIni").min=keys[0];$("dlIni").max=keys[keys.length-1];$("dlFim").min=keys[0];$("dlFim").max=keys[keys.length-1];
+    if(reset||!$("dlIni").value||$("dlIni").value<keys[0]||$("dlIni").value>keys[keys.length-1])$("dlIni").value=daily?keys[Math.max(0,keys.length-30)]:keys[0];
+    if(reset||!$("dlFim").value||$("dlFim").value<keys[0]||$("dlFim").value>keys[keys.length-1])$("dlFim").value=keys[keys.length-1];
+  }
+  const src=daily?"GSMaP diário/NRT":"CHIRPS mensal",where=area=="todos"?"142 municípios":area=="uf"?"Mato Grosso":area=="mun"?($("dlMun").selectedOptions[0]?.textContent||"município"):"recorte atual: "+U().nome;
+  $("dlInfo").textContent=keys.length?src+" · "+where+" · dados disponíveis de "+keys[0]+" a "+keys[keys.length-1]+".":"Ainda não há dados disponíveis para esta série.";
+  $("btnDownload").disabled=!keys.length;
+}
+async function baixarSelecao(){
+  const serie=$("dlSerie").value,area=$("dlArea").value,ini=$("dlIni").value,fim=$("dlFim").value;
+  if(!ini||!fim||ini>fim){$("dlInfo").textContent="Escolha um período válido.";return;}
+  let lines=[],filename="";
+  if(serie=="mensal"){
+    const keys=dlMonthKeys().filter(k=>k>=ini&&k<=fim);
+    if(area=="todos"){
+      const head=["CD_MUN","NM_MUN","mesorregiao","regiao_intermediaria","bioma_predominante","ano","mes","data","chuva_mm","fonte","status"];lines.push(head.join(";"));
+      for(const k of keys){const y=+k.slice(0,4),m=+k.slice(5,7)-1,src=dlMonthlySource(k);for(let i=0;i<NM;i++){const x=mval(i,y,m);if(x==null)continue;const z=MUN[i];lines.push([z.c,z.n,z.meso,z.rgi,z.bio,y,m+1,k,x,src.fonte,src.preliminar?"preliminar":"definitivo"].map(csvCell).join(";"));}}
+      filename="chuva_CHIRPS_mensal_MT_142_municipios_"+ini+"_a_"+fim+".csv";
+    }else{
+      const u=dlAreaUnit(area),head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","ano","mes","data","chuva_mm","metodo_agregacao","fonte","status"];lines.push(head.join(";"));
+      for(const k of keys){const y=+k.slice(0,4),m=+k.slice(5,7)-1,x=dlUnitValue(u,y,m),src=dlMonthlySource(k);if(x==null)continue;lines.push([u.tipo,u.id,u.nome,u.idx.length,y,m+1,k,x,u.idx.length>1?"media_ponderada_area_municipal":"media_espacial_municipal",src.fonte,src.preliminar?"preliminar":"definitivo"].map(csvCell).join(";"));}
+      filename="chuva_CHIRPS_mensal_"+slug(u.nome)+"_"+ini+"_a_"+fim+".csv";
+    }
+  }else{
+    if(!DAILY){$("dlInfo").textContent="A série diária ainda não foi carregada.";return;}
+    const keys=dayKeys().filter(k=>k>=ini&&k<=fim),meta=DAILY._meta||{};
+    if(area=="todos"){
+      const head=["CD_MUN","NM_MUN","mesorregiao","regiao_intermediaria","bioma_predominante","data","chuva_mm","fonte","status","fuso_dia"];lines.push(head.join(";"));
+      for(const k of keys){const e=DAILY.dias[k];for(let i=0;i<NM;i++){const z=MUN[i],x=e&&e.v&&e.v[z.c];if(x==null)continue;lines.push([z.c,z.n,z.meso,z.rgi,z.bio,k,+x,meta.fonte||"JAXA GSMaP v8 operational (NRT)","provisorio_NRT",meta.fuso_dia||"UTC-4"].map(csvCell).join(";"));}}
+      filename="chuva_GSMaP_diaria_MT_142_municipios_"+ini+"_a_"+fim+".csv";
+    }else{
+      const u=dlAreaUnit(area),head=["recorte_tipo","recorte_id","recorte_nome","n_municipios","data","chuva_mm","metodo_agregacao","fonte","status","fuso_dia"];lines.push(head.join(";"));
+      for(const k of keys){const e=DAILY.dias[k],v=MUN.map(m=>{const x=e&&e.v&&e.v[m.c];return x==null?null:+x;}),x=dayUval(u,v);if(x==null)continue;lines.push([u.tipo,u.id,u.nome,u.idx.length,k,x,u.idx.length>1?"media_ponderada_area_municipal":"media_espacial_municipal",meta.fonte||"JAXA GSMaP v8 operational (NRT)","provisorio_NRT",meta.fuso_dia||"UTC-4"].map(csvCell).join(";"));}
+      filename="chuva_GSMaP_diaria_"+slug(u.nome)+"_"+ini+"_a_"+fim+".csv";
+    }
+  }
+  if(lines.length<=1){$("dlInfo").textContent="Não há dados no período escolhido.";return;}
+  await baixarArquivo(filename,"\ufeff"+lines.join("\r\n"));
+  $("dlInfo").textContent="Arquivo pronto: "+(lines.length-1).toLocaleString("pt-BR")+" linha(s) de dados.";
+}
 function rDados(){
   const p=P(),y=S.year,ks=Object.keys(EXTRA).sort();
   $("lstMeses").innerHTML=ks.length?'<table><thead><tr><th>Mês</th><th>Municípios</th><th>Origem</th><th></th></tr></thead><tbody>'+ks.map(k=>{const e=EXTRA[k];return "<tr><td>"+cap(MESES[e.mes-1])+" de "+e.ano+(e.preliminar?' <span class="flag">preliminar</span>':"")+"</td><td>"+(e.n||Object.keys(e.v).length)+'</td><td style="text-align:right;white-space:normal">'+esc(e.fonte||"")+'</td><td>'+(e.repo?'<span class="chip n">automático</span>':'<button class="btn danger sm" type="button" data-del="'+k+'">Remover</button>')+'</td></tr>';}).join("")+"</tbody></table>":'<p class="note">Nenhum mês além de dezembro de '+YREF+". Envie o CSV de um mês novo acima.</p>";
@@ -1161,14 +1265,22 @@ function rDados(){
   $("tab").tHead.innerHTML="<tr>"+COLS.map(c=>'<th><button type="button" data-k="'+c[0]+'"'+(c[0]==k?' data-dir="'+S.sort.dir+'"':"")+'>'+c[1]+'</button></th>').join("")+"</tr>";
   const rs=tabRows().filter(r=>!q||r.n.toLocaleLowerCase("pt").indexOf(q)>=0).sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return 0;if(va==null)return 1;if(vb==null)return -1;return (typeof va=="string"?va.localeCompare(vb,"pt"):va-vb)*dir;});
   $("tab").tBodies[0].innerHTML=rs.map(r=>"<tr><td>"+esc(r.n)+"</td><td>"+f1(r.x)+"</td><td>"+f1(r.mean)+"</td><td>"+sg(r.anom)+"</td><td>"+(r.x!=null&&r.pct==null?"média menor que 1 mm":sg(r.pct,0))+"</td><td>"+sg(r.z,2)+"</td><td>"+sg(r.spi,2)+"</td><td>"+(r.rw==null?"sem dado":r.rw+"ª de "+r.tot)+'</td><td style="text-align:left"><span class="chip '+r.cls+'">'+r.sit+"</span></td></tr>").join("")||'<tr><td colspan="9">Nenhum município encontrado.</td></tr>';
-  $("btnCsv").hidden=!DL;
+  $("btnCsv").hidden=false;
+  syncDownloadBuilder(false);
 }
+$("dlSerie").addEventListener("change",()=>syncDownloadBuilder(true));
+$("dlArea").addEventListener("change",()=>syncDownloadBuilder(false));
+$("dlMun").addEventListener("change",()=>syncDownloadBuilder(false));
+$("dlIni").addEventListener("change",()=>syncDownloadBuilder(false));
+$("dlFim").addEventListener("change",()=>syncDownloadBuilder(false));
+$("btnDownload").addEventListener("click",baixarSelecao);
 $("busca").addEventListener("input",e=>{S.q=e.target.value;rDados();});
 $("tab").tHead.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const k=b.dataset.k;S.sort=S.sort.k==k?{k,dir:S.sort.dir=="asc"?"desc":"asc"}:{k,dir:k=="n"||k=="sit"||k=="rw"?"asc":"desc"};rDados();});
-$("btnCsv").addEventListener("click",async()=>{if(!DL)return;const p=P(),y=S.year,n=v=>v==null||!isFinite(v)?"":String(Math.round(v*100)/100).replace(".",",");
-  const head="CD_MUN;NM_MUN;mesorregiao;periodo;ano;chuva_mm;media_"+Y0+"_"+YREF+"_mm;anomalia_mm;anomalia_pct;z;spi;posicao_mais_chuvoso;situacao";
-  const body=tabRows().map(r=>[r.c,r.n,r.meso,p.nome,y,n(r.x),n(r.mean),n(r.anom),n(r.pct),n(r.z),n(r.spi),r.rw==null?"":r.rw,r.sit].join(";")).join("\r\n");
-  try{await DL.save({filename:"chuva_MT_"+p.k+"_"+y+"_por_municipio.csv",data:"﻿"+head+"\r\n"+body});}catch(_){}});
+$("btnCsv").addEventListener("click",async()=>{const p=P(),y=S.year;
+  const head=["CD_MUN","NM_MUN","mesorregiao","periodo","ano","chuva_mm","media_"+Y0+"_"+YREF+"_mm","anomalia_mm","anomalia_pct","z","spi","posicao_mais_chuvoso","situacao"];
+  const body=tabRows().map(r=>[r.c,r.n,r.meso,p.nome,y,r.x,r.mean,r.anom,r.pct,r.z,r.spi,r.rw==null?"":r.rw,r.sit].map(csvCell).join(";")).join("\r\n");
+  await baixarArquivo("chuva_MT_"+p.k+"_"+y+"_por_municipio.csv","\ufeff"+head.join(";")+"\r\n"+body);
+});
 $("lstMeses").addEventListener("click",async e=>{const b=e.target.closest("button[data-del]");if(!b)return;
   if(!b.dataset.ok){b.dataset.ok="1";b.textContent="Confirmar remoção";setTimeout(()=>{if(b.isConnected){delete b.dataset.ok;b.textContent="Remover";}},4000);return;}
   const k=b.dataset.del;try{if(DB)await DB.doc("meses/"+k).delete();const o=Object.assign({},EXTRA);delete o[k];setExtra(o);saveLocal();S.year=null;render();say("Mês removido.",true);}catch(_){say("Não foi possível remover. Você pode não ter permissão de edição nesta página.",false);}});
@@ -1259,7 +1371,7 @@ let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==last
   const cl=window.claude;
   if(cl&&cl.use){
     cl.use("mcp").then(m=>{if(!m)return;MCP=m;$("cardDrive").hidden=false;let auto=false;try{auto=localStorage.getItem(LSD+".auto")=="1";}catch(_){}if(auto)setTimeout(()=>driveSync(false),1500);});
-    cl.use("downloads").then(d=>{if(d){DL=d;$("btnCsv").hidden=false;}});
+    cl.use("downloads").then(d=>{if(d)DL=d;});
     cl.use("db").then(db=>{if(!db)return;DB=db;
       db.collection("meses").onSnapshot(snap=>{const m={};snap.docs.forEach(d=>{const x=d.data();if(x&&x.v)m[d.id]={ano:x.ano,mes:x.mes,v:Object.assign({},x.v),fonte:x.fonte,preliminar:!!x.preliminar,n:x.n};});
         if(JSON.stringify(m)==JSON.stringify(EXTRA))return;const had=Object.keys(EXTRA).length;setExtra(m);saveLocal();if(!had)S.year=null;render();},()=>{});});
