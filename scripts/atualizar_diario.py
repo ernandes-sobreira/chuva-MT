@@ -11,9 +11,9 @@ Regras:
 - considera o dia civil de Mato Grosso em UTC-4 (00:00–24:00 local = 04:00–04:00 UTC);
 - só grava dias com 24 imagens horárias disponíveis;
 - soma hourlyPrecipRate (mm/h) ao longo das 24 horas e calcula a média espacial por município;
-- na primeira execução, preenche os 120 dias completos mais recentes;
+- mantém pelo menos 365 dias completos recentes para permitir download de um ano inteiro;
 - depois, acrescenta dias novos e recalcula os 14 dias mais recentes para incorporar revisões NRT;
-- mantém uma janela móvel de até 180 dias no repositório.
+- mantém uma janela móvel de até 400 dias no repositório.
 
 Nenhum valor é estimado ou preenchido quando faltam imagens ou municípios.
 """
@@ -30,9 +30,9 @@ COLECAO_PADRAO = "JAXA/GPM_L3/GSMaP/v8/operational"
 BANDA_PADRAO = "hourlyPrecipRate"
 ESCALA_M = 11132
 FUSO_H = -4
-DIAS_INICIAIS = 120
+DIAS_INICIAIS = 365
 DIAS_RECALCULAR = 14
-DIAS_MANTER = 180
+DIAS_MANTER = 400
 LOTE_DIAS = 10
 
 
@@ -125,34 +125,32 @@ def ler_saida():
 
 def datas_para_calcular(saida, ultimo):
     dias = saida.get("dias", {})
-    if not dias:
-        ini = ultimo - dt.timedelta(days=DIAS_INICIAIS - 1)
-        return [ini + dt.timedelta(days=i) for i in range(DIAS_INICIAIS)]
-
-    existentes = []
+    existentes = set()
     for k in dias:
         try:
-            existentes.append(dt.date.fromisoformat(k))
+            existentes.add(dt.date.fromisoformat(k))
         except ValueError:
             pass
-    if not existentes:
-        ini = ultimo - dt.timedelta(days=DIAS_INICIAIS - 1)
-        return [ini + dt.timedelta(days=i) for i in range(DIAS_INICIAIS)]
 
-    ultima_gravada = max(existentes)
+    # Garante uma janela contínua de pelo menos 365 dias completos.
+    # Se o arquivo atual tiver menos dias, a rotina preenche retroativamente
+    # somente os dias que ainda faltam, sem recalcular toda a janela.
+    alvo_ini = ultimo - dt.timedelta(days=DIAS_INICIAIS - 1)
     wanted = set()
-    d = ultima_gravada + dt.timedelta(days=1)
+    d = alvo_ini
     while d <= ultimo:
-        wanted.add(d)
+        if d not in existentes:
+            wanted.add(d)
         d += dt.timedelta(days=1)
-    ini_refresh = max(
-        ultimo - dt.timedelta(days=DIAS_RECALCULAR - 1),
-        ultimo - dt.timedelta(days=DIAS_MANTER - 1),
-    )
+
+    # Os dias mais recentes são recalculados porque o produto NRT pode
+    # sofrer pequenas revisões após a primeira publicação.
+    ini_refresh = ultimo - dt.timedelta(days=DIAS_RECALCULAR - 1)
     d = ini_refresh
     while d <= ultimo:
         wanted.add(d)
         d += dt.timedelta(days=1)
+
     return sorted(wanted)
 
 
