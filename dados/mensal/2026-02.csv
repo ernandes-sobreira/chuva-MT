@@ -1,0 +1,143 @@
+CD_MUN,NM_MUN,ano,mes,chuva_mm,situacao
+5100102,Acorizal,2026,2,187.88,definitivo
+5100201,Água Boa,2026,2,239.52,definitivo
+5100250,Alta Floresta,2026,2,244.64,definitivo
+5100300,Alto Araguaia,2026,2,272.02,definitivo
+5100359,Alto Boa Vista,2026,2,284.16,definitivo
+5100409,Alto Garças,2026,2,240.79,definitivo
+5100508,Alto Paraguai,2026,2,238.41,definitivo
+5100607,Alto Taquari,2026,2,264.47,definitivo
+5100805,Apiacás,2026,2,296.86,definitivo
+5101001,Araguaiana,2026,2,309.11,definitivo
+5101209,Araguainha,2026,2,219.34,definitivo
+5101258,Araputanga,2026,2,186.86,definitivo
+5101308,Arenápolis,2026,2,275.6,definitivo
+5101407,Aripuanã,2026,2,255.54,definitivo
+5101605,Barão de Melgaço,2026,2,213.76,definitivo
+5101704,Barra do Bugres,2026,2,219.61,definitivo
+5101803,Barra do Garças,2026,2,238.04,definitivo
+5101837,Boa Esperança do Norte,2026,2,436.41,definitivo
+5101852,Bom Jesus do Araguaia,2026,2,272.32,definitivo
+5101902,Brasnorte,2026,2,285.42,definitivo
+5102504,Cáceres,2026,2,178.83,definitivo
+5102603,Campinápolis,2026,2,188.26,definitivo
+5102637,Campo Novo do Parecis,2026,2,306.52,definitivo
+5102678,Campo Verde,2026,2,273.09,definitivo
+5102686,Campos de Júlio,2026,2,156.68,definitivo
+5102694,Canabrava do Norte,2026,2,284.36,definitivo
+5102702,Canarana,2026,2,242.45,definitivo
+5102793,Carlinda,2026,2,253.56,definitivo
+5102850,Castanheira,2026,2,205.35,definitivo
+5103007,Chapada dos Guimarães,2026,2,276.73,definitivo
+5103056,Cláudia,2026,2,327.93,definitivo
+5103106,Cocalinho,2026,2,298.21,definitivo
+5103205,Colíder,2026,2,284.19,definitivo
+5103254,Colniza,2026,2,284.63,definitivo
+5103304,Comodoro,2026,2,123.19,definitivo
+5103353,Confresa,2026,2,290.84,definitivo
+5103361,Conquista D'oeste,2026,2,157.86,definitivo
+5103379,Cotriguaçu,2026,2,286.77,definitivo
+5103403,Cuiabá,2026,2,263.74,definitivo
+5103437,Curvelândia,2026,2,200.63,definitivo
+5103452,Denise,2026,2,247.21,definitivo
+5103502,Diamantino,2026,2,334.23,definitivo
+5103601,Dom Aquino,2026,2,271.84,definitivo
+5103700,Feliz Natal,2026,2,368.32,definitivo
+5103809,Figueirópolis D'oeste,2026,2,167.88,definitivo
+5103858,Gaúcha do Norte,2026,2,307.89,definitivo
+5103908,General Carneiro,2026,2,213.88,definitivo
+5103957,Glória D'oeste,2026,2,176.12,definitivo
+5104104,Guarantã do Norte,2026,2,315.34,definitivo
+5104203,Guiratinga,2026,2,201.59,definitivo
+5104500,Indiavaí,2026,2,167.09,definitivo
+5104526,Ipiranga do Norte,2026,2,386.88,definitivo
+5104542,Itanhangá,2026,2,419.6,definitivo
+5104559,Itaúba,2026,2,296.88,definitivo
+5104609,Itiquira,2026,2,260.2,definitivo
+5104807,Jaciara,2026,2,265.39,definitivo
+5104906,Jangada,2026,2,225.57,definitivo
+5105002,Jauru,2026,2,155.44,definitivo
+5105101,Juara,2026,2,272.09,definitivo
+5105150,Juína,2026,2,162.55,definitivo
+5105176,Juruena,2026,2,268.02,definitivo
+5105200,Juscimeira,2026,2,215.76,definitivo
+5105234,Lambari D'oeste,2026,2,206.93,definitivo
+5105259,Lucas do Rio Verde,2026,2,340.59,definitivo
+5105309,Luciara,2026,2,282.97,definitivo
+5105507,Vila Bela da Santíssima Trindade,2026,2,129.25,definitivo
+5105580,Marcelândia,2026,2,300.22,definitivo
+5105606,Matupá,2026,2,317.45,definitivo
+5105622,Mirassol D'oeste,2026,2,193.87,definitivo
+5105903,Nobres,2026,2,330.39,definitivo
+5106000,Nortelândia,2026,2,297.57,definitivo
+5106109,Nossa Senhora do Livramento,2026,2,236.63,definitivo
+5106158,Nova Bandeirantes,2026,2,283.56,definitivo
+5106174,Nova Nazaré,2026,2,274.28,definitivo
+5106182,Nova Lacerda,2026,2,125.49,definitivo
+5106190,Nova Santa Helena,2026,2,282.97,definitivo
+5106208,Nova Brasilândia,2026,2,300.36,definitivo
+5106216,Nova Canaã do Norte,2026,2,248.23,definitivo
+5106224,Nova Mutum,2026,2,376.76,definitivo
+5106232,Nova Olímpia,2026,2,236.3,definitivo
+5106240,Nova Ubiratã,2026,2,421.04,definitivo
+5106257,Nova Xavantina,2026,2,231.9,definitivo
+5106265,Novo Mundo,2026,2,287.23,definitivo
+5106273,Novo Horizonte do Norte,2026,2,286.86,definitivo
+5106281,Novo São Joaquim,2026,2,183.07,definitivo
+5106299,Paranaíta,2026,2,264.44,definitivo
+5106307,Paranatinga,2026,2,322.24,definitivo
+5106315,Novo Santo Antônio,2026,2,249.23,definitivo
+5106372,Pedra Preta,2026,2,226.5,definitivo
+5106422,Peixoto de Azevedo,2026,2,330.34,definitivo
+5106455,Planalto da Serra,2026,2,314.52,definitivo
+5106505,Poconé,2026,2,209.45,definitivo
+5106653,Pontal do Araguaia,2026,2,272.61,definitivo
+5106703,Ponte Branca,2026,2,233.57,definitivo
+5106752,Pontes E Lacerda,2026,2,153.0,definitivo
+5106778,Porto Alegre do Norte,2026,2,293.73,definitivo
+5106802,Porto dos Gaúchos,2026,2,348.06,definitivo
+5106828,Porto Esperidião,2026,2,160.18,definitivo
+5106851,Porto Estrela,2026,2,228.56,definitivo
+5107008,Poxoréu,2026,2,229.84,definitivo
+5107040,Primavera do Leste,2026,2,245.64,definitivo
+5107065,Querência,2026,2,308.92,definitivo
+5107107,São José dos Quatro Marcos,2026,2,182.55,definitivo
+5107156,Reserva do Cabaçal,2026,2,222.12,definitivo
+5107180,Ribeirão Cascalheira,2026,2,249.58,definitivo
+5107198,Ribeirãozinho,2026,2,240.6,definitivo
+5107206,Rio Branco,2026,2,200.54,definitivo
+5107248,Santa Carmem,2026,2,390.94,definitivo
+5107263,Santo Afonso,2026,2,280.64,definitivo
+5107297,São José do Povo,2026,2,210.03,definitivo
+5107305,São José do Rio Claro,2026,2,353.67,definitivo
+5107354,São José do Xingu,2026,2,319.11,definitivo
+5107404,São Pedro da Cipa,2026,2,230.07,definitivo
+5107578,Rondolândia,2026,2,209.22,definitivo
+5107602,Rondonópolis,2026,2,229.36,definitivo
+5107701,Rosário Oeste,2026,2,273.31,definitivo
+5107743,Santa Cruz do Xingu,2026,2,317.5,definitivo
+5107750,Salto do Céu,2026,2,226.23,definitivo
+5107768,Santa Rita do Trivelato,2026,2,420.78,definitivo
+5107776,Santa Terezinha,2026,2,293.51,definitivo
+5107792,Santo Antônio do Leste,2026,2,185.03,definitivo
+5107800,Santo Antônio de Leverger,2026,2,240.68,definitivo
+5107859,São Félix do Araguaia,2026,2,299.04,definitivo
+5107875,Sapezal,2026,2,202.35,definitivo
+5107883,Serra Nova Dourada,2026,2,269.28,definitivo
+5107909,Sinop,2026,2,383.81,definitivo
+5107925,Sorriso,2026,2,370.72,definitivo
+5107941,Tabaporã,2026,2,315.96,definitivo
+5107958,Tangará da Serra,2026,2,238.12,definitivo
+5108006,Tapurah,2026,2,352.12,definitivo
+5108055,Terra Nova do Norte,2026,2,276.08,definitivo
+5108105,Tesouro,2026,2,207.53,definitivo
+5108204,Torixoréu,2026,2,237.87,definitivo
+5108303,União do Sul,2026,2,319.09,definitivo
+5108352,Vale de São Domingos,2026,2,173.26,definitivo
+5108402,Várzea Grande,2026,2,264.5,definitivo
+5108501,Vera,2026,2,410.42,definitivo
+5108600,Vila Rica,2026,2,299.11,definitivo
+5108808,Nova Guarita,2026,2,284.14,definitivo
+5108857,Nova Marilândia,2026,2,323.41,definitivo
+5108907,Nova Maringá,2026,2,386.62,definitivo
+5108956,Nova Monte Verde,2026,2,267.94,definitivo
