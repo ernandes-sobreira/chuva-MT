@@ -50,3 +50,17 @@ Variáveis opcionais (Settings, Variables): `EE_PROJECT` (id do projeto, se for 
 - O Earth Engine recebe o CHIRPS com algumas semanas de atraso, então o mês anterior pode demorar a aparecer.
 - A malha usada aqui é a do IBGE de 2024, simplificada. Pequenas diferenças em relação à série original são esperadas e medidas pela trava de validação.
 - O GitHub suspende agendamentos de repositórios sem atividade por 60 dias. As gravações mensais mantêm o repositório ativo.
+
+
+## Atualização diária
+
+A aba **Diário / Agora** usa uma série separada do histórico CHIRPS:
+
+- Fonte: **JAXA GSMaP v8 operational (NRT)** no Earth Engine, coleção `JAXA/GPM_L3/GSMaP/v8/operational`.
+- Banda: `hourlyPrecipRate` em mm/h.
+- O dia civil de Mato Grosso é agregado em UTC-4; só entram dias com 24 imagens horárias.
+- A primeira execução carrega os 120 dias completos mais recentes; depois a rotina acrescenta dias novos e recalcula os 14 dias mais recentes para incorporar revisões NRT.
+- O arquivo publicado é `dados/diario.json` e a página mantém uma janela móvel de até 180 dias.
+- Essa série é operacional/provisória e **não entra nos recordes, anomalias ou tendências da série histórica CHIRPS**.
+
+O workflow `.github/workflows/atualizar-diario.yml` verifica a fonte diariamente.
