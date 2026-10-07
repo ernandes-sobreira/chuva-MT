@@ -176,6 +176,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
   </div>
   <nav class="tabs" role="tablist" aria-label="Seções">
     <button role="tab" data-tab="mapa" aria-selected="true">Mapa no tempo</button>
+    <button role="tab" data-tab="diario" aria-selected="false">Diário / Agora</button>
     <button role="tab" data-tab="comparar" aria-selected="false">Comparar anos</button>
     <button role="tab" data-tab="local" aria-selected="false">Local</button>
     <button role="tab" data-tab="estat" aria-selected="false">Estatística</button>
@@ -317,6 +318,54 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
   </div>
 </section>
 
+<!-- ================= DIARIO / AGORA ================= -->
+<section class="view" id="v-diario" hidden>
+  <div class="hero">
+    <div class="eyebrow" id="dayEye">Chuva diária por satélite</div>
+    <p class="verdict" id="dayVer" style="max-width:52ch">Carregando a série diária...</p>
+  </div>
+  <div class="kpis" id="kpisDay"></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="chead">
+        <h2 id="dayMapTitle">Chuva diária</h2>
+        <div class="ctl">
+          <label class="field">Dia<select id="selDia"></select></label>
+          <label class="field">Camada<select id="selDayMet">
+            <option value="day">Dia selecionado</option>
+            <option value="7d">Últimos 7 dias</option>
+            <option value="30d">Últimos 30 dias</option>
+            <option value="mtd">Acumulado do mês</option>
+          </select></label>
+        </div>
+      </div>
+      <div class="mapbox"><svg class="mapa" id="mapDay" role="img" aria-label="Mapa da chuva diária por município de Mato Grosso"></svg></div>
+      <div class="legend" id="legDay"></div>
+      <p class="note" id="dayNote"></p>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="chead"><h2 id="daySerTitle">Últimos dias</h2></div>
+        <svg class="chart" id="chDay" role="img" aria-label="Chuva diária no recorte selecionado"></svg>
+        <p class="note">Cada barra é um dia civil de Mato Grosso (UTC-4). Clique em uma barra para levar o mapa àquele dia.</p>
+      </div>
+      <div class="rank" id="rankDay"></div>
+    </div>
+  </div>
+  <div class="card soft">
+    <div class="chead"><h2>Resumo pronto para texto</h2><button class="btn ghost sm" id="btnCopyDay" type="button">Copiar</button></div>
+    <p id="resumoDay" style="max-width:90ch"></p>
+  </div>
+  <div class="card how">
+    <h2 style="color:var(--ink)">Como ler esta aba</h2>
+    <ul>
+      <li><b>Fonte separada.</b> Esta aba usa o produto operacional/NRT do JAXA GSMaP v8. A série histórica e as análises de recorde continuam usando CHIRPS; as duas fontes não são misturadas.</li>
+      <li><b>Dia local.</b> O total diário soma as 24 estimativas horárias entre 00:00 e 24:00 de Mato Grosso (UTC-4). Só entra um dia quando as 24 imagens estão disponíveis.</li>
+      <li><b>Interpretação.</b> São estimativas de satélite em grade de aproximadamente 0,1°, resumidas como média espacial dentro de cada município. O produto operacional é provisório e pode ser revisado.</li>
+    </ul>
+  </div>
+</section>
+
 <!-- ================= ESTATISTICA ================= -->
 <section class="view" id="v-estat" hidden>
   <div class="hero"><div class="eyebrow" id="esEye"></div><p class="verdict" id="esVer" style="max-width:46ch"></p></div>
@@ -388,7 +437,8 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
   <div class="card how">
     <h2 style="color:var(--ink)">Dados, método e limites</h2>
     <ul>
-      <li><b>Fonte.</b> CHIRPS, estimativa de chuva por satélite ajustada com estações (Funk et al., 2015, Scientific Data), extraída por você no GEE como média por município. A série de referência vai de janeiro de 1996 a dezembro de 2025, com 142 municípios e 360 meses, sem falhas.</li>
+      <li><b>Fonte histórica.</b> CHIRPS, estimativa de chuva por satélite ajustada com estações (Funk et al., 2015, Scientific Data), extraída por você no GEE como média por município. A série de referência vai de janeiro de 1996 a dezembro de 2025, com 142 municípios e 360 meses, sem falhas.</li>
+      <li><b>Fonte diária.</b> A aba Diário / Agora usa JAXA GSMaP v8 operational (NRT), em resolução horária de 0,1°, somada por dia local UTC-4. É uma fonte operacional separada e não entra nos recordes, anomalias ou tendências da série CHIRPS.</li>
       <li><b>Formato do CSV.</b> Uma linha por município, com <code>CD_MUN</code> e <code>chuva_mm</code>. Se houver <code>ano</code> e <code>mes</code>, eles definem o mês. O seu arquivo mensal do GEE entra direto, e um arquivo com vários meses carrega todos.</li>
       <li><b>Recortes.</b> A média de uma região é ponderada pela área dos municípios. Conferi a média estadual assim calculada contra a sua série estadual do GEE, e a diferença ficou abaixo de 0,2% nos anos testados. Mesorregiões e regiões intermediárias seguem o IBGE. O bioma é o predominante em área dentro de cada município (IBGE, 2019).</li>
       <li><b>Anomalias.</b> Sempre em relação à média de 1996 a 2025 do mesmo período. Recorde significa valor fora do intervalo observado nesses 30 anos.</li>
@@ -747,19 +797,19 @@ function scatter(svg,o){
 </script>
 <script>
 /* ===== Aplicacao ===== */
-const S={tab:"mapa",tipo:"uf",id:"",custom:[],per:"m8",year:null,met:"anom",cont:"",a:null,b:null,cmp:"swipe",regAno:null,hm:"z",spi:3,split:null,esp:"sen",k:4,ret:null,sort:{k:"anom",dir:"desc"},q:"",sw:50};
+const S={tab:"mapa",tipo:"uf",id:"",custom:[],per:"m8",year:null,met:"anom",cont:"",a:null,b:null,cmp:"swipe",regAno:null,hm:"z",spi:3,split:null,esp:"sen",k:4,ret:null,sort:{k:"anom",dir:"desc"},q:"",sw:50,dayDate:null,dayMet:"day"};
 const LSUI="chuvaMT.ui", LSM="chuvaMT.meses2";
-let DB=null, DL=null, playing=null;
-const M1=Mapa($("map1")), MA=Mapa($("mapA")), MB=Mapa($("mapB")), MD=Mapa($("mapD")), ME=Mapa($("mapE"));
+let DB=null, DL=null, playing=null, DAILY=null;
+const M1=Mapa($("map1")), MDay=Mapa($("mapDay")), MA=Mapa($("mapA")), MB=Mapa($("mapB")), MD=Mapa($("mapD")), ME=Mapa($("mapE"));
 
 function U(){if(S.tipo=="custom"&&!S.custom.length)return unidade("uf");if(S.tipo!="uf"&&S.tipo!="custom"&&!S.id)return unidade("uf");return unidade(S.tipo,S.id,S.custom);}
 function P(){return PER[S.per]||PER.m8;}
 function plabel(p,y){return p.curto+(p.s+p.len>12?" de "+(y-1)+"/"+y:" de "+y);}
 function nomeFrase(u){return u.tipo=="uf"?"Mato Grosso":u.tipo=="mun"?"o município de "+u.nome:u.tipo=="meso"?"a mesorregião "+u.nome:u.tipo=="rgi"?"a região intermediária de "+u.nome:u.tipo=="bio"?"o conjunto de municípios com predomínio de "+u.nome:"a seleção de "+u.idx.length+" municípios";}
-function saveUI(){try{localStorage.setItem(LSUI,JSON.stringify({tab:S.tab,tipo:S.tipo,id:S.id,custom:S.custom,per:S.per,met:S.met,cont:S.cont}));}catch(_){}}
-function loadUI(){try{const o=JSON.parse(localStorage.getItem(LSUI)||"null");if(o){["tab","tipo","id","custom","per","met","cont"].forEach(k=>{if(o[k]!=null)S[k]=o[k];});}}catch(_){}
+function saveUI(){try{localStorage.setItem(LSUI,JSON.stringify({tab:S.tab,tipo:S.tipo,id:S.id,custom:S.custom,per:S.per,met:S.met,cont:S.cont,dayDate:S.dayDate,dayMet:S.dayMet}));}catch(_){}}
+function loadUI(){try{const o=JSON.parse(localStorage.getItem(LSUI)||"null");if(o){["tab","tipo","id","custom","per","met","cont","dayDate","dayMet"].forEach(k=>{if(o[k]!=null)S[k]=o[k];});}}catch(_){}
   if(!PER[S.per])S.per="m8";if(!TIPOS[S.tipo])S.tipo="uf";if(S.tipo=="mun"&&IDX[S.id]==null){S.tipo="uf";S.id="";}if(!METRICAS[S.met])S.met="anom";
-  const h=(location.hash||"").slice(1);if(["mapa","comparar","local","estat","dados"].indexOf(h)>=0)S.tab=h;}
+  const h=(location.hash||"").slice(1);if(["mapa","diario","comparar","local","estat","dados"].indexOf(h)>=0)S.tab=h;}
 function years(){return allYears(P());}
 function fixYear(){const ys=years();if(S.year==null||ys.indexOf(S.year)<0)S.year=ys[ys.length-1];
   if(S.b==null||ys.indexOf(S.b)<0)S.b=ys.indexOf(2024)>=0?2024:ys[ys.length-1];if(S.a==null||ys.indexOf(S.a)<0)S.a=ys.indexOf(2020)>=0?2020:ys[0];
@@ -777,9 +827,11 @@ function fillScope(){
   $("fItem").hidden=!isList;$("fBusca").hidden=S.tipo!="mun";$("btnLimpa").hidden=!(S.tipo=="custom"&&S.custom.length);
   if(isList){if(!it.some(x=>x.id==S.id))S.id=it[0].id;$("selItem").innerHTML=it.map(x=>'<option value="'+esc(x.id)+'"'+(x.id==S.id?" selected":"")+'>'+esc(x.nome)+'</option>').join("");}
   if(S.tipo=="mun"){if(!$("dlMun").children.length)$("dlMun").innerHTML=MUN.map(m=>'<option value="'+esc(m.n)+'">').join("");if(IDX[S.id]==null)S.id=MUN[IDX["5102504"]!=null?IDX["5102504"]:0].c;if(document.activeElement!=$("buscaMun"))$("buscaMun").value=MUN[IDX[S.id]].n;}
-  const u=U();$("agora").innerHTML=esc(u.nome)+"<small>"+(S.tipo=="custom"&&!S.custom.length?"clique nos municípios do mapa para montar a seleção":u.idx.length==1?MUN[u.idx[0]].meso:u.idx.length+" municípios")+" · "+P().nome+"</small>";
+  const u=U();
+  $("selPer").parentElement.hidden=S.tab=="diario";
+  $("agora").innerHTML=esc(u.nome)+"<small>"+(S.tipo=="custom"&&!S.custom.length?"clique nos municípios do mapa para montar a seleção":u.idx.length==1?MUN[u.idx[0]].meso:u.idx.length+" municípios")+" · "+(S.tab=="diario"?"Diário / Agora":P().nome)+"</small>";
 }
-$("selTipo").addEventListener("change",e=>{S.tipo=e.target.value;if(S.tipo!="mun")S.id="";if(S.tipo=="custom"&&S.tab!="mapa")S.tab="mapa";render();});
+$("selTipo").addEventListener("change",e=>{S.tipo=e.target.value;if(S.tipo!="mun")S.id="";if(S.tipo=="custom"&&S.tab!="mapa"&&S.tab!="diario")S.tab="mapa";render();});
 $("selItem").addEventListener("change",e=>{S.id=e.target.value;render();});
 $("selPer").addEventListener("change",e=>{S.per=e.target.value;S.ret=null;S.split=null;render();});
 $("buscaMun").addEventListener("change",e=>{const q=e.target.value.trim().toLocaleLowerCase("pt"),m=MUN.find(x=>x.n.toLocaleLowerCase("pt")==q)||MUN.find(x=>x.n.toLocaleLowerCase("pt").indexOf(q)==0);if(m){S.id=m.c;render();}});
@@ -790,8 +842,8 @@ document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",
 function render(){
   fixYear();fillScope();saveUI();
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab==S.tab));
-  ["mapa","comparar","local","estat","dados"].forEach(t=>$("v-"+t).hidden=t!=S.tab);
-  ({mapa:rMapa,comparar:rComparar,local:rLocal,estat:rEstat,dados:rDados})[S.tab]();
+  ["mapa","diario","comparar","local","estat","dados"].forEach(t=>$("v-"+t).hidden=t!=S.tab);
+  ({mapa:rMapa,diario:rDiario,comparar:rComparar,local:rLocal,estat:rEstat,dados:rDados})[S.tab]();
 }
 function metOptions(el){el.innerHTML=Object.keys(METRICAS).map(k=>'<option value="'+k+'"'+(k==S.met?" selected":"")+'>'+METRICAS[k].nome+'</option>').join("");}
 
@@ -858,6 +910,66 @@ function resumo(u,p,y){
 $("btnCopy").addEventListener("click",()=>{const t=$("resumo").textContent,b=$("btnCopy"),done=()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1600);},
   fb=()=>{const r=document.createRange();r.selectNodeContents($("resumo"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Texto selecionado";setTimeout(()=>b.textContent="Copiar",2200);};
   try{navigator.clipboard.writeText(t).then(done,fb);}catch(_){fb();}});
+
+/* ================= DIARIO / AGORA ================= */
+function dayKeys(){return DAILY&&DAILY.dias?Object.keys(DAILY.dias).sort():[];}
+function dayFmt(k){if(!k)return "";const p=k.split("-");return p[2]+"/"+p[1]+"/"+p[0];}
+function dayAdd(k,n){const d=new Date(k+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10);}
+function dayModeLabel(m,date){return m=="day"?"dia "+dayFmt(date):m=="7d"?"7 dias até "+dayFmt(date):m=="30d"?"30 dias até "+dayFmt(date):"mês até "+dayFmt(date);}
+function dayRange(date,mode){
+  const ks=dayKeys(),have=new Set(ks);let start=date,expected=1;
+  if(mode=="7d"){start=dayAdd(date,-6);expected=7;}
+  else if(mode=="30d"){start=dayAdd(date,-29);expected=30;}
+  else if(mode=="mtd"){start=date.slice(0,8)+"01";expected=+date.slice(8,10);}
+  const use=[];for(let d=start;d<=date;d=dayAdd(d,1))if(have.has(d))use.push(d);
+  return {use,expected,start,complete:use.length==expected};
+}
+function dayAgg(date,mode){
+  const r=dayRange(date,mode),v=new Array(NM).fill(null);
+  for(let i=0;i<NM;i++){let s=0,n=0;for(const d of r.use){const x=DAILY.dias[d]&&DAILY.dias[d].v&&DAILY.dias[d].v[MUN[i].c];if(x!=null){s+=+x;n++;}}if(n==r.use.length&&n)v[i]=s;}
+  return {v,range:r};
+}
+function dayUval(u,v){let sa=0,sx=0,n=0;for(const i of u.idx){const x=v[i];if(x!=null){sa+=MUN[i].a;sx+=MUN[i].a*x;n++;}}return n?sx/sa:null;}
+function daySeries(u){return dayKeys().map(d=>{const e=DAILY.dias[d],v=MUN.map(m=>{const x=e&&e.v&&e.v[m.c];return x==null?null:+x;});return {d,v:dayUval(u,v)};}).filter(x=>x.v!=null);}
+function dayClickMun(i){if(S.tipo=="custom"){const c=MUN[i].c,k=S.custom.indexOf(c);if(k>=0)S.custom.splice(k,1);else S.custom.push(c);render();}else selMun(i);}
+function rDiario(){
+  const ks=dayKeys(),u=U();
+  if(!DAILY||!ks.length){
+    $("dayVer").textContent="A automação diária ainda não publicou dados.";$("kpisDay").innerHTML="";$("selDia").innerHTML="";$("rankDay").innerHTML="";$("resumoDay").textContent="Aguardando a primeira execução da rotina diária no Earth Engine.";MDay.paint(()=>SEM);$("legDay").innerHTML="";$("dayNote").textContent="";$("chDay").innerHTML="";return;
+  }
+  if(!S.dayDate||ks.indexOf(S.dayDate)<0)S.dayDate=ks[ks.length-1];
+  if(["day","7d","30d","mtd"].indexOf(S.dayMet)<0)S.dayMet="day";
+  $("selDia").innerHTML=ks.slice().reverse().map(d=>'<option value="'+d+'"'+(d==S.dayDate?' selected':'')+'>'+dayFmt(d)+'</option>').join("");
+  $("selDayMet").value=S.dayMet;
+  const a=dayAgg(S.dayDate,S.dayMet),vals=a.v,ok=vals.filter(v=>v!=null),lim=nice(ST.quantile(ok,.98)||1),x=dayUval(u,vals),meta=DAILY._meta||{};
+  MDay.paint(i=>vals[i]==null?SEM:ramp(SEQ,vals[i]/lim));MDay.select(u);MDay.outline("");MDay.tip(i=>'<b>'+esc(MUN[i].n)+'</b>'+f1(vals[i])+' mm<br><span>'+dayModeLabel(S.dayMet,S.dayDate)+'</span>');MDay.click(dayClickMun);
+  $("legDay").innerHTML=legendaHTML({grad:SEQ,ticks:["0",f0(lim/2),f0(lim)+" ou mais"],cap:"mm acumulados no período selecionado"});
+  const mode=dayModeLabel(S.dayMet,S.dayDate),ord=vals.map((v,i)=>({v,i})).filter(o=>o.v!=null).sort((a,b)=>b.v-a.v),top=ord[0],bot=ord[ord.length-1],missing=a.range.expected-a.range.use.length;
+  $("dayEye").textContent=u.nome+" · "+mode;
+  $("dayVer").innerHTML=x==null?"Sem dado para este recorte.":"A estimativa por satélite indica <em>"+f1(x)+" mm</em> no recorte para "+mode+".";
+  $("kpisDay").innerHTML=[
+    ["c1","Chuva no recorte",x==null?"sem dado":f1(x)+" mm",u.idx.length==1?"média espacial no município":"média ponderada por área municipal"],
+    ["c2","Maior município",top?esc(MUN[top.i].n):"—",top?f1(top.v)+" mm":"sem dado"],
+    ["","Cobertura temporal",a.range.use.length+" de "+a.range.expected+" dias",missing?missing+" dia(s) ainda sem dado":"período completo"],
+    ["c4","Último dia disponível",dayFmt(meta.ultimo_dia_completo_local||ks[ks.length-1]),"verificado em "+String(meta.verificado_em||"—")]
+  ].map(k=>'<div class="kpi '+k[0]+'"><div class="l">'+k[1]+'</div><div class="v">'+k[2]+'</div><div class="d">'+k[3]+'</div></div>').join("");
+  $("dayMapTitle").textContent=cap(mode)+" · "+u.nome;
+  $("dayNote").textContent="Fonte: "+(meta.fonte||"JAXA GSMaP v8 operational (NRT)")+". Dia civil de Mato Grosso em UTC-4. "+(a.range.complete?"Período completo.":"Acumulado parcial: faltam "+missing+" dia(s) na janela.")+" Produto operacional/provisório, separado da série CHIRPS.";
+  const se=daySeries(u).slice(-60),hi=se.findIndex(z=>z.d==S.dayDate);
+  $("daySerTitle").textContent="Chuva diária em "+u.nome+" · últimos "+se.length+" dias disponíveis";
+  barChart($("chDay"),{h:250,labels:se.map(z=>z.d.slice(5).replace("-","/")),vals:se.map(z=>z.v),tickIf:i=>i%5==0||i==hi,color:i=>i==hi?ACC:BARC,unit:"mm",hi:hi>=0?hi:null,hiLabel:hi>=0?f0(se[hi].v)+" mm":"",tip:i=>'<b>'+dayFmt(se[i].d)+'</b>'+f1(se[i].v)+' mm',click:i=>{S.dayDate=se[i].d;rDiario();saveUI();}});
+  const li=o=>'<li><button type="button" data-i="'+o.i+'">'+esc(MUN[o.i].n)+'</button><span><b>'+f1(o.v)+' mm</b></span></li>';
+  const up=ord.slice(0,8),dn=ord.slice(-8).reverse();
+  $("rankDay").innerHTML='<div class="zone w"><h3>Maiores acumulados</h3><p class="note">'+mode+'</p><ol>'+up.map(li).join("")+'</ol></div><div class="zone d"><h3>Menores acumulados</h3><p class="note">'+mode+'</p><ol>'+dn.map(li).join("")+'</ol></div>';
+  let txt="Segundo o JAXA GSMaP v8 operacional, "+nomeFrase(u)+" recebeu "+(u.idx.length>1?"em média ":"")+f1(x)+" mm de chuva no "+mode+". ";
+  if(top)txt+="O maior acumulado municipal em Mato Grosso foi estimado em "+MUN[top.i].n+" ("+f1(top.v)+" mm) e o menor em "+MUN[bot.i].n+" ("+f1(bot.v)+" mm). ";
+  txt+="O último dia completo disponível na fonte é "+dayFmt(meta.ultimo_dia_completo_local||ks[ks.length-1])+". Estes valores são estimativas operacionais de satélite e não devem ser tratados como continuação da série histórica CHIRPS.";
+  $("resumoDay").textContent=txt;
+}
+$("selDia").addEventListener("change",e=>{S.dayDate=e.target.value;saveUI();rDiario();});
+$("selDayMet").addEventListener("change",e=>{S.dayMet=e.target.value;saveUI();rDiario();});
+$("rankDay").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)selMun(+b.dataset.i);});
+$("btnCopyDay").addEventListener("click",()=>{const t=$("resumoDay").textContent,b=$("btnCopyDay"),done=()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1600);};try{navigator.clipboard.writeText(t).then(done);}catch(_){}});
 
 /* ================= COMPARAR ================= */
 function rComparar(){
@@ -1133,13 +1245,17 @@ function loadRepo(){ /* no GitHub Pages: meses calculados pelo agendamento ficam
   fetch("dados/meses.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object")return;REPO_META=j._meta||{};const o=Object.assign({},EXTRA);let n=0;
     for(const k in j){if(k=="_meta"||!j[k]||!j[k].v)continue;const e=j[k];o[k]={ano:e.ano,mes:e.mes,v:e.v,n:e.n,fonte:e.fonte,preliminar:!!e.preliminar,repo:true,atualizado_em:e.atualizado_em};n++;}
     setExtra(o);S.year=null;render();}).catch(()=>{});}
+function loadDailyRepo(){
+  if(typeof fetch!="function")return;
+  fetch("dados/diario.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object"||!j.dias)return;DAILY=j;if(!S.dayDate||!j.dias[S.dayDate]){const ks=Object.keys(j.dias).sort();S.dayDate=ks.length?ks[ks.length-1]:null;}if(S.tab=="diario")render();}).catch(()=>{});
+}
 function loadLocal(){try{const s=localStorage.getItem(LSM);if(s)setExtra(JSON.parse(s)||{});}catch(_){}}
 let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==lastW)return;lastW=innerWidth;clearTimeout(rzT);rzT=setTimeout(render,180);});
 (function init(){
   $("fbMes").innerHTML=MESES.map((m,i)=>'<option value="'+(i+1)+'">'+cap(m)+'</option>').join("");
   const now=new Date(),prev=new Date(now.getFullYear(),now.getMonth()-1,1);$("fbMes").value=prev.getMonth()+1;$("fbAno").value=prev.getFullYear();
   $("cardDrive").hidden=true;loadUI();loadLocal();render();
-  loadRepo();
+  loadRepo();loadDailyRepo();
   const cl=window.claude;
   if(cl&&cl.use){
     cl.use("mcp").then(m=>{if(!m)return;MCP=m;$("cardDrive").hidden=false;let auto=false;try{auto=localStorage.getItem(LSD+".auto")=="1";}catch(_){}if(auto)setTimeout(()=>driveSync(false),1500);});
