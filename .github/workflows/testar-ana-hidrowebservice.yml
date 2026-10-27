@@ -1,0 +1,31 @@
+name: Validar telemetria ANA (sem publicar dados)
+on:
+  workflow_dispatch:
+    inputs:
+      station:
+        description: "Código de estação ANA a testar"
+        required: true
+        default: "66070004"
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar presença de secrets
+        env:
+          ANA_IDENTIFICADOR: ${{ secrets.ANA_IDENTIFICADOR }}
+          ANA_SENHA: ${{ secrets.ANA_SENHA }}
+        run: |
+          test -n "$ANA_IDENTIFICADOR" && test -n "$ANA_SENHA" || { echo "::error::Configure ANA_IDENTIFICADOR e ANA_SENHA"; exit 1; }
+      - name: Consultar ANA sem expor respostas ou credenciais
+        env:
+          ANA_IDENTIFICADOR: ${{ secrets.ANA_IDENTIFICADOR }}
+          ANA_SENHA: ${{ secrets.ANA_SENHA }}
+          STATION: ${{ inputs.station }}
+        run: node scripts/ana_hidrowebservice.mjs "$STATION"
