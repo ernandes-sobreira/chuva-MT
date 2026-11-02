@@ -11,18 +11,23 @@ permissions:
 jobs:
   extracao:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Instalar bibliotecas gratuitas
-        run: python -m pip install requests openpyxl
+        run: python -m pip install requests openpyxl pyshp shapely earthengine-api
       - name: Extrair agua MapBiomas e rebanho SIDRA
         run: |
           python pesquisa_pantanal/extrair.py
           python pesquisa_pantanal/extrair_uso_solo.py
+      - name: Extrair precipitacao CHIRPS no bioma Pantanal
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/extrair_chuva.py
       - name: Salvar resultados apenas neste ramo
         if: always()
         run: |
