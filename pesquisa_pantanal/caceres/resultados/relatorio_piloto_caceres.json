@@ -1,5 +1,5 @@
 {
-  "inicio": "2026-11-02T19:52:09.922336+00:00",
+  "inicio": "2026-11-02T19:54:39.416991+00:00",
   "escala_m": {
     "agua": 120,
     "pastagem": 180,
@@ -7,10 +7,23 @@
     "mapa_visualizacao": "pixels MapBiomas reamostrados apenas na imagem PNG"
   },
   "erros": [
-    "EEException('Too many concurrent aggregations.')"
+    "EEException(\"Permission 'earthengine.thumbnails.create' denied on resource 'projects/chuva-mt' (or it may not exist).\")"
   ],
   "etapas": [
-    "Geometrias conferidas e salvas: {\"local_id\": 6060634290, \"proximajusante_id\": 6060647640, \"local_km2\": 8906.9, \"montante_km2_catalogo\": 35427.2, \"n_unidades_montante\": 3, \"soma_areas_montante_km2\": 35427.3, \"frac_cobertura_montante\": 1.0}"
+    "Geometrias conferidas e salvas: {\"local_id\": 6060634290, \"proximajusante_id\": 6060647640, \"local_km2\": 8906.9, \"montante_km2_catalogo\": 35427.2, \"n_unidades_montante\": 3, \"soma_areas_montante_km2\": 35427.3, \"frac_cobertura_montante\": 1.0}",
+    "Serie anual ate 1985: 1 anos",
+    "Serie anual ate 1990: 6 anos",
+    "Serie anual ate 1995: 11 anos",
+    "Serie anual ate 2000: 16 anos",
+    "Serie anual ate 2005: 21 anos",
+    "Serie anual ate 2010: 26 anos",
+    "Serie anual ate 2015: 31 anos",
+    "Serie anual ate 2020: 36 anos",
+    "Serie anual ate 2025: 41 anos",
+    "Serie mensal concluida: 1988, 12 meses",
+    "Serie mensal concluida: 2018, 24 meses",
+    "Serie mensal concluida: 2024, 36 meses",
+    "Serie mensal concluida: 2025, 48 meses"
   ],
   "hydrobasins": {
     "local_id": 6060634290,
@@ -25,5 +38,8 @@
     "area_planicie_intersecao_km2": 2199.6932653664326,
     "advertencia": "Recorte espacial = unidade hidrobasins local intersectada com limite de bioma Pantanal; nao e toda planicie de Caceres."
   },
+  "serie_anual_linhas": 41,
+  "serie_mensal_linhas": 48,
+  "mapas_georreferenciados": "As imagens PNG incluem classificacao espacial MapBiomas; a geometria geojson define recorte e posicao. PNG nao e raster analitico.",
   "status": "erro_parcial"
 }
