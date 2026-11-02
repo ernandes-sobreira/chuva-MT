@@ -46,8 +46,8 @@ try:
    monthnext=(m%12)+1
    idx="water_monthly_%d_%02d"%(y,m)
    im=ee.Image(water.filter(ee.Filter.eq("system:index",idx)).first())
-   pix=im.select("water_monthly").eq(m).unmask(0)
-   masks.append(ee.Image.pixelArea().divide(10000).multiply(pix).rename(f"m{m:02d}"))
+   pix=im.select("water_monthly").eq(m)
+   masks.append(ee.Image.pixelArea().updateMask(pix).divide(10000).rename(f"m{m:02d}"))
    rainfall=rain.filterDate(f"{y}-{m:02d}-01",f"{yearnext}-{monthnext:02d}-01").sum().rename(f"m{m:02d}")
    rainbands.append(rainfall)
   areas=ee.Image.cat(masks).reduceRegion(reducer=ee.Reducer.sum(),geometry=flood,scale=120,maxPixels=1e9,tileScale=4).getInfo()
