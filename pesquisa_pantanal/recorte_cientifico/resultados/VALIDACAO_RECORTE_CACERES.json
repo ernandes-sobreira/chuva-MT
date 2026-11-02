@@ -1,0 +1,47 @@
+{
+  "executado_utc": "2026-11-02T22:04:07.587326+00:00",
+  "objeto": "bacia a montante da estacao ANA 66070004",
+  "hidrografia": "WWF HydroBASINS L10",
+  "IBGE_biomas": "IBGE biomas 2025, 1:250.000",
+  "referencias_area_km2": {
+    "publicacao_2015": 32393,
+    "publicacao_2017": 32774
+  },
+  "erros": [],
+  "alertas": [
+    "Consulta ANA nao retornou exatamente 1 estacao; usado ponto publicado"
+  ],
+  "consulta_ana_url": "https://portal1.snirh.gov.br/server/rest/services/dados_abertos/Estacao_Fluviometrica/MapServer/0/query?where=CODIGO%3D66070004&outFields=%2A&returnGeometry=true&outSR=4674&f=json",
+  "estacao": {
+    "origem": "SGB/academico (fallback)",
+    "lon": -57.687777777777775,
+    "lat": -16.063055555555557
+  },
+  "subbacia_exutorio": {
+    "HYBAS_ID": 6100630200,
+    "NEXT_DOWN": 6100632530,
+    "PFAF_ID": 6424870503,
+    "SUB_AREA": 258.4,
+    "UP_AREA": 32752.7
+  },
+  "rede_hidrografica": {
+    "HYBAS_ID_exutorio": 6100630200,
+    "fragmentos_consultados": 304,
+    "fragmentos_a_montante": 222,
+    "area_soma_subbasins_km2": 32752.8,
+    "area_up_area_km2": 32752.7,
+    "diferenca_topologica_pct": 0.0003,
+    "diferenca_para_32774_pct": -0.065
+  },
+  "area_geodesica_km2": 32636.65,
+  "desvio_poligono_vs_UP_AREA_pct": -0.354,
+  "biomas_dentro_area_contribuinte_km2": {
+    "Amazônia": 21025.78,
+    "Cerrado": 10651.14,
+    "Pantanal": 959.72
+  },
+  "soma_biomas_km2": 32636.65,
+  "intersecao_municipio_caceres_km2": 2811.05,
+  "conclusao": "Area contribuinte da estacao validada por topologia NEXT_DOWN e referencia de drenagem. Nao e limite municipal nem bacia inteira do Pantanal.",
+  "status": "concluido"
+}
