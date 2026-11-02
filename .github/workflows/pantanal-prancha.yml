@@ -3,7 +3,7 @@ on:
   push:
     branches: [pesquisa-pantanal-extracao-2026]
     paths:
-      - 'pesquisa_pantanal/cartografia/*.py'
+      - 'pesquisa_pantanal/cartografia/montar_prancha.py'
       - '.github/workflows/pantanal-prancha.yml'
   workflow_dispatch:
 permissions:
@@ -25,5 +25,8 @@ jobs:
           git config user.name "pantanal-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f pesquisa_pantanal/cartografia/PRANCHA_MAPAS_REAIS_CACERES_1988_2024.png
-          git commit -m "Prancha oficial MapBiomas Caceres 1988 e 2024"
-          git push origin HEAD:pesquisa-pantanal-extracao-2026
+          if ! git diff --cached --quiet; then
+            git commit -m "Prancha oficial MapBiomas Caceres 1988 e 2024"
+            git pull --rebase origin pesquisa-pantanal-extracao-2026
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
