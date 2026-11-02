@@ -1,0 +1,39 @@
+name: Pantanal - delimitar bacia ANA exutorio real
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/recorte_cientifico/delimitar_bacia_ana.py'
+      - '.github/workflows/pantanal-delimitar-bacia.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pantanal-delimitacao-cientifica
+  cancel-in-progress: false
+jobs:
+  verificar_recorte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas geográficas
+        run: python -m pip install --quiet earthengine-api shapely pyproj pyshp requests
+      - name: Validar rede, ponto ANA e biomas IBGE
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/recorte_cientifico/delimitar_bacia_ana.py
+      - name: Guardar relatorio e geometrias apenas na ramificacao cientifica
+        if: always()
+        run: |
+          git config user.name "pantanal-science-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/recorte_cientifico/resultados/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Bacia ANA Caceres: rede L10 e auditoria espacial"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
