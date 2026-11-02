@@ -1,0 +1,39 @@
+name: Pantanal - série receptor e controles Ressaca
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/fazenda_ressaca/extrair_receptor_controles.py'
+      - '.github/workflows/pantanal-extrair-pares.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pares:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas GEE e geometria
+        run: python -m pip install --quiet earthengine-api shapely
+      - name: Extrair períodos mensais no receptor e dois controles
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/fazenda_ressaca/extrair_receptor_controles.py
+      - name: Salvar controle científico
+        if: always()
+        run: |
+          git config user.name "pantanal-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/GRUPOS_PILOTO_*.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/POLIGONOS_PILOTO_RECEPTOR_CONTROLES.geojson || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/STATUS_PAREAMENTO_HIDROLOGICO.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Água e pastagem 1985-2025 receptor jusante e controles"
+            git pull --rebase origin pesquisa-pantanal-extracao-2026
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
