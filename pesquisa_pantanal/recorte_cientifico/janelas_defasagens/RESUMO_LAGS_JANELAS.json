@@ -1,0 +1,38 @@
+{
+  "anos": 41,
+  "anos_fixo": "1996–2025",
+  "n_por_lag": 30,
+  "endpoint_primario": "mudança na média mensal de área com água",
+  "lags_testados": 11,
+  "desfechos": 3,
+  "corrigidos_fdr": 33,
+  "n_significativos_fdr": 0,
+  "menor_p_primario": {
+    "lag": 1,
+    "beta": 0.8094136605883665,
+    "p": 0.10517431038214267,
+    "p_fdr": 0.6815994023885849
+  },
+  "lag_maior_beta_absoluto": 1,
+  "janelas_moveis_anos": [
+    3,
+    5,
+    15
+  ],
+  "area_bacia_km2": 32752.7,
+  "area_pantanal_intersecao_km2": 958.43,
+  "erro_nao_causal": "Não extrapolar para a planície inteira nem atribuir causalidade.",
+  "arquivos": [
+    "lag_0_a_10_anos_resultados_HAC_FDR33.csv",
+    "correlacoes_janela_deslizante_15_anos.csv",
+    "serie_anual_com_deltas_e_defasagens.csv",
+    "efeito_acumulado_1_3_5_anos.csv",
+    "FIGURA_03_CORRELACAO_DESLIZANTE_15_ANOS.png",
+    "FIGURA_02_EFEITOS_DEFASADOS_0_10_ANOS.png",
+    "validacao_blocos_temporais_lags.csv",
+    "FIGURA_04_SENSIBILIDADE_POR_DESFECHO.png",
+    "sensibilidade_defasagem_hidrologia.csv",
+    "FIGURA_01_JANELAS_MOVEIS_3_5_ANOS.png",
+    "RELATORIO_LAGS_JANELAS.md"
+  ]
+}
