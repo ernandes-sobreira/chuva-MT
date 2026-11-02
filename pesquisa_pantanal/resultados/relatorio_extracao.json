@@ -1,0 +1,112 @@
+{
+  "fontes": {
+    "agua": "https://brasil.mapbiomas.org/wp-content/uploads/sites/3/2026/10/5-MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-MULTIPLE_TERRITORIES.zip",
+    "bovinos": "https://apisidra.ibge.gov.br/tabela/3939"
+  },
+  "erros": [
+    "SIDRA: ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='servicodados.ibge.gov.br', port=443): Max retries exceeded with url: /api/v1/localidades/estados/MT/municipios (Caused by ConnectTimeoutError(<HTTPSConnection(host='servicodados.ibge.gov.br', port=443) at 0x7fafadeeb6b0>, 'Connection to servicodados.ibge.gov.br timed out. (connect timeout=45)'))\"))"
+  ],
+  "zip_agua": {
+    "tamanho_download_bytes": 8220251,
+    "arquivos": [
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PRIORITY_AREA_MMA.xlsm",
+        "bytes": 1154874
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PRIORITY_MUNICIPALITIES.xlsm",
+        "bytes": 148687
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-QUILOMBOS.xlsm",
+        "bytes": 266279
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-STATE_COMMITTEES.xlsm",
+        "bytes": 231404
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-STATE_WATER_RESOURCES_PLANNING_MANAGEMENT_UNITS.xlsm",
+        "bytes": 352237
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-STATES.xlsm",
+        "bytes": 118229
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-URBAN_CONCENTRATIONS.xlsm",
+        "bytes": 207721
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-AMACRO.xlsm",
+        "bytes": 82658
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-ATLANTIC_FOREST_LAW.xlsm",
+        "bytes": 103351
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-BIOMES.xlsm",
+        "bytes": 106142
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-BIOSPHERE_RESERVES.xlsm",
+        "bytes": 106855
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-BOLSA_VERDE_TERRITORIES.xlsm",
+        "bytes": 367777
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-COASTAL_AND_MARINE_SYSTEM.xlsm",
+        "bytes": 103284
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-DHN250_LEVEL_3.xlsm",
+        "bytes": 409356
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-FEDERAL_COMMITTEES.xlsm",
+        "bytes": 108635
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-FOREST_CONCESSIONS.xlsm",
+        "bytes": 110368
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-HYDROGRAPHIC_REGIONS.xlsm",
+        "bytes": 109723
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-INDIGENOUS_TERRITORIES.xlsm",
+        "bytes": 389910
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-LEGAL_AMAZON.xlsm",
+        "bytes": 103237
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-MARINE_CONSERVATION_UNITS.xlsm",
+        "bytes": 217351
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-MATOPIBA.xlsm",
+        "bytes": 103240
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-METROPOLITAN_REGIONS.xlsm",
+        "bytes": 150416
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-MUNICIPALITIES.xlsm",
+        "bytes": 3194692
+      },
+      {
+        "nome": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
+        "bytes": 103362
+      }
+    ]
+  },
+  "agua_arquivos_inspecionados": [],
+  "agua_linhas_pantanal": 0
+}
