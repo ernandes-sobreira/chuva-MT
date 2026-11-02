@@ -1,0 +1,325 @@
+{
+  "grupos": {
+    "FONTE_PASTAGEM": [
+      "C04_05",
+      "C04_06",
+      "C04_07",
+      "C05_05",
+      "C05_06",
+      "C05_07",
+      "C06_05",
+      "C06_06",
+      "C06_07"
+    ],
+    "RECEPTOR_D8": [
+      "C03_02",
+      "C03_03",
+      "C03_04"
+    ],
+    "CONTROLE_NORTE": [
+      "C03_09",
+      "C03_10",
+      "C03_11"
+    ],
+    "CONTROLE_SENSIBILIDADE": [
+      "C04_08",
+      "C04_09",
+      "C04_10"
+    ]
+  },
+  "area_fonte_ha": 3600,
+  "area_receptor_ha": 1200,
+  "area_controle_ha": 1200,
+  "n_months": 492,
+  "n_years": 41,
+  "pre_anos": "1985-1994",
+  "transicao": "1995-2004",
+  "post": "2005-2025",
+  "pareamento_pre": [
+    {
+      "controle": "CONTROLE_NORTE",
+      "n_meses": 120,
+      "r_mensal_pre": 0.7380260159797029,
+      "p_r_pre": 6.832565199106565e-22,
+      "gap_medio_pre_pp": 1.128082638888889,
+      "dif_tendencia_pp_ano": 0.06212655723905755,
+      "ic95_inf": -0.10928910878163065,
+      "ic95_sup": 0.23354222325974575,
+      "p_hac_tendencia_pre": 0.47748460256415604
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "n_meses": 120,
+      "r_mensal_pre": 0.7021446575110026,
+      "p_r_pre": 4.074886140547408e-19,
+      "gap_medio_pre_pp": 0.3036756944444445,
+      "dif_tendencia_pp_ano": 0.08319145622895643,
+      "ic95_inf": -0.09376789296800297,
+      "ic95_sup": 0.26015080542591584,
+      "p_hac_tendencia_pre": 0.35683598485767754
+    }
+  ],
+  "comparacao_pre_pos": [
+    {
+      "controle": "CONTROLE_NORTE",
+      "periodo": "pre",
+      "n_meses": 120,
+      "agua_receptor_media_ha": 189.81142499999999,
+      "agua_controle_media_ha": 176.27443333333335,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 1.128082638888889
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "periodo": "transition",
+      "n_meses": 120,
+      "agua_receptor_media_ha": 184.91297500000002,
+      "agua_controle_media_ha": 172.3158916666667,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 1.0497569444444446
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "periodo": "post",
+      "n_meses": 252,
+      "agua_receptor_media_ha": 179.93145238095238,
+      "agua_controle_media_ha": 173.23884523809525,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 0.5577172619047619
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "periodo": "pre",
+      "n_meses": 120,
+      "agua_receptor_media_ha": 189.81142499999999,
+      "agua_controle_media_ha": 186.16731666666666,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 0.3036756944444445
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "periodo": "transition",
+      "n_meses": 120,
+      "agua_receptor_media_ha": 184.91297500000002,
+      "agua_controle_media_ha": 168.72989166666667,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 1.3485902777777776
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "periodo": "post",
+      "n_meses": 252,
+      "agua_receptor_media_ha": 179.93145238095238,
+      "agua_controle_media_ha": 158.95291666666665,
+      "diferenca_receptor_menos_controle_pontos_percentuais": 1.7482113095238094
+    }
+  ],
+  "modelo_interrompido": [
+    {
+      "controle": "CONTROLE_NORTE",
+      "modelo": "clima_sazonal",
+      "n": 492,
+      "coef_post_2005_pp": -0.7523289280095155,
+      "ci95_inf": -2.25546532995072,
+      "ci95_sup": 0.7508074739316891,
+      "p_HAC": 0.3266056043488208,
+      "R2ajustado": 0.02131147712455539
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "modelo": "clima_sazonal_cota",
+      "n": 471,
+      "coef_post_2005_pp": -0.7710484714400777,
+      "ci95_inf": -2.311553183858107,
+      "ci95_sup": 0.7694562409779516,
+      "p_HAC": 0.3265952667746299,
+      "R2ajustado": 0.028684801837430163
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "modelo": "clima_sazonal",
+      "n": 492,
+      "coef_post_2005_pp": -0.006857657953384222,
+      "ci95_inf": -1.4435667755174784,
+      "ci95_sup": 1.4298514596107097,
+      "p_HAC": 0.9925357050989481,
+      "R2ajustado": 0.07178280536346848
+    },
+    {
+      "controle": "CONTROLE_SENSIBILIDADE",
+      "modelo": "clima_sazonal_cota",
+      "n": 471,
+      "coef_post_2005_pp": 0.12744783330493867,
+      "ci95_inf": -1.3010427167217395,
+      "ci95_sup": 1.555938383331617,
+      "p_HAC": 0.8611856226922991,
+      "R2ajustado": 0.08839810483153576
+    }
+  ],
+  "lag_primeiro_controle": [
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 0,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.09519732733049974,
+      "ic95_inf": -0.14961488444983467,
+      "ic95_sup": -0.040779770211164794,
+      "p_hac": 0.0006064033444013034,
+      "r2adj": 0.32133153698993666,
+      "p_fdr_44": 0.02668174715365735,
+      "significativo_fdr": true
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 1,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.044003547286136833,
+      "ic95_inf": -0.15426701106494278,
+      "ic95_sup": 0.06625991649266913,
+      "p_hac": 0.4341115049966202,
+      "r2adj": 0.21289510187686922,
+      "p_fdr_44": 0.8763591736706167,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 2,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": 0.004785842711866687,
+      "ic95_inf": -0.10944746579183105,
+      "ic95_sup": 0.11901915121556443,
+      "p_hac": 0.9345565792426483,
+      "r2adj": 0.18761725216051472,
+      "p_fdr_44": 0.9562904531785239,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 3,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.015231561188889596,
+      "ic95_inf": -0.0672483689810074,
+      "ic95_sup": 0.03678524660322821,
+      "p_hac": 0.5660242147273049,
+      "r2adj": 0.19127254868053156,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 4,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.018678289448068354,
+      "ic95_inf": -0.07684430172616354,
+      "ic95_sup": 0.03948772283002683,
+      "p_hac": 0.5290974973842076,
+      "r2adj": 0.19335172566052072,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 5,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.009605096809804047,
+      "ic95_inf": -0.06592000412285108,
+      "ic95_sup": 0.04670981050324298,
+      "p_hac": 0.7381589476809435,
+      "r2adj": 0.18880142909815423,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 6,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": 0.021439805500974213,
+      "ic95_inf": -0.03841755927867778,
+      "ic95_sup": 0.0812971702806262,
+      "p_hac": 0.48266482185295934,
+      "r2adj": 0.19530254496632116,
+      "p_fdr_44": 0.9151659507297557,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 7,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": 0.016451307218289576,
+      "ic95_inf": -0.05530929652863906,
+      "ic95_sup": 0.08821191096521822,
+      "p_hac": 0.6531958552188961,
+      "r2adj": 0.19195773852239484,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 8,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": 0.009458803233808393,
+      "ic95_inf": -0.07303472943060085,
+      "ic95_sup": 0.09195233589821764,
+      "p_hac": 0.8221879849280431,
+      "r2adj": 0.18877781498130297,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 9,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.03146670679133577,
+      "ic95_inf": -0.0714121952301472,
+      "ic95_sup": 0.008478781647475661,
+      "p_hac": 0.12260180966418008,
+      "r2adj": 0.20413311239575982,
+      "p_fdr_44": 0.5993866250248804,
+      "significativo_fdr": false
+    },
+    {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 10,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": 0.00808511616973332,
+      "ic95_inf": -0.06321748443246415,
+      "ic95_sup": 0.07938771677193078,
+      "p_hac": 0.8241243655263124,
+      "r2adj": 0.18827822572428876,
+      "p_fdr_44": 0.9297813354655833,
+      "significativo_fdr": false
+    }
+  ],
+  "n_testes_lag": 44,
+  "n_fdr_sig": 1,
+  "melhor_lag_bruto": {
+    "p": 0.0006064033444013034,
+    "linha": {
+      "controle": "CONTROLE_NORTE",
+      "desfecho": "ano",
+      "lag_anos": 0,
+      "n": 30,
+      "beta_delta_agua_100ha_por_delta_past100ha": -0.09519732733049974,
+      "ic95_inf": -0.14961488444983467,
+      "ic95_sup": -0.040779770211164794,
+      "p_hac": 0.0006064033444013034,
+      "r2adj": 0.32133153698993666,
+      "p_fdr_44": 0.02668174715365735,
+      "significativo_fdr": true
+    }
+  },
+  "limites": [
+    "Não são verdadeiros imóveis nem bacias oficiais, mas células de 2km.",
+    "Trajetória de escoamento MERIT D8 na planície pantaneira é aproximada e pode perder bifurcações.",
+    "Controles podem compartilhar enchentes regionais, ser influenciados por remanso e não serem independentes.",
+    "Modelos com cota ANA são análises de sensibilidade, não controles causais independentes se a vazão for mediadora.",
+    "A pré-tendência deve ser avaliada antes de qualquer contraste pré/pós, e falta replicação espacial."
+  ],
+  "conclusao_nao_causal": true
+}
