@@ -1,0 +1,657 @@
+﻿ano,uf,municipio,codigo_ibge,bovinos_municipio,escala
+1985,MS,Aquidauana,5001102,511000,municipio_inteiro; nao rebanho da planicie
+1985,MS,Bodoquena,5002159,92390,municipio_inteiro; nao rebanho da planicie
+1985,MS,Corumbá,5003207,1386953,municipio_inteiro; nao rebanho da planicie
+1985,MS,Coxim,5003306,363343,municipio_inteiro; nao rebanho da planicie
+1985,MS,Ladário,5005202,11009,municipio_inteiro; nao rebanho da planicie
+1985,MS,Miranda,5005608,230150,municipio_inteiro; nao rebanho da planicie
+1985,MS,Porto Murtinho,5006903,513822,municipio_inteiro; nao rebanho da planicie
+1985,MS,Rio Verde de Mato Grosso,5007406,329699,municipio_inteiro; nao rebanho da planicie
+1985,MS,Sonora,5007935,,municipio_inteiro; nao rebanho da planicie
+1985,MT,Barão de Melgaço,5101605,151429,municipio_inteiro; nao rebanho da planicie
+1985,MT,Cáceres,5102504,505984,municipio_inteiro; nao rebanho da planicie
+1985,MT,Itiquira,5104609,130560,municipio_inteiro; nao rebanho da planicie
+1985,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1985,MT,Nossa Senhora do Livramento,5106109,48676,municipio_inteiro; nao rebanho da planicie
+1985,MT,Poconé,5106505,227905,municipio_inteiro; nao rebanho da planicie
+1985,MT,Santo Antônio de Leverger,5107800,183786,municipio_inteiro; nao rebanho da planicie
+1986,MS,Aquidauana,5001102,513300,municipio_inteiro; nao rebanho da planicie
+1986,MS,Bodoquena,5002159,93300,municipio_inteiro; nao rebanho da planicie
+1986,MS,Corumbá,5003207,1418523,municipio_inteiro; nao rebanho da planicie
+1986,MS,Coxim,5003306,387006,municipio_inteiro; nao rebanho da planicie
+1986,MS,Ladário,5005202,12361,municipio_inteiro; nao rebanho da planicie
+1986,MS,Miranda,5005608,246900,municipio_inteiro; nao rebanho da planicie
+1986,MS,Porto Murtinho,5006903,516808,municipio_inteiro; nao rebanho da planicie
+1986,MS,Rio Verde de Mato Grosso,5007406,347740,municipio_inteiro; nao rebanho da planicie
+1986,MS,Sonora,5007935,,municipio_inteiro; nao rebanho da planicie
+1986,MT,Barão de Melgaço,5101605,156275,municipio_inteiro; nao rebanho da planicie
+1986,MT,Cáceres,5102504,527235,municipio_inteiro; nao rebanho da planicie
+1986,MT,Itiquira,5104609,138132,municipio_inteiro; nao rebanho da planicie
+1986,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1986,MT,Nossa Senhora do Livramento,5106109,50428,municipio_inteiro; nao rebanho da planicie
+1986,MT,Poconé,5106505,232007,municipio_inteiro; nao rebanho da planicie
+1986,MT,Santo Antônio de Leverger,5107800,189300,municipio_inteiro; nao rebanho da planicie
+1987,MS,Aquidauana,5001102,513450,municipio_inteiro; nao rebanho da planicie
+1987,MS,Bodoquena,5002159,94680,municipio_inteiro; nao rebanho da planicie
+1987,MS,Corumbá,5003207,1433565,municipio_inteiro; nao rebanho da planicie
+1987,MS,Coxim,5003306,430430,municipio_inteiro; nao rebanho da planicie
+1987,MS,Ladário,5005202,12516,municipio_inteiro; nao rebanho da planicie
+1987,MS,Miranda,5005608,247350,municipio_inteiro; nao rebanho da planicie
+1987,MS,Porto Murtinho,5006903,520056,municipio_inteiro; nao rebanho da planicie
+1987,MS,Rio Verde de Mato Grosso,5007406,379728,municipio_inteiro; nao rebanho da planicie
+1987,MS,Sonora,5007935,,municipio_inteiro; nao rebanho da planicie
+1987,MT,Barão de Melgaço,5101605,163182,municipio_inteiro; nao rebanho da planicie
+1987,MT,Cáceres,5102504,360753,municipio_inteiro; nao rebanho da planicie
+1987,MT,Itiquira,5104609,152053,municipio_inteiro; nao rebanho da planicie
+1987,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1987,MT,Nossa Senhora do Livramento,5106109,54619,municipio_inteiro; nao rebanho da planicie
+1987,MT,Poconé,5106505,232007,municipio_inteiro; nao rebanho da planicie
+1987,MT,Santo Antônio de Leverger,5107800,197095,municipio_inteiro; nao rebanho da planicie
+1988,MS,Aquidauana,5001102,515000,municipio_inteiro; nao rebanho da planicie
+1988,MS,Bodoquena,5002159,95300,municipio_inteiro; nao rebanho da planicie
+1988,MS,Corumbá,5003207,1241959,municipio_inteiro; nao rebanho da planicie
+1988,MS,Coxim,5003306,441249,municipio_inteiro; nao rebanho da planicie
+1988,MS,Ladário,5005202,13495,municipio_inteiro; nao rebanho da planicie
+1988,MS,Miranda,5005608,248700,municipio_inteiro; nao rebanho da planicie
+1988,MS,Porto Murtinho,5006903,521800,municipio_inteiro; nao rebanho da planicie
+1988,MS,Rio Verde de Mato Grosso,5007406,384992,municipio_inteiro; nao rebanho da planicie
+1988,MS,Sonora,5007935,,municipio_inteiro; nao rebanho da planicie
+1988,MT,Barão de Melgaço,5101605,169482,municipio_inteiro; nao rebanho da planicie
+1988,MT,Cáceres,5102504,379728,municipio_inteiro; nao rebanho da planicie
+1988,MT,Itiquira,5104609,164187,municipio_inteiro; nao rebanho da planicie
+1988,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1988,MT,Nossa Senhora do Livramento,5106109,56957,municipio_inteiro; nao rebanho da planicie
+1988,MT,Poconé,5106505,243607,municipio_inteiro; nao rebanho da planicie
+1988,MT,Santo Antônio de Leverger,5107800,204191,municipio_inteiro; nao rebanho da planicie
+1989,MS,Aquidauana,5001102,525310,municipio_inteiro; nao rebanho da planicie
+1989,MS,Bodoquena,5002159,98650,municipio_inteiro; nao rebanho da planicie
+1989,MS,Corumbá,5003207,1291638,municipio_inteiro; nao rebanho da planicie
+1989,MS,Coxim,5003306,458457,municipio_inteiro; nao rebanho da planicie
+1989,MS,Ladário,5005202,15714,municipio_inteiro; nao rebanho da planicie
+1989,MS,Miranda,5005608,251350,municipio_inteiro; nao rebanho da planicie
+1989,MS,Porto Murtinho,5006903,525950,municipio_inteiro; nao rebanho da planicie
+1989,MS,Rio Verde de Mato Grosso,5007406,386948,municipio_inteiro; nao rebanho da planicie
+1989,MS,Sonora,5007935,32250,municipio_inteiro; nao rebanho da planicie
+1989,MT,Barão de Melgaço,5101605,171176,municipio_inteiro; nao rebanho da planicie
+1989,MT,Cáceres,5102504,349148,municipio_inteiro; nao rebanho da planicie
+1989,MT,Itiquira,5104609,204410,municipio_inteiro; nao rebanho da planicie
+1989,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1989,MT,Nossa Senhora do Livramento,5106109,57356,municipio_inteiro; nao rebanho da planicie
+1989,MT,Poconé,5106505,250915,municipio_inteiro; nao rebanho da planicie
+1989,MT,Santo Antônio de Leverger,5107800,228265,municipio_inteiro; nao rebanho da planicie
+1990,MS,Aquidauana,5001102,632780,municipio_inteiro; nao rebanho da planicie
+1990,MS,Bodoquena,5002159,106965,municipio_inteiro; nao rebanho da planicie
+1990,MS,Corumbá,5003207,1592140,municipio_inteiro; nao rebanho da planicie
+1990,MS,Coxim,5003306,471666,municipio_inteiro; nao rebanho da planicie
+1990,MS,Ladário,5005202,10580,municipio_inteiro; nao rebanho da planicie
+1990,MS,Miranda,5005608,280635,municipio_inteiro; nao rebanho da planicie
+1990,MS,Porto Murtinho,5006903,608865,municipio_inteiro; nao rebanho da planicie
+1990,MS,Rio Verde de Mato Grosso,5007406,422624,municipio_inteiro; nao rebanho da planicie
+1990,MS,Sonora,5007935,49135,municipio_inteiro; nao rebanho da planicie
+1990,MT,Barão de Melgaço,5101605,176824,municipio_inteiro; nao rebanho da planicie
+1990,MT,Cáceres,5102504,364438,municipio_inteiro; nao rebanho da planicie
+1990,MT,Itiquira,5104609,220500,municipio_inteiro; nao rebanho da planicie
+1990,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1990,MT,Nossa Senhora do Livramento,5106109,59363,municipio_inteiro; nao rebanho da planicie
+1990,MT,Poconé,5106505,232000,municipio_inteiro; nao rebanho da planicie
+1990,MT,Santo Antônio de Leverger,5107800,246526,municipio_inteiro; nao rebanho da planicie
+1991,MS,Aquidauana,5001102,659340,municipio_inteiro; nao rebanho da planicie
+1991,MS,Bodoquena,5002159,112380,municipio_inteiro; nao rebanho da planicie
+1991,MS,Corumbá,5003207,1671140,municipio_inteiro; nao rebanho da planicie
+1991,MS,Coxim,5003306,514116,municipio_inteiro; nao rebanho da planicie
+1991,MS,Ladário,5005202,12580,municipio_inteiro; nao rebanho da planicie
+1991,MS,Miranda,5005608,289340,municipio_inteiro; nao rebanho da planicie
+1991,MS,Porto Murtinho,5006903,630130,municipio_inteiro; nao rebanho da planicie
+1991,MS,Rio Verde de Mato Grosso,5007406,460660,municipio_inteiro; nao rebanho da planicie
+1991,MS,Sonora,5007935,53557,municipio_inteiro; nao rebanho da planicie
+1991,MT,Barão de Melgaço,5101605,159143,municipio_inteiro; nao rebanho da planicie
+1991,MT,Cáceres,5102504,397593,municipio_inteiro; nao rebanho da planicie
+1991,MT,Itiquira,5104609,224910,municipio_inteiro; nao rebanho da planicie
+1991,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1991,MT,Nossa Senhora do Livramento,5106109,61000,municipio_inteiro; nao rebanho da planicie
+1991,MT,Poconé,5106505,236000,municipio_inteiro; nao rebanho da planicie
+1991,MT,Santo Antônio de Leverger,5107800,244530,municipio_inteiro; nao rebanho da planicie
+1992,MS,Aquidauana,5001102,669840,municipio_inteiro; nao rebanho da planicie
+1992,MS,Bodoquena,5002159,123618,municipio_inteiro; nao rebanho da planicie
+1992,MS,Corumbá,5003207,1554720,municipio_inteiro; nao rebanho da planicie
+1992,MS,Coxim,5003306,550105,municipio_inteiro; nao rebanho da planicie
+1992,MS,Ladário,5005202,12611,municipio_inteiro; nao rebanho da planicie
+1992,MS,Miranda,5005608,312487,municipio_inteiro; nao rebanho da planicie
+1992,MS,Porto Murtinho,5006903,674230,municipio_inteiro; nao rebanho da planicie
+1992,MS,Rio Verde de Mato Grosso,5007406,492906,municipio_inteiro; nao rebanho da planicie
+1992,MS,Sonora,5007935,57306,municipio_inteiro; nao rebanho da planicie
+1992,MT,Barão de Melgaço,5101605,162803,municipio_inteiro; nao rebanho da planicie
+1992,MT,Cáceres,5102504,429400,municipio_inteiro; nao rebanho da planicie
+1992,MT,Itiquira,5104609,188956,municipio_inteiro; nao rebanho da planicie
+1992,MT,Lambari do Oeste,5105234,,municipio_inteiro; nao rebanho da planicie
+1992,MT,Nossa Senhora do Livramento,5106109,65000,municipio_inteiro; nao rebanho da planicie
+1992,MT,Poconé,5106505,250000,municipio_inteiro; nao rebanho da planicie
+1992,MT,Santo Antônio de Leverger,5107800,250000,municipio_inteiro; nao rebanho da planicie
+1993,MS,Aquidauana,5001102,536000,municipio_inteiro; nao rebanho da planicie
+1993,MS,Bodoquena,5002159,125500,municipio_inteiro; nao rebanho da planicie
+1993,MS,Corumbá,5003207,1520800,municipio_inteiro; nao rebanho da planicie
+1993,MS,Coxim,5003306,416962,municipio_inteiro; nao rebanho da planicie
+1993,MS,Ladário,5005202,11600,municipio_inteiro; nao rebanho da planicie
+1993,MS,Miranda,5005608,314550,municipio_inteiro; nao rebanho da planicie
+1993,MS,Porto Murtinho,5006903,687714,municipio_inteiro; nao rebanho da planicie
+1993,MS,Rio Verde de Mato Grosso,5007406,517551,municipio_inteiro; nao rebanho da planicie
+1993,MS,Sonora,5007935,117324,municipio_inteiro; nao rebanho da planicie
+1993,MT,Barão de Melgaço,5101605,171950,municipio_inteiro; nao rebanho da planicie
+1993,MT,Cáceres,5102504,403636,municipio_inteiro; nao rebanho da planicie
+1993,MT,Itiquira,5104609,227159,municipio_inteiro; nao rebanho da planicie
+1993,MT,Lambari do Oeste,5105234,62281,municipio_inteiro; nao rebanho da planicie
+1993,MT,Nossa Senhora do Livramento,5106109,70647,municipio_inteiro; nao rebanho da planicie
+1993,MT,Poconé,5106505,250139,municipio_inteiro; nao rebanho da planicie
+1993,MT,Santo Antônio de Leverger,5107800,261932,municipio_inteiro; nao rebanho da planicie
+1994,MS,Aquidauana,5001102,726451,municipio_inteiro; nao rebanho da planicie
+1994,MS,Bodoquena,5002159,134209,municipio_inteiro; nao rebanho da planicie
+1994,MS,Corumbá,5003207,1380400,municipio_inteiro; nao rebanho da planicie
+1994,MS,Coxim,5003306,449068,municipio_inteiro; nao rebanho da planicie
+1994,MS,Ladário,5005202,5800,municipio_inteiro; nao rebanho da planicie
+1994,MS,Miranda,5005608,337486,municipio_inteiro; nao rebanho da planicie
+1994,MS,Porto Murtinho,5006903,550100,municipio_inteiro; nao rebanho da planicie
+1994,MS,Rio Verde de Mato Grosso,5007406,557402,municipio_inteiro; nao rebanho da planicie
+1994,MS,Sonora,5007935,126358,municipio_inteiro; nao rebanho da planicie
+1994,MT,Barão de Melgaço,5101605,180547,municipio_inteiro; nao rebanho da planicie
+1994,MT,Cáceres,5102504,443594,municipio_inteiro; nao rebanho da planicie
+1994,MT,Itiquira,5104609,232526,municipio_inteiro; nao rebanho da planicie
+1994,MT,Lambari do Oeste,5105234,73656,municipio_inteiro; nao rebanho da planicie
+1994,MT,Nossa Senhora do Livramento,5106109,84825,municipio_inteiro; nao rebanho da planicie
+1994,MT,Poconé,5106505,270789,municipio_inteiro; nao rebanho da planicie
+1994,MT,Santo Antônio de Leverger,5107800,261937,municipio_inteiro; nao rebanho da planicie
+1995,MS,Aquidauana,5001102,725138,municipio_inteiro; nao rebanho da planicie
+1995,MS,Bodoquena,5002159,136627,municipio_inteiro; nao rebanho da planicie
+1995,MS,Corumbá,5003207,1327929,municipio_inteiro; nao rebanho da planicie
+1995,MS,Coxim,5003306,468377,municipio_inteiro; nao rebanho da planicie
+1995,MS,Ladário,5005202,5300,municipio_inteiro; nao rebanho da planicie
+1995,MS,Miranda,5005608,354360,municipio_inteiro; nao rebanho da planicie
+1995,MS,Porto Murtinho,5006903,566600,municipio_inteiro; nao rebanho da planicie
+1995,MS,Rio Verde de Mato Grosso,5007406,562586,municipio_inteiro; nao rebanho da planicie
+1995,MS,Sonora,5007935,137351,municipio_inteiro; nao rebanho da planicie
+1995,MT,Barão de Melgaço,5101605,180547,municipio_inteiro; nao rebanho da planicie
+1995,MT,Cáceres,5102504,480000,municipio_inteiro; nao rebanho da planicie
+1995,MT,Itiquira,5104609,259630,municipio_inteiro; nao rebanho da planicie
+1995,MT,Lambari do Oeste,5105234,79326,municipio_inteiro; nao rebanho da planicie
+1995,MT,Nossa Senhora do Livramento,5106109,84825,municipio_inteiro; nao rebanho da planicie
+1995,MT,Poconé,5106505,270789,municipio_inteiro; nao rebanho da planicie
+1995,MT,Santo Antônio de Leverger,5107800,261937,municipio_inteiro; nao rebanho da planicie
+1996,MS,Aquidauana,5001102,570306,municipio_inteiro; nao rebanho da planicie
+1996,MS,Bodoquena,5002159,129667,municipio_inteiro; nao rebanho da planicie
+1996,MS,Corumbá,5003207,1595000,municipio_inteiro; nao rebanho da planicie
+1996,MS,Coxim,5003306,383637,municipio_inteiro; nao rebanho da planicie
+1996,MS,Ladário,5005202,16090,municipio_inteiro; nao rebanho da planicie
+1996,MS,Miranda,5005608,276518,municipio_inteiro; nao rebanho da planicie
+1996,MS,Porto Murtinho,5006903,534598,municipio_inteiro; nao rebanho da planicie
+1996,MS,Rio Verde de Mato Grosso,5007406,485000,municipio_inteiro; nao rebanho da planicie
+1996,MS,Sonora,5007935,170000,municipio_inteiro; nao rebanho da planicie
+1996,MT,Barão de Melgaço,5101605,180547,municipio_inteiro; nao rebanho da planicie
+1996,MT,Cáceres,5102504,503000,municipio_inteiro; nao rebanho da planicie
+1996,MT,Itiquira,5104609,305033,municipio_inteiro; nao rebanho da planicie
+1996,MT,Lambari do Oeste,5105234,79488,municipio_inteiro; nao rebanho da planicie
+1996,MT,Nossa Senhora do Livramento,5106109,111078,municipio_inteiro; nao rebanho da planicie
+1996,MT,Poconé,5106505,270789,municipio_inteiro; nao rebanho da planicie
+1996,MT,Santo Antônio de Leverger,5107800,285812,municipio_inteiro; nao rebanho da planicie
+1997,MS,Aquidauana,5001102,588727,municipio_inteiro; nao rebanho da planicie
+1997,MS,Bodoquena,5002159,129800,municipio_inteiro; nao rebanho da planicie
+1997,MS,Corumbá,5003207,1598477,municipio_inteiro; nao rebanho da planicie
+1997,MS,Coxim,5003306,394494,municipio_inteiro; nao rebanho da planicie
+1997,MS,Ladário,5005202,16371,municipio_inteiro; nao rebanho da planicie
+1997,MS,Miranda,5005608,276916,municipio_inteiro; nao rebanho da planicie
+1997,MS,Porto Murtinho,5006903,553289,municipio_inteiro; nao rebanho da planicie
+1997,MS,Rio Verde de Mato Grosso,5007406,488725,municipio_inteiro; nao rebanho da planicie
+1997,MS,Sonora,5007935,171811,municipio_inteiro; nao rebanho da planicie
+1997,MT,Barão de Melgaço,5101605,147463,municipio_inteiro; nao rebanho da planicie
+1997,MT,Cáceres,5102504,503000,municipio_inteiro; nao rebanho da planicie
+1997,MT,Itiquira,5104609,312658,municipio_inteiro; nao rebanho da planicie
+1997,MT,Lambari do Oeste,5105234,81914,municipio_inteiro; nao rebanho da planicie
+1997,MT,Nossa Senhora do Livramento,5106109,111078,municipio_inteiro; nao rebanho da planicie
+1997,MT,Poconé,5106505,261490,municipio_inteiro; nao rebanho da planicie
+1997,MT,Santo Antônio de Leverger,5107800,285812,municipio_inteiro; nao rebanho da planicie
+1998,MS,Aquidauana,5001102,615750,municipio_inteiro; nao rebanho da planicie
+1998,MS,Bodoquena,5002159,129850,municipio_inteiro; nao rebanho da planicie
+1998,MS,Corumbá,5003207,1557650,municipio_inteiro; nao rebanho da planicie
+1998,MS,Coxim,5003306,416998,municipio_inteiro; nao rebanho da planicie
+1998,MS,Ladário,5005202,16549,municipio_inteiro; nao rebanho da planicie
+1998,MS,Miranda,5005608,284750,municipio_inteiro; nao rebanho da planicie
+1998,MS,Porto Murtinho,5006903,542400,municipio_inteiro; nao rebanho da planicie
+1998,MS,Rio Verde de Mato Grosso,5007406,481800,municipio_inteiro; nao rebanho da planicie
+1998,MS,Sonora,5007935,163105,municipio_inteiro; nao rebanho da planicie
+1998,MT,Barão de Melgaço,5101605,109185,municipio_inteiro; nao rebanho da planicie
+1998,MT,Cáceres,5102504,552359,municipio_inteiro; nao rebanho da planicie
+1998,MT,Itiquira,5104609,312658,municipio_inteiro; nao rebanho da planicie
+1998,MT,Lambari do Oeste,5105234,85790,municipio_inteiro; nao rebanho da planicie
+1998,MT,Nossa Senhora do Livramento,5106109,101399,municipio_inteiro; nao rebanho da planicie
+1998,MT,Poconé,5106505,277443,municipio_inteiro; nao rebanho da planicie
+1998,MT,Santo Antônio de Leverger,5107800,268390,municipio_inteiro; nao rebanho da planicie
+1999,MS,Aquidauana,5001102,615500,municipio_inteiro; nao rebanho da planicie
+1999,MS,Bodoquena,5002159,131960,municipio_inteiro; nao rebanho da planicie
+1999,MS,Corumbá,5003207,1519565,municipio_inteiro; nao rebanho da planicie
+1999,MS,Coxim,5003306,421183,municipio_inteiro; nao rebanho da planicie
+1999,MS,Ladário,5005202,16900,municipio_inteiro; nao rebanho da planicie
+1999,MS,Miranda,5005608,285150,municipio_inteiro; nao rebanho da planicie
+1999,MS,Porto Murtinho,5006903,552800,municipio_inteiro; nao rebanho da planicie
+1999,MS,Rio Verde de Mato Grosso,5007406,463215,municipio_inteiro; nao rebanho da planicie
+1999,MS,Sonora,5007935,160231,municipio_inteiro; nao rebanho da planicie
+1999,MT,Barão de Melgaço,5101605,109185,municipio_inteiro; nao rebanho da planicie
+1999,MT,Cáceres,5102504,550000,municipio_inteiro; nao rebanho da planicie
+1999,MT,Itiquira,5104609,276012,municipio_inteiro; nao rebanho da planicie
+1999,MT,Lambari do Oeste,5105234,99073,municipio_inteiro; nao rebanho da planicie
+1999,MT,Nossa Senhora do Livramento,5106109,105083,municipio_inteiro; nao rebanho da planicie
+1999,MT,Poconé,5106505,293670,municipio_inteiro; nao rebanho da planicie
+1999,MT,Santo Antônio de Leverger,5107800,290830,municipio_inteiro; nao rebanho da planicie
+2000,MS,Aquidauana,5001102,615161,municipio_inteiro; nao rebanho da planicie
+2000,MS,Bodoquena,5002159,130377,municipio_inteiro; nao rebanho da planicie
+2000,MS,Corumbá,5003207,1501764,municipio_inteiro; nao rebanho da planicie
+2000,MS,Coxim,5003306,454754,municipio_inteiro; nao rebanho da planicie
+2000,MS,Ladário,5005202,17069,municipio_inteiro; nao rebanho da planicie
+2000,MS,Miranda,5005608,276168,municipio_inteiro; nao rebanho da planicie
+2000,MS,Porto Murtinho,5006903,597687,municipio_inteiro; nao rebanho da planicie
+2000,MS,Rio Verde de Mato Grosso,5007406,478795,municipio_inteiro; nao rebanho da planicie
+2000,MS,Sonora,5007935,148979,municipio_inteiro; nao rebanho da planicie
+2000,MT,Barão de Melgaço,5101605,139520,municipio_inteiro; nao rebanho da planicie
+2000,MT,Cáceres,5102504,636517,municipio_inteiro; nao rebanho da planicie
+2000,MT,Itiquira,5104609,269022,municipio_inteiro; nao rebanho da planicie
+2000,MT,Lambari do Oeste,5105234,96000,municipio_inteiro; nao rebanho da planicie
+2000,MT,Nossa Senhora do Livramento,5106109,105083,municipio_inteiro; nao rebanho da planicie
+2000,MT,Poconé,5106505,290761,municipio_inteiro; nao rebanho da planicie
+2000,MT,Santo Antônio de Leverger,5107800,411000,municipio_inteiro; nao rebanho da planicie
+2001,MS,Aquidauana,5001102,617498,municipio_inteiro; nao rebanho da planicie
+2001,MS,Bodoquena,5002159,131941,municipio_inteiro; nao rebanho da planicie
+2001,MS,Corumbá,5003207,1533114,municipio_inteiro; nao rebanho da planicie
+2001,MS,Coxim,5003306,466113,municipio_inteiro; nao rebanho da planicie
+2001,MS,Ladário,5005202,17615,municipio_inteiro; nao rebanho da planicie
+2001,MS,Miranda,5005608,281139,municipio_inteiro; nao rebanho da planicie
+2001,MS,Porto Murtinho,5006903,612382,municipio_inteiro; nao rebanho da planicie
+2001,MS,Rio Verde de Mato Grosso,5007406,494896,municipio_inteiro; nao rebanho da planicie
+2001,MS,Sonora,5007935,158292,municipio_inteiro; nao rebanho da planicie
+2001,MT,Barão de Melgaço,5101605,129529,municipio_inteiro; nao rebanho da planicie
+2001,MT,Cáceres,5102504,710000,municipio_inteiro; nao rebanho da planicie
+2001,MT,Itiquira,5104609,242000,municipio_inteiro; nao rebanho da planicie
+2001,MT,Lambari do Oeste,5105234,115024,municipio_inteiro; nao rebanho da planicie
+2001,MT,Nossa Senhora do Livramento,5106109,101083,municipio_inteiro; nao rebanho da planicie
+2001,MT,Poconé,5106505,290761,municipio_inteiro; nao rebanho da planicie
+2001,MT,Santo Antônio de Leverger,5107800,425000,municipio_inteiro; nao rebanho da planicie
+2002,MS,Aquidauana,5001102,634788,municipio_inteiro; nao rebanho da planicie
+2002,MS,Bodoquena,5002159,136163,municipio_inteiro; nao rebanho da planicie
+2002,MS,Corumbá,5003207,1571748,municipio_inteiro; nao rebanho da planicie
+2002,MS,Coxim,5003306,477472,municipio_inteiro; nao rebanho da planicie
+2002,MS,Ladário,5005202,17893,municipio_inteiro; nao rebanho da planicie
+2002,MS,Miranda,5005608,289573,municipio_inteiro; nao rebanho da planicie
+2002,MS,Porto Murtinho,5006903,618506,municipio_inteiro; nao rebanho da planicie
+2002,MS,Rio Verde de Mato Grosso,5007406,510997,municipio_inteiro; nao rebanho da planicie
+2002,MS,Sonora,5007935,167605,municipio_inteiro; nao rebanho da planicie
+2002,MT,Barão de Melgaço,5101605,136114,municipio_inteiro; nao rebanho da planicie
+2002,MT,Cáceres,5102504,735756,municipio_inteiro; nao rebanho da planicie
+2002,MT,Itiquira,5104609,276825,municipio_inteiro; nao rebanho da planicie
+2002,MT,Lambari do Oeste,5105234,112419,municipio_inteiro; nao rebanho da planicie
+2002,MT,Nossa Senhora do Livramento,5106109,116018,municipio_inteiro; nao rebanho da planicie
+2002,MT,Poconé,5106505,346468,municipio_inteiro; nao rebanho da planicie
+2002,MT,Santo Antônio de Leverger,5107800,409191,municipio_inteiro; nao rebanho da planicie
+2003,MS,Aquidauana,5001102,748097,municipio_inteiro; nao rebanho da planicie
+2003,MS,Bodoquena,5002159,165615,municipio_inteiro; nao rebanho da planicie
+2003,MS,Corumbá,5003207,1841186,municipio_inteiro; nao rebanho da planicie
+2003,MS,Coxim,5003306,529510,municipio_inteiro; nao rebanho da planicie
+2003,MS,Ladário,5005202,17911,municipio_inteiro; nao rebanho da planicie
+2003,MS,Miranda,5005608,324958,municipio_inteiro; nao rebanho da planicie
+2003,MS,Porto Murtinho,5006903,678315,municipio_inteiro; nao rebanho da planicie
+2003,MS,Rio Verde de Mato Grosso,5007406,588796,municipio_inteiro; nao rebanho da planicie
+2003,MS,Sonora,5007935,186566,municipio_inteiro; nao rebanho da planicie
+2003,MT,Barão de Melgaço,5101605,155828,municipio_inteiro; nao rebanho da planicie
+2003,MT,Cáceres,5102504,892348,municipio_inteiro; nao rebanho da planicie
+2003,MT,Itiquira,5104609,306634,municipio_inteiro; nao rebanho da planicie
+2003,MT,Lambari do Oeste,5105234,141636,municipio_inteiro; nao rebanho da planicie
+2003,MT,Nossa Senhora do Livramento,5106109,176184,municipio_inteiro; nao rebanho da planicie
+2003,MT,Poconé,5106505,384281,municipio_inteiro; nao rebanho da planicie
+2003,MT,Santo Antônio de Leverger,5107800,387621,municipio_inteiro; nao rebanho da planicie
+2004,MS,Aquidauana,5001102,621985,municipio_inteiro; nao rebanho da planicie
+2004,MS,Bodoquena,5002159,179976,municipio_inteiro; nao rebanho da planicie
+2004,MS,Corumbá,5003207,1889553,municipio_inteiro; nao rebanho da planicie
+2004,MS,Coxim,5003306,562515,municipio_inteiro; nao rebanho da planicie
+2004,MS,Ladário,5005202,17980,municipio_inteiro; nao rebanho da planicie
+2004,MS,Miranda,5005608,351754,municipio_inteiro; nao rebanho da planicie
+2004,MS,Porto Murtinho,5006903,698378,municipio_inteiro; nao rebanho da planicie
+2004,MS,Rio Verde de Mato Grosso,5007406,606595,municipio_inteiro; nao rebanho da planicie
+2004,MS,Sonora,5007935,179087,municipio_inteiro; nao rebanho da planicie
+2004,MT,Barão de Melgaço,5101605,153520,municipio_inteiro; nao rebanho da planicie
+2004,MT,Cáceres,5102504,943577,municipio_inteiro; nao rebanho da planicie
+2004,MT,Itiquira,5104609,254261,municipio_inteiro; nao rebanho da planicie
+2004,MT,Lambari do Oeste,5105234,147503,municipio_inteiro; nao rebanho da planicie
+2004,MT,Nossa Senhora do Livramento,5106109,167322,municipio_inteiro; nao rebanho da planicie
+2004,MT,Poconé,5106505,417280,municipio_inteiro; nao rebanho da planicie
+2004,MT,Santo Antônio de Leverger,5107800,412535,municipio_inteiro; nao rebanho da planicie
+2005,MS,Aquidauana,5001102,807116,municipio_inteiro; nao rebanho da planicie
+2005,MS,Bodoquena,5002159,182822,municipio_inteiro; nao rebanho da planicie
+2005,MS,Corumbá,5003207,1957141,municipio_inteiro; nao rebanho da planicie
+2005,MS,Coxim,5003306,554583,municipio_inteiro; nao rebanho da planicie
+2005,MS,Ladário,5005202,18312,municipio_inteiro; nao rebanho da planicie
+2005,MS,Miranda,5005608,361832,municipio_inteiro; nao rebanho da planicie
+2005,MS,Porto Murtinho,5006903,702842,municipio_inteiro; nao rebanho da planicie
+2005,MS,Rio Verde de Mato Grosso,5007406,614100,municipio_inteiro; nao rebanho da planicie
+2005,MS,Sonora,5007935,171529,municipio_inteiro; nao rebanho da planicie
+2005,MT,Barão de Melgaço,5101605,148390,municipio_inteiro; nao rebanho da planicie
+2005,MT,Cáceres,5102504,995076,municipio_inteiro; nao rebanho da planicie
+2005,MT,Itiquira,5104609,233092,municipio_inteiro; nao rebanho da planicie
+2005,MT,Lambari do Oeste,5105234,152205,municipio_inteiro; nao rebanho da planicie
+2005,MT,Nossa Senhora do Livramento,5106109,174517,municipio_inteiro; nao rebanho da planicie
+2005,MT,Poconé,5106505,403935,municipio_inteiro; nao rebanho da planicie
+2005,MT,Santo Antônio de Leverger,5107800,435424,municipio_inteiro; nao rebanho da planicie
+2006,MS,Aquidauana,5001102,820029,municipio_inteiro; nao rebanho da planicie
+2006,MS,Bodoquena,5002159,182859,municipio_inteiro; nao rebanho da planicie
+2006,MS,Corumbá,5003207,1994810,municipio_inteiro; nao rebanho da planicie
+2006,MS,Coxim,5003306,532400,municipio_inteiro; nao rebanho da planicie
+2006,MS,Ladário,5005202,11300,municipio_inteiro; nao rebanho da planicie
+2006,MS,Miranda,5005608,369120,municipio_inteiro; nao rebanho da planicie
+2006,MS,Porto Murtinho,5006903,706870,municipio_inteiro; nao rebanho da planicie
+2006,MS,Rio Verde de Mato Grosso,5007406,607959,municipio_inteiro; nao rebanho da planicie
+2006,MS,Sonora,5007935,161521,municipio_inteiro; nao rebanho da planicie
+2006,MT,Barão de Melgaço,5101605,150251,municipio_inteiro; nao rebanho da planicie
+2006,MT,Cáceres,5102504,932083,municipio_inteiro; nao rebanho da planicie
+2006,MT,Itiquira,5104609,216124,municipio_inteiro; nao rebanho da planicie
+2006,MT,Lambari do Oeste,5105234,139965,municipio_inteiro; nao rebanho da planicie
+2006,MT,Nossa Senhora do Livramento,5106109,128671,municipio_inteiro; nao rebanho da planicie
+2006,MT,Poconé,5106505,385646,municipio_inteiro; nao rebanho da planicie
+2006,MT,Santo Antônio de Leverger,5107800,411175,municipio_inteiro; nao rebanho da planicie
+2007,MS,Aquidauana,5001102,810790,municipio_inteiro; nao rebanho da planicie
+2007,MS,Bodoquena,5002159,159276,municipio_inteiro; nao rebanho da planicie
+2007,MS,Corumbá,5003207,1811254,municipio_inteiro; nao rebanho da planicie
+2007,MS,Coxim,5003306,471741,municipio_inteiro; nao rebanho da planicie
+2007,MS,Ladário,5005202,10352,municipio_inteiro; nao rebanho da planicie
+2007,MS,Miranda,5005608,369996,municipio_inteiro; nao rebanho da planicie
+2007,MS,Porto Murtinho,5006903,672990,municipio_inteiro; nao rebanho da planicie
+2007,MS,Rio Verde de Mato Grosso,5007406,551387,municipio_inteiro; nao rebanho da planicie
+2007,MS,Sonora,5007935,144854,municipio_inteiro; nao rebanho da planicie
+2007,MT,Barão de Melgaço,5101605,153144,municipio_inteiro; nao rebanho da planicie
+2007,MT,Cáceres,5102504,832292,municipio_inteiro; nao rebanho da planicie
+2007,MT,Itiquira,5104609,227324,municipio_inteiro; nao rebanho da planicie
+2007,MT,Lambari do Oeste,5105234,121704,municipio_inteiro; nao rebanho da planicie
+2007,MT,Nossa Senhora do Livramento,5106109,162333,municipio_inteiro; nao rebanho da planicie
+2007,MT,Poconé,5106505,374293,municipio_inteiro; nao rebanho da planicie
+2007,MT,Santo Antônio de Leverger,5107800,409452,municipio_inteiro; nao rebanho da planicie
+2008,MS,Aquidauana,5001102,775040,municipio_inteiro; nao rebanho da planicie
+2008,MS,Bodoquena,5002159,158310,municipio_inteiro; nao rebanho da planicie
+2008,MS,Corumbá,5003207,1935896,municipio_inteiro; nao rebanho da planicie
+2008,MS,Coxim,5003306,449392,municipio_inteiro; nao rebanho da planicie
+2008,MS,Ladário,5005202,10079,municipio_inteiro; nao rebanho da planicie
+2008,MS,Miranda,5005608,324892,municipio_inteiro; nao rebanho da planicie
+2008,MS,Porto Murtinho,5006903,655280,municipio_inteiro; nao rebanho da planicie
+2008,MS,Rio Verde de Mato Grosso,5007406,557298,municipio_inteiro; nao rebanho da planicie
+2008,MS,Sonora,5007935,140719,municipio_inteiro; nao rebanho da planicie
+2008,MT,Barão de Melgaço,5101605,178203,municipio_inteiro; nao rebanho da planicie
+2008,MT,Cáceres,5102504,823804,municipio_inteiro; nao rebanho da planicie
+2008,MT,Itiquira,5104609,246411,municipio_inteiro; nao rebanho da planicie
+2008,MT,Lambari do Oeste,5105234,113456,municipio_inteiro; nao rebanho da planicie
+2008,MT,Nossa Senhora do Livramento,5106109,146803,municipio_inteiro; nao rebanho da planicie
+2008,MT,Poconé,5106505,347369,municipio_inteiro; nao rebanho da planicie
+2008,MT,Santo Antônio de Leverger,5107800,438777,municipio_inteiro; nao rebanho da planicie
+2009,MS,Aquidauana,5001102,820700,municipio_inteiro; nao rebanho da planicie
+2009,MS,Bodoquena,5002159,163584,municipio_inteiro; nao rebanho da planicie
+2009,MS,Corumbá,5003207,1973275,municipio_inteiro; nao rebanho da planicie
+2009,MS,Coxim,5003306,454536,municipio_inteiro; nao rebanho da planicie
+2009,MS,Ladário,5005202,11578,municipio_inteiro; nao rebanho da planicie
+2009,MS,Miranda,5005608,336463,municipio_inteiro; nao rebanho da planicie
+2009,MS,Porto Murtinho,5006903,821179,municipio_inteiro; nao rebanho da planicie
+2009,MS,Rio Verde de Mato Grosso,5007406,548313,municipio_inteiro; nao rebanho da planicie
+2009,MS,Sonora,5007935,130680,municipio_inteiro; nao rebanho da planicie
+2009,MT,Barão de Melgaço,5101605,173587,municipio_inteiro; nao rebanho da planicie
+2009,MT,Cáceres,5102504,794858,municipio_inteiro; nao rebanho da planicie
+2009,MT,Itiquira,5104609,226578,municipio_inteiro; nao rebanho da planicie
+2009,MT,Lambari do Oeste,5105234,125421,municipio_inteiro; nao rebanho da planicie
+2009,MT,Nossa Senhora do Livramento,5106109,150692,municipio_inteiro; nao rebanho da planicie
+2009,MT,Poconé,5106505,369323,municipio_inteiro; nao rebanho da planicie
+2009,MT,Santo Antônio de Leverger,5107800,462649,municipio_inteiro; nao rebanho da planicie
+2010,MS,Aquidauana,5001102,829560,municipio_inteiro; nao rebanho da planicie
+2010,MS,Bodoquena,5002159,158309,municipio_inteiro; nao rebanho da planicie
+2010,MS,Corumbá,5003207,1930475,municipio_inteiro; nao rebanho da planicie
+2010,MS,Coxim,5003306,473077,municipio_inteiro; nao rebanho da planicie
+2010,MS,Ladário,5005202,11610,municipio_inteiro; nao rebanho da planicie
+2010,MS,Miranda,5005608,345434,municipio_inteiro; nao rebanho da planicie
+2010,MS,Porto Murtinho,5006903,696166,municipio_inteiro; nao rebanho da planicie
+2010,MS,Rio Verde de Mato Grosso,5007406,565028,municipio_inteiro; nao rebanho da planicie
+2010,MS,Sonora,5007935,130310,municipio_inteiro; nao rebanho da planicie
+2010,MT,Barão de Melgaço,5101605,170086,municipio_inteiro; nao rebanho da planicie
+2010,MT,Cáceres,5102504,883259,municipio_inteiro; nao rebanho da planicie
+2010,MT,Itiquira,5104609,233873,municipio_inteiro; nao rebanho da planicie
+2010,MT,Lambari do Oeste,5105234,136214,municipio_inteiro; nao rebanho da planicie
+2010,MT,Nossa Senhora do Livramento,5106109,153238,municipio_inteiro; nao rebanho da planicie
+2010,MT,Poconé,5106505,394354,municipio_inteiro; nao rebanho da planicie
+2010,MT,Santo Antônio de Leverger,5107800,458011,municipio_inteiro; nao rebanho da planicie
+2011,MS,Aquidauana,5001102,758466,municipio_inteiro; nao rebanho da planicie
+2011,MS,Bodoquena,5002159,166185,municipio_inteiro; nao rebanho da planicie
+2011,MS,Corumbá,5003207,1700651,municipio_inteiro; nao rebanho da planicie
+2011,MS,Coxim,5003306,463458,municipio_inteiro; nao rebanho da planicie
+2011,MS,Ladário,5005202,9452,municipio_inteiro; nao rebanho da planicie
+2011,MS,Miranda,5005608,333608,municipio_inteiro; nao rebanho da planicie
+2011,MS,Porto Murtinho,5006903,706946,municipio_inteiro; nao rebanho da planicie
+2011,MS,Rio Verde de Mato Grosso,5007406,522326,municipio_inteiro; nao rebanho da planicie
+2011,MS,Sonora,5007935,128515,municipio_inteiro; nao rebanho da planicie
+2011,MT,Barão de Melgaço,5101605,168300,municipio_inteiro; nao rebanho da planicie
+2011,MT,Cáceres,5102504,887323,municipio_inteiro; nao rebanho da planicie
+2011,MT,Itiquira,5104609,215329,municipio_inteiro; nao rebanho da planicie
+2011,MT,Lambari do Oeste,5105234,137228,municipio_inteiro; nao rebanho da planicie
+2011,MT,Nossa Senhora do Livramento,5106109,163554,municipio_inteiro; nao rebanho da planicie
+2011,MT,Poconé,5106505,399544,municipio_inteiro; nao rebanho da planicie
+2011,MT,Santo Antônio de Leverger,5107800,471703,municipio_inteiro; nao rebanho da planicie
+2012,MS,Aquidauana,5001102,779010,municipio_inteiro; nao rebanho da planicie
+2012,MS,Bodoquena,5002159,169605,municipio_inteiro; nao rebanho da planicie
+2012,MS,Corumbá,5003207,1755650,municipio_inteiro; nao rebanho da planicie
+2012,MS,Coxim,5003306,486800,municipio_inteiro; nao rebanho da planicie
+2012,MS,Ladário,5005202,8932,municipio_inteiro; nao rebanho da planicie
+2012,MS,Miranda,5005608,338150,municipio_inteiro; nao rebanho da planicie
+2012,MS,Porto Murtinho,5006903,724770,municipio_inteiro; nao rebanho da planicie
+2012,MS,Rio Verde de Mato Grosso,5007406,517820,municipio_inteiro; nao rebanho da planicie
+2012,MS,Sonora,5007935,124726,municipio_inteiro; nao rebanho da planicie
+2012,MT,Barão de Melgaço,5101605,163719,municipio_inteiro; nao rebanho da planicie
+2012,MT,Cáceres,5102504,920179,municipio_inteiro; nao rebanho da planicie
+2012,MT,Itiquira,5104609,253432,municipio_inteiro; nao rebanho da planicie
+2012,MT,Lambari do Oeste,5105234,134034,municipio_inteiro; nao rebanho da planicie
+2012,MT,Nossa Senhora do Livramento,5106109,145855,municipio_inteiro; nao rebanho da planicie
+2012,MT,Poconé,5106505,410446,municipio_inteiro; nao rebanho da planicie
+2012,MT,Santo Antônio de Leverger,5107800,476909,municipio_inteiro; nao rebanho da planicie
+2013,MS,Aquidauana,5001102,782155,municipio_inteiro; nao rebanho da planicie
+2013,MS,Bodoquena,5002159,156128,municipio_inteiro; nao rebanho da planicie
+2013,MS,Corumbá,5003207,1802976,municipio_inteiro; nao rebanho da planicie
+2013,MS,Coxim,5003306,492350,municipio_inteiro; nao rebanho da planicie
+2013,MS,Ladário,5005202,8813,municipio_inteiro; nao rebanho da planicie
+2013,MS,Miranda,5005608,353992,municipio_inteiro; nao rebanho da planicie
+2013,MS,Porto Murtinho,5006903,727167,municipio_inteiro; nao rebanho da planicie
+2013,MS,Rio Verde de Mato Grosso,5007406,524624,municipio_inteiro; nao rebanho da planicie
+2013,MS,Sonora,5007935,136963,municipio_inteiro; nao rebanho da planicie
+2013,MT,Barão de Melgaço,5101605,149286,municipio_inteiro; nao rebanho da planicie
+2013,MT,Cáceres,5102504,980953,municipio_inteiro; nao rebanho da planicie
+2013,MT,Itiquira,5104609,268525,municipio_inteiro; nao rebanho da planicie
+2013,MT,Lambari do Oeste,5105234,125852,municipio_inteiro; nao rebanho da planicie
+2013,MT,Nossa Senhora do Livramento,5106109,157506,municipio_inteiro; nao rebanho da planicie
+2013,MT,Poconé,5106505,432090,municipio_inteiro; nao rebanho da planicie
+2013,MT,Santo Antônio de Leverger,5107800,490032,municipio_inteiro; nao rebanho da planicie
+2014,MS,Aquidauana,5001102,803976,municipio_inteiro; nao rebanho da planicie
+2014,MS,Bodoquena,5002159,170773,municipio_inteiro; nao rebanho da planicie
+2014,MS,Corumbá,5003207,1761574,municipio_inteiro; nao rebanho da planicie
+2014,MS,Coxim,5003306,518516,municipio_inteiro; nao rebanho da planicie
+2014,MS,Ladário,5005202,10257,municipio_inteiro; nao rebanho da planicie
+2014,MS,Miranda,5005608,356998,municipio_inteiro; nao rebanho da planicie
+2014,MS,Porto Murtinho,5006903,724505,municipio_inteiro; nao rebanho da planicie
+2014,MS,Rio Verde de Mato Grosso,5007406,557741,municipio_inteiro; nao rebanho da planicie
+2014,MS,Sonora,5007935,143440,municipio_inteiro; nao rebanho da planicie
+2014,MT,Barão de Melgaço,5101605,144095,municipio_inteiro; nao rebanho da planicie
+2014,MT,Cáceres,5102504,1024196,municipio_inteiro; nao rebanho da planicie
+2014,MT,Itiquira,5104609,292461,municipio_inteiro; nao rebanho da planicie
+2014,MT,Lambari do Oeste,5105234,136430,municipio_inteiro; nao rebanho da planicie
+2014,MT,Nossa Senhora do Livramento,5106109,161335,municipio_inteiro; nao rebanho da planicie
+2014,MT,Poconé,5106505,446453,municipio_inteiro; nao rebanho da planicie
+2014,MT,Santo Antônio de Leverger,5107800,515738,municipio_inteiro; nao rebanho da planicie
+2015,MS,Aquidauana,5001102,775996,municipio_inteiro; nao rebanho da planicie
+2015,MS,Bodoquena,5002159,175104,municipio_inteiro; nao rebanho da planicie
+2015,MS,Corumbá,5003207,1755101,municipio_inteiro; nao rebanho da planicie
+2015,MS,Coxim,5003306,537902,municipio_inteiro; nao rebanho da planicie
+2015,MS,Ladário,5005202,9214,municipio_inteiro; nao rebanho da planicie
+2015,MS,Miranda,5005608,365411,municipio_inteiro; nao rebanho da planicie
+2015,MS,Porto Murtinho,5006903,691915,municipio_inteiro; nao rebanho da planicie
+2015,MS,Rio Verde de Mato Grosso,5007406,595457,municipio_inteiro; nao rebanho da planicie
+2015,MS,Sonora,5007935,150653,municipio_inteiro; nao rebanho da planicie
+2015,MT,Barão de Melgaço,5101605,160867,municipio_inteiro; nao rebanho da planicie
+2015,MT,Cáceres,5102504,1083531,municipio_inteiro; nao rebanho da planicie
+2015,MT,Itiquira,5104609,324984,municipio_inteiro; nao rebanho da planicie
+2015,MT,Lambari do Oeste,5105234,142010,municipio_inteiro; nao rebanho da planicie
+2015,MT,Nossa Senhora do Livramento,5106109,181384,municipio_inteiro; nao rebanho da planicie
+2015,MT,Poconé,5106505,477965,municipio_inteiro; nao rebanho da planicie
+2015,MT,Santo Antônio de Leverger,5107800,542667,municipio_inteiro; nao rebanho da planicie
+2016,MS,Aquidauana,5001102,784000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Bodoquena,5002159,164000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Corumbá,5003207,1820000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Coxim,5003306,539000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Ladário,5005202,10200,municipio_inteiro; nao rebanho da planicie
+2016,MS,Miranda,5005608,376000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Porto Murtinho,5006903,698000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Rio Verde de Mato Grosso,5007406,605000,municipio_inteiro; nao rebanho da planicie
+2016,MS,Sonora,5007935,150000,municipio_inteiro; nao rebanho da planicie
+2016,MT,Barão de Melgaço,5101605,171073,municipio_inteiro; nao rebanho da planicie
+2016,MT,Cáceres,5102504,1113134,municipio_inteiro; nao rebanho da planicie
+2016,MT,Itiquira,5104609,334735,municipio_inteiro; nao rebanho da planicie
+2016,MT,Lambari do Oeste,5105234,149114,municipio_inteiro; nao rebanho da planicie
+2016,MT,Nossa Senhora do Livramento,5106109,199528,municipio_inteiro; nao rebanho da planicie
+2016,MT,Poconé,5106505,505084,municipio_inteiro; nao rebanho da planicie
+2016,MT,Santo Antônio de Leverger,5107800,586963,municipio_inteiro; nao rebanho da planicie
+2017,MS,Aquidauana,5001102,800827,municipio_inteiro; nao rebanho da planicie
+2017,MS,Bodoquena,5002159,163372,municipio_inteiro; nao rebanho da planicie
+2017,MS,Corumbá,5003207,1887633,municipio_inteiro; nao rebanho da planicie
+2017,MS,Coxim,5003306,542889,municipio_inteiro; nao rebanho da planicie
+2017,MS,Ladário,5005202,10261,municipio_inteiro; nao rebanho da planicie
+2017,MS,Miranda,5005608,372760,municipio_inteiro; nao rebanho da planicie
+2017,MS,Porto Murtinho,5006903,691092,municipio_inteiro; nao rebanho da planicie
+2017,MS,Rio Verde de Mato Grosso,5007406,622784,municipio_inteiro; nao rebanho da planicie
+2017,MS,Sonora,5007935,164127,municipio_inteiro; nao rebanho da planicie
+2017,MT,Barão de Melgaço,5101605,177091,municipio_inteiro; nao rebanho da planicie
+2017,MT,Cáceres,5102504,1073531,municipio_inteiro; nao rebanho da planicie
+2017,MT,Itiquira,5104609,341827,municipio_inteiro; nao rebanho da planicie
+2017,MT,Lambari do Oeste,5105234,143711,municipio_inteiro; nao rebanho da planicie
+2017,MT,Nossa Senhora do Livramento,5106109,201497,municipio_inteiro; nao rebanho da planicie
+2017,MT,Poconé,5106505,516323,municipio_inteiro; nao rebanho da planicie
+2017,MT,Santo Antônio de Leverger,5107800,549536,municipio_inteiro; nao rebanho da planicie
+2018,MS,Aquidauana,5001102,807000,municipio_inteiro; nao rebanho da planicie
+2018,MS,Bodoquena,5002159,170100,municipio_inteiro; nao rebanho da planicie
+2018,MS,Corumbá,5003207,1842470,municipio_inteiro; nao rebanho da planicie
+2018,MS,Coxim,5003306,565010,municipio_inteiro; nao rebanho da planicie
+2018,MS,Ladário,5005202,9504,municipio_inteiro; nao rebanho da planicie
+2018,MS,Miranda,5005608,346900,municipio_inteiro; nao rebanho da planicie
+2018,MS,Porto Murtinho,5006903,706576,municipio_inteiro; nao rebanho da planicie
+2018,MS,Rio Verde de Mato Grosso,5007406,617100,municipio_inteiro; nao rebanho da planicie
+2018,MS,Sonora,5007935,164888,municipio_inteiro; nao rebanho da planicie
+2018,MT,Barão de Melgaço,5101605,182903,municipio_inteiro; nao rebanho da planicie
+2018,MT,Cáceres,5102504,1096403,municipio_inteiro; nao rebanho da planicie
+2018,MT,Itiquira,5104609,345825,municipio_inteiro; nao rebanho da planicie
+2018,MT,Lambari do Oeste,5105234,155106,municipio_inteiro; nao rebanho da planicie
+2018,MT,Nossa Senhora do Livramento,5106109,208883,municipio_inteiro; nao rebanho da planicie
+2018,MT,Poconé,5106505,515432,municipio_inteiro; nao rebanho da planicie
+2018,MT,Santo Antônio de Leverger,5107800,537652,municipio_inteiro; nao rebanho da planicie
+2019,MS,Aquidauana,5001102,748882,municipio_inteiro; nao rebanho da planicie
+2019,MS,Bodoquena,5002159,160921,municipio_inteiro; nao rebanho da planicie
+2019,MS,Corumbá,5003207,1775028,municipio_inteiro; nao rebanho da planicie
+2019,MS,Coxim,5003306,523928,municipio_inteiro; nao rebanho da planicie
+2019,MS,Ladário,5005202,7808,municipio_inteiro; nao rebanho da planicie
+2019,MS,Miranda,5005608,334075,municipio_inteiro; nao rebanho da planicie
+2019,MS,Porto Murtinho,5006903,644655,municipio_inteiro; nao rebanho da planicie
+2019,MS,Rio Verde de Mato Grosso,5007406,579306,municipio_inteiro; nao rebanho da planicie
+2019,MS,Sonora,5007935,163430,municipio_inteiro; nao rebanho da planicie
+2019,MT,Barão de Melgaço,5101605,198177,municipio_inteiro; nao rebanho da planicie
+2019,MT,Cáceres,5102504,1113131,municipio_inteiro; nao rebanho da planicie
+2019,MT,Itiquira,5104609,296220,municipio_inteiro; nao rebanho da planicie
+2019,MT,Lambari do Oeste,5105234,163754,municipio_inteiro; nao rebanho da planicie
+2019,MT,Nossa Senhora do Livramento,5106109,188840,municipio_inteiro; nao rebanho da planicie
+2019,MT,Poconé,5106505,518687,municipio_inteiro; nao rebanho da planicie
+2019,MT,Santo Antônio de Leverger,5107800,524842,municipio_inteiro; nao rebanho da planicie
+2020,MS,Aquidauana,5001102,731440,municipio_inteiro; nao rebanho da planicie
+2020,MS,Bodoquena,5002159,162047,municipio_inteiro; nao rebanho da planicie
+2020,MS,Corumbá,5003207,1775391,municipio_inteiro; nao rebanho da planicie
+2020,MS,Coxim,5003306,472585,municipio_inteiro; nao rebanho da planicie
+2020,MS,Ladário,5005202,9428,municipio_inteiro; nao rebanho da planicie
+2020,MS,Miranda,5005608,313038,municipio_inteiro; nao rebanho da planicie
+2020,MS,Porto Murtinho,5006903,636473,municipio_inteiro; nao rebanho da planicie
+2020,MS,Rio Verde de Mato Grosso,5007406,561781,municipio_inteiro; nao rebanho da planicie
+2020,MS,Sonora,5007935,159893,municipio_inteiro; nao rebanho da planicie
+2020,MT,Barão de Melgaço,5101605,179127,municipio_inteiro; nao rebanho da planicie
+2020,MT,Cáceres,5102504,1125557,municipio_inteiro; nao rebanho da planicie
+2020,MT,Itiquira,5104609,336622,municipio_inteiro; nao rebanho da planicie
+2020,MT,Lambari do Oeste,5105234,161266,municipio_inteiro; nao rebanho da planicie
+2020,MT,Nossa Senhora do Livramento,5106109,185903,municipio_inteiro; nao rebanho da planicie
+2020,MT,Poconé,5106505,531977,municipio_inteiro; nao rebanho da planicie
+2020,MT,Santo Antônio de Leverger,5107800,525760,municipio_inteiro; nao rebanho da planicie
+2021,MS,Aquidauana,5001102,782966,municipio_inteiro; nao rebanho da planicie
+2021,MS,Bodoquena,5002159,158116,municipio_inteiro; nao rebanho da planicie
+2021,MS,Corumbá,5003207,1838542,municipio_inteiro; nao rebanho da planicie
+2021,MS,Coxim,5003306,478869,municipio_inteiro; nao rebanho da planicie
+2021,MS,Ladário,5005202,8858,municipio_inteiro; nao rebanho da planicie
+2021,MS,Miranda,5005608,315361,municipio_inteiro; nao rebanho da planicie
+2021,MS,Porto Murtinho,5006903,664620,municipio_inteiro; nao rebanho da planicie
+2021,MS,Rio Verde de Mato Grosso,5007406,565449,municipio_inteiro; nao rebanho da planicie
+2021,MS,Sonora,5007935,159437,municipio_inteiro; nao rebanho da planicie
+2021,MT,Barão de Melgaço,5101605,191578,municipio_inteiro; nao rebanho da planicie
+2021,MT,Cáceres,5102504,1161605,municipio_inteiro; nao rebanho da planicie
+2021,MT,Itiquira,5104609,343263,municipio_inteiro; nao rebanho da planicie
+2021,MT,Lambari do Oeste,5105234,157282,municipio_inteiro; nao rebanho da planicie
+2021,MT,Nossa Senhora do Livramento,5106109,192732,municipio_inteiro; nao rebanho da planicie
+2021,MT,Poconé,5106505,526275,municipio_inteiro; nao rebanho da planicie
+2021,MT,Santo Antônio de Leverger,5107800,522351,municipio_inteiro; nao rebanho da planicie
+2022,MS,Aquidauana,5001102,797770,municipio_inteiro; nao rebanho da planicie
+2022,MS,Bodoquena,5002159,158730,municipio_inteiro; nao rebanho da planicie
+2022,MS,Corumbá,5003207,1981843,municipio_inteiro; nao rebanho da planicie
+2022,MS,Coxim,5003306,514318,municipio_inteiro; nao rebanho da planicie
+2022,MS,Ladário,5005202,9432,municipio_inteiro; nao rebanho da planicie
+2022,MS,Miranda,5005608,312490,municipio_inteiro; nao rebanho da planicie
+2022,MS,Porto Murtinho,5006903,629941,municipio_inteiro; nao rebanho da planicie
+2022,MS,Rio Verde de Mato Grosso,5007406,587949,municipio_inteiro; nao rebanho da planicie
+2022,MS,Sonora,5007935,171015,municipio_inteiro; nao rebanho da planicie
+2022,MT,Barão de Melgaço,5101605,206764,municipio_inteiro; nao rebanho da planicie
+2022,MT,Cáceres,5102504,1274041,municipio_inteiro; nao rebanho da planicie
+2022,MT,Itiquira,5104609,387583,municipio_inteiro; nao rebanho da planicie
+2022,MT,Lambari do Oeste,5105234,186920,municipio_inteiro; nao rebanho da planicie
+2022,MT,Nossa Senhora do Livramento,5106109,222240,municipio_inteiro; nao rebanho da planicie
+2022,MT,Poconé,5106505,549344,municipio_inteiro; nao rebanho da planicie
+2022,MT,Santo Antônio de Leverger,5107800,570434,municipio_inteiro; nao rebanho da planicie
+2023,MS,Aquidauana,5001102,853842,municipio_inteiro; nao rebanho da planicie
+2023,MS,Bodoquena,5002159,156986,municipio_inteiro; nao rebanho da planicie
+2023,MS,Corumbá,5003207,2150382,municipio_inteiro; nao rebanho da planicie
+2023,MS,Coxim,5003306,532107,municipio_inteiro; nao rebanho da planicie
+2023,MS,Ladário,5005202,8955,municipio_inteiro; nao rebanho da planicie
+2023,MS,Miranda,5005608,343257,municipio_inteiro; nao rebanho da planicie
+2023,MS,Porto Murtinho,5006903,708463,municipio_inteiro; nao rebanho da planicie
+2023,MS,Rio Verde de Mato Grosso,5007406,612177,municipio_inteiro; nao rebanho da planicie
+2023,MS,Sonora,5007935,167079,municipio_inteiro; nao rebanho da planicie
+2023,MT,Barão de Melgaço,5101605,222413,municipio_inteiro; nao rebanho da planicie
+2023,MT,Cáceres,5102504,1399931,municipio_inteiro; nao rebanho da planicie
+2023,MT,Itiquira,5104609,390608,municipio_inteiro; nao rebanho da planicie
+2023,MT,Lambari do Oeste,5105234,177888,municipio_inteiro; nao rebanho da planicie
+2023,MT,Nossa Senhora do Livramento,5106109,246573,municipio_inteiro; nao rebanho da planicie
+2023,MT,Poconé,5106505,605000,municipio_inteiro; nao rebanho da planicie
+2023,MT,Santo Antônio de Leverger,5107800,593385,municipio_inteiro; nao rebanho da planicie
+2024,MS,Aquidauana,5001102,872997,municipio_inteiro; nao rebanho da planicie
+2024,MS,Bodoquena,5002159,155060,municipio_inteiro; nao rebanho da planicie
+2024,MS,Corumbá,5003207,2195363,municipio_inteiro; nao rebanho da planicie
+2024,MS,Coxim,5003306,527437,municipio_inteiro; nao rebanho da planicie
+2024,MS,Ladário,5005202,8794,municipio_inteiro; nao rebanho da planicie
+2024,MS,Miranda,5005608,325859,municipio_inteiro; nao rebanho da planicie
+2024,MS,Porto Murtinho,5006903,680551,municipio_inteiro; nao rebanho da planicie
+2024,MS,Rio Verde de Mato Grosso,5007406,600860,municipio_inteiro; nao rebanho da planicie
+2024,MS,Sonora,5007935,194223,municipio_inteiro; nao rebanho da planicie
+2024,MT,Barão de Melgaço,5101605,231068,municipio_inteiro; nao rebanho da planicie
+2024,MT,Cáceres,5102504,1365224,municipio_inteiro; nao rebanho da planicie
+2024,MT,Itiquira,5104609,374428,municipio_inteiro; nao rebanho da planicie
+2024,MT,Lambari do Oeste,5105234,159272,municipio_inteiro; nao rebanho da planicie
+2024,MT,Nossa Senhora do Livramento,5106109,233803,municipio_inteiro; nao rebanho da planicie
+2024,MT,Poconé,5106505,605788,municipio_inteiro; nao rebanho da planicie
+2024,MT,Santo Antônio de Leverger,5107800,549713,municipio_inteiro; nao rebanho da planicie
+2025,MS,Aquidauana,5001102,845026,municipio_inteiro; nao rebanho da planicie
+2025,MS,Bodoquena,5002159,150476,municipio_inteiro; nao rebanho da planicie
+2025,MS,Corumbá,5003207,2154749,municipio_inteiro; nao rebanho da planicie
+2025,MS,Coxim,5003306,478482,municipio_inteiro; nao rebanho da planicie
+2025,MS,Ladário,5005202,8312,municipio_inteiro; nao rebanho da planicie
+2025,MS,Miranda,5005608,324273,municipio_inteiro; nao rebanho da planicie
+2025,MS,Porto Murtinho,5006903,694235,municipio_inteiro; nao rebanho da planicie
+2025,MS,Rio Verde de Mato Grosso,5007406,567121,municipio_inteiro; nao rebanho da planicie
+2025,MS,Sonora,5007935,184026,municipio_inteiro; nao rebanho da planicie
+2025,MT,Barão de Melgaço,5101605,235601,municipio_inteiro; nao rebanho da planicie
+2025,MT,Cáceres,5102504,1409549,municipio_inteiro; nao rebanho da planicie
+2025,MT,Itiquira,5104609,370067,municipio_inteiro; nao rebanho da planicie
+2025,MT,Lambari do Oeste,5105234,159391,municipio_inteiro; nao rebanho da planicie
+2025,MT,Nossa Senhora do Livramento,5106109,237407,municipio_inteiro; nao rebanho da planicie
+2025,MT,Poconé,5106505,570914,municipio_inteiro; nao rebanho da planicie
+2025,MT,Santo Antônio de Leverger,5107800,545700,municipio_inteiro; nao rebanho da planicie

@@ -3,9 +3,7 @@
     "agua": "https://brasil.mapbiomas.org/wp-content/uploads/sites/3/2026/10/5-MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-MULTIPLE_TERRITORIES.zip",
     "bovinos": "https://apisidra.ibge.gov.br/tabela/3939"
   },
-  "erros": [
-    "SIDRA: RuntimeError('Codigo MT ausente na malha: Lambari do Oeste')"
-  ],
+  "erros": [],
   "zip_agua": {
     "tamanho_download_bytes": 8220251,
     "arquivos": [
@@ -2302,7 +2300,7 @@
       "arquivo": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
       "aba": "READ_ME",
       "linhas_lidas": 89,
-      "pantanal_linhas": 0,
+      "pantanal_linhas": 88,
       "amostra": [
         {
           "linha": 1,
@@ -2445,7 +2443,7 @@
       "arquivo": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
       "aba": "WATER_SURFACE",
       "linhas_lidas": 2,
-      "pantanal_linhas": 0,
+      "pantanal_linhas": 1,
       "amostra": [
         {
           "linha": 1,
@@ -2507,7 +2505,7 @@
       "arquivo": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
       "aba": "WATER_SURFACE_PIVOT",
       "linhas_lidas": 62,
-      "pantanal_linhas": 0,
+      "pantanal_linhas": 61,
       "amostra": [
         {
           "linha": 1,
@@ -2600,7 +2598,7 @@
       "arquivo": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
       "aba": "METADATA",
       "linhas_lidas": 9,
-      "pantanal_linhas": 0,
+      "pantanal_linhas": 8,
       "amostra": [
         {
           "linha": 1,
@@ -2653,7 +2651,7 @@
       "arquivo": "MAPBIOMAS-BRAZIL-WATER-ANNUAL-SURFACE-WATER-COLLECTION_5-PLANALTO_BAP.xlsm",
       "aba": "LEGEND",
       "linhas_lidas": 5,
-      "pantanal_linhas": 0,
+      "pantanal_linhas": 4,
       "amostra": [
         {
           "linha": 1,
@@ -11813,5 +11811,129 @@
       ]
     }
   ],
-  "agua_linhas_pantanal": 4
+  "agua_linhas_pantanal": 166,
+  "sidra_metadados": {
+    "cabecalho": {
+      "NC": "Nível Territorial (Código)",
+      "NN": "Nível Territorial",
+      "MC": "Unidade de Medida (Código)",
+      "MN": "Unidade de Medida",
+      "V": "Valor",
+      "D1C": "Município (Código)",
+      "D1N": "Município",
+      "D2C": "Variável (Código)",
+      "D2N": "Variável",
+      "D3C": "Ano (Código)",
+      "D3N": "Ano",
+      "D4C": "Tipo de rebanho (Código)",
+      "D4N": "Tipo de rebanho"
+    },
+    "municipios": {
+      "5101605": [
+        "MT",
+        "Barão de Melgaço"
+      ],
+      "5102504": [
+        "MT",
+        "Cáceres"
+      ],
+      "5104609": [
+        "MT",
+        "Itiquira"
+      ],
+      "5105234": [
+        "MT",
+        "Lambari do Oeste"
+      ],
+      "5106109": [
+        "MT",
+        "Nossa Senhora do Livramento"
+      ],
+      "5106505": [
+        "MT",
+        "Poconé"
+      ],
+      "5107800": [
+        "MT",
+        "Santo Antônio de Leverger"
+      ],
+      "5001102": [
+        "MS",
+        "Aquidauana"
+      ],
+      "5002159": [
+        "MS",
+        "Bodoquena"
+      ],
+      "5003207": [
+        "MS",
+        "Corumbá"
+      ],
+      "5003306": [
+        "MS",
+        "Coxim"
+      ],
+      "5005202": [
+        "MS",
+        "Ladário"
+      ],
+      "5005608": [
+        "MS",
+        "Miranda"
+      ],
+      "5006903": [
+        "MS",
+        "Porto Murtinho"
+      ],
+      "5007406": [
+        "MS",
+        "Rio Verde de Mato Grosso"
+      ],
+      "5007935": [
+        "MS",
+        "Sonora"
+      ]
+    },
+    "linhas": 656,
+    "url": "https://apisidra.ibge.gov.br/values/t/3939/n6/5101605,5102504,5104609,5105234,5106109,5106505,5107800,5001102,5002159,5003207,5003306,5005202,5005608,5006903,5007406,5007935/v/105/p/1985-2025/c79/2670?formato=json"
+  },
+  "sidra_validade": {
+    "observacoes_extraidas": 644,
+    "esperadas": 656,
+    "anos_completos": [
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  }
 }
