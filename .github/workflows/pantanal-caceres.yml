@@ -3,7 +3,7 @@ on:
   push:
     branches: [pesquisa-pantanal-extracao-2026]
     paths:
-      - 'pesquisa_pantanal/caceres/**'
+      - 'pesquisa_pantanal/caceres/*.py'
       - '.github/workflows/pantanal-caceres.yml'
   workflow_dispatch:
 permissions:
