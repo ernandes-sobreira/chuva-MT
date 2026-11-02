@@ -1,0 +1,312 @@
+{
+  "date_utc": "2026-11-02T22:01:19.930708+00:00",
+  "station_code": "66070004",
+  "type": "auditoria de localização do exutório",
+  "reference_areas_km2": [
+    32393,
+    32774
+  ],
+  "queries": [
+    {
+      "id": "SGB_2025",
+      "n": 6,
+      "station_lon": -57.7022222,
+      "station_lat": -16.0758333,
+      "reference_area_km2": 32393.0,
+      "source": "AbrHidro artigo estação 66070004; datum SAD69; aproximação sem transformação explícita; area referência 32393 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6060634290,
+          "NEXT_DOWN": 6060647640,
+          "PFAF_ID": 642487,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 9.367,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "SGB_2025",
+      "n": 7,
+      "station_lon": -57.7022222,
+      "station_lat": -16.0758333,
+      "reference_area_km2": 32393.0,
+      "source": "AbrHidro artigo estação 66070004; datum SAD69; aproximação sem transformação explícita; area referência 32393 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6070634290,
+          "NEXT_DOWN": 6070647640,
+          "PFAF_ID": 6424870,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 9.367,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "SGB_2025",
+      "n": 8,
+      "station_lon": -57.7022222,
+      "station_lat": -16.0758333,
+      "reference_area_km2": 32393.0,
+      "source": "AbrHidro artigo estação 66070004; datum SAD69; aproximação sem transformação explícita; area referência 32393 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6080632530,
+          "NEXT_DOWN": 6080633560,
+          "PFAF_ID": 64248705,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 1.945,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "SGB_2025",
+      "n": 9,
+      "station_lon": -57.7022222,
+      "station_lat": -16.0758333,
+      "reference_area_km2": 32393.0,
+      "source": "AbrHidro artigo estação 66070004; datum SAD69; aproximação sem transformação explícita; area referência 32393 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6090632530,
+          "NEXT_DOWN": 6090633560,
+          "PFAF_ID": 642487050,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 1.945,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "SGB_2025",
+      "n": 10,
+      "station_lon": -57.7022222,
+      "station_lat": -16.0758333,
+      "reference_area_km2": 32393.0,
+      "source": "AbrHidro artigo estação 66070004; datum SAD69; aproximação sem transformação explícita; area referência 32393 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3118.5,
+          "HYBAS_ID": 6100630200,
+          "NEXT_DOWN": 6100632530,
+          "PFAF_ID": 6424870503,
+          "SUB_AREA": 258.4,
+          "UP_AREA": 32752.7
+        }
+      ],
+      "delta_area_pct": 1.11,
+      "same_station_upstream_area": 32752.7
+    },
+    {
+      "id": "ACADEMICO_2006",
+      "n": 6,
+      "station_lon": -57.6877778,
+      "station_lat": -16.0630556,
+      "reference_area_km2": 32774.0,
+      "source": "Dissertação UEM; coordenadas publicadas para estação 66070004; datum não certificado; ref 32774 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6060634290,
+          "NEXT_DOWN": 6060647640,
+          "PFAF_ID": 642487,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 8.095,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "ACADEMICO_2006",
+      "n": 7,
+      "station_lon": -57.6877778,
+      "station_lat": -16.0630556,
+      "reference_area_km2": 32774.0,
+      "source": "Dissertação UEM; coordenadas publicadas para estação 66070004; datum não certificado; ref 32774 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6070634290,
+          "NEXT_DOWN": 6070647640,
+          "PFAF_ID": 6424870,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 8.095,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "ACADEMICO_2006",
+      "n": 8,
+      "station_lon": -57.6877778,
+      "station_lat": -16.0630556,
+      "reference_area_km2": 32774.0,
+      "source": "Dissertação UEM; coordenadas publicadas para estação 66070004; datum não certificado; ref 32774 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6080632530,
+          "NEXT_DOWN": 6080633560,
+          "PFAF_ID": 64248705,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 0.76,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "ACADEMICO_2006",
+      "n": 9,
+      "station_lon": -57.6877778,
+      "station_lat": -16.0630556,
+      "reference_area_km2": 32774.0,
+      "source": "Dissertação UEM; coordenadas publicadas para estação 66070004; datum não certificado; ref 32774 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6090632530,
+          "NEXT_DOWN": 6090633560,
+          "PFAF_ID": 642487050,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 0.76,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "ACADEMICO_2006",
+      "n": 10,
+      "station_lon": -57.6877778,
+      "station_lat": -16.0630556,
+      "reference_area_km2": 32774.0,
+      "source": "Dissertação UEM; coordenadas publicadas para estação 66070004; datum não certificado; ref 32774 km²",
+      "matches": [
+        {
+          "DIST_MAIN": 3118.5,
+          "HYBAS_ID": 6100630200,
+          "NEXT_DOWN": 6100632530,
+          "PFAF_ID": 6424870503,
+          "SUB_AREA": 258.4,
+          "UP_AREA": 32752.7
+        }
+      ],
+      "delta_area_pct": -0.065,
+      "same_station_upstream_area": 32752.7
+    },
+    {
+      "id": "PONTO_ANTERIOR_INVALIDO",
+      "n": 6,
+      "station_lon": -57.681,
+      "station_lat": -16.075,
+      "reference_area_km2": 32393.0,
+      "source": "Ponto arbitrário do piloto, NÃO coordenada da estação",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6060634290,
+          "NEXT_DOWN": 6060647640,
+          "PFAF_ID": 642487,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 9.367,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "PONTO_ANTERIOR_INVALIDO",
+      "n": 7,
+      "station_lon": -57.681,
+      "station_lat": -16.075,
+      "reference_area_km2": 32393.0,
+      "source": "Ponto arbitrário do piloto, NÃO coordenada da estação",
+      "matches": [
+        {
+          "DIST_MAIN": 3083.7,
+          "HYBAS_ID": 6070634290,
+          "NEXT_DOWN": 6070647640,
+          "PFAF_ID": 6424870,
+          "SUB_AREA": 8906.9,
+          "UP_AREA": 35427.2
+        }
+      ],
+      "delta_area_pct": 9.367,
+      "same_station_upstream_area": 35427.2
+    },
+    {
+      "id": "PONTO_ANTERIOR_INVALIDO",
+      "n": 8,
+      "station_lon": -57.681,
+      "station_lat": -16.075,
+      "reference_area_km2": 32393.0,
+      "source": "Ponto arbitrário do piloto, NÃO coordenada da estação",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6080632530,
+          "NEXT_DOWN": 6080633560,
+          "PFAF_ID": 64248705,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 1.945,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "PONTO_ANTERIOR_INVALIDO",
+      "n": 9,
+      "station_lon": -57.681,
+      "station_lat": -16.075,
+      "reference_area_km2": 32393.0,
+      "source": "Ponto arbitrário do piloto, NÃO coordenada da estação",
+      "matches": [
+        {
+          "DIST_MAIN": 3096.8,
+          "HYBAS_ID": 6090632530,
+          "NEXT_DOWN": 6090633560,
+          "PFAF_ID": 642487050,
+          "SUB_AREA": 528.6,
+          "UP_AREA": 33023
+        }
+      ],
+      "delta_area_pct": 1.945,
+      "same_station_upstream_area": 33023.0
+    },
+    {
+      "id": "PONTO_ANTERIOR_INVALIDO",
+      "n": 10,
+      "station_lon": -57.681,
+      "station_lat": -16.075,
+      "reference_area_km2": 32393.0,
+      "source": "Ponto arbitrário do piloto, NÃO coordenada da estação",
+      "matches": [
+        {
+          "DIST_MAIN": 3118.5,
+          "HYBAS_ID": 6100630200,
+          "NEXT_DOWN": 6100632530,
+          "PFAF_ID": 6424870503,
+          "SUB_AREA": 258.4,
+          "UP_AREA": 32752.7
+        }
+      ],
+      "delta_area_pct": 1.11,
+      "same_station_upstream_area": 32752.7
+    }
+  ],
+  "errors": []
+}
