@@ -51,13 +51,33 @@ try:
  obj=json.loads(key);project=os.environ.get("EE_PROJECT") or obj["project_id"]
  ee.Initialize(ee.ServiceAccountCredentials(obj["client_email"],key_data=key),project=project)
  region=ee.Geometry(g,proj="EPSG:4326",geodesic=False)
- col=ee.ImageCollection(META["colecao"]).select("precipitation")
+ # Seleciona uma unica versao CHIRPS para toda a serie; testa 1985 antes.
+ point0=shape(g).representative_point()
+ probe_point=ee.Geometry.Point([point0.x,point0.y])
+ checked=[]
+ col=None
+ for asset in ["UCSB-CHC/CHIRPS/V3/DAILY_SAT","UCSB-CHG/CHIRPS/DAILY"]:
+  cand=ee.ImageCollection(asset).select("precipitation")
+  count=cand.filterDate("1985-01-01","1986-01-01").size().getInfo()
+  img=cand.filterDate("1985-01-01","1986-01-01").sum()
+  sample=img.reduceRegion(ee.Reducer.mean(),probe_point,5600,maxPixels=10000).getInfo()
+  chk={"asset":asset,"n_1985":count,"mm_1985_ponto_interno":sample.get("precipitation")}
+  checked.append(chk)
+  print("Teste CHIRPS:",chk,flush=True)
+  if count>=360 and sample.get("precipitation") is not None:
+   col=cand
+   META["colecao"]=asset
+   break
+ META["testes_fontes"]=checked
+ if col is None:raise RuntimeError("Nenhuma colecao CHIRPS forneceu pixels validos em 1985 no Pantanal")
  years=[]
  for year in range(1985,2026):
   start=f"{year}-01-01";end=f"{year+1}-01-01"
   total=col.filterDate(start,end).sum().rename("mm")
   stats=total.reduceRegion(reducer=ee.Reducer.mean(),geometry=region,scale=5600,maxPixels=1e9,bestEffort=True, tileScale=4).getInfo()
   val=stats.get("mm")
+  if val is None:
+   META["erro_ano_nulo"]={"ano":year,"dados":stats,"n_imagens":col.filterDate(start,end).size().getInfo(),"ponto_central":[point0.x,point0.y]}
   if val is None:raise RuntimeError(f"CHIRPS retornou valor nulo {year}")
   years.append({"ano":year,"precipitacao_bioma_pantanal_mm":round(float(val),3)})
   print(f"CHIRPS {year}: {val:.2f} mm",flush=True)
