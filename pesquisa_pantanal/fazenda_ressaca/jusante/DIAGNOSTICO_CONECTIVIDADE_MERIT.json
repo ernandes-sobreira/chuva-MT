@@ -1,0 +1,1033 @@
+{
+  "status": "diagnostico_raster_concluido",
+  "source": "MERIT/Hydro/v1_0_1",
+  "grid": {
+    "dimensions": {
+      "width": 1080,
+      "height": 1500
+    },
+    "affineTransform": {
+      "scaleX": 0.0008333333333333334,
+      "shearX": 0,
+      "translateX": -58.3,
+      "shearY": 0,
+      "scaleY": -0.0008333333333333334,
+      "translateY": -15.75
+    },
+    "crsCode": "EPSG:4326"
+  },
+  "method": "ESRI D8 em grade nativa 3 arcsec; inicia no centro das 9 células e em malha 5x5 dentro da célula mais convertida",
+  "source_rule": "Não aceitar caminho inferido como prova de conexão superficial no Pantanal (bifurcações e remansos).",
+  "n_hotspot_cells": 9,
+  "errors": [],
+  "traces": [
+    {
+      "start": [
+        -57.75432979248,
+        -16.279071169937936
+      ],
+      "start_index": [
+        634,
+        654
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1573,
+      "length_km_approx": 141.6,
+      "first_stream_20_km2": [
+        62,
+        [
+          -57.772083,
+          -16.31625
+        ]
+      ],
+      "upa_start": 0.008211646229028702,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.7000045776367188,
+      "source_id": "C04_05",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.75426074235635,
+        -16.260992353852888
+      ],
+      "start_index": [
+        613,
+        654
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1660,
+      "length_km_approx": 149.4,
+      "first_stream_20_km2": [
+        10,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212334476411343,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.700004577636719,
+      "source_id": "C04_06",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.754191792478444,
+        -16.242913519964905
+      ],
+      "start_index": [
+        591,
+        654
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1663,
+      "length_km_approx": 149.7,
+      "first_stream_20_km2": [
+        4,
+        [
+          -57.75375,
+          -16.245417
+        ]
+      ],
+      "upa_start": 0.016426216810941696,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.09999847412109375,
+      "source_id": "C04_07",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.73561211739186,
+        -16.279137061887532
+      ],
+      "start_index": [
+        634,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1592,
+      "length_km_approx": 143.3,
+      "first_stream_20_km2": [
+        81,
+        [
+          -57.772083,
+          -16.31625
+        ]
+      ],
+      "upa_start": 0.13959896564483643,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.3000030517578125,
+      "source_id": "C05_05",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.73554480107867,
+        -16.2610581948902
+      ],
+      "start_index": [
+        613,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1692,
+      "length_km_approx": 152.3,
+      "first_stream_20_km2": [
+        42,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.016424641013145447,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.900001525878906,
+      "source_id": "C05_06",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.73547754233181,
+        -16.242979253863204
+      ],
+      "start_index": [
+        591,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1679,
+      "length_km_approx": 151.1,
+      "first_stream_20_km2": [
+        3,
+        [
+          -57.735417,
+          -16.245417
+        ]
+      ],
+      "upa_start": 3.4659993648529053,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.0,
+      "source_id": "C05_07",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.716894375993675,
+        -16.279201286828116
+      ],
+      "start_index": [
+        635,
+        699
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1742,
+      "length_km_approx": 156.8,
+      "first_stream_20_km2": [
+        5,
+        [
+          -57.720417,
+          -16.282917
+        ]
+      ],
+      "upa_start": 0.024634867906570435,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.8000030517578125,
+      "source_id": "C06_05",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.71682874230771,
+        -16.261122353849533
+      ],
+      "start_index": [
+        613,
+        699
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1705,
+      "length_km_approx": 153.5,
+      "first_stream_20_km2": [
+        0,
+        [
+          -57.717083,
+          -16.26125
+        ]
+      ],
+      "upa_start": 420.8294372558594,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.0,
+      "source_id": "C06_06",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.71676320105019,
+        -16.243043394903577
+      ],
+      "start_index": [
+        591,
+        699
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1700,
+      "length_km_approx": 153.0,
+      "first_stream_20_km2": [
+        21,
+        [
+          -57.73375,
+          -16.247917
+        ]
+      ],
+      "upa_start": 0.13140928745269775,
+      "upa_end": 62249.46875,
+      "hnd_start": 10.900001525878906,
+      "source_id": "C06_07",
+      "tipo": "centro_celula"
+    },
+    {
+      "start": [
+        -57.74305857,
+        -16.268315610000002
+      ],
+      "start_index": [
+        621,
+        668
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1685,
+      "length_km_approx": 151.7,
+      "first_stream_20_km2": [
+        35,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212076500058174,
+      "upa_end": 62249.46875,
+      "hnd_start": 8.5,
+      "source_id": "C05_06_00",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.74305857,
+        -16.264686830000002
+      ],
+      "start_index": [
+        617,
+        668
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1678,
+      "length_km_approx": 151.0,
+      "first_stream_20_km2": [
+        28,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212205022573471,
+      "upa_end": 62249.46875,
+      "hnd_start": 7.899993896484375,
+      "source_id": "C05_06_01",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.74305857,
+        -16.261058050000003
+      ],
+      "start_index": [
+        613,
+        668
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1676,
+      "length_km_approx": 150.8,
+      "first_stream_20_km2": [
+        26,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212334476411343,
+      "upa_end": 62249.46875,
+      "hnd_start": 3.6999969482421875,
+      "source_id": "C05_06_02",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.74305857,
+        -16.25742927
+      ],
+      "start_index": [
+        608,
+        668
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1677,
+      "length_km_approx": 150.9,
+      "first_stream_20_km2": [
+        27,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212520740926266,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.5999984741210938,
+      "source_id": "C05_06_03",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.74305857,
+        -16.25380049
+      ],
+      "start_index": [
+        604,
+        668
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1685,
+      "length_km_approx": 151.7,
+      "first_stream_20_km2": [
+        35,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212649263441563,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.5,
+      "source_id": "C05_06_04",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73930191,
+        -16.268315610000002
+      ],
+      "start_index": [
+        621,
+        672
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1690,
+      "length_km_approx": 152.1,
+      "first_stream_20_km2": [
+        40,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.15602783858776093,
+      "upa_end": 62249.46875,
+      "hnd_start": 5.0,
+      "source_id": "C05_06_10",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73930191,
+        -16.264686830000002
+      ],
+      "start_index": [
+        617,
+        672
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1685,
+      "length_km_approx": 151.7,
+      "first_stream_20_km2": [
+        35,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.016424380242824554,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.5999984741210938,
+      "source_id": "C05_06_11",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73930191,
+        -16.261058050000003
+      ],
+      "start_index": [
+        613,
+        672
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1681,
+      "length_km_approx": 151.3,
+      "first_stream_20_km2": [
+        31,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.936188280582428,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.0,
+      "source_id": "C05_06_12",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73930191,
+        -16.25742927
+      ],
+      "start_index": [
+        608,
+        672
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1693,
+      "length_km_approx": 152.4,
+      "first_stream_20_km2": [
+        11,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.008212520740926266,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.5999984741210938,
+      "source_id": "C05_06_13",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73930191,
+        -16.25380049
+      ],
+      "start_index": [
+        604,
+        672
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1692,
+      "length_km_approx": 152.3,
+      "first_stream_20_km2": [
+        10,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.008212649263441563,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.9000015258789062,
+      "source_id": "C05_06_14",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73554525,
+        -16.268315610000002
+      ],
+      "start_index": [
+        621,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1691,
+      "length_km_approx": 152.2,
+      "first_stream_20_km2": [
+        41,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.016424108296632767,
+      "upa_end": 62249.46875,
+      "hnd_start": 6.599998474121094,
+      "source_id": "C05_06_20",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73554525,
+        -16.264686830000002
+      ],
+      "start_index": [
+        617,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1688,
+      "length_km_approx": 151.9,
+      "first_stream_20_km2": [
+        38,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.008212205022573471,
+      "upa_end": 62249.46875,
+      "hnd_start": 5.400001525878906,
+      "source_id": "C05_06_21",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73554525,
+        -16.261058050000003
+      ],
+      "start_index": [
+        613,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1692,
+      "length_km_approx": 152.3,
+      "first_stream_20_km2": [
+        42,
+        [
+          -57.755417,
+          -16.252917
+        ]
+      ],
+      "upa_start": 0.016424641013145447,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.900001525878906,
+      "source_id": "C05_06_22",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73554525,
+        -16.25742927
+      ],
+      "start_index": [
+        608,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1692,
+      "length_km_approx": 152.3,
+      "first_stream_20_km2": [
+        10,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.008212520740926266,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.400001525878906,
+      "source_id": "C05_06_23",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73554525,
+        -16.25380049
+      ],
+      "start_index": [
+        604,
+        677
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1690,
+      "length_km_approx": 152.1,
+      "first_stream_20_km2": [
+        8,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.008212649263441563,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.3000030517578125,
+      "source_id": "C05_06_24",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73178859,
+        -16.268315610000002
+      ],
+      "start_index": [
+        621,
+        681
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1706,
+      "length_km_approx": 153.5,
+      "first_stream_20_km2": [
+        18,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.008212076500058174,
+      "upa_end": 62249.46875,
+      "hnd_start": 3.6999969482421875,
+      "source_id": "C05_06_30",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73178859,
+        -16.264686830000002
+      ],
+      "start_index": [
+        617,
+        681
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1702,
+      "length_km_approx": 153.2,
+      "first_stream_20_km2": [
+        14,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.862265944480896,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.0,
+      "source_id": "C05_06_31",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73178859,
+        -16.261058050000003
+      ],
+      "start_index": [
+        613,
+        681
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1700,
+      "length_km_approx": 153.0,
+      "first_stream_20_km2": [
+        12,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.008212334476411343,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.900001525878906,
+      "source_id": "C05_06_32",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73178859,
+        -16.25742927
+      ],
+      "start_index": [
+        608,
+        681
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1693,
+      "length_km_approx": 152.4,
+      "first_stream_20_km2": [
+        11,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.032850053161382675,
+      "upa_end": 62249.46875,
+      "hnd_start": 4.099998474121094,
+      "source_id": "C05_06_33",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.73178859,
+        -16.25380049
+      ],
+      "start_index": [
+        604,
+        681
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1689,
+      "length_km_approx": 152.0,
+      "first_stream_20_km2": [
+        7,
+        [
+          -57.73375,
+          -16.250417
+        ]
+      ],
+      "upa_start": 0.016425255686044693,
+      "upa_end": 62249.46875,
+      "hnd_start": 3.5,
+      "source_id": "C05_06_34",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.72803193,
+        -16.268315610000002
+      ],
+      "start_index": [
+        621,
+        686
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1709,
+      "length_km_approx": 153.8,
+      "first_stream_20_km2": [
+        21,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.008212076500058174,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.3000030517578125,
+      "source_id": "C05_06_40",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.72803193,
+        -16.264686830000002
+      ],
+      "start_index": [
+        617,
+        686
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1711,
+      "length_km_approx": 154.0,
+      "first_stream_20_km2": [
+        23,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.03284890577197075,
+      "upa_end": 62249.46875,
+      "hnd_start": 1.0999984741210938,
+      "source_id": "C05_06_41",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.72803193,
+        -16.261058050000003
+      ],
+      "start_index": [
+        613,
+        686
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1697,
+      "length_km_approx": 152.7,
+      "first_stream_20_km2": [
+        9,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.7226852178573608,
+      "upa_end": 62249.46875,
+      "hnd_start": 0.0,
+      "source_id": "C05_06_42",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.72803193,
+        -16.25742927
+      ],
+      "start_index": [
+        608,
+        686
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1696,
+      "length_km_approx": 152.6,
+      "first_stream_20_km2": [
+        8,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.008212520740926266,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.7000045776367188,
+      "source_id": "C05_06_43",
+      "tipo": "amostra_dentro_celula"
+    },
+    {
+      "start": [
+        -57.72803193,
+        -16.25380049
+      ],
+      "start_index": [
+        604,
+        686
+      ],
+      "end_code": "saida_da_grade",
+      "n_steps": 1689,
+      "length_km_approx": 152.0,
+      "first_stream_20_km2": [
+        1,
+        [
+          -57.72875,
+          -16.254583
+        ]
+      ],
+      "upa_start": 0.008212649263441563,
+      "upa_end": 62249.46875,
+      "hnd_start": 2.2000045776367188,
+      "source_id": "C05_06_44",
+      "tipo": "amostra_dentro_celula"
+    }
+  ],
+  "raster": {
+    "shape": [
+      1500,
+      1080
+    ],
+    "valid_dir": 1620000,
+    "upa_sample_minmax": [
+      0.008181361481547356,
+      62249.46875
+    ],
+    "dtype": "[('dir', 'u1'), ('upa', '<f4'), ('hnd', '<f4')]"
+  },
+  "traces_success_stream_20km2": 34,
+  "n_traces": 34,
+  "first_stream_points": [
+    [
+      -57.772083,
+      -16.31625
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.75375,
+      -16.245417
+    ],
+    [
+      -57.772083,
+      -16.31625
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.735417,
+      -16.245417
+    ],
+    [
+      -57.720417,
+      -16.282917
+    ],
+    [
+      -57.717083,
+      -16.26125
+    ],
+    [
+      -57.73375,
+      -16.247917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.755417,
+      -16.252917
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.73375,
+      -16.250417
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ],
+    [
+      -57.72875,
+      -16.254583
+    ]
+  ],
+  "bbox_stream_contact": [
+    -57.772083,
+    -16.31625,
+    -57.717083,
+    -16.245417
+  ]
+}
