@@ -1,0 +1,35 @@
+name: Pantanal - corrigir mapa de Caceres
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/cartografia/corrigir_contexto_caceres.py'
+      - '.github/workflows/pantanal-corrigir-mapa.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  mapa_correto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar bibliotecas gratuitas
+        run: python -m pip install --quiet shapely pyproj matplotlib pillow numpy
+      - name: Conferir geometrias e gerar mapa correto
+        run: python pesquisa_pantanal/cartografia/corrigir_contexto_caceres.py
+      - name: Salvar somente cartografia de pesquisa
+        run: |
+          git config user.name "pantanal-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/cartografia/MAPA_CORRIGIDO_CONTEXTO_CACERES.png
+          git add -f pesquisa_pantanal/cartografia/conferencia_geografica_caceres.json
+          git add -f pesquisa_pantanal/cartografia/municipio_caceres_ibge.geojson
+          git add -f pesquisa_pantanal/cartografia/unidade_hydrobasins_6060634290.geojson
+          if ! git diff --cached --quiet; then
+            git commit -m "Mapa corrigido com municipio IBGE, unidade de drenagem e sede"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
