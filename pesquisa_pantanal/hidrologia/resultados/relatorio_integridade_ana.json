@@ -1,0 +1,253 @@
+{
+  "fonte_nivel": "https://raw.githubusercontent.com/ernandes-sobreira/cota-rio-paraguai/main/data/history-ana.csv",
+  "fonte_procedencia": "https://raw.githubusercontent.com/ernandes-sobreira/cota-rio-paraguai/main/data/history-provenance.json",
+  "fonte_vazao": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica",
+  "estacao": "Cáceres",
+  "codigo_ana": "66070004",
+  "erros": [],
+  "limites": "Cota e vazao nao equivalentes; nulos preservados.",
+  "data_consulta_utc": "2026-11-02T20:52:45.666663+00:00",
+  "sha256_arquivo_ana": "26e3fcad84181c30d4f8d232234af87fc990bef6cd6dab1a5b581317bf63150e",
+  "sha256_verificado": true,
+  "procedencia_ana": {
+    "url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66070004&dataInicio=01%2F01%2F1966&dataFim=31%2F12%2F2025&tipoDados=1&nivelConsistencia=1",
+    "sha256": "e50b9076b962eb63e8e7b69573c82fb6e7ba83bae7eedaa222b8dfbfe8536c84",
+    "retrieved_at": "2026-10-11T14:32:11.504695+00:00",
+    "code": "66070004",
+    "n": 21234,
+    "start": "1966-01-01",
+    "end": "2025-12-31",
+    "excluded_status": {
+      "2": 47,
+      "3": 10
+    },
+    "unknown_status": 1982,
+    "legacy_common": 21083,
+    "legacy_different": 17038,
+    "previous_year_example": {
+      "date_str": "2025-10-11",
+      "cota_m": 0.68,
+      "source_status": "",
+      "consistency": "1",
+      "daily_mean": "1"
+    }
+  },
+  "n_dias_cota_1985_2025": 14294,
+  "meses_validos_cota": 471,
+  "anos_validos_cota": 39,
+  "cobertura_por_ano": [
+    {
+      "ano": 1985,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1986,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1987,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1988,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1989,
+      "n_dias": 363,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1990,
+      "n_dias": 360,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1991,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1992,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1993,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1994,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1995,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1996,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1997,
+      "n_dias": 359,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 1998,
+      "n_dias": 142,
+      "n_meses_validos": 5
+    },
+    {
+      "ano": 1999,
+      "n_dias": 0,
+      "n_meses_validos": 0
+    },
+    {
+      "ano": 2000,
+      "n_dias": 333,
+      "n_meses_validos": 11
+    },
+    {
+      "ano": 2001,
+      "n_dias": 357,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2002,
+      "n_dias": 360,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2003,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2004,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2005,
+      "n_dias": 363,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2006,
+      "n_dias": 352,
+      "n_meses_validos": 11
+    },
+    {
+      "ano": 2007,
+      "n_dias": 364,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2008,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2009,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2010,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2011,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2012,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2013,
+      "n_dias": 362,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2014,
+      "n_dias": 364,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2015,
+      "n_dias": 356,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2016,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2017,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2018,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2019,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2020,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2021,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2022,
+      "n_dias": 362,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2023,
+      "n_dias": 365,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2024,
+      "n_dias": 366,
+      "n_meses_validos": 12
+    },
+    {
+      "ano": 2025,
+      "n_dias": 364,
+      "n_meses_validos": 12
+    }
+  ],
+  "vazao_resposta_bytes": 1541975,
+  "vazao_sha256": "3339128b3d3d6a5f39148684d5ec62721c8aa8504ba006e2b364bd9b261746c0",
+  "vazao_n_dias": 14621,
+  "vazao_pendencias": {
+    "bad_status_2": 354
+  },
+  "meses_validos_vazao": 479,
+  "vazao_status": "consulta respondida com dados verificados"
+}
