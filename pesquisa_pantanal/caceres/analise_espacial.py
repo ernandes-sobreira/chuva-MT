@@ -79,13 +79,14 @@ try:
    "chuva_chirps_montante_mm":out.get("precipitation")
   })
  annual=[]
- for first in [1985,1993,2001,2009,2017,2025]:
-  last=min(2025,first+7)
-  feats=ee.FeatureCollection(ee.List.sequence(first,last).map(annual_feat)).getInfo()["features"]
-  for f in feats:
-   p=f["properties"];annual.append({k:round(v,3) if isinstance(v,float) else v for k,v in p.items()})
-  csvwrite("serie_anual_caceres_1985_2025.csv",annual,["ano","agua_local_planicie_ha","pastagem_plantada_montante_ha","pastagem_plantada_local_ha","chuva_chirps_montante_mm"])
-  log("Serie anual extraida: "+str(first)+"-"+str(last)+"; linhas ate agora "+str(len(annual)))
+ for ano in range(1985,2026):
+  f=annual_feat(ee.Number(ano)).getInfo()
+  p=f["properties"]
+  annual.append({k:round(v,3) if isinstance(v,float) else v for k,v in p.items()})
+  if ano%5==0 or ano==2025:
+   csvwrite("serie_anual_caceres_1985_2025.csv",annual,["ano","agua_local_planicie_ha","pastagem_plantada_montante_ha","pastagem_plantada_local_ha","chuva_chirps_montante_mm"])
+   log("Serie anual ate "+str(ano)+": "+str(len(annual))+" anos")
+ csvwrite("serie_anual_caceres_1985_2025.csv",annual,["ano","agua_local_planicie_ha","pastagem_plantada_montante_ha","pastagem_plantada_local_ha","chuva_chirps_montante_mm"])
  META["serie_anual_linhas"]=len(annual)
  # TESTE MENSAL: 4 anos, depois sera possivel expandir mantendo mesmo metodo.
  M=ee.ImageCollection("projects/mapbiomas-public/assets/brazil/water/collection5/mapbiomas_brazil_collection5_water_monthly_v4")
@@ -99,15 +100,15 @@ try:
   return ee.Feature(None,{"ano":ano,"mes":mes,"agua_mensal_local_planicie_ha":a})
  monthly=[]
  for ano in YEARS:
-  ids=["water_monthly_%d_%02d"%(ano,m) for m in range(1,13)]
-  images=M.filter(ee.Filter.inList("system:index",ids)).sort("system:index")
-  n=images.size().getInfo()
-  if n!=12:raise RuntimeError("Esperava 12 imagens MapBiomas "+str(ano)+", encontrei "+str(n))
-  feats=ee.FeatureCollection(images.toList(12).map(monthly_feat)).getInfo()["features"]
-  monthly.extend([{"ano":int(f["properties"]["ano"]),"mes":int(f["properties"]["mes"]),
-   "agua_mensal_local_planicie_ha":round(float(f["properties"]["agua_mensal_local_planicie_ha"]),3)} for f in feats])
+  for mes in range(1,13):
+   idx="water_monthly_%d_%02d"%(ano,mes)
+   im=ee.Image(M.filter(ee.Filter.eq("system:index",idx)).first())
+   feat=monthly_feat(im).getInfo()
+   p=feat["properties"]
+   monthly.append({"ano":int(p["ano"]),"mes":int(p["mes"]),
+       "agua_mensal_local_planicie_ha":round(float(p["agua_mensal_local_planicie_ha"]),3)})
   csvwrite("pulso_mensal_caceres_anos_referencia.csv",monthly,["ano","mes","agua_mensal_local_planicie_ha"])
-  log("Serie mensal: "+str(ano)+", "+str(len(monthly))+" meses ate agora")
+  log("Serie mensal concluida: "+str(ano)+", "+str(len(monthly))+" meses")
  META["serie_mensal_linhas"]=len(monthly)
  # Gerar mapas de classes REAIS, recortadas; o visual em PNG usa reducao de resolucao.
  renderbox=local.buffer(4000).bounds(500)
