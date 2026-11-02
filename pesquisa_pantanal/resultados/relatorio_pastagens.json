@@ -1,0 +1,735 @@
+{
+  "url": "https://brasil.mapbiomas.org/wp-content/uploads/sites/3/2026/08/MAPBIOMAS_BRAZIL-COL.11-BIOME_STATE.xlsx",
+  "erros": [],
+  "planilhas": [
+    {
+      "aba": "READ_ME",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 2,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 3,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 4,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Versão 11",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Version 11",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 5,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Agosto 2026",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "August 2026",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 6,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "matches": 0
+    },
+    {
+      "aba": "COVERAGE_11",
+      "linhas": 1161,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": [
+            "ID",
+            "country",
+            "biome",
+            "region",
+            "state",
+            "class",
+            "class_level_0",
+            "class_level_1",
+            "class_level_2",
+            "class_level_3",
+            "class_level_4",
+            "y1985",
+            "y1986",
+            "y1987",
+            "y1988",
+            "y1989",
+            "y1990",
+            "y1991",
+            "y1992",
+            "y1993"
+          ]
+        },
+        {
+          "linha": 2,
+          "valores": [
+            "0.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "Undefined",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "30.07175819702148",
+            "31.66366580200195",
+            "29.27372372436523",
+            "28.65372266845703",
+            "26.52863963623047",
+            "24.93568075561523",
+            "23.4286893737793",
+            "20.24172151489258",
+            "19.62370401611328"
+          ]
+        },
+        {
+          "linha": 3,
+          "valores": [
+            "1.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "3.0",
+            "Natural",
+            "1. Forest",
+            "1.1. Forest Formation",
+            "1.1. Forest Formation",
+            "1.1. Forest Formation",
+            "102623952.3504897",
+            "102547086.0379357",
+            "102015746.9696659",
+            "101617039.8325412",
+            "101422291.8650105",
+            "101139069.828334",
+            "100775930.4583149",
+            "100238992.0598617",
+            "99748485.14275885"
+          ]
+        },
+        {
+          "linha": 4,
+          "valores": [
+            "2.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "4.0",
+            "Natural",
+            "1. Forest",
+            "1.2. Savanna Formation",
+            "1.2. Savanna Formation",
+            "1.2. Savanna Formation",
+            "1307638.008701504",
+            "1307296.809203621",
+            "1304519.645228907",
+            "1302008.801043135",
+            "1301218.101802729",
+            "1303445.582609512",
+            "1302402.347133234",
+            "1301374.691985235",
+            "1300059.429052491"
+          ]
+        },
+        {
+          "linha": 5,
+          "valores": [
+            "3.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "5.0",
+            "Natural",
+            "1. Forest",
+            "1.4. Mangrove",
+            "1.4. Mangrove",
+            "1.4. Mangrove",
+            "227606.6451990949",
+            "227941.6751983753",
+            "227495.4461833948",
+            "227393.8837790369",
+            "228625.3537292469",
+            "230049.2264690567",
+            "231269.3973509008",
+            "231829.4552858547",
+            "231119.022868712"
+          ]
+        },
+        {
+          "linha": 6,
+          "valores": [
+            "4.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "6.0",
+            "Natural",
+            "1. Forest",
+            "1.5. Floodable Forest",
+            "1.5. Floodable Forest",
+            "1.5. Floodable Forest",
+            "7577111.498298096",
+            "7519570.91602504",
+            "7465462.306310012",
+            "7430167.113693997",
+            "7422436.716325332",
+            "7415862.371772599",
+            "7406342.398286464",
+            "7384960.78661212",
+            "7345598.879061239"
+          ]
+        }
+      ],
+      "matches": 36
+    },
+    {
+      "aba": "TRANSITION_11",
+      "linhas": 14165,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": [
+            "ID",
+            "country",
+            "biome",
+            "region",
+            "state",
+            "class_from",
+            "class_to",
+            "class_level_1_from",
+            "class_level_2_from",
+            "class_level_3_from",
+            "class_level_4_from",
+            "class_level_1_to",
+            "class_level_2_to",
+            "class_level_3_to",
+            "class_level_4_to",
+            "p1985_1986",
+            "p1986_1987",
+            "p1987_1988",
+            "p1988_1989",
+            "p1989_1990"
+          ]
+        },
+        {
+          "linha": 2,
+          "valores": [
+            "0.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "0.0",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "28.12671249389649",
+            "29.0968586730957",
+            "27.6811332824707",
+            "25.55540335083008",
+            "23.96238832397461"
+          ]
+        },
+        {
+          "linha": 3,
+          "valores": [
+            "1.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "3.0",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "1. Forest",
+            "1.1. Forest Formation",
+            "1.1. Forest Formation",
+            "1.1. Forest Formation",
+            "0.3540874206542969",
+            "0.8843111083984374",
+            "1.150318627929688",
+            "1.681214331054687",
+            "1.062928576660156"
+          ]
+        },
+        {
+          "linha": 4,
+          "valores": [
+            "2.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "4.0",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "1. Forest",
+            "1.2. Savanna Formation",
+            "1.2. Savanna Formation",
+            "1.2. Savanna Formation",
+            "0.5304888732910156",
+            "0.08850370483398437",
+            "0.0",
+            "0.1772084350585938",
+            "0.2646974853515625"
+          ]
+        },
+        {
+          "linha": 5,
+          "valores": [
+            "3.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "6.0",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "1. Forest",
+            "1.5. Floodable Forest",
+            "1.5. Floodable Forest",
+            "1.5. Floodable Forest",
+            "0.3533301330566406",
+            "0.0",
+            "0.0882531982421875",
+            "0.1771678649902344",
+            "0.0"
+          ]
+        },
+        {
+          "linha": 6,
+          "valores": [
+            "4.0",
+            "Brasil",
+            "Amazônia",
+            "Norte",
+            "Pará",
+            "0.0",
+            "11.0",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "7. Not Observed",
+            "2. Herbaceous and Shrubby Vegetation",
+            "2.1. Wetland",
+            "2.1. Wetland",
+            "2.1. Wetland",
+            "0.0882674560546875",
+            "0.08851193847656251",
+            "0.0",
+            "0.0",
+            "0.3530476196289062"
+          ]
+        }
+      ],
+      "matches": 432
+    },
+    {
+      "aba": "PIVOT_COVERAGE",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": []
+        },
+        {
+          "linha": 2,
+          "valores": []
+        },
+        {
+          "linha": 3,
+          "valores": []
+        },
+        {
+          "linha": 4,
+          "valores": []
+        },
+        {
+          "linha": 5,
+          "valores": []
+        },
+        {
+          "linha": 6,
+          "valores": []
+        }
+      ],
+      "matches": 0
+    },
+    {
+      "aba": "PIVOTCHART_COVERAGE",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": []
+        },
+        {
+          "linha": 2,
+          "valores": []
+        },
+        {
+          "linha": 3,
+          "valores": []
+        },
+        {
+          "linha": 4,
+          "valores": []
+        },
+        {
+          "linha": 5,
+          "valores": []
+        },
+        {
+          "linha": 6,
+          "valores": []
+        }
+      ],
+      "matches": 0
+    },
+    {
+      "aba": "PIVOT_TRANSITION",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": []
+        },
+        {
+          "linha": 2,
+          "valores": []
+        },
+        {
+          "linha": 3,
+          "valores": []
+        },
+        {
+          "linha": 4,
+          "valores": []
+        },
+        {
+          "linha": 5,
+          "valores": []
+        },
+        {
+          "linha": 6,
+          "valores": []
+        }
+      ],
+      "matches": 0
+    },
+    {
+      "aba": "METADATA",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": []
+        },
+        {
+          "linha": 2,
+          "valores": [
+            "",
+            "Cobertura e uso da terra / Land cover and land use",
+            "",
+            "",
+            "",
+            "Transições / Transitions",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 3,
+          "valores": [
+            "",
+            "Campo/Field",
+            "Descrição do campo",
+            "Field Description",
+            "",
+            "Campo/Field",
+            "Descrição do campo",
+            "Field Description"
+          ]
+        },
+        {
+          "linha": 4,
+          "valores": [
+            "",
+            "country",
+            "País",
+            "Country",
+            "",
+            "country",
+            "País",
+            "Country"
+          ]
+        },
+        {
+          "linha": 5,
+          "valores": [
+            "",
+            "biome",
+            "Bioma",
+            "Biome",
+            "",
+            "biome",
+            "Bioma",
+            "Biome"
+          ]
+        },
+        {
+          "linha": 6,
+          "valores": [
+            "",
+            "region",
+            "Região",
+            "Region",
+            "",
+            "region",
+            "Região",
+            "Region"
+          ]
+        }
+      ],
+      "matches": 0
+    },
+    {
+      "aba": "LEGEND_CODE",
+      "linhas": 1000,
+      "colunas": null,
+      "cabecalhos": [
+        {
+          "linha": 1,
+          "valores": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 2,
+          "valores": [
+            "Códigos das classes da legenda da Coleção 10 do MapBiomas Brasil",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 3,
+          "valores": [
+            "COLEÇÃO 11 - CLASSES",
+            "COLLECTION 11 - CLASSES",
+            "NEW ID",
+            "NEW COLOR NUMER",
+            "NEW COLOR",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 4,
+          "valores": [
+            "1. Floresta",
+            "1. Forest",
+            "1.0",
+            "#1f8d49",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 5,
+          "valores": [
+            "    1.1 Formação Florestal",
+            "1.1. Forest Formation",
+            "3.0",
+            "#1f8d49",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "linha": 6,
+          "valores": [
+            "    1.2. Floresta Alagável",
+            "1.2 Floodable Forest",
+            "6.0",
+            "#007785",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "matches": 0
+    }
+  ],
+  "linhas_pantanal": 468,
+  "baixado_bytes": 17947768
+}
