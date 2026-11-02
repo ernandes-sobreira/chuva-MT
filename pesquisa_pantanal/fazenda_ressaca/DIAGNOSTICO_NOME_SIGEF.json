@@ -1,0 +1,306 @@
+[
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/BasesSincronizadas/lim_sigef_publico_incra_p/FeatureServer/0/query",
+    "where": "nome_area LIKE '%RESSACA%'",
+    "n": 20,
+    "sample": [
+      {
+        "parcela_co": "5c258f9e-86e7-46b5-acfb-7335780613d6",
+        "nome_area": "PROJETO DE ASSENTAMENTO RESSACA - Parcela 1",
+        "codigo_imo": "9999977621135",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "4a59a863-1880-4428-98ae-c7dd69a75a72",
+        "nome_area": "GLEBA RESSACA DOS COCAES - GLEBA RESSACA DOS COCAES",
+        "codigo_imo": "9510213208544",
+        "municipio_": 5106109
+      },
+      {
+        "parcela_co": "03af6532-8118-4ae0-a719-b6863c4968d7",
+        "nome_area": "PA RESSACA - LOTE 267 - PARCELA 01",
+        "codigo_imo": "0000436753934",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "c9b79832-6007-4081-85b9-0ae623a30ba2",
+        "nome_area": "PA RESSACA - LOTE 267 - PARCELA 02",
+        "codigo_imo": "0000436753934",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "8c5221ff-2773-4023-8958-40fede03bf7d",
+        "nome_area": "PA RESSACA - LOTE 151 - PARCELA",
+        "codigo_imo": "9510561483001",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "90bfd9bb-77b4-4119-a834-cc299de33215",
+        "nome_area": "LOTE 184 - PA RESSACA - PARCELA 02",
+        "codigo_imo": "9510212298221",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "ecb73c35-6d6e-4daa-8290-e3da076cb28a",
+        "nome_area": "LOTE 184 - PA RESSACA - PARCELA 01",
+        "codigo_imo": "9510212298221",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "1565becd-6d34-4275-a92e-48fd907cab2a",
+        "nome_area": "PA RESSACA -LOTE 240 - PARCELA 01",
+        "codigo_imo": "9510485639862",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "6021c071-8eb4-47ab-8284-9533a7a25d93",
+        "nome_area": "PA RESSACA -LOTE 240 - PARCELA 02",
+        "codigo_imo": "9510485639862",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "a39922a8-2af1-40ca-98c4-382ae9e23e9f",
+        "nome_area": "PA RESSACA ? LOTE 173 - PARCELA 02",
+        "codigo_imo": "9500335389145",
+        "municipio_": 1507805
+      }
+    ]
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/BasesSincronizadas/lim_sigef_publico_incra_p/FeatureServer/0/query",
+    "where": "codigo_imo = '9020122782380'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/BasesSincronizadas/lim_sigef_publico_incra_p/FeatureServer/0/query",
+    "where": "municipio_ = 5102504 AND nome_area LIKE '%RESSACA%'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/BasesSincronizadas/lim_sigef_publico_incra_p/FeatureServer/0/query",
+    "where": "parcela_co LIKE '%925726ed%'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/BasesSincronizadas/lim_sigef_publico_incra_p/FeatureServer/0/query",
+    "where": "1=1",
+    "n": 20,
+    "sample": [
+      {
+        "parcela_co": "b5b142da-5482-43be-bc3a-3b4909ba8abb",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 011",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "5f8fb5ac-5125-4db4-833d-209006e888a1",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Estrada Vicinal 03",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "20407e28-6c69-4c97-a4b2-9a2a2e893ed6",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 014",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "d50b1377-5f9c-44cb-8c7f-072d66eece8d",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 141",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "baaadbcc-a219-4119-813a-2bd0be71aee8",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 153",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "397eebc0-f1d2-4488-958c-92228d533c6c",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 113",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "cbbcbf17-9a3f-4c05-93a8-0207ad82f455",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 126",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "560f5249-4129-48b6-ac34-ab85b1c4d4a3",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 073",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "16aca14b-f6a6-4c1a-9adb-c8d9ded9b628",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 061",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      },
+      {
+        "parcela_co": "0c7006fe-baf2-49f9-b683-36713fc2b0f2",
+        "nome_area": "PROJETO DE ASSENTAMENTO SANTA CLARA - Lote 079",
+        "codigo_imo": "9502202510203",
+        "municipio_": 5001904
+      }
+    ]
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/lim_imovel_sigef_publico_a/MapServer/10/query",
+    "where": "nome_area LIKE '%RESSACA%'",
+    "n": 20,
+    "sample": [
+      {
+        "parcela_co": "7bdd8c61-c30c-4a53-bc65-012857ca99e9",
+        "nome_area": "PA RESSACA  LOTE 08",
+        "codigo_imo": "9510723023417",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "03af6532-8118-4ae0-a719-b6863c4968d7",
+        "nome_area": "PA RESSACA - LOTE 267",
+        "codigo_imo": "0000436753934",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "c9b79832-6007-4081-85b9-0ae623a30ba2",
+        "nome_area": "PA RESSACA - LOTE 267",
+        "codigo_imo": "0000436753934",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "8c5221ff-2773-4023-8958-40fede03bf7d",
+        "nome_area": "PA RESSACA - LOTE 151",
+        "codigo_imo": "9510561483001",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "1565becd-6d34-4275-a92e-48fd907cab2a",
+        "nome_area": "PA RESSACA -LOTE 240",
+        "codigo_imo": "9510485639862",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "4320d854-2070-4503-9bec-e5e28cefc6ea",
+        "nome_area": "PA RESSACA  LOTE 173",
+        "codigo_imo": "9500335389145",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "08a732a5-ecc5-408f-b6da-b01c3d29cc78",
+        "nome_area": "PA RESSACA  LOTE 08",
+        "codigo_imo": "9510723023417",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "2e54eba0-7fbd-4e3c-9962-be38f06376f1",
+        "nome_area": "PA RESSACA  LOTE 64",
+        "codigo_imo": "9510489968909",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "cd60a079-505e-416f-a787-90bf1a243c27",
+        "nome_area": "PA RESSACA  LOTE 263",
+        "codigo_imo": "9510210603728",
+        "municipio_": 1507805
+      },
+      {
+        "parcela_co": "723750ce-939d-438e-828b-2737d1437511",
+        "nome_area": "PA RESSACA  LOTE 263",
+        "codigo_imo": "9510210603728",
+        "municipio_": 1507805
+      }
+    ]
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/lim_imovel_sigef_publico_a/MapServer/10/query",
+    "where": "codigo_imo = '9020122782380'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/lim_imovel_sigef_publico_a/MapServer/10/query",
+    "where": "municipio_ = 5102504 AND nome_area LIKE '%RESSACA%'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/lim_imovel_sigef_publico_a/MapServer/10/query",
+    "where": "parcela_co LIKE '%925726ed%'",
+    "n": 0,
+    "sample": []
+  },
+  {
+    "endpoint": "https://pamgia.ibama.gov.br/server/rest/services/01_Publicacoes_Bases/lim_imovel_sigef_publico_a/MapServer/10/query",
+    "where": "1=1",
+    "n": 20,
+    "sample": [
+      {
+        "parcela_co": "5a4c3ffa-6e39-4c8e-8465-7dbb3c10c9eb",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "07d19388-681a-4fac-a389-b94c7da83b96",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "e3fded78-a63f-400b-bab5-8d4672cd1f97",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "2ffad3db-16ed-441e-97fb-1bda19ed95b5",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "6083939c-f4a0-4a15-9812-1ff42d404a4e",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "af85845a-2e94-4e74-86bb-8d607b5a2756",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "37c117be-73bc-4cf6-9488-ed61b54d0ad7",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "dc06841a-4248-43aa-a9b8-e0f629b77b34",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "5df6b818-9dea-49ad-b41b-fef6dc0de7d5",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      },
+      {
+        "parcela_co": "7b95d22b-f4b0-4a23-8e15-e03b1c55795c",
+        "nome_area": "P. A. ALAMBARI",
+        "codigo_imo": "9500413745395",
+        "municipio_": 5007901
+      }
+    ]
+  }
+]
