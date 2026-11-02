@@ -1,0 +1,38 @@
+name: Pantanal - reextrair series corrigidas ANA 66070004
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/recorte_cientifico/reextrair_series_validado.py'
+      - '.github/workflows/pantanal-series-corrigidas.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  calcular:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas geograficas gratuitas
+        run: python -m pip install --quiet earthengine-api shapely pyproj
+      - name: Series corretas com bacia validada
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/recorte_cientifico/reextrair_series_validado.py
+      - name: Salvar apenas novas series e validacao
+        if: always()
+        run: |
+          git config user.name "pantanal-science-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/recorte_cientifico/resultados/SERIE_CORRIGIDA_BACIA_ANA_66070004_1985_2025.csv || true
+          git add -f pesquisa_pantanal/recorte_cientifico/resultados/STATUS_EXTRAÇÃO_RECORTE_VALIDADO.json || true
+          git add -f pesquisa_pantanal/recorte_cientifico/resultados/RECORTE_PANTANAL_INTERSECAO_BACIA_ANA_66070004.geojson || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Reextracao valida mensal MapBiomas e CHIRPS com exutorio correto"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
