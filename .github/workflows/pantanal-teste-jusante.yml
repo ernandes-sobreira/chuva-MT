@@ -1,0 +1,41 @@
+name: Pantanal - testar receptor jusante e controles
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/fazenda_ressaca/analisar_receptor_controles.py'
+      - '.github/workflows/pantanal-teste-jusante.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  estatistica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas estatísticas
+        run: python -m pip install --quiet numpy pandas scipy statsmodels matplotlib
+      - name: Comparar receptor e controles com 41 anos
+        run: python pesquisa_pantanal/fazenda_ressaca/analisar_receptor_controles.py
+      - name: Salvar resultados no ramo de pesquisa
+        if: always()
+        run: |
+          git config user.name "pantanal-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/*RECEPTOR*.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/*CONTROLES*.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/PRE_TRANSICAO_POS_DESCRITIVO.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/PARALELISMO_PRE_1985_1994.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/MODELOS_INTERROMPIDOS_EXPLORATORIOS.csv || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/FIGURA_*.png || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/RESUMO_PILOTO_JUSANTE_CONTROLES.json || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/jusante/RELATORIO_RECEPTOR_E_CONTROLES.md || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Contraste área receptora e controles: pretrends, lags e gráficos"
+            git pull --rebase origin pesquisa-pantanal-extracao-2026
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
