@@ -1,0 +1,78 @@
+{
+  "status": "concluido",
+  "centroide_CAFIR_lonlat": [
+    -57.72622,
+    -16.27013
+  ],
+  "centroide_fonte": "https://cafir.com.br/imovel/1741279-0/",
+  "bioma": null,
+  "metodo": "grade de 144 células de 2x2km, 24x24 km ao redor do centroide. Seleção por novos pixels de pastagem sem olhar água.",
+  "grid": "12x12",
+  "células": 144,
+  "area_ha_total": 57600,
+  "classes_nativas_1985": [
+    3,
+    4,
+    6,
+    7,
+    11,
+    12,
+    13,
+    49,
+    50
+  ],
+  "classe_pastagem": 15,
+  "alerta": "Não confundir matriz de células com Fazenda Ressaca. O SIGEF oficial recente não foi confirmado nessa execução.",
+  "fontes": [
+    "MapBiomas LULC Collection 11 30m",
+    "MapBiomas Water Collection 5 30m",
+    "CAFIR localização cadastral"
+  ],
+  "erros": [],
+  "selecionada": {
+    "id": "C05_06",
+    "i": 5,
+    "j": 6,
+    "area_ha": 400,
+    "centro_lonlat": [
+      -57.735545,
+      -16.261058
+    ],
+    "pastagem_ha_1985": 0.0,
+    "pastagem_ha_1995": 66.24,
+    "pastagem_ha_2005": 378.05,
+    "pastagem_ha_2015": 375.45,
+    "pastagem_ha_2025": 376.26,
+    "newpast25_ha": 376.26,
+    "nat_to_past25_ha": 376.26,
+    "lostpast25_ha": 0.0,
+    "water1985_ha": 0.0,
+    "water2025_ha": 1.03,
+    "saldo_pastagem_1985_2025_ha": 376.26
+  },
+  "hotspot_3x3": {
+    "numero_celulas": 9,
+    "ids": [
+      "C04_05",
+      "C04_06",
+      "C04_07",
+      "C05_05",
+      "C05_06",
+      "C05_07",
+      "C06_05",
+      "C06_06",
+      "C06_07"
+    ],
+    "area_aproximada_ha": 3600,
+    "pastagem85_ha": 159.37,
+    "pastagem25_ha": 1684.83,
+    "nat_to_past_ha": 1502.77,
+    "water85_ha": 173.64,
+    "water25_ha": 166.2
+  },
+  "total_grade": {
+    "pastagem85_ha": 4177.45,
+    "pastagem25_ha": 20386.15,
+    "nat_to_past_ha": 16782.64
+  }
+}
