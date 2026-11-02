@@ -1,0 +1,34 @@
+name: Pantanal - cotas e vazoes ANA Caceres
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/hidrologia/coletar_ana.py'
+      - '.github/workflows/pantanal-ana-caceres.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pantanal-hidrologia-ana
+  cancel-in-progress: false
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Cotas verificadas e vazoes oficiais quando disponiveis
+        run: python pesquisa_pantanal/hidrologia/coletar_ana.py
+      - name: Guardar arquivos observados sem alterar aplicacoes
+        if: always()
+        run: |
+          git config user.name "pantanal-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/hidrologia/resultados || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Cotas e vazoes ANA observadas para pesquisa de Caceres"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
