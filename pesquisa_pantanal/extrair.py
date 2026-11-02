@@ -32,14 +32,14 @@ try:
     matches=[]
     inspected=[]
     candidates=sorted(
-        [x for x in z.infolist() if x.filename.lower().endswith((".xlsx",".csv"))],
+        [x for x in z.infolist() if x.filename.lower().endswith((".xlsx",".xlsm",".csv"))],
         key=lambda x:(0 if any(t in normalize(x.filename) for t in ("biome","bioma","pantanal")) else 1, x.file_size))
     for inf in candidates[:30]:
         if inf.file_size>250_000_000:
             inspected.append({"nome":inf.filename,"status":"arquivo_muito_grande","bytes":inf.file_size})
             continue
         try:
-            if inf.filename.lower().endswith(".xlsx"):
+            if inf.filename.lower().endswith((".xlsx",".xlsm")):
                 wb=load_workbook(io.BytesIO(z.read(inf)),read_only=True,data_only=True)
                 for ws in wb.worksheets:
                     count=0; found=0; preview=[]
@@ -76,13 +76,21 @@ except Exception as e:
     traceback.print_exc()
 try:
     geos={}
-    for uf,names in TARGETS.items():
-        loc=req("https://servicodados.ibge.gov.br/api/v1/localidades/estados/"+uf+"/municipios",45).json()
-        idx={normalize(x["nome"]):str(x["id"]) for x in loc}
-        for name in names:
-            cod=idx.get(normalize(name))
-            if not cod:raise RuntimeError("Municipio sem codigo IBGE: "+name)
-            geos[cod]=(uf,name)
+    # MT: codigos de municipios da malha oficial IBGE usada no Chuva-MT.
+    with open("dados/municipios_mt.geojson",encoding="utf-8") as fin:
+        mt=json.load(fin)["features"]
+    idx_mt={normalize(x["properties"]["NM_MUN"]):str(x["properties"]["CD_MUN"]) for x in mt}
+    for nome in TARGETS["MT"]:
+        cod=idx_mt.get(normalize(nome))
+        if not cod:raise RuntimeError("Codigo MT ausente na malha: "+nome)
+        geos[cod]=("MT",nome)
+    # MS: codigos oficiais IBGE - DTB, tabela de municipios.
+    ms_codigos={
+        "Aquidauana":"5001102","Bodoquena":"5002159","Corumbá":"5003207",
+        "Coxim":"5003306","Ladário":"5005202","Miranda":"5005608",
+        "Porto Murtinho":"5006903","Rio Verde de Mato Grosso":"5007406",
+        "Sonora":"5007935"}
+    for nome,cod in ms_codigos.items():geos[cod]=("MS",nome)
     codigos=",".join(geos)
     url="https://apisidra.ibge.gov.br/values/t/3939/n6/"+codigos+"/v/105/p/1985-2025/c79/2670?formato=json"
     resp=req(url,180).json()
