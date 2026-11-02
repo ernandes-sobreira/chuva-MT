@@ -1,0 +1,290 @@
+[
+  {
+    "mes": "1988-01",
+    "piloto_ha": 18216.563,
+    "atual_ha": 18216.439,
+    "diferenca_pct": 0.001
+  },
+  {
+    "mes": "1988-02",
+    "piloto_ha": 18223.86,
+    "atual_ha": 18223.736,
+    "diferenca_pct": 0.001
+  },
+  {
+    "mes": "1988-03",
+    "piloto_ha": 19886.319,
+    "atual_ha": 19887.497,
+    "diferenca_pct": 0.006
+  },
+  {
+    "mes": "1988-04",
+    "piloto_ha": 19382.222,
+    "atual_ha": 19377.892,
+    "diferenca_pct": 0.022
+  },
+  {
+    "mes": "1988-05",
+    "piloto_ha": 19668.431,
+    "atual_ha": 19664.101,
+    "diferenca_pct": 0.022
+  },
+  {
+    "mes": "1988-06",
+    "piloto_ha": 19122.107,
+    "atual_ha": 19117.643,
+    "diferenca_pct": 0.023
+  },
+  {
+    "mes": "1988-07",
+    "piloto_ha": 16241.664,
+    "atual_ha": 16233.337,
+    "diferenca_pct": 0.051
+  },
+  {
+    "mes": "1988-08",
+    "piloto_ha": 14418.669,
+    "atual_ha": 14409.064,
+    "diferenca_pct": 0.067
+  },
+  {
+    "mes": "1988-09",
+    "piloto_ha": 7766.984,
+    "atual_ha": 7757.759,
+    "diferenca_pct": 0.119
+  },
+  {
+    "mes": "1988-10",
+    "piloto_ha": 7347.368,
+    "atual_ha": 7339.118,
+    "diferenca_pct": 0.112
+  },
+  {
+    "mes": "1988-11",
+    "piloto_ha": 10269.664,
+    "atual_ha": 10261.899,
+    "diferenca_pct": 0.076
+  },
+  {
+    "mes": "1988-12",
+    "piloto_ha": 10278.649,
+    "atual_ha": 10270.884,
+    "diferenca_pct": 0.076
+  },
+  {
+    "mes": "2018-01",
+    "piloto_ha": 17690.11,
+    "atual_ha": 17679.092,
+    "diferenca_pct": 0.062
+  },
+  {
+    "mes": "2018-02",
+    "piloto_ha": 20706.877,
+    "atual_ha": 20698.41,
+    "diferenca_pct": 0.041
+  },
+  {
+    "mes": "2018-03",
+    "piloto_ha": 11193.053,
+    "atual_ha": 11181.798,
+    "diferenca_pct": 0.101
+  },
+  {
+    "mes": "2018-04",
+    "piloto_ha": 13028.919,
+    "atual_ha": 13015.134,
+    "diferenca_pct": 0.106
+  },
+  {
+    "mes": "2018-05",
+    "piloto_ha": 12418.34,
+    "atual_ha": 12406.4,
+    "diferenca_pct": 0.096
+  },
+  {
+    "mes": "2018-06",
+    "piloto_ha": 11048.512,
+    "atual_ha": 11040.229,
+    "diferenca_pct": 0.075
+  },
+  {
+    "mes": "2018-07",
+    "piloto_ha": 11333.739,
+    "atual_ha": 11326.992,
+    "diferenca_pct": 0.06
+  },
+  {
+    "mes": "2018-08",
+    "piloto_ha": 7817.535,
+    "atual_ha": 7813.444,
+    "diferenca_pct": 0.052
+  },
+  {
+    "mes": "2018-09",
+    "piloto_ha": 9178.549,
+    "atual_ha": 9173.706,
+    "diferenca_pct": 0.053
+  },
+  {
+    "mes": "2018-10",
+    "piloto_ha": 8763.135,
+    "atual_ha": 8758.293,
+    "diferenca_pct": 0.055
+  },
+  {
+    "mes": "2018-11",
+    "piloto_ha": 8867.586,
+    "atual_ha": 8863.4,
+    "diferenca_pct": 0.047
+  },
+  {
+    "mes": "2018-12",
+    "piloto_ha": 13674.665,
+    "atual_ha": 13665.705,
+    "diferenca_pct": 0.066
+  },
+  {
+    "mes": "2024-01",
+    "piloto_ha": 11242.994,
+    "atual_ha": 11230.013,
+    "diferenca_pct": 0.115
+  },
+  {
+    "mes": "2024-02",
+    "piloto_ha": 11350.56,
+    "atual_ha": 11339.298,
+    "diferenca_pct": 0.099
+  },
+  {
+    "mes": "2024-03",
+    "piloto_ha": 9400.813,
+    "atual_ha": 9393.478,
+    "diferenca_pct": 0.078
+  },
+  {
+    "mes": "2024-04",
+    "piloto_ha": 16003.597,
+    "atual_ha": 15989.263,
+    "diferenca_pct": 0.09
+  },
+  {
+    "mes": "2024-05",
+    "piloto_ha": 13308.337,
+    "atual_ha": 13292.402,
+    "diferenca_pct": 0.12
+  },
+  {
+    "mes": "2024-06",
+    "piloto_ha": 9947.829,
+    "atual_ha": 9940.349,
+    "diferenca_pct": 0.075
+  },
+  {
+    "mes": "2024-07",
+    "piloto_ha": 9221.72,
+    "atual_ha": 9214.789,
+    "diferenca_pct": 0.075
+  },
+  {
+    "mes": "2024-08",
+    "piloto_ha": 8122.179,
+    "atual_ha": 8115.264,
+    "diferenca_pct": 0.085
+  },
+  {
+    "mes": "2024-09",
+    "piloto_ha": 8121.622,
+    "atual_ha": 8114.707,
+    "diferenca_pct": 0.085
+  },
+  {
+    "mes": "2024-10",
+    "piloto_ha": 6295.227,
+    "atual_ha": 6290.137,
+    "diferenca_pct": 0.081
+  },
+  {
+    "mes": "2024-11",
+    "piloto_ha": 7479.142,
+    "atual_ha": 7471.956,
+    "diferenca_pct": 0.096
+  },
+  {
+    "mes": "2024-12",
+    "piloto_ha": 9348.785,
+    "atual_ha": 9344.873,
+    "diferenca_pct": 0.042
+  },
+  {
+    "mes": "2025-01",
+    "piloto_ha": 12995.889,
+    "atual_ha": 12988.11,
+    "diferenca_pct": 0.06
+  },
+  {
+    "mes": "2025-02",
+    "piloto_ha": 12178.953,
+    "atual_ha": 12170.893,
+    "diferenca_pct": 0.066
+  },
+  {
+    "mes": "2025-03",
+    "piloto_ha": 12461.88,
+    "atual_ha": 12452.45,
+    "diferenca_pct": 0.076
+  },
+  {
+    "mes": "2025-04",
+    "piloto_ha": 12775.82,
+    "atual_ha": 12768.942,
+    "diferenca_pct": 0.054
+  },
+  {
+    "mes": "2025-05",
+    "piloto_ha": 10398.344,
+    "atual_ha": 10390.143,
+    "diferenca_pct": 0.079
+  },
+  {
+    "mes": "2025-06",
+    "piloto_ha": 10992.548,
+    "atual_ha": 10983.269,
+    "diferenca_pct": 0.084
+  },
+  {
+    "mes": "2025-07",
+    "piloto_ha": 9851.229,
+    "atual_ha": 9843.886,
+    "diferenca_pct": 0.075
+  },
+  {
+    "mes": "2025-08",
+    "piloto_ha": 9193.46,
+    "atual_ha": 9185.998,
+    "diferenca_pct": 0.081
+  },
+  {
+    "mes": "2025-09",
+    "piloto_ha": 8442.753,
+    "atual_ha": 8435.577,
+    "diferenca_pct": 0.085
+  },
+  {
+    "mes": "2025-10",
+    "piloto_ha": 8089.855,
+    "atual_ha": 8082.565,
+    "diferenca_pct": 0.09
+  },
+  {
+    "mes": "2025-11",
+    "piloto_ha": 7939.945,
+    "atual_ha": 7934.143,
+    "diferenca_pct": 0.073
+  },
+  {
+    "mes": "2025-12",
+    "piloto_ha": 9950.945,
+    "atual_ha": 9942.47,
+    "diferenca_pct": 0.085
+  }
+]
