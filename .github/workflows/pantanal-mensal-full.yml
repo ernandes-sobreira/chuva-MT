@@ -28,7 +28,9 @@ jobs:
         run: |
           git config user.name "pantanal-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f pesquisa_pantanal/hidrologia/resultados/agua_chuva_mensal_caceres_1985_2025.csv pesquisa_pantanal/hidrologia/resultados/relatorio_agua_chuva_mensal.json pesquisa_pantanal/hidrologia/resultados/validacao_mapbiomas_meses.json || true
+          git add -f pesquisa_pantanal/hidrologia/resultados/agua_chuva_mensal_caceres_1985_2025.csv || true
+          git add -f pesquisa_pantanal/hidrologia/resultados/relatorio_agua_chuva_mensal.json || true
+          git add -f pesquisa_pantanal/hidrologia/resultados/validacao_mapbiomas_meses.json || true
           if ! git diff --cached --quiet; then
             git commit -m "Monthly observed inundation and rainfall"
             git push origin HEAD:pesquisa-pantanal-extracao-2026
