@@ -1,0 +1,35 @@
+name: Pantanal 492 meses
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/hidrologia/coletar_mapbiomas_mensal.py'
+      - '.github/workflows/pantanal-mensal-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extrair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install earthengine-api
+      - name: Extract monthly MapBiomas and CHIRPS
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/hidrologia/coletar_mapbiomas_mensal.py
+      - name: Persist research data
+        if: always()
+        run: |
+          git config user.name "pantanal-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/hidrologia/resultados/agua_chuva_mensal_caceres_1985_2025.csv pesquisa_pantanal/hidrologia/resultados/relatorio_agua_chuva_mensal.json pesquisa_pantanal/hidrologia/resultados/validacao_mapbiomas_meses.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Monthly observed inundation and rainfall"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
