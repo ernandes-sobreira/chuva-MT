@@ -1,0 +1,5 @@
+﻿especificacao,n,coef_agua_mil_ha_por_milhao_ha_pastagem,ic95_inf,ic95_sup,p_HAC,R2_ajustado
+Só chuva e sazonalidade,489,-2.7122,-4.4539,-0.9705,0.002273,0.5004
+Chuva + tendência,489,3.3244,0.9426,5.7062,0.006225,0.6032
+Chuva + tendência + cota,465,3.8164,1.4263,6.2064,0.001751,0.6353
+Chuva + tendência + vazão,469,2.2747,0.1558,4.3937,0.03537,0.6326

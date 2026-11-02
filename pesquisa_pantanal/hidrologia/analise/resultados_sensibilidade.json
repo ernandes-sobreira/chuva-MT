@@ -1,0 +1,105 @@
+{
+  "especificacoes": [
+    {
+      "especificacao": "Só chuva e sazonalidade",
+      "n": 489,
+      "coef_agua_mil_ha_por_milhao_ha_pastagem": -2.7122,
+      "ic95_inf": -4.4539,
+      "ic95_sup": -0.9705,
+      "p_HAC": 0.002273,
+      "R2_ajustado": 0.5004
+    },
+    {
+      "especificacao": "Chuva + tendência",
+      "n": 489,
+      "coef_agua_mil_ha_por_milhao_ha_pastagem": 3.3244,
+      "ic95_inf": 0.9426,
+      "ic95_sup": 5.7062,
+      "p_HAC": 0.006225,
+      "R2_ajustado": 0.6032
+    },
+    {
+      "especificacao": "Chuva + tendência + cota",
+      "n": 465,
+      "coef_agua_mil_ha_por_milhao_ha_pastagem": 3.8164,
+      "ic95_inf": 1.4263,
+      "ic95_sup": 6.2064,
+      "p_HAC": 0.001751,
+      "R2_ajustado": 0.6353
+    },
+    {
+      "especificacao": "Chuva + tendência + vazão",
+      "n": 469,
+      "coef_agua_mil_ha_por_milhao_ha_pastagem": 2.2747,
+      "ic95_inf": 0.1558,
+      "ic95_sup": 4.3937,
+      "p_HAC": 0.03537,
+      "R2_ajustado": 0.6326
+    }
+  ],
+  "primeiras_diferencas_anuais": {
+    "n": 34,
+    "coef": 8.4774,
+    "IC95%": [
+      -4.8609,
+      21.8156
+    ],
+    "p_HAC": 0.212876,
+    "R2_ajustado": 0.2228
+  },
+  "correlacao_pastagem_tempo": 0.83364,
+  "validacao_multiplas_janelas": [
+    {
+      "treino_ate": 1999,
+      "teste": "2000-2004",
+      "n_treino": 158,
+      "n_teste": 57,
+      "Só chuva": 2.991,
+      "Chuva + cota": 2.6422,
+      "Chuva + cota + pastagem": 3.9204
+    },
+    {
+      "treino_ate": 2004,
+      "teste": "2005-2009",
+      "n_treino": 215,
+      "n_teste": 58,
+      "Só chuva": 1.9165,
+      "Chuva + cota": 1.7168,
+      "Chuva + cota + pastagem": 4.6542
+    },
+    {
+      "treino_ate": 2009,
+      "teste": "2010-2014",
+      "n_treino": 273,
+      "n_teste": 60,
+      "Só chuva": 2.1109,
+      "Chuva + cota": 2.2411,
+      "Chuva + cota + pastagem": 2.0905
+    },
+    {
+      "treino_ate": 2014,
+      "teste": "2015-2019",
+      "n_treino": 333,
+      "n_teste": 60,
+      "Só chuva": 2.4247,
+      "Chuva + cota": 2.6473,
+      "Chuva + cota + pastagem": 2.2724
+    },
+    {
+      "treino_ate": 2019,
+      "teste": "2020-2024",
+      "n_treino": 393,
+      "n_teste": 60,
+      "Só chuva": 3.17,
+      "Chuva + cota": 2.9541,
+      "Chuva + cota + pastagem": 2.4634
+    }
+  ],
+  "avisos": [
+    "A positividade ou negatividade de coeficientes nao e prova causal",
+    "Pastagem e ano covariam fortemente e podem produzir instabilidade e supressao estatistica",
+    "Pessoas podem alterar a paisagem a montante sem que a area annual de pastagem capture manejo e compactacao",
+    "Primeiras diferencas anuais com n limitado e vazao consolidada por mes",
+    "Validacao temporal reduz risco de ajuste espurio, mas nao identifica causalidade"
+  ]
+}
