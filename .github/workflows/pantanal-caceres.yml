@@ -14,7 +14,7 @@ concurrency:
 jobs:
   diagnostico:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,7 +26,9 @@ jobs:
         env:
           EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
           EE_PROJECT: ${{ vars.EE_PROJECT }}
-        run: python pesquisa_pantanal/caceres/diagnostico.py
+        run: |
+          python pesquisa_pantanal/caceres/diagnostico.py
+          python pesquisa_pantanal/caceres/analise_espacial.py
       - name: Salvar resultados apenas no ramo de pesquisa
         if: always()
         run: |
