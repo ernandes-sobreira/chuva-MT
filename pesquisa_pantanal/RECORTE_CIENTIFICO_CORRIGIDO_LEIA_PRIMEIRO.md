@@ -37,3 +37,17 @@ Mapas, GeoJSON e scripts estão em `pesquisa_pantanal/recorte_cientifico/` e `pe
 - HydroBASINS nível 10: WWF/HydroSHEDS/v1/Basins/hybas_10 (Earth Engine).
 - IBGE Biomas 2025: https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/vetores/2025_Biomas-e-Sistema-Costeiro-Marinho-do-Brasil-1-250000_shp.zip
 - MapBiomas Água C5, MapBiomas Cobertura C11, CHIRPS v2.
+
+## 5. Dados reprocessados em 2 de novembro de 2026
+
+A extração sobre o limite **novo** foi executada com sucesso e validada quanto à integridade de 492 meses de água e chuva, de 1985–2025. Os arquivos reprocessados estão em:
+
+- `recorte_cientifico/resultados/SERIE_CORRIGIDA_BACIA_ANA_66070004_1985_2025.csv` — área mensal com água apenas na parte do **bioma Pantanal situada a montante da estação**, precipitação mensal em toda a bacia e pastagem anual na mesma bacia.
+- `recorte_cientifico/analise/RELATORIO_REANALISE_BACIA_CORRIGIDA.md` — testes HAC/FDR, sensibilidade e validação fora da amostra.
+- `cartografia/MAPA_BACIA_REAL_ESTACAO_CACERES_BIOMAS.png` — mapa com os três biomas e o exutório, distinguindo limites municipais de limites de drenagem.
+
+A porção pantaneira efetivamente analisada mede cerca de **958–960 km²** conforme a simplificação vetorial empregada; não representa toda a planície. Em 1985 e 2025, a superfície anual de água nesse recorte foi aproximadamente 10.977 e 10.990 ha, respectivamente. Não há conclusão de estabilidade ou tendência para toda a série apenas a partir desses extremos.
+
+No teste de **primeiras diferenças anuais** (34 observações com dados hidrométricos suficientes), a associação ajustada de expansão de pastagem com variação da superfície de água não foi significativa (**p HAC = 0,576**). Os coeficientes mensais variaram entre especificações. A chuva e a vazão mantiveram associações com a dinâmica da água, mas nenhuma delas constitui atribuição causal automática.
+
+**Decisão de controle de qualidade:** as figuras e as regressões do piloto HydroBASINS nível 6 permanecem como histórico exploratório, não como evidência final; não devem ser apresentadas sem esta nota de retificação.
