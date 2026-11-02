@@ -3,7 +3,7 @@ on:
   push:
     branches: [pesquisa-pantanal-extracao-2026]
     paths:
-      - 'pesquisa_pantanal/extrair.py'
+      - 'pesquisa_pantanal/*.py'
       - '.github/workflows/pantanal-extracao.yml'
   workflow_dispatch:
 permissions:
@@ -20,7 +20,9 @@ jobs:
       - name: Instalar bibliotecas gratuitas
         run: python -m pip install requests openpyxl
       - name: Extrair agua MapBiomas e rebanho SIDRA
-        run: python pesquisa_pantanal/extrair.py
+        run: |
+          python pesquisa_pantanal/extrair.py
+          python pesquisa_pantanal/extrair_uso_solo.py
       - name: Salvar resultados apenas neste ramo
         if: always()
         run: |
