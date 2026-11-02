@@ -1,0 +1,61 @@
+{
+  "data_execucao_utc": "2026-11-02T19:47:31.778484+00:00",
+  "status": "diagnostico_concluido",
+  "erros": [],
+  "earth_engine": "autenticado",
+  "caceres_ponto": [
+    -57.681,
+    -16.075
+  ],
+  "n_bacias_intersectam_ponto": 1,
+  "basins_at_point": [
+    {
+      "id": 6060634290,
+      "next_down": 6060647640,
+      "upstream_km2": 35427.2,
+      "sub_km2": 8906.9,
+      "pfaf": 642487
+    }
+  ],
+  "mapbiomas_mensal_asset": "projects/mapbiomas-public/assets/brazil/water/collection5/mapbiomas_brazil_collection5_water_monthly_v4",
+  "mapbiomas_mensal_n_imagens": 492,
+  "primeira_imagem_id": "water_monthly_1985_01",
+  "primeira_imagem_bandNames": [
+    "water_monthly"
+  ],
+  "ultimas_imagens": [
+    "water_monthly_2025_12",
+    "water_monthly_2025_11",
+    "water_monthly_2025_10"
+  ],
+  "mapbiomas_anual_asset": "projects/mapbiomas-public/assets/brazil/water/collection5/mapbiomas_brazil_collection5_water_annual_v4",
+  "mapbiomas_annual_band_first_last": [
+    [
+      "classification_1985",
+      "classification_1986",
+      "classification_1987"
+    ],
+    [
+      "classification_2023",
+      "classification_2024",
+      "classification_2025"
+    ]
+  ],
+  "mapbiomas_cobertura_asset": "projects/mapbiomas-public/assets/brazil/lulc/collection11/mapbiomas_brazil_collection11_coverage_v3",
+  "cover_bands": [
+    [
+      "classification_1985",
+      "classification_1986"
+    ],
+    [
+      "classification_2024",
+      "classification_2025"
+    ]
+  ],
+  "histograma_mensal_2024_06_res300m": {
+    "water_monthly": {
+      "6": 525.2588235294211
+    }
+  },
+  "id_mensal_2024_06": "water_monthly_2024_06"
+}
