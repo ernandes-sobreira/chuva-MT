@@ -1,0 +1,39 @@
+name: Pesquisa Pantanal Caceres - diagnostico geo
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/caceres/**'
+      - '.github/workflows/pantanal-caceres.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pantanal-caceres-pesquisa
+  cancel-in-progress: false
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencias geoespaciais gratuitas
+        run: python -m pip install --quiet earthengine-api requests pillow
+      - name: Diagnosticar sub-bacia e MapBiomas
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/caceres/diagnostico.py
+      - name: Salvar resultados apenas no ramo de pesquisa
+        if: always()
+        run: |
+          git config user.name "pantanal-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/caceres/resultados || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Diagnostico geoespacial de Caceres"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
