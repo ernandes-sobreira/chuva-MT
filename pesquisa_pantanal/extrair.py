@@ -46,7 +46,7 @@ try:
                     for idx,row in enumerate(ws.iter_rows(values_only=True),1):
                         vals=[cleaned(v) for v in row[:60]]
                         if idx<=5:preview.append({"linha":idx,"valores":vals[:22]})
-                        if "pantanal" in normalize(" | ".join(vals[:12])):
+                        if "pantanal" in normalize(" | ".join(vals[:12])) or ("planalto_bap" in normalize(inf.filename) and idx>1):
                             matches.append({"arquivo":inf.filename,"aba":ws.title,"linha":idx,"valores":vals[:60]})
                             found+=1
                         count+=1
@@ -82,6 +82,8 @@ try:
     idx_mt={normalize(x["properties"]["NM_MUN"]):str(x["properties"]["CD_MUN"]) for x in mt}
     for nome in TARGETS["MT"]:
         cod=idx_mt.get(normalize(nome))
+        if not cod and nome=="Lambari do Oeste":
+            cod=idx_mt.get(normalize("Lambari D\'Oeste"))
         if not cod:raise RuntimeError("Codigo MT ausente na malha: "+nome)
         geos[cod]=("MT",nome)
     # MS: codigos oficiais IBGE - DTB, tabela de municipios.
