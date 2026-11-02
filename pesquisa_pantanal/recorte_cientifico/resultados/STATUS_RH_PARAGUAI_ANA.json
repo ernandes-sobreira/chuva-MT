@@ -1,0 +1,31 @@
+{
+  "fonte_regiao": "ANA/SNIRH Região Hidrográfica do Paraguai (Brasil)",
+  "erros": [],
+  "todas_tentativas": [
+    {
+      "url": "https://portal1.snirh.gov.br/server/rest/services/Regi%C3%B5es_Hidrogr%C3%A1ficas/MapServer/0/query?where=RHI_NM%3D%27PARAGUAI%27&outFields=%2A&returnGeometry=true&outSR=4674&f=geojson",
+      "n": 1,
+      "bytes": 1291848
+    }
+  ],
+  "area_RH_brasileira_km2": 361601.2,
+  "atributos_ANA": {
+    "OBJECTID": 12,
+    "RHI_SG": "M",
+    "RHI_CD": 7,
+    "RHI_NM": "PARAGUAI",
+    "RHI_AR_KM2": 362263.92,
+    "RHI_AR_HA": 36226392.95,
+    "RHI_GM_AREA": 362263928437,
+    "RHI_GM_PERIMETRO": 4019342.73949,
+    "RHI_VE": "2014",
+    "RHI_CHEIA2015": "Não",
+    "RHI_SECA2015": "Não",
+    "SHAPE.AREA": 0,
+    "SHAPE.LEN": 0
+  },
+  "url_confirmada": "https://portal1.snirh.gov.br/server/rest/services/Regi%C3%B5es_Hidrogr%C3%A1ficas/MapServer/0/query",
+  "area_bioma_Pantanal_dentro_RH_km2": 150927.0,
+  "pct_RH_upstream_Caceres": 9.06,
+  "status": "concluido"
+}
