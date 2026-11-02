@@ -34,5 +34,6 @@ jobs:
           git add -f pesquisa_pantanal/recorte_cientifico/resultados/RECORTE_PANTANAL_INTERSECAO_BACIA_ANA_66070004.geojson || true
           if ! git diff --cached --quiet; then
             git commit -m "Reextracao valida mensal MapBiomas e CHIRPS com exutorio correto"
+            git pull --rebase origin pesquisa-pantanal-extracao-2026
             git push origin HEAD:pesquisa-pantanal-extracao-2026
           fi
