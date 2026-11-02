@@ -1,0 +1,38 @@
+name: Pantanal - imagens satélite Ressaca 1985 2025
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/fazenda_ressaca/mapa_1985_2025.py'
+      - '.github/workflows/pantanal-ressaca-mapa.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  mapa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas geoespaciais
+        run: python -m pip install --quiet earthengine-api shapely pyproj matplotlib pillow
+      - name: Mapas reais GEE
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/fazenda_ressaca/mapa_1985_2025.py
+      - name: Publicar figura e imagens na branch de pesquisa
+        if: always()
+        run: |
+          git config user.name "pantanal-science-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/fazenda_ressaca/resultados/RESSACA_USO_SOLO_*.png || true
+          git add -f pesquisa_pantanal/fazenda_ressaca/resultados/FIGURA_MAPA_RESSACA_1985_2005_2025.png || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Mapas reais entorno Ressaca 1985 2005 2025"
+            git pull --rebase origin pesquisa-pantanal-extracao-2026
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
