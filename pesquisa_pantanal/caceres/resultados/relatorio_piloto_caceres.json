@@ -1,0 +1,29 @@
+{
+  "inicio": "2026-11-02T19:52:09.922336+00:00",
+  "escala_m": {
+    "agua": 120,
+    "pastagem": 180,
+    "chuva": 5566,
+    "mapa_visualizacao": "pixels MapBiomas reamostrados apenas na imagem PNG"
+  },
+  "erros": [
+    "EEException('Too many concurrent aggregations.')"
+  ],
+  "etapas": [
+    "Geometrias conferidas e salvas: {\"local_id\": 6060634290, \"proximajusante_id\": 6060647640, \"local_km2\": 8906.9, \"montante_km2_catalogo\": 35427.2, \"n_unidades_montante\": 3, \"soma_areas_montante_km2\": 35427.3, \"frac_cobertura_montante\": 1.0}"
+  ],
+  "hydrobasins": {
+    "local_id": 6060634290,
+    "proximajusante_id": 6060647640,
+    "local_km2": 8906.9,
+    "montante_km2_catalogo": 35427.2,
+    "n_unidades_montante": 3,
+    "soma_areas_montante_km2": 35427.3,
+    "frac_cobertura_montante": 1.0
+  },
+  "area_estudo": {
+    "area_planicie_intersecao_km2": 2199.6932653664326,
+    "advertencia": "Recorte espacial = unidade hidrobasins local intersectada com limite de bioma Pantanal; nao e toda planicie de Caceres."
+  },
+  "status": "erro_parcial"
+}
