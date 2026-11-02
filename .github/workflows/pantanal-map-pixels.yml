@@ -1,0 +1,37 @@
+name: Pesquisa Pantanal Caceres - mapa pixel
+on:
+  push:
+    branches: [pesquisa-pantanal-extracao-2026]
+    paths:
+      - 'pesquisa_pantanal/caceres/mapas_compute_pixels.py'
+      - '.github/workflows/pantanal-map-pixels.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  mapa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bibliotecas gratuitas
+        run: python -m pip install --quiet earthengine-api pillow
+      - name: Exportacao de classificacao MapBiomas em PNG
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+        run: python pesquisa_pantanal/caceres/mapas_compute_pixels.py
+      - name: Salvar raster ou erro de diagnostico
+        if: always()
+        run: |
+          git config user.name "pantanal-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f pesquisa_pantanal/caceres/resultados/relatorio_exportacao_mapa.json || true
+          git add -f pesquisa_pantanal/caceres/resultados/MAPA_REAL_* || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Exportacao do mapa oficial de Caceres"
+            git push origin HEAD:pesquisa-pantanal-extracao-2026
+          fi
