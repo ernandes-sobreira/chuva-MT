@@ -1,0 +1,127 @@
+{
+  "janela": "1985–2025",
+  "n_meses_total": 492,
+  "n_valid_cota": 471,
+  "n_valid_vazao": 479,
+  "n_valid_agua": 492,
+  "correlacao_cota_vazao_r": 0.93841,
+  "lag_max_associacao_absoluta": {
+    "Chuva montante → cota na estação": {
+      "familia": "Chuva montante → cota na estação",
+      "lag_meses": 1,
+      "n": 470,
+      "beta_padronizado": 0.484985,
+      "ic95_inf": 0.398577,
+      "ic95_sup": 0.571392,
+      "p_hac": 0.0,
+      "r2": 0.898161,
+      "p_fdr_bh": 0.0,
+      "significativo_fdr": true
+    },
+    "Cota em Cáceres → água local": {
+      "familia": "Cota em Cáceres → água local",
+      "lag_meses": 0,
+      "n": 471,
+      "beta_padronizado": 0.602214,
+      "ic95_inf": 0.370826,
+      "ic95_sup": 0.833601,
+      "p_hac": 0.0,
+      "r2": 0.613471,
+      "p_fdr_bh": 0.0,
+      "significativo_fdr": true
+    },
+    "Vazão em Cáceres → água local": {
+      "familia": "Vazão em Cáceres → água local",
+      "lag_meses": 0,
+      "n": 479,
+      "beta_padronizado": 0.574322,
+      "ic95_inf": 0.364117,
+      "ic95_sup": 0.784528,
+      "p_hac": 0.0,
+      "r2": 0.620848,
+      "p_fdr_bh": 0.0,
+      "significativo_fdr": true
+    },
+    "Chuva montante → água local": {
+      "familia": "Chuva montante → água local",
+      "lag_meses": 1,
+      "n": 491,
+      "beta_padronizado": 0.352689,
+      "ic95_inf": 0.196099,
+      "ic95_sup": 0.509279,
+      "p_hac": 1e-05,
+      "r2": 0.579231,
+      "p_fdr_bh": 7e-05,
+      "significativo_fdr": true
+    }
+  },
+  "modelos": [
+    {
+      "modelo": "Chuva+estação+tempo",
+      "n_total": 489,
+      "n_treino": 357,
+      "n_teste": 132,
+      "rmse_teste_mil_ha": 2.9787,
+      "mae_teste_mil_ha": 2.3794,
+      "r2_ajustado_geral": 0.5825,
+      "beta_pastagem_mha": null,
+      "p_hac_pastagem": null,
+      "ic95_pastagem_inf": null,
+      "ic95_pastagem_sup": null
+    },
+    {
+      "modelo": "Chuva+cota+estação+tempo",
+      "n_total": 465,
+      "n_treino": 333,
+      "n_teste": 132,
+      "rmse_teste_mil_ha": 3.0364,
+      "mae_teste_mil_ha": 2.4413,
+      "r2_ajustado_geral": 0.6092,
+      "beta_pastagem_mha": null,
+      "p_hac_pastagem": null,
+      "ic95_pastagem_inf": null,
+      "ic95_pastagem_sup": null
+    },
+    {
+      "modelo": "Chuva+vazão+estação+tempo",
+      "n_total": 469,
+      "n_treino": 337,
+      "n_teste": 132,
+      "rmse_teste_mil_ha": 2.6329,
+      "mae_teste_mil_ha": 2.101,
+      "r2_ajustado_geral": 0.6241,
+      "beta_pastagem_mha": null,
+      "p_hac_pastagem": null,
+      "ic95_pastagem_inf": null,
+      "ic95_pastagem_sup": null
+    },
+    {
+      "modelo": "Chuva+cota+pastagem+tempo",
+      "n_total": 465,
+      "n_treino": 333,
+      "n_teste": 132,
+      "rmse_teste_mil_ha": 2.4443,
+      "mae_teste_mil_ha": 1.9332,
+      "r2_ajustado_geral": 0.6353,
+      "beta_pastagem_mha": 3.816374,
+      "p_hac_pastagem": 0.001751,
+      "ic95_pastagem_inf": 1.426299,
+      "ic95_pastagem_sup": 6.206449
+    }
+  ],
+  "climatologia_pico": {
+    "chuva": 1,
+    "cota": 3,
+    "vazao": 3,
+    "agua": 4
+  },
+  "limitacoes": [
+    "Ausencia de meses ANA nao preenchida",
+    "Cota e vazao oriundas de serie bruta com possiveis mudancas de secao/curva-chave",
+    "Area de agua nao representa volume de inundacao",
+    "Chuva montante CHIRPS, nao redes pluviometricas locais",
+    "Pastagem e tendencia temporal colineares, coeficiente nao causal",
+    "Contemporaneidade cota/agua no mesmo mes nao estabelece direcao causal",
+    "MapBiomas processado a 120m em pesquisa piloto, nao resolucao nativa 30m"
+  ]
+}

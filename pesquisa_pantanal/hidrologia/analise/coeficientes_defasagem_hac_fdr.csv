@@ -1,0 +1,29 @@
+﻿familia,lag_meses,n,beta_padronizado,ic95_inf,ic95_sup,p_hac,r2,p_fdr_bh,significativo_fdr
+Chuva montante → cota na estação,0,471,0.313819,0.222192,0.405446,0.0,0.874871,0.0,True
+Chuva montante → cota na estação,1,470,0.484985,0.398577,0.571392,0.0,0.898161,0.0,True
+Chuva montante → cota na estação,2,469,0.282387,0.186722,0.378052,0.0,0.870593,0.0,True
+Chuva montante → cota na estação,3,468,0.209603,0.094654,0.324551,0.000352,0.863429,0.000493,True
+Chuva montante → cota na estação,4,467,0.195675,0.093778,0.297573,0.000167,0.862174,0.000292,True
+Chuva montante → cota na estação,5,466,0.162149,0.067458,0.25684,0.00079,0.859684,0.000922,True
+Chuva montante → cota na estação,6,465,0.147673,0.054039,0.241307,0.001994,0.858845,0.001994,True
+Cota em Cáceres → água local,0,471,0.602214,0.370826,0.833601,0.0,0.613471,0.0,True
+Cota em Cáceres → água local,1,470,0.54453,0.29823,0.79083,1.5e-05,0.60512,5.3e-05,True
+Cota em Cáceres → água local,2,469,0.316396,0.053523,0.579269,0.018323,0.577159,0.042754,True
+Cota em Cáceres → água local,3,468,0.221287,-0.038162,0.480737,0.094588,0.566868,0.132423,False
+Cota em Cáceres → água local,4,467,0.215289,-0.029997,0.460575,0.085383,0.571264,0.132423,False
+Cota em Cáceres → água local,5,466,0.15592,-0.103848,0.415688,0.239426,0.564891,0.239426,False
+Cota em Cáceres → água local,6,465,0.158617,-0.10061,0.417843,0.230422,0.566665,0.239426,False
+Vazão em Cáceres → água local,0,479,0.574322,0.364117,0.784528,0.0,0.620848,0.0,True
+Vazão em Cáceres → água local,1,478,0.524726,0.312744,0.736708,1e-06,0.616196,3e-06,True
+Vazão em Cáceres → água local,2,477,0.382169,0.169117,0.595222,0.000439,0.586515,0.001024,True
+Vazão em Cáceres → água local,3,476,0.313057,0.117062,0.509053,0.001745,0.577028,0.00257,True
+Vazão em Cáceres → água local,4,475,0.283895,0.105304,0.462485,0.001836,0.576717,0.00257,True
+Vazão em Cáceres → água local,5,474,0.226154,0.035111,0.417198,0.020331,0.565173,0.02372,True
+Vazão em Cáceres → água local,6,473,0.172145,-0.023342,0.367633,0.084359,0.561116,0.084359,False
+Chuva montante → água local,0,492,0.303965,0.155625,0.452305,5.9e-05,0.574853,0.000207,True
+Chuva montante → água local,1,491,0.352689,0.196099,0.509279,1e-05,0.579231,7e-05,True
+Chuva montante → água local,2,490,0.27039,0.097758,0.443023,0.002142,0.569064,0.004998,True
+Chuva montante → água local,3,489,0.13825,-0.061485,0.337985,0.174902,0.55849,0.291315,False
+Chuva montante → água local,4,488,0.117913,-0.06567,0.301495,0.208082,0.561777,0.291315,False
+Chuva montante → água local,5,487,0.077237,-0.094511,0.248986,0.378092,0.558739,0.441107,False
+Chuva montante → água local,6,486,0.040707,-0.117876,0.19929,0.614892,0.56009,0.614892,False
