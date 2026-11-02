@@ -1,0 +1,27 @@
+{
+  "metodo": "earthengine computePixels PNG",
+  "erros": [],
+  "imagens": [
+    {
+      "ano": 1988,
+      "arquivo": "MAPA_REAL_CACERES_AGUA_PASTAGEM_1988.png",
+      "bytes": 73955
+    },
+    {
+      "ano": 2024,
+      "arquivo": "MAPA_REAL_CACERES_AGUA_PASTAGEM_2024.png",
+      "bytes": 84450
+    },
+    {
+      "ano": 1988,
+      "arquivo": "MAPA_REAL_CACERES_MESES_INUNDADOS_1988.png",
+      "bytes": 44847
+    },
+    {
+      "ano": 2024,
+      "arquivo": "MAPA_REAL_CACERES_MESES_INUNDADOS_2024.png",
+      "bytes": 38965
+    }
+  ],
+  "status": "pixels_reais_exportados"
+}
