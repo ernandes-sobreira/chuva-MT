@@ -1,12 +1,25 @@
 {
   "recorte_bioma": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/vetores/2025_Biomas-e-Sistema-Costeiro-Marinho-do-Brasil-1-250000_shp.zip",
-  "colecao": "UCSB-CHC/CHIRPS/V3/DAILY_SAT",
+  "colecao": "UCSB-CHG/CHIRPS/DAILY",
   "variavel": "precipitation",
   "unidade": "mm/ano; media espacial sobre o bioma",
-  "erros": [
-    "CHIRPS: RuntimeError('CHIRPS retornou valor nulo 1985')"
-  ],
+  "erros": [],
   "n_poligonos_bioma": 1,
   "area_geometrica_graus2": 12.908,
-  "recorte_modo": "IBGE 2025, poligonos simplificados 0,004 grau"
+  "recorte_modo": "IBGE 2025, poligonos simplificados 0,004 grau",
+  "testes_fontes": [
+    {
+      "asset": "UCSB-CHC/CHIRPS/V3/DAILY_SAT",
+      "n_1985": 0,
+      "mm_1985_ponto_interno": null
+    },
+    {
+      "asset": "UCSB-CHG/CHIRPS/DAILY",
+      "n_1985": 365,
+      "mm_1985_ponto_interno": 1108.0398404598236
+    }
+  ],
+  "anos": 41,
+  "min_mm": 853.145,
+  "max_mm": 1426.919
 }
