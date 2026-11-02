@@ -1,0 +1,51 @@
+{
+  "status": "concluido",
+  "fonte": "MapBiomas Água C5 mensal, 30m",
+  "periodo_base": "1985–1994",
+  "periodo_final": "2015–2025",
+  "meses_pre": 120,
+  "meses_post": 132,
+  "metrica": "fração de meses com água detectada em cada pixel",
+  "limites": [
+    "Frequência de água detectada não mede volume ou profundidade.",
+    "No-data classificado como 0 na exportação; verificar qualidade de cobertura satelital.",
+    "Pixels próximos não são réplicas independentes.",
+    "Controles MERIT D8 em planície são provisórios."
+  ],
+  "erros": [],
+  "estatisticas_grupo": {
+    "FONTE_PASTAGEM": {
+      "antes": 0.03439,
+      "depois": 0.02984,
+      "delta": -0.00455,
+      "reduz_20pp": 0.02311,
+      "aumenta_20pp": 0.00998
+    },
+    "RECEPTOR_D8": {
+      "antes": 0.15808,
+      "depois": 0.14623,
+      "delta": -0.01186,
+      "reduz_20pp": 0.08965,
+      "aumenta_20pp": 0.0437
+    },
+    "CONTROLE_NORTE": {
+      "antes": 0.14681,
+      "depois": 0.13871,
+      "delta": -0.0081,
+      "reduz_20pp": 0.08051,
+      "aumenta_20pp": 0.04763
+    },
+    "CONTROLE_SENSIBILIDADE": {
+      "antes": 0.15504,
+      "depois": 0.12529,
+      "delta": -0.02975,
+      "reduz_20pp": 0.07545,
+      "aumenta_20pp": 0.01271
+    }
+  },
+  "map_png": "MAPA_DELTA_FREQUENCIA_AGUA_PIXELS_1985_2025.png",
+  "shape": [
+    700,
+    700
+  ]
+}
