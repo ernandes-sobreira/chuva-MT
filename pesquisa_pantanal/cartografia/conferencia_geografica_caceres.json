@@ -1,0 +1,49 @@
+{
+  "status": "validado_geometricamente",
+  "municipio": {
+    "nome": "Cáceres",
+    "codigo_ibge": "5102504",
+    "area_km2_malha": 24485.57,
+    "bbox_lon_lat": [
+      -58.7963,
+      -17.627,
+      -57.0071,
+      -15.4545
+    ]
+  },
+  "unidade_hydrobasins": {
+    "id": 6060634290,
+    "area_km2": 8868.82,
+    "bbox_lon_lat": [
+      -58.62855052861499,
+      -16.407980235473573,
+      -57.45833521556727,
+      -14.808331210227195
+    ]
+  },
+  "area_montante": {
+    "area_km2": 35272.83
+  },
+  "recorte_pantanal_local": {
+    "area_km2": 2189.99
+  },
+  "intersecao_municipio_unidade": {
+    "area_km2": 3062.25,
+    "pct_unidade_dentro_municipio": 34.53,
+    "pct_municipio_na_unidade": 12.51
+  },
+  "sede_caceres_lon_lat": [
+    -57.69,
+    -16.06
+  ],
+  "sede_no_municipio": true,
+  "sede_na_unidade_hydrobasins": true,
+  "fontes": [
+    "IBGE, malha municipal MT (codigo 5102504) extraida do repositorio Chuva-MT",
+    "WWF HydroBASINS nivel 6, identificador 6060634290",
+    "IBGE limite bioma Pantanal 2025, intersecao com unidade local",
+    "MapBiomas Agua C5 e Cobertura C11, rasters em composicao 2024"
+  ],
+  "interpretacao": "O mapa antigo era uma unidade de drenagem HydroBASINS, nao o contorno municipal de Caceres.",
+  "cautela": "Proporcoes espaciais se referem a estes recortes vetoriais, e nao ao municipio inteiro ou ao Pantanal inteiro."
+}
