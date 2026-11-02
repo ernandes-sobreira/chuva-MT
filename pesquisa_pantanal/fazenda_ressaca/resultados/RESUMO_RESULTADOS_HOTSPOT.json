@@ -1,0 +1,23 @@
+{
+  "status": "concluido",
+  "recorte": "3x3 células de 2km no entorno do centro cadastral da Fazenda Ressaca, não propriedade",
+  "n_anos": 41,
+  "n_para_lag": 30,
+  "n_testes_fdr": 33,
+  "significativos_fdr": 0,
+  "lag_menor_p_primario": 1,
+  "p_hac_menor": 0.175097,
+  "p_fdr_menor": 0.997629,
+  "pastagem_1985_ha": 159.47,
+  "pastagem_2005_ha": 1649.17,
+  "pastagem_2025_ha": 1685.92,
+  "agua_media_mensal_1985_ha": 123.19,
+  "agua_media_mensal_2025_ha": 128.26,
+  "conversao_decadas_percent": [
+    27.5,
+    59.7,
+    12.6,
+    0.2
+  ],
+  "cautela": "Controles apenas de precipitação e memória hidrológica; sem conectividade, solo, manejo, vazão local ou perímetro validado. Associação não causal."
+}
