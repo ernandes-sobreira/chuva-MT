@@ -4,6 +4,8 @@ on:
     branches: [pesquisa-pantanal-extracao-2026]
     paths:
       - 'pesquisa_pantanal/hidrologia/resultados/agua_chuva_mensal_caceres_1985_2025.csv'
+      - '.github/workflows/pantanal-analise-hidrologica.yml'
+      - 'pesquisa_pantanal/hidrologia/analisar_series.py'
   workflow_dispatch:
 permissions:
   contents: write
