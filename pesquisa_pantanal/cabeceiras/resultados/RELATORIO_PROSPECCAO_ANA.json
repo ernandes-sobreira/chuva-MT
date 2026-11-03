@@ -1,0 +1,234 @@
+{
+  "data_utc": "2026-11-03T00:05:48.882051+00:00",
+  "fonte_api": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica",
+  "estacoes_publicadas": [
+    {
+      "codigo": "66071300",
+      "estacao": "Fazenda Salu",
+      "rio": "Jauru",
+      "area_referencia_km2": 1219,
+      "papel": "cabeceira"
+    },
+    {
+      "codigo": "66071400",
+      "estacao": "Água Suja",
+      "rio": "Jauru",
+      "area_referencia_km2": 1710,
+      "papel": "montante"
+    },
+    {
+      "codigo": "66072000",
+      "estacao": "Porto Esperidião",
+      "rio": "Jauru",
+      "area_referencia_km2": 4970,
+      "papel": "saida_cabeceiras"
+    },
+    {
+      "codigo": "66055000",
+      "estacao": "São José do Sepotuba",
+      "rio": "Sepotuba",
+      "area_referencia_km2": 8640,
+      "papel": "afluente_provavel_montante_caceres"
+    },
+    {
+      "codigo": "66065000",
+      "estacao": "Estrada MT-125",
+      "rio": "Cabaçal",
+      "area_referencia_km2": 5000,
+      "papel": "afluente_provavel_montante_caceres"
+    },
+    {
+      "codigo": "66070004",
+      "estacao": "Cáceres DNPVN",
+      "rio": "Paraguai",
+      "area_referencia_km2": 32774,
+      "papel": "exutorio_caceres"
+    },
+    {
+      "codigo": "66090000",
+      "estacao": "Descalvados",
+      "rio": "Paraguai",
+      "area_referencia_km2": 48360,
+      "papel": "jusante_caceres"
+    },
+    {
+      "codigo": "66120000",
+      "estacao": "Porto Conceição",
+      "rio": "Paraguai",
+      "area_referencia_km2": 170900,
+      "papel": "jusante_pantanal"
+    }
+  ],
+  "fonte_codigos": "https://metadados.geo.mt.gov.br/geonetwork/srv/api/records/8fdb418a-ef00-4702-8e76-0733a5651f5d/attachments/DSEE-RH-MT-001.pdf",
+  "fonte_jauru_wwf": "https://wwfbrnew.awsassets.panda.org/downloads/wwf-brasil_o_valor_da_restauracao.pdf",
+  "aviso": "A estação Porto Esperidião fica na bacia do Jauru e NÃO é considerada entrada a montante da estação Cáceres; há tributários a jusante.",
+  "metodo": "MediaDiaria=1, NivelConsistencia=1, status de dia vazio/1; 20 dias para mês válido, 300 dias para ano válido, 105 dias no período julho-outubro.",
+  "fontes_migracao": [
+    "https://www.snirh.gov.br/hidroweb/acesso-api",
+    "https://telemetriaws1.ana.gov.br/Dados.aspx"
+  ],
+  "erros": [],
+  "estacoes": [
+    {
+      "codigo": "66071300",
+      "nome": "Fazenda Salu",
+      "rio": "Jauru",
+      "ref_area_km2": 1219,
+      "papel": "cabeceira",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66071300&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 212138,
+      "sha256": "3fc7c6eb8f897fa4c17f824baefd3cdec25d5f9b116404625a8df07d5addf979",
+      "n_month_records": 0,
+      "n_daily": 0,
+      "issues": {
+        "not_bruto": 68
+      },
+      "annual_trend": {
+        "valid_years": 0
+      }
+    },
+    {
+      "codigo": "66071400",
+      "nome": "Água Suja",
+      "rio": "Jauru",
+      "ref_area_km2": 1710,
+      "papel": "montante",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66071400&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1300429,
+      "sha256": "f15e807923db35a87c65672f53f3d03cb8e5fd262cfa476c1bb08176f78e84af",
+      "n_month_records": 44,
+      "n_daily": 719,
+      "issues": {
+        "status_3": 14,
+        "status_2": 10,
+        "not_bruto": 372
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    },
+    {
+      "codigo": "66072000",
+      "nome": "Porto Esperidião",
+      "rio": "Jauru",
+      "ref_area_km2": 4970,
+      "papel": "saida_cabeceiras",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66072000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1496871,
+      "sha256": "591edd40f994d2d6877ac5bb149cf4f97a5b10d2799952b9d3f3dc73db62be4a",
+      "n_month_records": 24,
+      "n_daily": 708,
+      "issues": {
+        "status_2": 5,
+        "status_3": 18,
+        "not_bruto": 454
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    },
+    {
+      "codigo": "66055000",
+      "nome": "São José do Sepotuba",
+      "rio": "Sepotuba",
+      "ref_area_km2": 8640,
+      "papel": "afluente_provavel_montante_caceres",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66055000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1513963,
+      "sha256": "a6f0820c9dbb8ed67c3010ea46e6f3a144d1f38d9d41e97272294f9734ac3e53",
+      "n_month_records": 24,
+      "n_daily": 724,
+      "issues": {
+        "status_2": 5,
+        "status_3": 2,
+        "not_bruto": 468
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    },
+    {
+      "codigo": "66065000",
+      "nome": "Estrada MT-125",
+      "rio": "Cabaçal",
+      "ref_area_km2": 5000,
+      "papel": "afluente_provavel_montante_caceres",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66065000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1377446,
+      "sha256": "e40c3235b998c27f5036f57e6639ce51195d04384dc43a40a05e35580cfe28bc",
+      "n_month_records": 24,
+      "n_daily": 724,
+      "issues": {
+        "status_3": 7,
+        "not_bruto": 468
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    },
+    {
+      "codigo": "66070004",
+      "nome": "Cáceres DNPVN",
+      "rio": "Paraguai",
+      "ref_area_km2": 32774,
+      "papel": "exutorio_caceres",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66070004&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1541975,
+      "sha256": "3339128b3d3d6a5f39148684d5ec62721c8aa8504ba006e2b364bd9b261746c0",
+      "n_month_records": 24,
+      "n_daily": 730,
+      "issues": {
+        "status_2": 1,
+        "not_bruto": 468
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    },
+    {
+      "codigo": "66090000",
+      "nome": "Descalvados",
+      "rio": "Paraguai",
+      "ref_area_km2": 48360,
+      "papel": "jusante_caceres",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66090000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1496567,
+      "sha256": "a15903b7da4a63d89fc54027faedf8788045f3d2bf41a9bc072474300fe82c83",
+      "n_month_records": 24,
+      "n_daily": 281,
+      "issues": {
+        "status_0": 450,
+        "not_bruto": 467
+      },
+      "annual_trend": {
+        "valid_years": 0
+      }
+    },
+    {
+      "codigo": "66120000",
+      "nome": "Porto Conceição",
+      "rio": "Paraguai",
+      "ref_area_km2": 170900,
+      "papel": "jusante_pantanal",
+      "status": "extraido",
+      "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66120000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
+      "response_bytes": 1405299,
+      "sha256": "dd68db358dcc71dcf4a000abfa3ffe89124dd23df91d46d47adf81667017c632",
+      "n_month_records": 24,
+      "n_daily": 731,
+      "issues": {
+        "not_bruto": 438
+      },
+      "annual_trend": {
+        "valid_years": 2
+      }
+    }
+  ]
+}
