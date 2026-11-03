@@ -1,0 +1,126 @@
+{
+  "metodo": "Q seca específica Jul–Out ~ chuva Out(y-1)–Jun(y) + chuva úmida ano anterior + tendência linear, HAC(2).",
+  "Fonte_P": "CHIRPS v2, bacias HydroBASINS L10 conferidas com área de drenagem ANA",
+  "Fonte_Q": "ANA HidroSerieHistorica nível 2 preferido, 1 quando indisponível",
+  "estacoes": [
+    {
+      "codigo": 66055000,
+      "estacao": "São José do Sepotuba",
+      "n_qdry_anos": 33,
+      "periodo": [
+        1986,
+        2025
+      ],
+      "p_chuva_recarga_slope_mm_ano": -2.4761309523809576,
+      "p_chuva_kendall_p": 0.5591794188990182,
+      "qseco_especifica_trend_control_chuva_L_s_km2_ano": -0.17543020758713565,
+      "ic95_inf": -0.2213008303314348,
+      "ic95_sup": -0.1295595848428365,
+      "p_hac_trend": 6.589657588278509e-14,
+      "coef_Q_por_100mm": 0.25484404781611153,
+      "coef_Q_por_100mm_ano_anterior": -0.023525115972270343,
+      "n_rain_years": 41,
+      "r2_ajustado": 0.7125541313928994,
+      "aviso": "Trend residual de Q seca ajustado apenas por chuva, NAO atribuição causal a pastagens.",
+      "p_fdr_hac": 2.6517088505929165e-13,
+      "sig_fdr": true
+    },
+    {
+      "codigo": 66065000,
+      "estacao": "Estrada MT-125",
+      "n_qdry_anos": 32,
+      "periodo": [
+        1993,
+        2025
+      ],
+      "p_chuva_recarga_slope_mm_ano": -0.8031193939393969,
+      "p_chuva_kendall_p": 0.8222603073928314,
+      "qseco_especifica_trend_control_chuva_L_s_km2_ano": -0.08109538661931685,
+      "ic95_inf": -0.11249129577776561,
+      "ic95_sup": -0.0496994774608681,
+      "p_hac_trend": 4.136387052578128e-07,
+      "coef_Q_por_100mm": 0.43307402531468064,
+      "coef_Q_por_100mm_ano_anterior": 0.05010686049414109,
+      "n_rain_years": 41,
+      "r2_ajustado": 0.4078054886516177,
+      "aviso": "Trend residual de Q seca ajustado apenas por chuva, NAO atribuição causal a pastagens.",
+      "p_fdr_hac": 5.17048381572266e-07,
+      "sig_fdr": true
+    },
+    {
+      "codigo": 66070004,
+      "estacao": "Cáceres DNPVN",
+      "n_qdry_anos": 36,
+      "periodo": [
+        1986,
+        2025
+      ],
+      "p_chuva_recarga_slope_mm_ano": -1.0996476190476199,
+      "p_chuva_kendall_p": 0.6859555298180886,
+      "qseco_especifica_trend_control_chuva_L_s_km2_ano": -0.0866121531113034,
+      "ic95_inf": -0.11138592867285985,
+      "ic95_sup": -0.06183837754974694,
+      "p_hac_trend": 7.268511113908218e-12,
+      "coef_Q_por_100mm": 0.35159537062248725,
+      "coef_Q_por_100mm_ano_anterior": 0.17132427300492506,
+      "n_rain_years": 41,
+      "r2_ajustado": 0.7577008985983386,
+      "aviso": "Trend residual de Q seca ajustado apenas por chuva, NAO atribuição causal a pastagens.",
+      "p_fdr_hac": 1.2114185189847031e-11,
+      "sig_fdr": true
+    },
+    {
+      "codigo": 66071400,
+      "estacao": "Água Suja",
+      "n_qdry_anos": 30,
+      "periodo": [
+        1995,
+        2025
+      ],
+      "p_chuva_recarga_slope_mm_ano": 0.26256746031746236,
+      "p_chuva_kendall_p": 0.8927832436428295,
+      "qseco_especifica_trend_control_chuva_L_s_km2_ano": -0.19264400203673437,
+      "ic95_inf": -0.24344036756342802,
+      "ic95_sup": -0.14184763651004073,
+      "p_hac_trend": 1.0606835402371667e-13,
+      "coef_Q_por_100mm": 0.5844564307992919,
+      "coef_Q_por_100mm_ano_anterior": 0.2668733978362341,
+      "n_rain_years": 41,
+      "r2_ajustado": 0.6185472200056381,
+      "aviso": "Trend residual de Q seca ajustado apenas por chuva, NAO atribuição causal a pastagens.",
+      "p_fdr_hac": 2.6517088505929165e-13,
+      "sig_fdr": true
+    },
+    {
+      "codigo": 66072000,
+      "estacao": "Porto Esperidião",
+      "n_qdry_anos": 33,
+      "periodo": [
+        1986,
+        2025
+      ],
+      "p_chuva_recarga_slope_mm_ano": -0.771560185185189,
+      "p_chuva_kendall_p": 0.8048287916706961,
+      "qseco_especifica_trend_control_chuva_L_s_km2_ano": -0.06557090174884647,
+      "ic95_inf": -0.09865666713225664,
+      "ic95_sup": -0.032485136365436304,
+      "p_hac_trend": 0.0001026051231946755,
+      "coef_Q_por_100mm": 0.38324387831639906,
+      "coef_Q_por_100mm_ano_anterior": 0.13890878303939938,
+      "n_rain_years": 41,
+      "r2_ajustado": 0.5896017990824372,
+      "aviso": "Trend residual de Q seca ajustado apenas por chuva, NAO atribuição causal a pastagens.",
+      "p_fdr_hac": 0.0001026051231946755,
+      "sig_fdr": true
+    }
+  ],
+  "interpretacao": "Um coeficiente de tendência residual não identifica destino da água nem causa. Temperatura, ET, retiradas, barramentos, armazenamento subterrâneo e curvas-chave não entraram.",
+  "proximos_controles": [
+    "Evapotranspiração real (TerraClimate/GLEAM)",
+    "mudanças de pastagens na bacia",
+    "dados de captação/outorgas",
+    "reservatórios e PCHs",
+    "baseflow separação do hidrograma diário",
+    "comparação bacias controles e mudanças de curva-chave"
+  ]
+}
