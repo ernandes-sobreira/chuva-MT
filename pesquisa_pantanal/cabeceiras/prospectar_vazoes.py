@@ -31,7 +31,7 @@ meta={"data_utc":dt.datetime.now(dt.timezone.utc).isoformat(),"fonte_api":API,
 "fonte_codigos":"https://metadados.geo.mt.gov.br/geonetwork/srv/api/records/8fdb418a-ef00-4702-8e76-0733a5651f5d/attachments/DSEE-RH-MT-001.pdf",
 "fonte_jauru_wwf":"https://wwfbrnew.awsassets.panda.org/downloads/wwf-brasil_o_valor_da_restauracao.pdf",
 "aviso":"A estação Porto Esperidião fica na bacia do Jauru e NÃO é considerada entrada a montante da estação Cáceres; há tributários a jusante.",
-"metodo":"MediaDiaria=1, NivelConsistencia=1, status de dia vazio/1; 20 dias para mês válido, 300 dias para ano válido, 105 dias no período julho-outubro.",
+"metodo":"MediaDiaria=1; preferir consistência 2 (consistido) para mesma data, senão 1 (bruto), preservando os níveis; status vazio/1; 20 dias para mês, 300 dias para ano, 105 dias secos. Séries mistas devem ser auditadas.",
 "fontes_migracao":["https://www.snirh.gov.br/hidroweb/acesso-api","https://telemetriaws1.ana.gov.br/Dados.aspx"],
 "erros":[],"estacoes":[]}
 SESSION=requests.Session();SESSION.headers.update({"User-Agent":"Mozilla/5.0 hydrology scientific reproducibility"})
@@ -44,7 +44,7 @@ def station_data(code):
  resp=SESSION.get(API,params=params,timeout=(30,140));resp.raise_for_status()
  root=ET.fromstring(resp.content)
  if root.tag.split("}")[-1]!="DataTable":raise ValueError("ANA HTTP result not DataTable: "+root.tag)
- rows={};errors=Counter();countrows=0
+ rows={};level={};errors=Counter();countrows=0
  for node in root.iter():
   if node.tag.split("}")[-1]!="SerieHistorica":continue
   rec={a.tag.split("}")[-1]:(a.text or "").strip() for a in node}
@@ -52,8 +52,10 @@ def station_data(code):
    errors["another_station"]+=1;continue
   if rec.get("MediaDiaria")!="1":
    errors["not_daily"]+=1;continue
-  if rec.get("NivelConsistencia")!="1":
-   errors["not_bruto"]+=1;continue
+  consistencia=rec.get("NivelConsistencia")
+  if consistencia not in ("1","2"):
+   errors["nivel_desconhecido"]+=1;continue
+  errors["series_mensais_nivel_"+consistencia]+=1
   textdate=rec.get("DataHora","")[:10]
   try:year,month=map(int,textdate[:7].split("-"))
   except (ValueError,TypeError):errors["wrong_date"]+=1;continue
@@ -70,19 +72,28 @@ def station_data(code):
    if not math.isfinite(flow) or not 0<=flow<=100000:
     errors["invalid_flow"]+=1;continue
    daystring=f"{year}-{month:02d}-{day:02d}"
-   if daystring in rows and abs(rows[daystring]-flow)>1e-8:
-    errors["conflicting_duplicates"]+=1;continue
+   if daystring in rows:
+    if abs(rows[daystring]-flow)>1e-8:
+     errors["duplicate_diff"]+=1
+    elif level[daystring]==consistencia:
+     errors["duplicate_identical"]+=1
+    # Mesmo dia pode existir em bruto (1) e consistido (2). Selecionar 2.
+    if int(level[daystring])>=int(consistencia):
+     continue
    rows[daystring]=flow
- return rows,resp.url,len(resp.content),hashlib.sha256(resp.content).hexdigest(),dict(errors),countrows
+   level[daystring]=consistencia
+ errors["dias_selecionados_consistidos_2"]=sum(x=="2" for x in level.values())
+ errors["dias_selecionados_brutos_1"]=sum(x=="1" for x in level.values())
+ return rows,level,resp.url,len(resp.content),hashlib.sha256(resp.content).hexdigest(),dict(errors),countrows
 monthly=[];annual=[];daily=[]
 for code,name,river,area,role in STATIONS:
  desc={"codigo":code,"nome":name,"rio":river,"ref_area_km2":area,"papel":role,"status":"processing"}
  try:
-  values,url,length,sha,issues,n_series=station_data(code)
+  values,levels,url,length,sha,issues,n_series=station_data(code)
   desc.update({"api_url":url,"response_bytes":length,"sha256":sha,"n_month_records":n_series,
                "n_daily":len(values),"issues":issues})
   for iso,q in sorted(values.items()):
-   daily.append({"codigo":code,"data":iso,"vazao_m3_s":round(q,5)})
+   daily.append({"codigo":code,"data":iso,"vazao_m3_s":round(q,5),"nivel_consistencia":levels[iso]})
   years=set()
   for year in range(1985,2026):
    vv=[]
@@ -130,7 +141,7 @@ for code,name,river,area,role in STATIONS:
  meta["estacoes"].append(desc)
  print(json.dumps({"estacao":code,"status":desc["status"],"n_daily":desc.get("n_daily"),
                    "anos_validos":desc.get("annual_trend",{}).get("valid_years"),"erro":desc.get("erro")},ensure_ascii=False),flush=True)
- csvout("ANA_CABECEIRAS_VAZAO_DIARIA_1985_2025.csv",daily,["codigo","data","vazao_m3_s"])
+ csvout("ANA_CABECEIRAS_VAZAO_DIARIA_1985_2025.csv",daily,["codigo","data","vazao_m3_s","nivel_consistencia"])
  csvout("ANA_CABECEIRAS_VAZAO_MENSAL_1985_2025.csv",monthly,
         ["codigo","estacao","rio","ano","mes","n_dias","q_media_m3_s","q_min_m3_s","q_max_m3_s","q90_m3_s"])
  csvout("ANA_CABECEIRAS_VAZAO_ANUAL_1985_2025.csv",annual,
