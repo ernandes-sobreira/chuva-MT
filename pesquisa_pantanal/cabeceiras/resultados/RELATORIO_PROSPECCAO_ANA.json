@@ -1,5 +1,5 @@
 {
-  "data_utc": "2026-11-03T00:07:37.755662+00:00",
+  "data_utc": "2026-11-03T00:08:39.760619+00:00",
   "fonte_api": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica",
   "estacoes_publicadas": [
     {
@@ -67,36 +67,7 @@
     "https://www.snirh.gov.br/hidroweb/acesso-api",
     "https://telemetriaws1.ana.gov.br/Dados.aspx"
   ],
-  "erros": [
-    {
-      "station": "66071400",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66072000",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66055000",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66065000",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66070004",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66090000",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    },
-    {
-      "station": "66120000",
-      "error": "ValueError('too many values to unpack (expected 3)')"
-    }
-  ],
+  "erros": [],
   "estacoes": [
     {
       "codigo": "66071300",
@@ -126,7 +97,7 @@
       "rio": "Jauru",
       "ref_area_km2": 1710,
       "papel": "montante",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66071400&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1300429,
       "sha256": "ca02f391ce6a3a852bb017d9b4b338b543ecae5dcce62fe611d2106f4ee5ba1a",
@@ -142,7 +113,20 @@
         "dias_selecionados_consistidos_2": 10880,
         "dias_selecionados_brutos_1": 719
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 31,
+        "period": [
+          1995,
+          2025
+        ],
+        "tau": -0.4408602150537635,
+        "p_kendall": 0.00035680078706109826,
+        "theil_sen_q_m3_s_year": -0.5334733333333332,
+        "slope_CI95": [
+          -0.8030166666666657,
+          -0.1873652173913042
+        ]
+      }
     },
     {
       "codigo": "66072000",
@@ -150,7 +134,7 @@
       "rio": "Jauru",
       "ref_area_km2": 4970,
       "papel": "saida_cabeceiras",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66072000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1496871,
       "sha256": "591edd40f994d2d6877ac5bb149cf4f97a5b10d2799952b9d3f3dc73db62be4a",
@@ -164,7 +148,20 @@
         "dias_selecionados_consistidos_2": 13335,
         "dias_selecionados_brutos_1": 708
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 37,
+        "period": [
+          1985,
+          2025
+        ],
+        "tau": -0.2552552552552552,
+        "p_kendall": 0.026188179371314343,
+        "theil_sen_q_m3_s_year": -0.44597221052631564,
+        "slope_CI95": [
+          -0.8529571428571427,
+          -0.04662142857142827
+        ]
+      }
     },
     {
       "codigo": "66055000",
@@ -172,7 +169,7 @@
       "rio": "Sepotuba",
       "ref_area_km2": 8640,
       "papel": "afluente_provavel_montante_caceres",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66055000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1513963,
       "sha256": "a6f0820c9dbb8ed67c3010ea46e6f3a144d1f38d9d41e97272294f9734ac3e53",
@@ -187,7 +184,20 @@
         "dias_selecionados_consistidos_2": 11770,
         "dias_selecionados_brutos_1": 724
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 31,
+        "period": [
+          1986,
+          2025
+        ],
+        "tau": -0.5268817204301075,
+        "p_kendall": 1.3519173371047162e-05,
+        "theil_sen_q_m3_s_year": -1.994676190476191,
+        "slope_CI95": [
+          -2.926016666666667,
+          -1.179499999999996
+        ]
+      }
     },
     {
       "codigo": "66065000",
@@ -195,7 +205,7 @@
       "rio": "Cabaçal",
       "ref_area_km2": 5000,
       "papel": "afluente_provavel_montante_caceres",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66065000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1377446,
       "sha256": "e40c3235b998c27f5036f57e6639ce51195d04384dc43a40a05e35580cfe28bc",
@@ -210,7 +220,20 @@
         "dias_selecionados_consistidos_2": 11400,
         "dias_selecionados_brutos_1": 724
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 32,
+        "period": [
+          1993,
+          2025
+        ],
+        "tau": -0.19354838709677422,
+        "p_kendall": 0.12407814866273859,
+        "theil_sen_q_m3_s_year": -0.5176425724637685,
+        "slope_CI95": [
+          -1.0799727272727273,
+          0.09022857142857126
+        ]
+      }
     },
     {
       "codigo": "66070004",
@@ -218,7 +241,7 @@
       "rio": "Paraguai",
       "ref_area_km2": 32774,
       "papel": "exutorio_caceres",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66070004&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1541975,
       "sha256": "3339128b3d3d6a5f39148684d5ec62721c8aa8504ba006e2b364bd9b261746c0",
@@ -231,7 +254,20 @@
         "dias_selecionados_consistidos_2": 13891,
         "dias_selecionados_brutos_1": 730
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 39,
+        "period": [
+          1985,
+          2025
+        ],
+        "tau": -0.3603238866396761,
+        "p_kendall": 0.001238486969223239,
+        "theil_sen_q_m3_s_year": -4.453568421052631,
+        "slope_CI95": [
+          -7.1111875,
+          -2.188309090909084
+        ]
+      }
     },
     {
       "codigo": "66090000",
@@ -239,7 +275,7 @@
       "rio": "Paraguai",
       "ref_area_km2": 48360,
       "papel": "jusante_caceres",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66090000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1496567,
       "sha256": "a15903b7da4a63d89fc54027faedf8788045f3d2bf41a9bc072474300fe82c83",
@@ -253,7 +289,20 @@
         "dias_selecionados_consistidos_2": 9720,
         "dias_selecionados_brutos_1": 281
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 21,
+        "period": [
+          1985,
+          2016
+        ],
+        "tau": -0.04761904761904762,
+        "p_kendall": 0.7884201661285044,
+        "theil_sen_q_m3_s_year": -0.7304657004830926,
+        "slope_CI95": [
+          -5.15583846153846,
+          4.061824999999999
+        ]
+      }
     },
     {
       "codigo": "66120000",
@@ -261,7 +310,7 @@
       "rio": "Paraguai",
       "ref_area_km2": 170900,
       "papel": "jusante_pantanal",
-      "status": "falhou",
+      "status": "extraido",
       "api_url": "https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao=66120000&dataInicio=01%2F01%2F1985&dataFim=31%2F12%2F2025&tipoDados=3&nivelConsistencia=1",
       "response_bytes": 1405299,
       "sha256": "dd68db358dcc71dcf4a000abfa3ffe89124dd23df91d46d47adf81667017c632",
@@ -275,7 +324,20 @@
         "dias_selecionados_consistidos_2": 10598,
         "dias_selecionados_brutos_1": 731
       },
-      "erro": "ValueError('too many values to unpack (expected 3)')"
+      "annual_trend": {
+        "valid_years": 28,
+        "period": [
+          1986,
+          2025
+        ],
+        "tau": -0.6878306878306878,
+        "p_kendall": 1.653458634741588e-08,
+        "theil_sen_q_m3_s_year": -6.419936111111111,
+        "slope_CI95": [
+          -8.587324999999993,
+          -4.498854545454543
+        ]
+      }
     }
   ]
 }
