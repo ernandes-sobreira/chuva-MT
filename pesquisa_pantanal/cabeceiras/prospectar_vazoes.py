@@ -18,17 +18,18 @@ API="https://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica"
 # Metadados publicados em documento técnico MT; atuais e coordenadas ainda a confirmar com inventário ANA.
 STATIONS=[
  ("66071300","Fazenda Salu","Jauru",1219,"cabeceira"),
- ("66071400","Água Suja","Jauru",1710,"montante"),
- ("66072000","Porto Esperidião","Jauru",4970,"saida_cabeceiras"),
- ("66055000","São José do Sepotuba","Sepotuba",8640,"afluente_provavel_montante_caceres"),
- ("66065000","Estrada MT-125","Cabaçal",5000,"afluente_provavel_montante_caceres"),
- ("66070004","Cáceres DNPVN","Paraguai",32774,"exutorio_caceres"),
- ("66090000","Descalvados","Paraguai",48360,"jusante_caceres"),
- ("66120000","Porto Conceição","Paraguai",170900,"jusante_pantanal")
+ ("66071400","Água Suja","Jauru",2860,"montante"),
+ ("66072000","Porto Esperidião","Jauru",5660,"saida_cabeceiras"),
+ ("66055000","São José do Sepotuba","Sepotuba",8090,"afluente_provavel_montante_caceres"),
+ ("66065000","Estrada MT-125","Cabaçal",3620,"afluente_provavel_montante_caceres"),
+ ("66070004","Cáceres DNPVN","Paraguai",32400,"exutorio_caceres"),
+ ("66090000","Descalvados","Paraguai",47100,"jusante_caceres"),
+ ("66120000","Porto Conceição","Paraguai",64000,"jusante_pantanal")
 ]
 meta={"data_utc":dt.datetime.now(dt.timezone.utc).isoformat(),"fonte_api":API,
 "estacoes_publicadas":[{"codigo":s[0],"estacao":s[1],"rio":s[2],"area_referencia_km2":s[3],"papel":s[4]} for s in STATIONS],
 "fonte_codigos":"https://metadados.geo.mt.gov.br/geonetwork/srv/api/records/8fdb418a-ef00-4702-8e76-0733a5651f5d/attachments/DSEE-RH-MT-001.pdf",
+"fonte_areas_atualizadas":"HidroInventario ANA 2026: pesquisa_pantanal/cabeceiras/resultados/INVENTARIO_ANA_CABECEIRAS.json",
 "fonte_jauru_wwf":"https://wwfbrnew.awsassets.panda.org/downloads/wwf-brasil_o_valor_da_restauracao.pdf",
 "aviso":"A estação Porto Esperidião fica na bacia do Jauru e NÃO é considerada entrada a montante da estação Cáceres; há tributários a jusante.",
 "metodo":"MediaDiaria=1; preferir consistência 2 (consistido) para mesma data, senão 1 (bruto), preservando os níveis; status vazio/1; 20 dias para mês, 300 dias para ano, 105 dias secos. Séries mistas devem ser auditadas.",
