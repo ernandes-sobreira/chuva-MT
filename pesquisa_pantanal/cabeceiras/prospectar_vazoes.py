@@ -130,7 +130,7 @@ for code,name,river,area,role in STATIONS:
   if len(years)>=15:
    yvals=np.array([r["q_media_m3_s"] for r in valid],dtype=float)
    tau,p=kendalltau(years,yvals)
-   slope,lo,hi=theilslopes(yvals,years,0.95)
+   slope,intercept,lo,hi=theilslopes(yvals,years,0.95)
    desc["annual_trend"]={"valid_years":len(years),"period":[years[0],years[-1]],
        "tau":float(tau),"p_kendall":float(p),"theil_sen_q_m3_s_year":float(slope),
        "slope_CI95":[float(lo),float(hi)]}
