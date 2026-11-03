@@ -1,0 +1,64 @@
+﻿codigo,estacao,metrica,periodo,n_anos,mediana_m3_s
+66071400,Jauru - Água Suja,q_media_m3_s,1985-1999,5,94.789
+66071400,Jauru - Água Suja,q_media_m3_s,2000-2010,11,88.216
+66071400,Jauru - Água Suja,q_media_m3_s,2011-2025,15,86.787
+66071400,Jauru - Água Suja,q_seca_jul_out_m3_s,1985-1999,4,
+66071400,Jauru - Água Suja,q_seca_jul_out_m3_s,2000-2010,11,74.564
+66071400,Jauru - Água Suja,q_seca_jul_out_m3_s,2011-2025,15,69.916
+66071400,Jauru - Água Suja,q90_m3_s,1985-1999,5,79.194
+66071400,Jauru - Água Suja,q90_m3_s,2000-2010,11,70.4
+66071400,Jauru - Água Suja,q90_m3_s,2011-2025,15,64.256
+66072000,Jauru - Porto Esperidião,q_media_m3_s,1985-1999,12,123.709
+66072000,Jauru - Porto Esperidião,q_media_m3_s,2000-2010,11,115.879
+66072000,Jauru - Porto Esperidião,q_media_m3_s,2011-2025,14,113.479
+66072000,Jauru - Porto Esperidião,q_seca_jul_out_m3_s,1985-1999,9,89.664
+66072000,Jauru - Porto Esperidião,q_seca_jul_out_m3_s,2000-2010,11,83.929
+66072000,Jauru - Porto Esperidião,q_seca_jul_out_m3_s,2011-2025,14,77.924
+66072000,Jauru - Porto Esperidião,q90_m3_s,1985-1999,12,82.847
+66072000,Jauru - Porto Esperidião,q90_m3_s,2000-2010,11,78.884
+66072000,Jauru - Porto Esperidião,q90_m3_s,2011-2025,14,71.256
+66055000,Sepotuba - São José,q_media_m3_s,1985-1999,8,243.19
+66055000,Sepotuba - São José,q_media_m3_s,2000-2010,10,229.471
+66055000,Sepotuba - São José,q_media_m3_s,2011-2025,13,193.236
+66055000,Sepotuba - São José,q_seca_jul_out_m3_s,1985-1999,8,163.03
+66055000,Sepotuba - São José,q_seca_jul_out_m3_s,2000-2010,10,155.607
+66055000,Sepotuba - São José,q_seca_jul_out_m3_s,2011-2025,15,130.732
+66055000,Sepotuba - São José,q90_m3_s,1985-1999,8,153.042
+66055000,Sepotuba - São José,q90_m3_s,2000-2010,10,143.415
+66055000,Sepotuba - São José,q90_m3_s,2011-2025,13,120.553
+66065000,Cabaçal - MT-125,q_media_m3_s,1985-1999,7,83.257
+66065000,Cabaçal - MT-125,q_media_m3_s,2000-2010,11,75.216
+66065000,Cabaçal - MT-125,q_media_m3_s,2011-2025,14,76.886
+66065000,Cabaçal - MT-125,q_seca_jul_out_m3_s,1985-1999,7,37.613
+66065000,Cabaçal - MT-125,q_seca_jul_out_m3_s,2000-2010,11,33.18
+66065000,Cabaçal - MT-125,q_seca_jul_out_m3_s,2011-2025,14,31.746
+66065000,Cabaçal - MT-125,q90_m3_s,1985-1999,7,34.248
+66065000,Cabaçal - MT-125,q90_m3_s,2000-2010,11,28.498
+66065000,Cabaçal - MT-125,q90_m3_s,2011-2025,14,27.243
+66070004,Paraguai - Cáceres,q_media_m3_s,1985-1999,13,614.924
+66070004,Paraguai - Cáceres,q_media_m3_s,2000-2010,11,558.867
+66070004,Paraguai - Cáceres,q_media_m3_s,2011-2025,15,474.249
+66070004,Paraguai - Cáceres,q_seca_jul_out_m3_s,1985-1999,13,324.817
+66070004,Paraguai - Cáceres,q_seca_jul_out_m3_s,2000-2010,9,273.286
+66070004,Paraguai - Cáceres,q_seca_jul_out_m3_s,2011-2025,15,230.266
+66070004,Paraguai - Cáceres,q90_m3_s,1985-1999,13,299.141
+66070004,Paraguai - Cáceres,q90_m3_s,2000-2010,11,249.357
+66070004,Paraguai - Cáceres,q90_m3_s,2011-2025,15,207.455
+66090000,Paraguai - Descalvados,q_media_m3_s,1985-1999,13,677.841
+66090000,Paraguai - Descalvados,q_media_m3_s,2000-2010,5,661.63
+66090000,Paraguai - Descalvados,q_media_m3_s,2011-2025,3,
+66090000,Paraguai - Descalvados,q_seca_jul_out_m3_s,1985-1999,10,430.966
+66090000,Paraguai - Descalvados,q_seca_jul_out_m3_s,2000-2010,4,
+66090000,Paraguai - Descalvados,q_seca_jul_out_m3_s,2011-2025,7,334.392
+66090000,Paraguai - Descalvados,q90_m3_s,1985-1999,13,403.551
+66090000,Paraguai - Descalvados,q90_m3_s,2000-2010,5,338.256
+66090000,Paraguai - Descalvados,q90_m3_s,2011-2025,3,
+66120000,Paraguai - Porto Conceição,q_media_m3_s,1985-1999,6,453.831
+66120000,Paraguai - Porto Conceição,q_media_m3_s,2000-2010,7,421.691
+66120000,Paraguai - Porto Conceição,q_media_m3_s,2011-2025,15,330.709
+66120000,Paraguai - Porto Conceição,q_seca_jul_out_m3_s,1985-1999,5,357.382
+66120000,Paraguai - Porto Conceição,q_seca_jul_out_m3_s,2000-2010,6,299.674
+66120000,Paraguai - Porto Conceição,q_seca_jul_out_m3_s,2011-2025,15,246.522
+66120000,Paraguai - Porto Conceição,q90_m3_s,1985-1999,6,292.631
+66120000,Paraguai - Porto Conceição,q90_m3_s,2000-2010,7,250.053
+66120000,Paraguai - Porto Conceição,q90_m3_s,2011-2025,15,190.973
