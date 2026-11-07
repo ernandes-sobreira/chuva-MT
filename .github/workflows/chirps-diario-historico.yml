@@ -1,0 +1,55 @@
+name: Construir serie diaria historica CHIRPS
+
+on:
+  schedule:
+    - cron: "11 12 * * *"
+  workflow_dispatch:
+    inputs:
+      ano:
+        description: "Ano especifico (vazio = proximo ano pendente)"
+        required: false
+        type: string
+  push:
+    paths:
+      - "scripts/atualizar_chirps_diario.py"
+      - ".github/workflows/chirps-diario-historico.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chuva-mt-chirps-historico
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Extrair proximo ano CHIRPS
+        env:
+          EE_SERVICE_ACCOUNT_KEY: ${{ secrets.EE_SERVICE_ACCOUNT_KEY }}
+          EE_PROJECT: ${{ vars.EE_PROJECT }}
+          CHIRPS_COLECAO: ${{ vars.CHIRPS_COLECAO }}
+          ANO: ${{ inputs.ano }}
+        run: |
+          if [ -n "$ANO" ]; then
+            python scripts/atualizar_chirps_diario.py --ano "$ANO"
+          else
+            python scripts/atualizar_chirps_diario.py
+          fi
+      - name: Publicar arquivos por ano
+        run: |
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add dados/chirps_diario/
+          if ! git diff --cached --quiet; then
+            git commit -m "Atualiza CHIRPS diario historico"
+            git pull --rebase origin main
+            git push origin main
+          fi
