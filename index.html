@@ -260,6 +260,17 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 
 <!-- ================= COMPARAR ================= -->
 <section class="view" id="v-comparar" hidden>
+<div class="card" id="comparadorPeriodos" style="margin-bottom:18px">
+ <div class="chead"><h2>Comparar qualquer período — inclusive 2026</h2><p class="note">CHIRPS mensal · mesma janela de meses, sem comparar ano parcial com ano completo</p></div>
+ <div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
+ <label class="field">Comparar<select id="cpTipoNovo"><option value="mes">Mesmo mês</option><option value="acum" selected>Acumulado de janeiro até o mês</option><option value="intervalo">Intervalo de meses</option></select></label>
+ <label class="field">Ano de referência<select id="cpAnoNovoA"></select></label><label class="field">Ano comparado<select id="cpAnoNovoB"></select></label>
+ <label class="field">Mês inicial<select id="cpMesNovoA"></select></label><label class="field">Mês final<select id="cpMesNovoB"></select></label>
+ </div><p id="cpResumoNovo" class="note" aria-live="polite"></p>
+ <div id="cpValoresNovo" class="kpis" style="margin:12px 0"></div>
+ <div id="cpGraficoNovo" style="overflow-x:auto"></div>
+ <p class="note" style="margin-top:10px">Valores estimados por satélite, média espacial ponderada no recorte escolhido. Meses indisponíveis não são preenchidos. A comparação de um mesmo dia em anos distintos exige uma série histórica diária CHIRPS; a aba Diário / Agora usa GSMaP e não é comparável diretamente ao CHIRPS.</p>
+ </div>
   <div class="grid2">
     <div class="card">
       <div class="chead">
@@ -908,6 +919,7 @@ function render(){
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab==S.tab));
   ["mapa","diario","comparar","local","estat","dados"].forEach(t=>$("v-"+t).hidden=t!=S.tab);
   ({mapa:rMapa,diario:rDiario,comparar:rComparar,local:rLocal,estat:rEstat,dados:rDados})[S.tab]();
+  if(S.tab=="comparar")cpRender();
 }
 function metOptions(el){el.innerHTML=Object.keys(METRICAS).map(k=>'<option value="'+k+'"'+(k==S.met?" selected":"")+'>'+METRICAS[k].nome+'</option>').join("");}
 
@@ -1398,11 +1410,51 @@ $("btnDrive").addEventListener("click",()=>driveSync(true));
 /* ---------- estado e inicio ---------- */
 function saveLocal(){try{const o={};for(const k in EXTRA)if(!EXTRA[k].repo)o[k]=EXTRA[k];localStorage.setItem(LSM,JSON.stringify(o));}catch(_){}}
 let REPO_META=null;
+
+/* Comparador de periodos mensais coerentes, inclusive anos parciais. */
+const CP={tipo:"acum",a:2025,b:2026,ini:1,fim:12,ready:false};
+function cpConfig(){
+ const y=lastYear(),ls=[];for(let a=Y0;a<=y;a++)ls.push(a);
+ const options=ls.reverse().map(a=>'<option value="'+a+'">'+a+'</option>').join("");
+ for(const id of ["cpAnoNovoA","cpAnoNovoB"])$(id).innerHTML=options;
+ for(const id of ["cpMesNovoA","cpMesNovoB"])$(id).innerHTML=MESES.map((m,i)=>'<option value="'+(i+1)+'">'+cap(m)+'</option>').join("");
+ CP.b=y;CP.a=y-1;CP.fim=y>YREF?Math.max(1,...Array.from({length:12},(_,i)=>i+1).filter(m=>EXTRA[y+"-"+String(m).padStart(2,"0")])):12;
+ CP.ready=true;
+ ["cpTipoNovo","cpAnoNovoA","cpAnoNovoB","cpMesNovoA","cpMesNovoB"].forEach(id=>$(id).addEventListener("change",()=>{
+ CP.tipo=$("cpTipoNovo").value;CP.a=+$("cpAnoNovoA").value;CP.b=+$("cpAnoNovoB").value;
+ CP.ini=+$("cpMesNovoA").value;CP.fim=+$("cpMesNovoB").value;cpRender();
+ }));
+}
+function cpRender(){
+ if(!CP.ready)cpConfig();
+ const y=lastYear();if(CP.b>y)CP.b=y;if(CP.a>y)CP.a=y;
+ $("cpTipoNovo").value=CP.tipo;$("cpAnoNovoA").value=CP.a;$("cpAnoNovoB").value=CP.b;
+ $("cpMesNovoA").value=CP.ini;$("cpMesNovoB").value=CP.fim;
+ $("cpMesNovoA").parentElement.hidden=CP.tipo!="intervalo";
+ $("cpMesNovoB").parentElement.hidden=false;
+ const ini=CP.tipo=="mes"?CP.fim:CP.tipo=="acum"?1:CP.ini,fim=CP.fim,valid=ini<=fim;
+ const u=U(),months=valid?Array.from({length:fim-ini+1},(_,i)=>ini+i):[];
+ const values=yr=>months.map(m=>dlUnitValue(u,yr,m-1));
+ const va=values(CP.a),vb=values(CP.b);
+ const complete=valid&&va.every(v=>v!=null)&&vb.every(v=>v!=null);
+ const sa=complete?va.reduce((a,b)=>a+b,0):null,sb=complete?vb.reduce((a,b)=>a+b,0):null;
+ const fmt=v=>v==null?"—":f1(v)+" mm";
+ const k=(a,b)=>'<div class="kpi"><div class="l">'+a+'</div><div class="v">'+b+'</div></div>';
+ $("cpValoresNovo").innerHTML=k(CP.a,fmt(sa))+k(CP.b,fmt(sb))+k("Diferença B − A",complete?sg(sb-sa,1)+" mm":"—")+k("Variação",complete&&sa>0?sg(100*(sb-sa)/sa,1)+"%":"—");
+ const detail=months.map((m,i)=>({m,a:va[i],b:vb[i]}));
+ const max=Math.max(1,...detail.flatMap(d=>[d.a||0,d.b||0]));
+ $("cpGraficoNovo").innerHTML='<div style="min-width:330px">'+detail.map(d=>{
+ const bars=[{v:d.a,y:CP.a,color:"#2a78d6"},{v:d.b,y:CP.b,color:"#0a6b62"}];
+ return '<div style="display:grid;grid-template-columns:90px 1fr;gap:8px;margin:12px 0;align-items:center"><b>'+cap(MESES[d.m-1])+'</b><div>'+bars.map(z=>'<div style="display:flex;align-items:center;gap:8px;margin:3px 0"><span style="width:36px;font-size:12px">'+z.y+'</span><div style="flex:1;background:#eef2f7;height:17px;border-radius:4px"><div style="width:'+(z.v==null?0:Math.max(1,100*z.v/max))+'%;background:'+z.color+';height:100%;border-radius:4px"></div></div><span style="width:80px;text-align:right;font-variant-numeric:tabular-nums">'+fmt(z.v)+'</span></div>').join("")+'</div></div>';
+ }).join("")+'</div>';
+ $("cpResumoNovo").textContent=!valid?"O mês inicial deve ser anterior ou igual ao final.":!complete?"Período incompleto: pelo menos um dos meses selecionados não está disponível nos dois anos. Não calculamos totais ou porcentagens com meses faltantes.":"Em "+u.nome+", comparação "+MESES[ini-1]+"–"+MESES[fim-1]+": "+CP.a+" = "+fmt(sa)+"; "+CP.b+" = "+fmt(sb)+". Diferença = "+sg(sb-sa,1)+" mm.";
+}
+
 function loadRepo(){ /* no GitHub Pages: meses calculados pelo agendamento ficam em dados/meses.json */
   if(typeof fetch!="function")return;
   fetch("dados/meses.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object")return;REPO_META=j._meta||{};const o=Object.assign({},EXTRA);let n=0;
     for(const k in j){if(k=="_meta"||!j[k]||!j[k].v)continue;const e=j[k];o[k]={ano:e.ano,mes:e.mes,v:e.v,n:e.n,fonte:e.fonte,preliminar:!!e.preliminar,repo:true,atualizado_em:e.atualizado_em};n++;}
-    setExtra(o);S.year=null;render();}).catch(()=>{});}
+    setExtra(o);S.year=null;CP.ready=false;render();}).catch(()=>{});}
 function loadDailyRepo(){
   if(typeof fetch!="function")return;
   fetch("dados/diario.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object"||!j.dias)return;DAILY=j;if(!S.dayDate||!j.dias[S.dayDate]){const ks=Object.keys(j.dias).sort();S.dayDate=ks.length?ks[ks.length-1]:null;}if(S.tab=="diario")render();}).catch(()=>{});
