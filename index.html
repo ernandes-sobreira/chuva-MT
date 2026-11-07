@@ -228,13 +228,22 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
             <label class="field">Contorno<select id="selCont"><option value="">Nenhum</option><option value="meso">Mesorregiões</option><option value="rgi">Regiões intermediárias</option><option value="bio">Biomas</option></select></label>
           </div>
         </div>
+        <div class="card" id="timelineMapYears" style="padding:12px 14px;margin:10px 0 14px;background:#edf5fc;border:1px solid #c6dbef;border-radius:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <strong style="font-size:1rem">Linha do tempo — deslize entre os anos</strong>
+            <button type="button" class="btn ghost sm" id="btnIrComparar">Comparar dois anos no mapa</button>
+          </div>
+          <div class="player" style="margin-top:10px;display:flex;align-items:center;gap:12px">
+            <button class="btn round" id="btnPlay" type="button" aria-label="Animar os anos">&#9654;</button>
+            <span id="timelineFirst" class="note"></span>
+            <input type="range" id="rngAno" aria-label="Deslizar ano do mapa" style="flex:1;min-width:120px">
+            <span id="timelineLast" class="note"></span>
+            <div class="yr" id="yrLbl"></div>
+          </div>
+        </div>
         <div class="mapbox"><svg class="mapa" id="map1" role="img" aria-label="Mapa dos municípios de Mato Grosso"></svg><div class="bigyear" id="bigyear"></div></div>
         <div class="legend" id="leg1"></div>
-        <div class="player">
-          <button class="btn round" id="btnPlay" type="button" aria-label="Animar os anos">&#9654;</button>
-          <input type="range" id="rngAno" aria-label="Ano">
-          <div class="yr" id="yrLbl"></div>
-        </div>
+
         <p class="note" id="mpNota"></p>
       </div>
     </div>
@@ -950,7 +959,7 @@ function rMapa(){
   M1.click(i=>{if(S.tipo=="custom"){const c=MUN[i].c,k=S.custom.indexOf(c);if(k>=0)S.custom.splice(k,1);else S.custom.push(c);render();}else selMun(i);});
   $("leg1").innerHTML=legendaHTML(legendaMetric(S.met,lim));
   $("bigyear").textContent=y;$("mpTitulo").textContent=METRICAS[S.met].nome.replace(/ \(.*/,"")+" em "+plabel(p,y);
-  const r=$("rngAno");r.min=ys[0];r.max=ys[ys.length-1];r.step=1;r.value=y;$("yrLbl").textContent=y;
+  const r=$("rngAno");r.min=ys[0];r.max=ys[ys.length-1];r.step=1;r.value=y;$("yrLbl").textContent=y;$("timelineFirst").textContent=ys[0];$("timelineLast").textContent=ys[ys.length-1];
   const cov=MUN.filter((_,i)=>pval(i,p,y)==null).map(m=>m.n);
   $("mpNota").textContent=(S.tipo=="custom"?"Modo de seleção: cada clique inclui ou retira um município do recorte. ":"Clique em um município para analisá-lo. ")+(cov.length&&cov.length<NM?"Sem dado neste período: "+(cov.length>6?cov.length+" municípios":cov.join(", "))+". ":"")+(isPrelim(p,y)?"Este período inclui dado preliminar.":"");
   /* destaque */
@@ -985,6 +994,7 @@ $("rank1").addEventListener("click",e=>{const b=e.target.closest("button[data-i]
 $("rank2").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)selMun(+b.dataset.i);});
 $("selMet").addEventListener("change",e=>{S.met=e.target.value;saveUI();rMapa();});
 $("selCont").addEventListener("change",e=>{S.cont=e.target.value;saveUI();rMapa();});
+$("btnIrComparar").addEventListener("click",()=>{S.a=S.year;S.b=years().filter(x=>x!==S.a).slice(-1)[0]||S.a;S.cmp="swipe";S.tab="comparar";render();window.scrollTo({top:0,behavior:"smooth"});});
 $("rngAno").addEventListener("input",e=>{S.year=+e.target.value;rMapa();});
 function stopPlay(){if(playing){clearInterval(playing);playing=null;$("btnPlay").innerHTML="&#9654;";$("btnPlay").setAttribute("aria-label","Animar os anos");}}
 $("btnPlay").addEventListener("click",()=>{if(playing){stopPlay();return;}const ys=years();if(S.year==ys[ys.length-1])S.year=ys[0];else S.year++;rMapa();
