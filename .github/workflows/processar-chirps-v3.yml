@@ -1,0 +1,41 @@
+name: Publicar meses CHIRPS v3 preliminares e definitivos
+
+on:
+  schedule:
+    - cron: "47 12 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/processar_chirps_v3.py"
+      - ".github/workflows/processar-chirps-v3.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chuva-mt-processar-v3
+  cancel-in-progress: false
+
+jobs:
+  processar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar leitura GeoTIFF e geometrias
+        run: pip install "numpy<3" rasterio shapely
+      - name: Processar próximo mês CHIRPS v3 pendente
+        run: python scripts/processar_chirps_v3.py
+      - name: Publicar mês e metadados
+        run: |
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add dados/meses.json dados/mensal/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publica CHIRPS v3 mensal e status de qualidade"
+            git pull --rebase origin main
+            git push origin main
+          fi
