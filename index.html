@@ -904,7 +904,7 @@ function loadUI(){try{const o=JSON.parse(localStorage.getItem(LSUI)||"null");if(
   const h=(location.hash||"").slice(1);if(["mapa","diario","comparar","local","estat","dados"].indexOf(h)>=0)S.tab=h;}
 function years(){return allYears(P());}
 function fixYear(){const ys=years();if(S.year==null||ys.indexOf(S.year)<0)S.year=ys[ys.length-1];
-  if(S.b==null||ys.indexOf(S.b)<0)S.b=ys.indexOf(2024)>=0?2024:ys[ys.length-1];if(S.a==null||ys.indexOf(S.a)<0)S.a=ys.indexOf(2020)>=0?2020:ys[0];
+  if(S.b==null||ys.indexOf(S.b)<0)S.b=ys[ys.length-1];if(S.a==null||ys.indexOf(S.a)<0)S.a=ys.length>1?ys[ys.length-2]:ys[0];
   return ys;}
 function selMun(i){S.tipo="mun";S.id=MUN[i].c;render();}
 function tipMun(i,p,y){const c=classe(i,p,y),m=MUN[i];if(!c)return "<b>"+esc(m.n)+"</b><span>Sem dado em "+plabel(p,y)+"</span>";
