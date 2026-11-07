@@ -262,23 +262,12 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 
 <!-- ================= COMPARAR ================= -->
 <section class="view" id="v-comparar" hidden>
-<div class="card" id="comparadorPeriodos" style="margin-bottom:18px">
- <div class="chead"><h2>Comparar períodos históricos</h2><p class="note">CHIRPS mensal · anos disponíveis atualizados automaticamente</p></div>
- <div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
- <label class="field">Comparar<select id="cpTipoNovo"><option value="mes">Mesmo mês</option><option value="acum" selected>Acumulado de janeiro até o mês</option><option value="intervalo">Intervalo de meses</option></select></label>
- <label class="field">Ano de referência<select id="cpAnoNovoA"></select></label><label class="field">Ano comparado<select id="cpAnoNovoB"></select></label>
- <label class="field">Mês inicial<select id="cpMesNovoA"></select></label><label class="field">Mês final<select id="cpMesNovoB"></select></label>
- </div><p id="cpFonteStatus" class="note" aria-live="polite"></p><p id="cpResumoNovo" class="note" aria-live="polite"></p>
- <div id="cpValoresNovo" class="kpis" style="margin:12px 0"></div>
- <div id="cpGraficoNovo" style="overflow-x:auto"></div>
- <p class="note" style="margin-top:10px">Valores estimados por satélite, média espacial ponderada no recorte escolhido. Meses indisponíveis não são preenchidos. A comparação de um mesmo dia em anos distintos exige uma série histórica diária CHIRPS; a aba Diário / Agora usa GSMaP e não é comparável diretamente ao CHIRPS.</p>
- </div>
   <div class="grid2">
     <div class="card">
       <div class="chead">
-        <h2 id="cpTitulo">Comparação</h2>
+        <h2 id="cpTitulo">Comparação no mapa</h2>
         <div class="ctl">
-          <label class="field">Ano A<select id="selA"></select></label>
+          <label class="field">Período<select id="cmpPeriodo"><option value="ano">Ano inteiro (jan–dez)</option></select></label><label class="field">Ano A<select id="selA"></select></label>
           <button class="btn ghost sm" id="btnTroca" type="button" aria-label="Trocar A e B">&#8646;</button>
           <label class="field">Ano B<select id="selB"></select></label>
           <label class="field">Variável<select id="selMet2"></select></label>
@@ -294,7 +283,12 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
         <div class="handle" id="swHandle"></div>
         <div class="tag a" id="tagA"></div><div class="tag b" id="tagB"></div>
       </div>
-      <div class="player" id="swCtl"><span class="note">A</span><input type="range" id="rngSw" min="0" max="100" step="0.5" value="50" aria-label="Posição da divisória entre os dois anos"><span class="note">B</span></div>
+      <div class="player" id="swCtl" style="display:flex;gap:12px;align-items:center"><strong>Deslize o mapa</strong><span class="note">A</span><input type="range" id="rngSw" min="0" max="100" step="0.5" value="50" aria-label="Deslizar divisão visual dos mapas"><span class="note">B</span></div>
+      <div class="player" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px">
+        <label class="field" style="flex:1;min-width:220px">Percorrer os anos do mapa B <input type="range" id="cmpAnoRange" step="1" aria-label="Percorrer anos do mapa comparado"></label>
+        <strong id="cmpAnoRangeLabel"></strong>
+      </div>
+      <p class="note">Escolha Ano inteiro ou um mês específico. Arraste a divisória do mapa para comparar os mesmos municípios; mova a régua dos anos para percorrer a série.</p>
       <div class="mapbox" id="difBox" hidden><svg class="mapa" id="mapD" role="img" aria-label="Mapa da diferença entre os dois anos"></svg></div>
       <div class="legend" id="leg2"></div>
       <div class="chead"><p class="note" id="cpNota"></p><button class="btn ghost sm" id="btnSweep" type="button">Animar a divisória</button></div>
@@ -309,6 +303,17 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
       </div>
     </div>
   </div>
+<div class="card" id="comparadorPeriodos" style="margin-bottom:18px">
+ <div class="chead"><h2>Comparar períodos históricos</h2><p class="note">CHIRPS mensal · anos disponíveis atualizados automaticamente</p></div>
+ <div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
+ <label class="field">Comparar<select id="cpTipoNovo"><option value="mes">Mesmo mês</option><option value="acum" selected>Acumulado de janeiro até o mês</option><option value="intervalo">Intervalo de meses</option></select></label>
+ <label class="field">Ano de referência<select id="cpAnoNovoA"></select></label><label class="field">Ano comparado<select id="cpAnoNovoB"></select></label>
+ <label class="field">Mês inicial<select id="cpMesNovoA"></select></label><label class="field">Mês final<select id="cpMesNovoB"></select></label>
+ </div><p id="cpFonteStatus" class="note" aria-live="polite"></p><p id="cpResumoNovo" class="note" aria-live="polite"></p>
+ <div id="cpValoresNovo" class="kpis" style="margin:12px 0"></div>
+ <div id="cpGraficoNovo" style="overflow-x:auto"></div>
+ <p class="note" style="margin-top:10px">Valores estimados por satélite, média espacial ponderada no recorte escolhido. Meses indisponíveis não são preenchidos. A comparação de um mesmo dia em anos distintos exige uma série histórica diária CHIRPS; a aba Diário / Agora usa GSMaP e não é comparável diretamente ao CHIRPS.</p>
+ </div>
 </section>
 
 <!-- ================= LOCAL ================= -->
@@ -1135,6 +1140,10 @@ $("btnDayCsv").addEventListener("click",async()=>{
 /* ================= COMPARAR ================= */
 function rComparar(){
   const p=P(),u=U(),ys=years(),a=S.a,b=S.b,lim=dominio(p,S.met);
+  $("cmpPeriodo").innerHTML='<option value="ano">Ano inteiro (jan–dez)</option>'+MESES.map((m,i)=>'<option value="m'+i+'">'+cap(m)+'</option>').join("");
+  $("cmpPeriodo").value=S.per;
+  $("cmpAnoRange").min=ys[0];$("cmpAnoRange").max=ys[ys.length-1];$("cmpAnoRange").value=b;
+  $("cmpAnoRangeLabel").textContent=String(b);
   const opt=v=>ys.slice().reverse().map(y=>'<option'+(y==v?" selected":"")+'>'+y+'</option>').join("");
   $("selA").innerHTML=opt(a);$("selB").innerHTML=opt(b);metOptions($("selMet2"));
   document.querySelectorAll("#segCmp button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m==S.cmp));
@@ -1166,6 +1175,8 @@ function setSwipe(v){S.sw=v;$("swTop").style.clipPath="inset(0 "+(100-v)+"% 0 0)
 $("rngSw").addEventListener("input",e=>setSwipe(+e.target.value));
 (function(){const h=$("swHandle"),box=$("swipe");let on=false;const mv=e=>{if(!on)return;const r=box.getBoundingClientRect();setSwipe(Math.max(0,Math.min(100,100*(e.clientX-r.left)/r.width)));};
   h.addEventListener("pointerdown",e=>{on=true;h.setPointerCapture(e.pointerId);e.preventDefault();});h.addEventListener("pointermove",mv);["pointerup","pointercancel"].forEach(t=>h.addEventListener(t,()=>{on=false;}));})();
+$("cmpPeriodo").addEventListener("change",e=>{S.per=e.target.value;S.a=null;S.b=null;fixYear();render();});
+$("cmpAnoRange").addEventListener("input",e=>{const ys=years(),y=+e.target.value;S.b=ys.reduce((best,c)=>Math.abs(c-y)<Math.abs(best-y)?c:best,ys[0]);rComparar();});
 $("selA").addEventListener("change",e=>{S.a=+e.target.value;rComparar();});
 $("selB").addEventListener("change",e=>{S.b=+e.target.value;rComparar();});
 $("selMet2").addEventListener("change",e=>{S.met=e.target.value;saveUI();rComparar();});
