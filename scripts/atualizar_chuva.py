@@ -159,18 +159,20 @@ def main():
     for a, m in candidatos:
         k = "%d-%02d" % (a, m)
         ja = meses.get(k)
-        if ja and not args.refazer and not ja.get("preliminar") and ja.get("colecao") == colecao and ja.get("n") == len(feats):
-            continue
         ok, n = mes_completo(ee, colecao, a, m)
-        if not ok:
-            log("  %s ainda incompleto no Earth Engine (%d dias). Fica para a proxima execucao." % (k, n))
+        if n == 0:
+            log("  %s sem imagens CHIRPS disponíveis." % k)
             continue
-        fazer.append((a, m))
+        # Não recalcula um mês que já tenha exatamente a mesma cobertura.
+        # Recalcula automaticamente o mês parcial quando novos dias chegam.
+        if ja and not args.refazer and ja.get("colecao") == colecao and ja.get("n") == len(feats) and ja.get("dias_observados") == n and ja.get("parcial") == (not ok):
+            continue
+        fazer.append((a, m, n, not ok))
 
     if not fazer:
         log("Nada novo para calcular.")
     else:
-        log("Meses a calcular: " + ", ".join("%d-%02d" % x for x in fazer))
+        log("Meses a calcular: " + ", ".join("%d-%02d" % (a, m) for a, m, _, _ in fazer))
         log("Trava de validacao (recalculo de meses de 2025 contra a serie de referencia):")
         pior = validar(ee, colecao, feats)
         if pior > LIMITE_VALIDACAO_PCT:
@@ -184,18 +186,18 @@ def main():
 
         hoje = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
         os.makedirs(DIR_MENSAL, exist_ok=True)
-        for a, m in fazer:
+        for a, m, n_dias, parcial in fazer:
             k = "%d-%02d" % (a, m)
             v = media_mensal(ee, colecao, feats, a, m)
-            meses[k] = {"ano": a, "mes": m, "v": v, "n": len(v), "preliminar": False, "colecao": colecao,
+            meses[k] = {"ano": a, "mes": m, "v": v, "n": len(v), "preliminar": parcial, "parcial": parcial, "dias_observados": n_dias, "dias_no_mes": calendar.monthrange(a, m)[1], "colecao": colecao,
                         "fonte": "Earth Engine, %s, media por municipio (malha IBGE 2024)" % colecao, "atualizado_em": hoje}
             with open(os.path.join(DIR_MENSAL, k + ".csv"), "w", encoding="utf-8", newline="") as f:
                 w = csv.writer(f)
                 w.writerow(["CD_MUN", "NM_MUN", "ano", "mes", "chuva_mm", "situacao"])
                 for c in sorted(v):
-                    w.writerow([c, nomes[c], a, m, v[c], "definitivo"])
+                    w.writerow([c, nomes[c], a, m, v[c], "parcial" if parcial else "definitivo"])
             media = sum(v.values()) / len(v)
-            log("  %s gravado: %d municipios, media simples %.1f mm, minimo %.1f, maximo %.1f" % (k, len(v), media, min(v.values()), max(v.values())))
+            log("  %s gravado: %d municipios, %d/%d dias, parcial=%s, media simples %.1f mm, minimo %.1f, maximo %.1f" % (k, len(v), n_dias, calendar.monthrange(a,m)[1], parcial, media, min(v.values()), max(v.values())))
         meta.update({"validacao_pior_desvio_mediano_pct": round(pior, 2)})
 
     meta.update({"verificado_em": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
