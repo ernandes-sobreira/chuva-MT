@@ -1,0 +1,39 @@
+name: Verificar status CHIRPS preliminar e definitivo
+
+on:
+  schedule:
+    - cron: "23 11 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/verificar_status_chirps.py"
+      - ".github/workflows/status-chirps.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chuva-mt-status-chirps
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verificar diretórios oficiais CHIRPS v3
+        run: python scripts/verificar_status_chirps.py
+      - name: Publicar auditoria no site
+        run: |
+          git config user.name "chuva-mt-bot"
+          git config user.email "chuva-mt-bot@users.noreply.github.com"
+          git add dados/status_chirps.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Atualiza status preliminar/definitivo CHIRPS"
+            git pull --rebase origin main
+            git push origin main
+          fi
