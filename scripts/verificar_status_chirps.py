@@ -48,7 +48,7 @@ def directory_listing(url):
 
 
 def parse_daily_names(links, year):
-    pat = re.compile(r"^chirps-v3\\.0\\.sat\\.(%04d)\\.(\\d{2})\\.(\\d{2})\\.tif$" % year)
+    pat = re.compile(r"^chirps-v3\.0\.sat\.(%04d)\.(\d{2})\.(\d{2})\.tif$" % year)
     found = set()
     for link in links:
         name = link.split("/")[-1].split("?")[0]
