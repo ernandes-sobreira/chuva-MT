@@ -848,7 +848,7 @@ function regimeChart(svg,o){
   if(o.mean)h+='<path fill="none" stroke="'+INK+'" stroke-width="1.6" stroke-dasharray="6 4" d="M'+o.mean.map((v,i)=>X(i)+","+Y(v)).join("L")+'"/>';
   if(o.over){let seg=[],d="";o.over.forEach((v,i)=>{if(v!=null)seg.push(X(i)+","+Y(v));if(v==null||i==11){if(seg.length>1)d+="M"+seg.join("L");seg=[];}});
     h+='<path fill="none" stroke="'+CORAL+'" stroke-width="2.4" stroke-linejoin="round" d="'+d+'"/>';
-    o.over.forEach((v,i)=>{if(v!=null)h+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="'+CORAL+'" stroke="#fff" stroke-width="2"/>';});}
+    o.over.forEach((v,i)=>{if(v!=null){const pre=o.prelim&&o.prelim[i];h+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="'+(pre?"#fff":CORAL)+'" stroke="'+(pre?CORAL:"#fff")+'" stroke-width="2"/>';}});}
   MES3.forEach((m,i)=>{h+='<text x="'+X(i)+'" y="'+(H-9)+'" text-anchor="middle" font-size="12" fill="'+INK2+'">'+m+'</text><rect class="hit" data-i="'+i+'" x="'+(L+i*pw)+'" y="'+T+'" width="'+pw+'" height="'+(H-T-B)+'" fill="transparent"/>';});
   svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.innerHTML=h;bindTip(svg);svg._tip=i=>o.tip(+i);svg._click=o.click?i=>o.click(+i):null;}
 
@@ -1153,7 +1153,7 @@ function rComparar(){
   if(S.cmp=="swipe"){
     MA.paint(i=>corMetric(S.met,mmetric(i,p,a,S.met),lim));MB.paint(i=>corMetric(S.met,mmetric(i,p,b,S.met),lim));MA.select(u);MB.select(u);MA.click(selMun);MB.click(selMun);
     MA.tip(i=>tipMun(i,p,a));MB.tip(i=>tipMun(i,p,b));$("tagA").textContent=a;$("tagB").textContent=b;setSwipe(S.sw);
-    $("leg2").innerHTML=legendaHTML(legendaMetric(S.met,lim));$("cpNota").textContent="Arraste a divisória: à esquerda aparece "+a+", à direita "+b+".";
+    $("leg2").innerHTML=legendaHTML(legendaMetric(S.met,lim));$("cpNota").textContent="Arraste a divisória: à esquerda aparece "+a+", à direita "+b+"."+(isPrelim(p,a)||isPrelim(p,b)?" Há CHIRPS preliminar; sujeito a revisão.":"");
   }else{
     const d=MUN.map((_,i)=>{const va=pval(i,p,a),vb=pval(i,p,b);return va==null||vb==null?null:vb-va;}),dl=nice(ST.quantile(d.filter(v=>v!=null).map(Math.abs),.98));
     MD.paint(i=>d[i]==null?SEM:ramp(DIV,(d[i]/dl+1)/2));MD.select(u);MD.click(selMun);
@@ -1211,7 +1211,7 @@ function rLocal(){
   const row=mm.find(r=>r.y==S.regAno);
   $("selRegAno").innerHTML=mm.slice().reverse().map(r=>'<option'+(r.y==S.regAno?" selected":"")+'>'+r.y+'</option>').join("");
   $("lcRegTit").textContent="Regime mensal CHIRPS em "+u.nome;
-  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:row?row.v:null,tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(row&&row.v[k]!=null?"<br>"+S.regAno+": "+f1(row.v[k])+" mm":""),click:k=>{S.per="m"+k;render();}});
+  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:row?row.v:null,prelim:MESES.map((_,k)=>!!(EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar),tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(row&&row.v[k]!=null?"<br>"+S.regAno+": "+f1(row.v[k])+" mm"+((EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar?" (CHIRPS preliminar)":""):""),click:k=>{S.per="m"+k;render();}});
   $("tbReg").innerHTML="<thead><tr><th></th>"+MES3.map(m=>"<th>"+m+"</th>").join("")+"</tr></thead><tbody>"+[["Máximo (mm)",mx.map(f0)],["ano do máximo",mxY],["Média (mm)",avg.map(f0)],["Mediana (mm)",med.map(f0)],["Mínimo (mm)",mn.map(v=>v<10?f1(v):f0(v))],["ano do mínimo",mnY],["CV (%)",cvv.map(v=>v==null?"":f0(v))]].concat(row?[[String(S.regAno)+" (mm)",row.v.map(v=>v==null?"":f0(v))]]:[]).map(r=>"<tr><td>"+r[0]+"</td>"+r[1].map(v=>"<td>"+v+"</td>").join("")+"</tr>").join("")+"</tbody>";
   $("lgReg").innerHTML='<span><i class="dash" style="border-color:#1f8f85"></i>máximo da série</span><span><i class="dash" style="border-color:#a8691f"></i>mínimo da série</span><span><i class="dash" style="border-color:'+INK+'"></i>média</span><span><i class="box" style="background:#cfe2f8"></i>entre P10 e P90</span><span><i style="border-color:'+ACC+'"></i>mediana</span><span><i style="border-color:'+CORAL+'"></i>'+S.regAno+'</span><span>clique em um mês para analisá-lo</span>';
   /* quadro */
