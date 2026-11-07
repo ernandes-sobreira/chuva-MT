@@ -48,5 +48,6 @@ jobs:
             echo "Sem mudança em dados/diario.json."
           else
             git commit -m "Atualiza chuva diária (automatico)"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
