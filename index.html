@@ -839,9 +839,21 @@ function regimeChart(svg,o){
   h+='<path fill="#cfe2f8" d="M'+o.p90.map((v,i)=>X(i)+","+Y(v)).join("L")+"L"+o.p10.map((v,i)=>X(i)+","+Y(v)).reverse().join("L")+'Z"/>';
   h+='<path fill="none" stroke="'+ACC+'" stroke-width="2.2" d="M'+o.med.map((v,i)=>X(i)+","+Y(v)).join("L")+'"/>';
   if(o.mean)h+='<path fill="none" stroke="'+INK+'" stroke-width="1.6" stroke-dasharray="6 4" d="M'+o.mean.map((v,i)=>X(i)+","+Y(v)).join("L")+'"/>';
-  if(o.over){let seg=[],d="";o.over.forEach((v,i)=>{if(v!=null)seg.push(X(i)+","+Y(v));if(v==null||i==11){if(seg.length>1)d+="M"+seg.join("L");seg=[];}});
-    h+='<path fill="none" stroke="'+CORAL+'" stroke-width="2.4" stroke-linejoin="round" d="'+d+'"/>';
-    o.over.forEach((v,i)=>{if(v!=null)h+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="'+CORAL+'" stroke="#fff" stroke-width="2"/>';});}
+  if(o.over){
+    let pts=[];
+    o.over.forEach((v,i)=>{
+      if(v!=null&&!(o.oper&&o.oper[i]))pts.push(X(i)+","+Y(v));
+      if((v==null||(o.oper&&o.oper[i])||i==11)&&pts.length){if(pts.length>1)h+='<path fill="none" stroke="'+CORAL+'" stroke-width="2.4" d="M'+pts.join("L")+'"/>';pts=[];}
+    });
+    o.over.forEach((v,i)=>{
+      if(v==null)return;
+      if(o.oper&&o.oper[i]){
+        const x=X(i),y=Y(v);
+        h+='<rect x="'+(x-5)+'" y="'+(y-5)+'" width="10" height="10" rx="2" fill="#bd8722" stroke="#fff" stroke-width="1.5"/>';
+        h+='<text x="'+x+'" y="'+(y-10)+'" text-anchor="middle" fill="#8a5413" font-size="10">'+(o.oper[i].partial?"parcial":"GSMaP")+'</text>';
+      }else h+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="'+CORAL+'" stroke="#fff" stroke-width="2"/>';
+    });
+  }
   MES3.forEach((m,i)=>{h+='<text x="'+X(i)+'" y="'+(H-9)+'" text-anchor="middle" font-size="12" fill="'+INK2+'">'+m+'</text><rect class="hit" data-i="'+i+'" x="'+(L+i*pw)+'" y="'+T+'" width="'+pw+'" height="'+(H-T-B)+'" fill="transparent"/>';});
   svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.innerHTML=h;bindTip(svg);svg._tip=i=>o.tip(+i);svg._click=o.click?i=>o.click(+i):null;}
 
@@ -1172,6 +1184,31 @@ $("btnSweep").addEventListener("click",()=>{const t0=performance.now(),dur=3600;
 
 /* ================= LOCAL ================= */
 function movAvg(x,w){const h=Math.floor(w/2),o=[];for(let i=h;i<x.length-h;i++){let s=0;for(let k=-h;k<=h;k++)s+=x[i+k];o.push([i,s/w]);}return o;}
+
+/* Meses operacionais GSMaP: somente visualização, jamais substituir CHIRPS
+   nas series de referencia, SPI, Mann-Kendall, recordes ou mapas CHIRPS. */
+function gsmMonthly(u,y,m){
+ if(!DAILY||!DAILY.dias)return null;
+ const lastDay=new Date(Date.UTC(y,m+1,0)).getUTCDate();
+ let end=lastDay,latest=dayKeys().slice(-1)[0];
+ if(!latest||latest<y+"-"+String(m+1).padStart(2,"0")+"-01")return null;
+ if(latest.slice(0,7)==y+"-"+String(m+1).padStart(2,"0"))end=Math.min(lastDay,+latest.slice(8));
+ let total=0;
+ for(let d=1;d<=end;d++){
+   const date=y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+   const data=DAILY.dias[date];if(!data||!data.v)return null;
+   const val=dayUval(u,MUN.map(x=>data.v[x.c]==null?null:+data.v[x.c]));
+   if(val==null||!Number.isFinite(val))return null;
+   total+=val;
+ }
+ return {v:total,partial:end<lastDay,n:end,expected:lastDay,source:"GSMaP v8"};
+}
+function displayMonthly(u,y,m){
+ const v=uval(u,PER["m"+m],y);
+ if(v!=null)return {v,source:"CHIRPS",partial:false};
+ return gsmMonthly(u,y,m);
+}
+
 function rLocal(){
   const p=P(),u=U(),ref=uref(u,p),se=useries(u,p),mk=ST.mannKendall(ref.t,ref.x),n=ref.x.length;
   $("lcEye").textContent=u.nome+" · "+p.nome;
@@ -1183,21 +1220,42 @@ function rLocal(){
   ].map(k=>'<div class="kpi '+k[0]+'"><div class="l">'+k[1]+'</div><div class="v">'+k[2]+'</div><div class="d">'+k[3]+'</div></div>').join("");
   /* serie */
   if(S.regAno==null||!umonthly(u).some(r=>r.y==S.regAno))S.regAno=lastYear();
-  const off=se.findIndex(s=>s.y==ref.t[0]),ir=se.findIndex(s=>s.y==S.regAno);
+  const viewSeries=se.map(z=>({...z,source:"CHIRPS",partial:false}));
+  if(p.len===1){
+    const ly=Math.max(lastYear(),+(dayKeys().slice(-1)[0]||"0").slice(0,4));
+    for(let yy=YREF+1;yy<=ly;yy++){
+      if(viewSeries.some(z=>z.y===yy))continue;
+      const z=gsmMonthly(u,yy,p.s);
+      if(z)viewSeries.push({y:yy,v:z.v,extra:true,source:"GSMaP v8",partial:z.partial,n:z.n,expected:z.expected});
+    }
+    viewSeries.sort((a,b)=>a.y-b.y);
+  }
+  const off=viewSeries.findIndex(s=>s.y==ref.t[0]),ir=viewSeries.findIndex(s=>s.y==S.regAno);
   $("lcSerTit").textContent=cap(p.curto)+", ano a ano";
-  barChart($("chSer"),{labels:se.map(s=>s.y),vals:se.map(s=>s.v),tickIf:i=>se[i].y%5==0,color:i=>i==ir?CORAL:se[i].extra?"#9ec5f4":BARC,mean:ref.mean,unit:"mm",
+  barChart($("chSer"),{labels:viewSeries.map(s=>s.y),vals:viewSeries.map(s=>s.v),tickIf:i=>viewSeries[i].y%5==0||i===viewSeries.length-1,color:i=>viewSeries[i].source!=="CHIRPS"?"#bd8722":i==ir?CORAL:viewSeries[i].extra?"#9ec5f4":BARC,mean:ref.mean,unit:"mm",
     lines:[{pts:movAvg(ref.x,5).map(q=>[q[0]+off,q[1]]),color:INK,w:2.2},mk?{pts:[[off,mk.intercept+mk.sen*ref.t[0]],[off+n-1,mk.intercept+mk.sen*ref.t[n-1]]],color:ACC,w:2.4}:{pts:[]}],
-    tip:i=>"<b>"+plabel(p,se[i].y)+"</b>"+f1(se[i].v)+" mm<br><span>"+sg(se[i].v-ref.mean)+" mm em relação à média"+(se[i].extra?", fora da referência":"")+"</span>",click:i=>{S.regAno=se[i].y;rLocal();}});
-  $("lgSer").innerHTML='<span><i class="dash" style="border-color:'+INK+'"></i>média de referência</span><span><i style="border-color:'+INK+'"></i>média móvel de 5 anos</span><span><i style="border-color:'+ACC+'"></i>reta de Sen</span><span><i class="box" style="background:'+CORAL+'"></i>ano em destaque</span>';
+    tip:i=>"<b>"+plabel(p,viewSeries[i].y)+"</b>"+f1(viewSeries[i].v)+" mm<br><span>Fonte: "+viewSeries[i].source+(viewSeries[i].partial?" · acumulado parcial ("+viewSeries[i].n+"/"+viewSeries[i].expected+" dias)":"")+"</span>",click:i=>{S.regAno=viewSeries[i].y;rLocal();}});
+  $("lgSer").innerHTML='<span><i class="dash" style="border-color:'+INK+'"></i>média de referência</span><span><i style="border-color:'+INK+'"></i>média móvel de 5 anos</span><span><i style="border-color:'+ACC+'"></i>reta de Sen</span><span><i class="box" style="background:'+CORAL+'"></i>CHIRPS em destaque</span><span><i class="box" style="background:#bd8722"></i>GSMaP recente (fora da tendência)</span>';
   /* regime */
   const mm=umonthly(u),rr=mm.filter(r=>r.y<=YREF),col=k=>rr.map(r=>r.v[k]),p10=[],p90=[],med=[];
   const mx=[],mn=[],mxY=[],mnY=[],avg=[],cvv=[];
   for(let k=0;k<12;k++){const c=col(k);p10.push(ST.quantile(c,.1));p90.push(ST.quantile(c,.9));med.push(ST.median(c));const a=Math.max.apply(null,c),b=Math.min.apply(null,c),m=ST.mean(c);mx.push(a);mn.push(b);mxY.push(rr[c.indexOf(a)].y);mnY.push(rr[c.indexOf(b)].y);avg.push(m);cvv.push(m>0?100*ST.sd(c)/m:null);}
   const row=mm.find(r=>r.y==S.regAno);
-  $("selRegAno").innerHTML=mm.slice().reverse().map(r=>'<option'+(r.y==S.regAno?" selected":"")+'>'+r.y+'</option>').join("");
+  const over=row?row.v.slice():new Array(12).fill(null),oper=new Array(12).fill(null);
+  for(let m=0;m<12;m++)if(over[m]==null){
+    const z=gsmMonthly(u,S.regAno,m);
+    if(z){over[m]=z.v;oper[m]=z;}
+  }
+  const anosReg=mm.slice();
+  const latestDaily=dayKeys().slice(-1)[0];
+  if(latestDaily){
+    const yLatest=+latestDaily.slice(0,4);
+    if(!anosReg.some(r=>r.y===yLatest))anosReg.push({y:yLatest,v:new Array(12).fill(null)});
+  }
+  $("selRegAno").innerHTML=anosReg.slice().reverse().map(r=>'<option'+(r.y==S.regAno?" selected":"")+'>'+r.y+'</option>').join("");
   $("lcRegTit").textContent="Regime mensal em "+u.nome;
-  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:row?row.v:null,tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(row&&row.v[k]!=null?"<br>"+S.regAno+": "+f1(row.v[k])+" mm":""),click:k=>{S.per="m"+k;render();}});
-  $("tbReg").innerHTML="<thead><tr><th></th>"+MES3.map(m=>"<th>"+m+"</th>").join("")+"</tr></thead><tbody>"+[["Máximo (mm)",mx.map(f0)],["ano do máximo",mxY],["Média (mm)",avg.map(f0)],["Mediana (mm)",med.map(f0)],["Mínimo (mm)",mn.map(v=>v<10?f1(v):f0(v))],["ano do mínimo",mnY],["CV (%)",cvv.map(v=>v==null?"":f0(v))]].concat(row?[[String(S.regAno)+" (mm)",row.v.map(v=>v==null?"":f0(v))]]:[]).map(r=>"<tr><td>"+r[0]+"</td>"+r[1].map(v=>"<td>"+v+"</td>").join("")+"</tr>").join("")+"</tbody>";
+  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:over,oper:oper,tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(over[k]!=null?"<br>"+S.regAno+": "+f1(over[k])+" mm"+(oper[k]?" (GSMaP"+(oper[k].partial?", "+oper[k].n+"/"+oper[k].expected+" dias":"")+")":" (CHIRPS)"):""),click:k=>{S.per="m"+k;render();}});
+  $("tbReg").innerHTML="<thead><tr><th></th>"+MES3.map(m=>"<th>"+m+"</th>").join("")+"</tr></thead><tbody>"+[["Máximo (mm)",mx.map(f0)],["ano do máximo",mxY],["Média (mm)",avg.map(f0)],["Mediana (mm)",med.map(f0)],["Mínimo (mm)",mn.map(v=>v<10?f1(v):f0(v))],["ano do mínimo",mnY],["CV (%)",cvv.map(v=>v==null?"":f0(v))]].concat(row||over.some(v=>v!=null)?[[String(S.regAno)+" (mm)",over.map((v,k)=>v==null?"":f0(v)+(oper[k]?"*":""))]]:[]).map(r=>"<tr><td>"+r[0]+"</td>"+r[1].map(v=>"<td>"+v+"</td>").join("")+"</tr>").join("")+"</tbody>";
   $("lgReg").innerHTML='<span><i class="dash" style="border-color:#1f8f85"></i>máximo da série</span><span><i class="dash" style="border-color:#a8691f"></i>mínimo da série</span><span><i class="dash" style="border-color:'+INK+'"></i>média</span><span><i class="box" style="background:#cfe2f8"></i>entre P10 e P90</span><span><i style="border-color:'+ACC+'"></i>mediana</span><span><i style="border-color:'+CORAL+'"></i>'+S.regAno+'</span><span>clique em um mês para analisá-lo</span>';
   /* quadro */
   document.querySelectorAll("#segHm button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m==S.hm));
