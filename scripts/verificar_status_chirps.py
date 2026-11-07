@@ -47,8 +47,8 @@ def directory_listing(url):
     return parser.urls
 
 
-def parse_daily_names(links, year):
-    pat = re.compile(r"^chirps-v3\.0\.sat\.(%04d)\.(\d{2})\.(\d{2})\.tif$" % year)
+def parse_daily_names(links, year, kind):
+    pat = re.compile(r"^chirps-v3\.0\." + ("sat" if kind == "final" else "prelim") + r"\.(%04d)\.(\d{2})\.(\d{2})\.tif$" % year)
     found = set()
     for link in links:
         name = link.split("/")[-1].split("?")[0]
@@ -87,7 +87,7 @@ def audit(now=None):
             url = "%s/%s/sat/%d/" % (BASE, kind, year)
             try:
                 links = directory_listing(url)
-                sources[(kind, year)] = {"days": parse_daily_names(links, year), "error": None}
+                sources[(kind, year)] = {"days": parse_daily_names(links, year, kind), "error": None}
             except urllib.error.HTTPError as exc:
                 if exc.code == 404:
                     sources[(kind, year)] = {"days": set(), "error": None}
