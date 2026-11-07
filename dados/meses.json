@@ -2,7 +2,7 @@
 "_meta": {
 "obs": "semente inicial; setembro de 2026 veio do arquivo preliminar do CHIRPS v3.0 e sera substituido quando o mes estiver completo no Earth Engine",
 "validacao_pior_desvio_mediano_pct": 0.0,
-"verificado_em": "2026-10-23 14:13 UTC",
+"verificado_em": "2026-11-07 13:37 UTC",
 "colecao": "UCSB-CHG/CHIRPS/DAILY",
 "ultimo_dia_disponivel": "2026-09-30"
 },
