@@ -39,6 +39,8 @@ def main():
             # Nunca trocar o definitivo CHIRPS v3 por preliminar.
             if old.get("colecao")=="CHIRPS-v3.0-sat-official" and not old.get("preliminar") and v.get("preliminar"):
                 continue
+            if old.get("colecao")=="CHIRPS-v3.0-sat-official" and old.get("preliminar") and v.get("preliminar") and int(old.get("dias_observados") or 0)>int(v.get("dias_observados") or 0):
+                continue
             if old!=v:
                 latest[k]=v
                 real_changes[k]=v
