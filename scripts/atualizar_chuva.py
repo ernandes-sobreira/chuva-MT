@@ -165,7 +165,7 @@ def main():
             continue
         # Não recalcula um mês que já tenha exatamente a mesma cobertura.
         # Recalcula automaticamente o mês parcial quando novos dias chegam.
-        if ja and not args.refazer and ja.get("colecao") == colecao and ja.get("n") == len(feats) and ja.get("dias_observados") == n and ja.get("parcial") == (not ok):
+        if ja and not args.refazer and ja.get("colecao") == colecao and ja.get("n") == len(feats) and ((ja.get("dias_observados") == n and ja.get("parcial") == (not ok)) or (ok and ja.get("dias_observados") is None and not ja.get("preliminar"))):
             continue
         fazer.append((a, m, n, not ok))
 
