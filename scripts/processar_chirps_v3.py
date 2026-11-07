@@ -104,26 +104,32 @@ def main():
     report = json.loads(STATUS.read_text(encoding="utf-8"))
     data = json.loads(MONTHS.read_text(encoding="utf-8"))
     avail = report.get("meses", {})
-    # Reprocessar final sempre que ainda não for final v3; carregar prelim
-    # após meses completos, sem acumular meses parciais com cobertura insuficiente.
+    # Prioriza o mês mais recente e aceita acumulados preliminares incompletos.
+    # Recalcula apenas ao chegar um novo dia ou uma versão definitiva.
     targets = []
     for key in sorted(avail, reverse=True):
         item = avail[key]
         old = data.get(key) or {}
         same_v3 = old.get("colecao") == "CHIRPS-v3.0-sat-official"
-        final_done = same_v3 and not old.get("preliminar")
-        prelim_done = same_v3 and bool(old.get("preliminar"))
+        final_done = same_v3 and not old.get("preliminar") and not old.get("parcial")
+        observed = int(old.get("dias_observados") or 0) if same_v3 else 0
+        year, month = map(int, key.split("-"))
+        days_in_month = calendar.monthrange(year, month)[1]
         if item.get("final_completo") and not final_done:
-            targets.append((key, "final"))
-        elif item.get("preliminar_completo") and not (final_done or prelim_done):
-            targets.append((key, "prelim"))
+            targets.append((key, "final", days_in_month))
+        elif not final_done:
+            available = int(item.get("dias_preliminar") or 0)
+            # Só reprocessar se novos dias chegaram ou a fonte agora está completa.
+            if available > observed or (available == days_in_month and not same_v3):
+                targets.append((key, "prelim", available))
     if not targets:
-        print("Sem meses CHIRPS v3 novos ou atualizações final pendentes.")
+        print("Nenhum mês CHIRPS v3 com dados novos para calcular.")
         return
-    # Primeiro mês mais recente pendente, para não exceder limites GitHub Actions.
-    key, stage = targets[0]
+    key, stage, ndays = targets[0]
     year, month = map(int, key.split("-"))
-    ndays = calendar.monthrange(year, month)[1]
+    whole_month = calendar.monthrange(year, month)[1]
+    if not (1 <= ndays <= whole_month):
+        raise RuntimeError("Contagem de dias fora do esperado")
     shapes, bounds = read_geometry()
     sums = np.zeros(len(shapes), dtype="float64")
     urlbase = f"{BASE}/{stage}/sat/{year}"
@@ -144,8 +150,8 @@ def main():
         raise RuntimeError("Saída incompleta: não publicar")
     data[key] = {
         "ano": year, "mes": month, "v": vals, "n": len(vals),
-        "preliminar": stage != "final", "parcial": False,
-        "dias_observados": ndays, "dias_no_mes": ndays,
+        "preliminar": stage != "final", "parcial": ndays < whole_month,
+        "dias_observados": ndays, "dias_no_mes": whole_month,
         "colecao": "CHIRPS-v3.0-sat-official",
         "fonte": "Climate Hazards Center CHIRPS v3.0 " + ("preliminar" if stage == "prelim" else "definitivo"),
         "atualizado_em": dt.datetime.now(dt.timezone.utc).date().isoformat(),
@@ -160,7 +166,7 @@ def main():
         writer.writerow(["CD_MUN", "ano", "mes", "chuva_mm", "fonte", "situacao"])
         for code in sorted(vals):
             writer.writerow([code, year, month, vals[code], "CHIRPS-v3.0-sat", "preliminar" if stage == "prelim" else "definitivo"])
-    print(f"PUBLICADO {key} CHIRPS v3 {stage} para 142 municípios", flush=True)
+    print(f"PROCESSADO {key} CHIRPS v3 {stage}: {ndays}/{whole_month} dias, 142 municípios", flush=True)
 
 
 if __name__ == "__main__":
