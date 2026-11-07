@@ -252,6 +252,14 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
       <div class="rank" id="rank1"></div>
     </div>
   </div>
+<div class="card" id="diaHistoricoBox" style="margin:18px 0">
+<div class="chead"><h2>Mesmo dia em anos diferentes</h2><p class="note">Comparação homogênea: GSMaP × GSMaP, quando ambos os dias estão disponíveis.</p></div>
+<div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
+<label class="field">Data-base<input type="date" id="diaHistData"></label>
+<label class="field">Ano anterior<select id="diaHistAno"></select></label>
+<label class="field">Janela<select id="diaHistModo"><option value="day">Mesmo dia</option><option value="7d">7 dias até a data</option><option value="30d">30 dias até a data</option><option value="mtd">Mês até a data</option></select></label>
+</div><div class="kpis" id="diaHistValores"></div><p class="note" id="diaHistNota" aria-live="polite"></p>
+</div>
   <div class="card soft">
     <div class="chead"><h2>Resumo pronto para texto</h2><button class="btn ghost sm" id="btnCopy" type="button">Copiar</button></div>
     <p id="resumo" style="max-width:85ch"></p>
@@ -1008,6 +1016,37 @@ function dayAgg(date,mode){
 function dayUval(u,v){let sa=0,sx=0,n=0;for(const i of u.idx){const x=v[i];if(x!=null){sa+=MUN[i].a;sx+=MUN[i].a*x;n++;}}return n?sx/sa:null;}
 function daySeries(u){return dayKeys().map(d=>{const e=DAILY.dias[d],v=MUN.map(m=>{const x=e&&e.v&&e.v[m.c];return x==null?null:+x;});return {d,v:dayUval(u,v)};}).filter(x=>x.v!=null);}
 function dayClickMun(i){if(S.tipo=="custom"){const c=MUN[i].c,k=S.custom.indexOf(c);if(k>=0)S.custom.splice(k,1);else S.custom.push(c);render();}else selMun(i);}
+
+/* Comparação do mesmo dia entre anos usando somente GSMaP (mesma fonte).
+   A série disponível começa em 2025; nunca representar anos ausentes como zero. */
+let DIA_HIST_INIT=false;
+function compararDiaHistorico(){
+ const ks=dayKeys();if(!ks.length)return;
+ const datas=$("diaHistData"),anos=$("diaHistAno"),modo=$("diaHistModo");
+ if(!DIA_HIST_INIT){
+   datas.min=ks[0];datas.max=ks[ks.length-1];datas.value=S.dayDate||ks[ks.length-1];
+   const yy=[...new Set(ks.map(k=>k.slice(0,4)))].sort().reverse();
+   anos.innerHTML=yy.map(y=>'<option value="'+y+'">'+y+'</option>').join("");
+   anos.value=String(+datas.value.slice(0,4)-1);
+   for(const id of ["diaHistData","diaHistAno","diaHistModo"])$(id).addEventListener("change",compararDiaHistorico);
+   DIA_HIST_INIT=true;
+ }
+ const dt=datas.value,prevYear=+anos.value,mode=modo.value,u=U();
+ if(!dt){$("diaHistNota").textContent="Selecione uma data.";return;}
+ const ano=+dt.slice(0,4),prior=prevYear+"-"+dt.slice(5);
+ const one=dayAgg(dt,mode),two=dayAgg(prior,mode);
+ const v1=dayUval(u,one.v),v2=dayUval(u,two.v);
+ const valid1=one.range.complete && v1!=null,valid2=two.range.complete && v2!=null;
+ const label=a=>a?f1(a)+" mm":"—";
+ $("diaHistValores").innerHTML=[
+ ["Data "+dayFmt(prior),valid2?f1(v2)+" mm":"sem dado"],
+ ["Data "+dayFmt(dt),valid1?f1(v1)+" mm":"sem dado"],
+ ["Diferença",valid1&&valid2?sg(v1-v2,1)+" mm":"—"],
+ ["Variação",valid1&&valid2&&v2>0?sg(100*(v1-v2)/v2,1)+"%":"—"]
+ ].map(k=>'<div class="kpi"><div class="l">'+k[0]+'</div><div class="v">'+k[1]+'</div></div>').join("");
+ $("diaHistNota").textContent=ano==prevYear?"Selecione anos diferentes.":!valid1||!valid2?"Pelo menos um dos períodos não tem dados GSMaP completos nesta série. Não calculamos comparações com lacunas.":"Comparação para "+u.nome+" no mesmo dia do calendário; janela: "+(mode=="day"?"1 dia":mode=="7d"?"7 dias":mode=="30d"?"30 dias":"do dia 1º até a data")+". Fonte única GSMaP v8/NRT; estimativas provisórias.";
+}
+
 function rDiario(){
   const ks=dayKeys(),u=U();
   if(!DAILY||!ks.length){
@@ -1017,6 +1056,7 @@ function rDiario(){
   if(["day","7d","30d","mtd"].indexOf(S.dayMet)<0)S.dayMet="day";
   $("selDia").innerHTML=ks.slice().reverse().map(d=>'<option value="'+d+'"'+(d==S.dayDate?' selected':'')+'>'+dayFmt(d)+'</option>').join("");
   $("selDayMet").value=S.dayMet;
+  compararDiaHistorico();
   const a=dayAgg(S.dayDate,S.dayMet),vals=a.v,ok=vals.filter(v=>v!=null),lim=nice(ST.quantile(ok,.98)||1),x=dayUval(u,vals),meta=DAILY._meta||{};
   MDay.paint(i=>vals[i]==null?SEM:ramp(SEQ,vals[i]/lim));MDay.select(u);MDay.outline("");MDay.tip(i=>'<b>'+esc(MUN[i].n)+'</b>'+f1(vals[i])+' mm<br><span>'+dayModeLabel(S.dayMet,S.dayDate)+'</span>');MDay.click(dayClickMun);
   $("legDay").innerHTML=legendaHTML({grad:SEQ,ticks:["0",f0(lim/2),f0(lim)+" ou mais"],cap:"mm acumulados no período selecionado"});
