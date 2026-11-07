@@ -1,143 +1,143 @@
-CD_MUN,NM_MUN,ano,mes,chuva_mm,situacao
-5100102,Acorizal,2026,9,79.73,definitivo
-5100201,Água Boa,2026,9,38.57,definitivo
-5100250,Alta Floresta,2026,9,50.08,definitivo
-5100300,Alto Araguaia,2026,9,65.13,definitivo
-5100359,Alto Boa Vista,2026,9,50.51,definitivo
-5100409,Alto Garças,2026,9,52.22,definitivo
-5100508,Alto Paraguai,2026,9,75.84,definitivo
-5100607,Alto Taquari,2026,9,67.27,definitivo
-5100805,Apiacás,2026,9,53.32,definitivo
-5101001,Araguaiana,2026,9,29.38,definitivo
-5101209,Araguainha,2026,9,72.84,definitivo
-5101258,Araputanga,2026,9,101.5,definitivo
-5101308,Arenápolis,2026,9,71.62,definitivo
-5101407,Aripuanã,2026,9,56.42,definitivo
-5101605,Barão de Melgaço,2026,9,74.66,definitivo
-5101704,Barra do Bugres,2026,9,119.22,definitivo
-5101803,Barra do Garças,2026,9,30.69,definitivo
-5101837,Boa Esperança do Norte,2026,9,103.67,definitivo
-5101852,Bom Jesus do Araguaia,2026,9,45.01,definitivo
-5101902,Brasnorte,2026,9,58.48,definitivo
-5102504,Cáceres,2026,9,72.63,definitivo
-5102603,Campinápolis,2026,9,42.84,definitivo
-5102637,Campo Novo do Parecis,2026,9,92.1,definitivo
-5102678,Campo Verde,2026,9,62.02,definitivo
-5102686,Campos de Júlio,2026,9,71.58,definitivo
-5102694,Canabrava do Norte,2026,9,45.51,definitivo
-5102702,Canarana,2026,9,39.17,definitivo
-5102793,Carlinda,2026,9,67.19,definitivo
-5102850,Castanheira,2026,9,26.75,definitivo
-5103007,Chapada dos Guimarães,2026,9,71.22,definitivo
-5103056,Cláudia,2026,9,77.14,definitivo
-5103106,Cocalinho,2026,9,25.43,definitivo
-5103205,Colíder,2026,9,84.92,definitivo
-5103254,Colniza,2026,9,87.82,definitivo
-5103304,Comodoro,2026,9,68.41,definitivo
-5103353,Confresa,2026,9,49.05,definitivo
-5103361,Conquista D'oeste,2026,9,92.46,definitivo
-5103379,Cotriguaçu,2026,9,39.71,definitivo
-5103403,Cuiabá,2026,9,84.57,definitivo
-5103437,Curvelândia,2026,9,116.23,definitivo
-5103452,Denise,2026,9,66.97,definitivo
-5103502,Diamantino,2026,9,89.77,definitivo
-5103601,Dom Aquino,2026,9,65.81,definitivo
-5103700,Feliz Natal,2026,9,60.75,definitivo
-5103809,Figueirópolis D'oeste,2026,9,72.39,definitivo
-5103858,Gaúcha do Norte,2026,9,63.61,definitivo
-5103908,General Carneiro,2026,9,32.01,definitivo
-5103957,Glória D'oeste,2026,9,68.83,definitivo
-5104104,Guarantã do Norte,2026,9,41.44,definitivo
-5104203,Guiratinga,2026,9,46.73,definitivo
-5104500,Indiavaí,2026,9,90.42,definitivo
-5104526,Ipiranga do Norte,2026,9,83.86,definitivo
-5104542,Itanhangá,2026,9,75.3,definitivo
-5104559,Itaúba,2026,9,76.79,definitivo
-5104609,Itiquira,2026,9,73.01,definitivo
-5104807,Jaciara,2026,9,74.36,definitivo
-5104906,Jangada,2026,9,73.93,definitivo
-5105002,Jauru,2026,9,103.58,definitivo
-5105101,Juara,2026,9,34.96,definitivo
-5105150,Juína,2026,9,53.46,definitivo
-5105176,Juruena,2026,9,20.58,definitivo
-5105200,Juscimeira,2026,9,68.26,definitivo
-5105234,Lambari D'oeste,2026,9,118.49,definitivo
-5105259,Lucas do Rio Verde,2026,9,97.3,definitivo
-5105309,Luciara,2026,9,32.72,definitivo
-5105507,Vila Bela da Santíssima Trindade,2026,9,57.13,definitivo
-5105580,Marcelândia,2026,9,65.28,definitivo
-5105606,Matupá,2026,9,57.35,definitivo
-5105622,Mirassol D'oeste,2026,9,104.64,definitivo
-5105903,Nobres,2026,9,82.77,definitivo
-5106000,Nortelândia,2026,9,88.58,definitivo
-5106109,Nossa Senhora do Livramento,2026,9,90.13,definitivo
-5106158,Nova Bandeirantes,2026,9,32.91,definitivo
-5106174,Nova Nazaré,2026,9,27.9,definitivo
-5106182,Nova Lacerda,2026,9,70.78,definitivo
-5106190,Nova Santa Helena,2026,9,73.49,definitivo
-5106208,Nova Brasilândia,2026,9,72.24,definitivo
-5106216,Nova Canaã do Norte,2026,9,67.39,definitivo
-5106224,Nova Mutum,2026,9,82.92,definitivo
-5106232,Nova Olímpia,2026,9,135.02,definitivo
-5106240,Nova Ubiratã,2026,9,67.75,definitivo
-5106257,Nova Xavantina,2026,9,30.01,definitivo
-5106265,Novo Mundo,2026,9,51.4,definitivo
-5106273,Novo Horizonte do Norte,2026,9,30.91,definitivo
-5106281,Novo São Joaquim,2026,9,33.93,definitivo
-5106299,Paranaíta,2026,9,49.83,definitivo
-5106307,Paranatinga,2026,9,80.15,definitivo
-5106315,Novo Santo Antônio,2026,9,39.0,definitivo
-5106372,Pedra Preta,2026,9,61.02,definitivo
-5106422,Peixoto de Azevedo,2026,9,68.47,definitivo
-5106455,Planalto da Serra,2026,9,68.75,definitivo
-5106505,Poconé,2026,9,85.38,definitivo
-5106653,Pontal do Araguaia,2026,9,42.34,definitivo
-5106703,Ponte Branca,2026,9,68.03,definitivo
-5106752,Pontes E Lacerda,2026,9,63.12,definitivo
-5106778,Porto Alegre do Norte,2026,9,42.0,definitivo
-5106802,Porto dos Gaúchos,2026,9,58.23,definitivo
-5106828,Porto Esperidião,2026,9,56.44,definitivo
-5106851,Porto Estrela,2026,9,85.76,definitivo
-5107008,Poxoréu,2026,9,47.52,definitivo
-5107040,Primavera do Leste,2026,9,60.66,definitivo
-5107065,Querência,2026,9,69.92,definitivo
-5107107,São José dos Quatro Marcos,2026,9,94.22,definitivo
-5107156,Reserva do Cabaçal,2026,9,114.38,definitivo
-5107180,Ribeirão Cascalheira,2026,9,38.82,definitivo
-5107198,Ribeirãozinho,2026,9,59.33,definitivo
-5107206,Rio Branco,2026,9,109.8,definitivo
-5107248,Santa Carmem,2026,9,65.18,definitivo
-5107263,Santo Afonso,2026,9,98.39,definitivo
-5107297,São José do Povo,2026,9,65.03,definitivo
-5107305,São José do Rio Claro,2026,9,79.99,definitivo
-5107354,São José do Xingu,2026,9,92.97,definitivo
-5107404,São Pedro da Cipa,2026,9,61.23,definitivo
-5107578,Rondolândia,2026,9,79.85,definitivo
-5107602,Rondonópolis,2026,9,67.99,definitivo
-5107701,Rosário Oeste,2026,9,79.75,definitivo
-5107743,Santa Cruz do Xingu,2026,9,76.94,definitivo
-5107750,Salto do Céu,2026,9,125.85,definitivo
-5107768,Santa Rita do Trivelato,2026,9,90.35,definitivo
-5107776,Santa Terezinha,2026,9,22.24,definitivo
-5107792,Santo Antônio do Leste,2026,9,56.72,definitivo
-5107800,Santo Antônio de Leverger,2026,9,71.96,definitivo
-5107859,São Félix do Araguaia,2026,9,58.12,definitivo
-5107875,Sapezal,2026,9,77.86,definitivo
-5107883,Serra Nova Dourada,2026,9,48.19,definitivo
-5107909,Sinop,2026,9,71.19,definitivo
-5107925,Sorriso,2026,9,79.11,definitivo
-5107941,Tabaporã,2026,9,56.5,definitivo
-5107958,Tangará da Serra,2026,9,98.09,definitivo
-5108006,Tapurah,2026,9,91.64,definitivo
-5108055,Terra Nova do Norte,2026,9,81.54,definitivo
-5108105,Tesouro,2026,9,34.72,definitivo
-5108204,Torixoréu,2026,9,52.49,definitivo
-5108303,União do Sul,2026,9,72.35,definitivo
-5108352,Vale de São Domingos,2026,9,127.04,definitivo
-5108402,Várzea Grande,2026,9,100.62,definitivo
-5108501,Vera,2026,9,60.98,definitivo
-5108600,Vila Rica,2026,9,41.02,definitivo
-5108808,Nova Guarita,2026,9,74.07,definitivo
-5108857,Nova Marilândia,2026,9,94.97,definitivo
-5108907,Nova Maringá,2026,9,65.05,definitivo
-5108956,Nova Monte Verde,2026,9,33.21,definitivo
+CD_MUN,ano,mes,chuva_mm,fonte,situacao
+5100102,2026,9,80.53,CHIRPS-v3.0-sat,definitivo
+5100201,2026,9,51.65,CHIRPS-v3.0-sat,definitivo
+5100250,2026,9,55.85,CHIRPS-v3.0-sat,definitivo
+5100300,2026,9,70.22,CHIRPS-v3.0-sat,definitivo
+5100359,2026,9,80.26,CHIRPS-v3.0-sat,definitivo
+5100409,2026,9,66.35,CHIRPS-v3.0-sat,definitivo
+5100508,2026,9,85.74,CHIRPS-v3.0-sat,definitivo
+5100607,2026,9,70.25,CHIRPS-v3.0-sat,definitivo
+5100805,2026,9,36.0,CHIRPS-v3.0-sat,definitivo
+5101001,2026,9,45.3,CHIRPS-v3.0-sat,definitivo
+5101209,2026,9,79.67,CHIRPS-v3.0-sat,definitivo
+5101258,2026,9,87.57,CHIRPS-v3.0-sat,definitivo
+5101308,2026,9,82.67,CHIRPS-v3.0-sat,definitivo
+5101407,2026,9,35.87,CHIRPS-v3.0-sat,definitivo
+5101605,2026,9,61.14,CHIRPS-v3.0-sat,definitivo
+5101704,2026,9,104.14,CHIRPS-v3.0-sat,definitivo
+5101803,2026,9,45.36,CHIRPS-v3.0-sat,definitivo
+5101837,2026,9,86.36,CHIRPS-v3.0-sat,definitivo
+5101852,2026,9,80.4,CHIRPS-v3.0-sat,definitivo
+5101902,2026,9,49.08,CHIRPS-v3.0-sat,definitivo
+5102504,2026,9,74.39,CHIRPS-v3.0-sat,definitivo
+5102603,2026,9,63.59,CHIRPS-v3.0-sat,definitivo
+5102637,2026,9,102.11,CHIRPS-v3.0-sat,definitivo
+5102678,2026,9,66.96,CHIRPS-v3.0-sat,definitivo
+5102686,2026,9,83.58,CHIRPS-v3.0-sat,definitivo
+5102694,2026,9,54.98,CHIRPS-v3.0-sat,definitivo
+5102702,2026,9,46.63,CHIRPS-v3.0-sat,definitivo
+5102793,2026,9,82.16,CHIRPS-v3.0-sat,definitivo
+5102850,2026,9,12.16,CHIRPS-v3.0-sat,definitivo
+5103007,2026,9,79.74,CHIRPS-v3.0-sat,definitivo
+5103056,2026,9,57.75,CHIRPS-v3.0-sat,definitivo
+5103106,2026,9,28.44,CHIRPS-v3.0-sat,definitivo
+5103205,2026,9,75.65,CHIRPS-v3.0-sat,definitivo
+5103254,2026,9,77.53,CHIRPS-v3.0-sat,definitivo
+5103304,2026,9,60.9,CHIRPS-v3.0-sat,definitivo
+5103353,2026,9,45.51,CHIRPS-v3.0-sat,definitivo
+5103361,2026,9,76.3,CHIRPS-v3.0-sat,definitivo
+5103379,2026,9,20.19,CHIRPS-v3.0-sat,definitivo
+5103403,2026,9,75.94,CHIRPS-v3.0-sat,definitivo
+5103437,2026,9,106.37,CHIRPS-v3.0-sat,definitivo
+5103452,2026,9,77.7,CHIRPS-v3.0-sat,definitivo
+5103502,2026,9,83.23,CHIRPS-v3.0-sat,definitivo
+5103601,2026,9,64.46,CHIRPS-v3.0-sat,definitivo
+5103700,2026,9,64.74,CHIRPS-v3.0-sat,definitivo
+5103809,2026,9,58.99,CHIRPS-v3.0-sat,definitivo
+5103858,2026,9,75.66,CHIRPS-v3.0-sat,definitivo
+5103908,2026,9,32.54,CHIRPS-v3.0-sat,definitivo
+5103957,2026,9,75.51,CHIRPS-v3.0-sat,definitivo
+5104104,2026,9,48.03,CHIRPS-v3.0-sat,definitivo
+5104203,2026,9,61.85,CHIRPS-v3.0-sat,definitivo
+5104500,2026,9,73.4,CHIRPS-v3.0-sat,definitivo
+5104526,2026,9,77.11,CHIRPS-v3.0-sat,definitivo
+5104542,2026,9,65.65,CHIRPS-v3.0-sat,definitivo
+5104559,2026,9,45.88,CHIRPS-v3.0-sat,definitivo
+5104609,2026,9,86.03,CHIRPS-v3.0-sat,definitivo
+5104807,2026,9,62.23,CHIRPS-v3.0-sat,definitivo
+5104906,2026,9,71.35,CHIRPS-v3.0-sat,definitivo
+5105002,2026,9,73.98,CHIRPS-v3.0-sat,definitivo
+5105101,2026,9,26.85,CHIRPS-v3.0-sat,definitivo
+5105150,2026,9,37.41,CHIRPS-v3.0-sat,definitivo
+5105176,2026,9,11.67,CHIRPS-v3.0-sat,definitivo
+5105200,2026,9,56.4,CHIRPS-v3.0-sat,definitivo
+5105234,2026,9,100.45,CHIRPS-v3.0-sat,definitivo
+5105259,2026,9,76.84,CHIRPS-v3.0-sat,definitivo
+5105309,2026,9,54.17,CHIRPS-v3.0-sat,definitivo
+5105507,2026,9,58.58,CHIRPS-v3.0-sat,definitivo
+5105580,2026,9,53.35,CHIRPS-v3.0-sat,definitivo
+5105606,2026,9,62.3,CHIRPS-v3.0-sat,definitivo
+5105622,2026,9,97.06,CHIRPS-v3.0-sat,definitivo
+5105903,2026,9,82.79,CHIRPS-v3.0-sat,definitivo
+5106000,2026,9,92.16,CHIRPS-v3.0-sat,definitivo
+5106109,2026,9,70.54,CHIRPS-v3.0-sat,definitivo
+5106158,2026,9,16.56,CHIRPS-v3.0-sat,definitivo
+5106174,2026,9,29.97,CHIRPS-v3.0-sat,definitivo
+5106182,2026,9,72.52,CHIRPS-v3.0-sat,definitivo
+5106190,2026,9,65.25,CHIRPS-v3.0-sat,definitivo
+5106208,2026,9,70.79,CHIRPS-v3.0-sat,definitivo
+5106216,2026,9,50.47,CHIRPS-v3.0-sat,definitivo
+5106224,2026,9,55.94,CHIRPS-v3.0-sat,definitivo
+5106232,2026,9,130.6,CHIRPS-v3.0-sat,definitivo
+5106240,2026,9,62.1,CHIRPS-v3.0-sat,definitivo
+5106257,2026,9,45.1,CHIRPS-v3.0-sat,definitivo
+5106265,2026,9,60.78,CHIRPS-v3.0-sat,definitivo
+5106273,2026,9,20.81,CHIRPS-v3.0-sat,definitivo
+5106281,2026,9,44.51,CHIRPS-v3.0-sat,definitivo
+5106299,2026,9,49.48,CHIRPS-v3.0-sat,definitivo
+5106307,2026,9,91.56,CHIRPS-v3.0-sat,definitivo
+5106315,2026,9,72.88,CHIRPS-v3.0-sat,definitivo
+5106372,2026,9,55.1,CHIRPS-v3.0-sat,definitivo
+5106422,2026,9,60.7,CHIRPS-v3.0-sat,definitivo
+5106455,2026,9,62.8,CHIRPS-v3.0-sat,definitivo
+5106505,2026,9,84.14,CHIRPS-v3.0-sat,definitivo
+5106653,2026,9,44.13,CHIRPS-v3.0-sat,definitivo
+5106703,2026,9,68.1,CHIRPS-v3.0-sat,definitivo
+5106752,2026,9,49.65,CHIRPS-v3.0-sat,definitivo
+5106778,2026,9,52.34,CHIRPS-v3.0-sat,definitivo
+5106802,2026,9,53.04,CHIRPS-v3.0-sat,definitivo
+5106828,2026,9,48.82,CHIRPS-v3.0-sat,definitivo
+5106851,2026,9,70.02,CHIRPS-v3.0-sat,definitivo
+5107008,2026,9,39.69,CHIRPS-v3.0-sat,definitivo
+5107040,2026,9,67.8,CHIRPS-v3.0-sat,definitivo
+5107065,2026,9,82.04,CHIRPS-v3.0-sat,definitivo
+5107107,2026,9,87.53,CHIRPS-v3.0-sat,definitivo
+5107156,2026,9,99.18,CHIRPS-v3.0-sat,definitivo
+5107180,2026,9,51.55,CHIRPS-v3.0-sat,definitivo
+5107198,2026,9,70.13,CHIRPS-v3.0-sat,definitivo
+5107206,2026,9,101.46,CHIRPS-v3.0-sat,definitivo
+5107248,2026,9,80.47,CHIRPS-v3.0-sat,definitivo
+5107263,2026,9,118.79,CHIRPS-v3.0-sat,definitivo
+5107297,2026,9,58.02,CHIRPS-v3.0-sat,definitivo
+5107305,2026,9,63.7,CHIRPS-v3.0-sat,definitivo
+5107354,2026,9,84.69,CHIRPS-v3.0-sat,definitivo
+5107404,2026,9,43.54,CHIRPS-v3.0-sat,definitivo
+5107578,2026,9,69.34,CHIRPS-v3.0-sat,definitivo
+5107602,2026,9,59.58,CHIRPS-v3.0-sat,definitivo
+5107701,2026,9,78.19,CHIRPS-v3.0-sat,definitivo
+5107743,2026,9,61.35,CHIRPS-v3.0-sat,definitivo
+5107750,2026,9,108.76,CHIRPS-v3.0-sat,definitivo
+5107768,2026,9,63.84,CHIRPS-v3.0-sat,definitivo
+5107776,2026,9,20.99,CHIRPS-v3.0-sat,definitivo
+5107792,2026,9,75.11,CHIRPS-v3.0-sat,definitivo
+5107800,2026,9,63.76,CHIRPS-v3.0-sat,definitivo
+5107859,2026,9,72.2,CHIRPS-v3.0-sat,definitivo
+5107875,2026,9,86.69,CHIRPS-v3.0-sat,definitivo
+5107883,2026,9,76.38,CHIRPS-v3.0-sat,definitivo
+5107909,2026,9,56.34,CHIRPS-v3.0-sat,definitivo
+5107925,2026,9,63.81,CHIRPS-v3.0-sat,definitivo
+5107941,2026,9,34.17,CHIRPS-v3.0-sat,definitivo
+5107958,2026,9,93.18,CHIRPS-v3.0-sat,definitivo
+5108006,2026,9,76.19,CHIRPS-v3.0-sat,definitivo
+5108055,2026,9,94.98,CHIRPS-v3.0-sat,definitivo
+5108105,2026,9,39.82,CHIRPS-v3.0-sat,definitivo
+5108204,2026,9,58.49,CHIRPS-v3.0-sat,definitivo
+5108303,2026,9,70.0,CHIRPS-v3.0-sat,definitivo
+5108352,2026,9,98.35,CHIRPS-v3.0-sat,definitivo
+5108402,2026,9,77.57,CHIRPS-v3.0-sat,definitivo
+5108501,2026,9,92.45,CHIRPS-v3.0-sat,definitivo
+5108600,2026,9,28.06,CHIRPS-v3.0-sat,definitivo
+5108808,2026,9,86.78,CHIRPS-v3.0-sat,definitivo
+5108857,2026,9,118.79,CHIRPS-v3.0-sat,definitivo
+5108907,2026,9,56.87,CHIRPS-v3.0-sat,definitivo
+5108956,2026,9,15.7,CHIRPS-v3.0-sat,definitivo
