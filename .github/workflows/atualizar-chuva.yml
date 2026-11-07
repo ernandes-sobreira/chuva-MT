@@ -49,7 +49,7 @@ jobs:
           git config user.name "chuva-mt-bot"
           git config user.email "chuva-mt-bot@users.noreply.github.com"
           git add dados/
-          if git diff --cached --quiet -- dados/mensal; then
+          if git diff --cached --quiet -- dados/; then
             echo "Sem mes novo. Nada a gravar."
           else
             git commit -m "Atualiza chuva mensal (automatico)"
