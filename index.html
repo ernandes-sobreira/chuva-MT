@@ -388,7 +388,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
     </div>
   </div>
 <div class="card" id="diaHistoricoBox" style="margin:18px 0">
-<div class="chead"><h2>Mesmo dia em anos diferentes</h2><p class="note">Comparação por mesma fonte: CHIRPS v3 histórico ou GSMaP para períodos recentes. Dados ausentes nunca viram zero.</p></div>
+<div class="chead"><h2>Mesmo dia em anos diferentes</h2><p class="note">Comparação por mesma fonte: CHIRPS histórico ou GSMaP para períodos recentes. Dados ausentes nunca viram zero.</p></div>
 <div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
 <label class="field">Data-base<input type="date" id="diaHistData"></label>
 <label class="field">Ano de comparação<select id="diaHistAno"></select></label>
@@ -462,7 +462,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
     <input type="file" id="file" accept=".csv,text/csv,text/plain" hidden>
     <p id="msg" hidden></p>
   </div>
-  <div class="card soft" id="autoBox" hidden><h2>Atualização automática</h2><p id="autoMsg"></p><p class="note">Um agendamento no GitHub consulta o Earth Engine nos dias 3, 13 e 23 de cada mês e grava aqui os meses que já estiverem completos no CHIRPS.</p></div>
+  <div class="card soft" id="autoBox" hidden><h2>Atualização automática</h2><p id="autoMsg"></p><p class="note">Um agendamento diário consulta o Earth Engine, atualiza meses completos e identifica meses parciais quando houver novos dias disponíveis na coleção. O atraso da fonte é exibido separadamente da data de verificação.</p></div>
   <div class="card" id="cardDrive">
     <div class="chead"><h2>Puxar do Google Drive</h2><button class="btn" id="btnDrive" type="button">Buscar meses novos no Drive</button></div>
     <p class="note">A página procura no seu Drive os arquivos CSV cujo nome começa com <code>MT_CHIRPS_MENSAL</code>, lê os meses posteriores a dezembro de 2025 e guarda aqui. Depois da primeira busca, ela repete a verificação sozinha cada vez que você abrir a página.</p>
@@ -1068,7 +1068,7 @@ async function compararDiaHistorico(){
  const [sourceA,sourceB]=await Promise.all([histYear(+dt.slice(0,4)),histYear(prevYear)]);
  if(window.__comparisonRequest!==id)return;
  // A fonte só pode ser escolhida se existir para ambas as datas.
- let vA=histAggregate(sourceA,dt,mode,u),vB=histAggregate(sourceB,prior,mode,u),fonte="CHIRPS v3";
+ let vA=histAggregate(sourceA,dt,mode,u),vB=histAggregate(sourceB,prior,mode,u),fonte="CHIRPS diário";
  if(vA==null||vB==null){
    vA=histAggregate(DAILY&&DAILY.dias?Object.fromEntries(Object.entries(DAILY.dias).map(([d,v])=>[d,v.v])):null,dt,mode,u);
    vB=histAggregate(DAILY&&DAILY.dias?Object.fromEntries(Object.entries(DAILY.dias).map(([d,v])=>[d,v.v])):null,prior,mode,u);
