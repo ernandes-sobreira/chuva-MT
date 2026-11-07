@@ -57,5 +57,6 @@ jobs:
             echo "Sem mes novo. Nada a gravar."
           else
             git commit -m "Atualiza chuva mensal (automatico)"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
