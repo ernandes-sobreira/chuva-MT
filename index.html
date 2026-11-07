@@ -846,7 +846,7 @@ function barChart(svg,o){
 
 /* regime mensal: faixa P10 a P90, mediana e ano em destaque */
 function regimeChart(svg,o){
-  const W=cw(svg),H=300,L=50,R=14,T=22,B=30;let hi=Math.max.apply(null,o.p90.concat(o.max||[],(o.over||[]).filter(v=>v!=null)));const tk=yTicks(0,hi*1.05,4);hi=Math.max(hi*1.05,tk.t[tk.t.length-1]);
+  const W=cw(svg),H=300,L=50,R=14,T=22,B=30;let hi=Math.max.apply(null,o.p90.concat(o.max||[],(o.over||[]).filter(v=>v!=null),(o.parciais||[]).filter(v=>v!=null).map(v=>v.v)));const tk=yTicks(0,hi*1.05,4);hi=Math.max(hi*1.05,tk.t[tk.t.length-1]);
   const pw=(W-L-R)/12,X=i=>L+(i+.5)*pw,Y=v=>T+(H-T-B)*(1-v/hi);let h="";
   tk.t.forEach(v=>{h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="'+GRID+'"/><text x="'+(L-8)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="12" fill="'+INK2+'">'+f0(v)+'</text>';});
   h+='<text x="'+L+'" y="12" font-size="12" fill="'+INK2+'">mm</text>';
@@ -858,6 +858,11 @@ function regimeChart(svg,o){
   if(o.over){let seg=[],d="";o.over.forEach((v,i)=>{if(v!=null)seg.push(X(i)+","+Y(v));if(v==null||i==11){if(seg.length>1)d+="M"+seg.join("L");seg=[];}});
     h+='<path fill="none" stroke="'+CORAL+'" stroke-width="2.4" stroke-linejoin="round" d="'+d+'"/>';
     o.over.forEach((v,i)=>{if(v!=null){const pre=o.prelim&&o.prelim[i];h+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="'+(pre?"#fff":CORAL)+'" stroke="'+(pre?CORAL:"#fff")+'" stroke-width="2"/>';}});}
+  if(o.parciais)o.parciais.forEach((item,i)=>{
+    if(!item)return;
+    const x=X(i),y=Y(item.v);
+    h+='<circle cx="'+x+'" cy="'+y+'" r="5.5" fill="white" stroke="#b77b1b" stroke-width="2.5"/><text x="'+x+'" y="'+(y-10)+'" text-anchor="middle" fill="#8a5413" font-size="10">parcial</text>';
+  });
   MES3.forEach((m,i)=>{h+='<text x="'+X(i)+'" y="'+(H-9)+'" text-anchor="middle" font-size="12" fill="'+INK2+'">'+m+'</text><rect class="hit" data-i="'+i+'" x="'+(L+i*pw)+'" y="'+T+'" width="'+pw+'" height="'+(H-T-B)+'" fill="transparent"/>';});
   svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.innerHTML=h;bindTip(svg);svg._tip=i=>o.tip(+i);svg._click=o.click?i=>o.click(+i):null;}
 
@@ -1196,6 +1201,13 @@ $("btnSweep").addEventListener("click",()=>{const t0=performance.now(),dur=3600;
 
 /* ================= LOCAL ================= */
 function movAvg(x,w){const h=Math.floor(w/2),o=[];for(let i=h;i<x.length-h;i++){let s=0;for(let k=-h;k<=h;k++)s+=x[i+k];o.push([i,s/w]);}return o;}
+function chirpsParcial(u,y,m){
+ const e=EXTRA[y+"-"+String(m+1).padStart(2,"0")];
+ if(!e||!e.parcial||!e.v)return null;
+ let area=0,total=0;
+ for(const i of u.idx){const x=e.v[MUN[i].c];if(x==null)return null;area+=MUN[i].a;total+=MUN[i].a*(+x);}
+ return area?{v:total/area,dias:e.dias_observados,mesDias:e.dias_no_mes}:null;
+}
 function rLocal(){
   const p=P(),u=U(),ref=uref(u,p),se=useries(u,p),mk=ST.mannKendall(ref.t,ref.x),n=ref.x.length;
   const kDisponiveis=dlMonthKeys(),ultimoChirps=kDisponiveis[kDisponiveis.length-1]||"não disponível";
@@ -1219,10 +1231,11 @@ function rLocal(){
   const mx=[],mn=[],mxY=[],mnY=[],avg=[],cvv=[];
   for(let k=0;k<12;k++){const c=col(k);p10.push(ST.quantile(c,.1));p90.push(ST.quantile(c,.9));med.push(ST.median(c));const a=Math.max.apply(null,c),b=Math.min.apply(null,c),m=ST.mean(c);mx.push(a);mn.push(b);mxY.push(rr[c.indexOf(a)].y);mnY.push(rr[c.indexOf(b)].y);avg.push(m);cvv.push(m>0?100*ST.sd(c)/m:null);}
   const row=mm.find(r=>r.y==S.regAno);
+  const parciais=MESES.map((_,m)=>chirpsParcial(u,S.regAno,m));
   $("selRegAno").innerHTML=mm.slice().reverse().map(r=>'<option'+(r.y==S.regAno?" selected":"")+'>'+r.y+'</option>').join("");
   $("lcRegTit").textContent="Regime mensal CHIRPS em "+u.nome;
-  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:row?row.v:null,prelim:MESES.map((_,k)=>!!(EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar),tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(row&&row.v[k]!=null?"<br>"+S.regAno+": "+f1(row.v[k])+" mm"+((EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar?" (CHIRPS preliminar)":""):""),click:k=>{S.per="m"+k;render();}});
-  $("tbReg").innerHTML="<thead><tr><th></th>"+MES3.map(m=>"<th>"+m+"</th>").join("")+"</tr></thead><tbody>"+[["Máximo (mm)",mx.map(f0)],["ano do máximo",mxY],["Média (mm)",avg.map(f0)],["Mediana (mm)",med.map(f0)],["Mínimo (mm)",mn.map(v=>v<10?f1(v):f0(v))],["ano do mínimo",mnY],["CV (%)",cvv.map(v=>v==null?"":f0(v))]].concat(row?[[String(S.regAno)+" (mm)",row.v.map(v=>v==null?"":f0(v))]]:[]).map(r=>"<tr><td>"+r[0]+"</td>"+r[1].map(v=>"<td>"+v+"</td>").join("")+"</tr>").join("")+"</tbody>";
+  regimeChart($("chReg"),{p10,p90,med,max:mx,min:mn,mean:avg,over:row?row.v:null,parciais:parciais,prelim:MESES.map((_,k)=>!!(EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar),tip:k=>"<b>"+cap(MESES[k])+"</b>Média "+f0(avg[k])+" mm, mediana "+f0(med[k])+" mm<br>Máximo "+f0(mx[k])+" mm <span>("+mxY[k]+")</span><br>Mínimo "+f1(mn[k])+" mm <span>("+mnY[k]+")</span><br><span>P10 "+f0(p10[k])+", P90 "+f0(p90[k])+(cvv[k]==null?"":", CV "+f0(cvv[k])+"%")+"</span>"+(row&&row.v[k]!=null?"<br>"+S.regAno+": "+f1(row.v[k])+" mm"+((EXTRA[S.regAno+"-"+String(k+1).padStart(2,"0")]||{}).preliminar?" (CHIRPS preliminar)":""):""),click:k=>{S.per="m"+k;render();}});
+  $("tbReg").innerHTML="<thead><tr><th></th>"+MES3.map(m=>"<th>"+m+"</th>").join("")+"</tr></thead><tbody>"+[["Máximo (mm)",mx.map(f0)],["ano do máximo",mxY],["Média (mm)",avg.map(f0)],["Mediana (mm)",med.map(f0)],["Mínimo (mm)",mn.map(v=>v<10?f1(v):f0(v))],["ano do mínimo",mnY],["CV (%)",cvv.map(v=>v==null?"":f0(v))]].concat(row?[[String(S.regAno)+" (mm)",row.v.map(v=>v==null?"":f0(v))]]:[]).concat(parciais.some(v=>v!=null)?[["Acumulado parcial ("+S.regAno+")",parciais.map(v=>v?f1(v.v)+" ("+v.dias+"/"+v.mesDias+" dias)":"")]]:[]).map(r=>"<tr><td>"+r[0]+"</td>"+r[1].map(v=>"<td>"+v+"</td>").join("")+"</tr>").join("")+"</tbody>";
   $("lgReg").innerHTML='<span><i class="dash" style="border-color:#1f8f85"></i>máximo da série</span><span><i class="dash" style="border-color:#a8691f"></i>mínimo da série</span><span><i class="dash" style="border-color:'+INK+'"></i>média</span><span><i class="box" style="background:#cfe2f8"></i>entre P10 e P90</span><span><i style="border-color:'+ACC+'"></i>mediana</span><span><i style="border-color:'+CORAL+'"></i>'+S.regAno+'</span><span>clique em um mês para analisá-lo</span>';
   /* quadro */
   document.querySelectorAll("#segHm button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m==S.hm));
@@ -1513,11 +1526,11 @@ let REPO_META=null,CHIRPS_STATUS=null;
 function statusChirpsRender(){
  const rows=CHIRPS_STATUS&&CHIRPS_STATUS.meses||{},keys=Object.keys(rows).sort().reverse(),meta=CHIRPS_STATUS&&CHIRPS_STATUS._meta||{};
  const ultimo=keys[0],entry=rows[ultimo];
- const label=v=>v==="final"?"definitivo disponível na fonte":v==="preliminar"?"preliminar disponível na fonte":"ainda indisponível na fonte";
+ const label=v=>v==="final"?"definitivo disponível na fonte":v==="preliminar"?"preliminar completo na fonte":v==="parcial"?"mês parcial na fonte":"ainda indisponível na fonte";
  const msg=entry?"CHIRPS v3 · "+ultimo+": "+label(entry.situacao_na_origem)+". "+entry.dias_final+"/"+entry.dias_necessarios+" dias finais; "+entry.dias_preliminar+"/"+entry.dias_necessarios+" preliminares. Verificado em "+(meta.verificado_em||"—")+".":"A auditoria diária CHIRPS ainda não publicou seu primeiro relatório.";
  if($("statusChirpsLocal"))$("statusChirpsLocal").textContent=msg;
  if($("statusChirpsDados"))$("statusChirpsDados").textContent=msg;
- if($("statusChirpsTabela"))$("statusChirpsTabela").innerHTML=keys.length?'<table><thead><tr><th>Mês</th><th>Fonte CHIRPS v3</th><th>Disponibilidade</th><th>Valor municipal no site</th></tr></thead><tbody>'+keys.map(k=>{const x=rows[k];return "<tr><td>"+k+"</td><td>"+label(x.situacao_na_origem)+"</td><td>"+x.dias_final+"/"+x.dias_necessarios+" dias finais</td><td>"+(x.situacao_no_site==="definitivo"?"CHIRPS v3 definitivo":x.situacao_no_site==="preliminar"?"CHIRPS v3 preliminar":x.situacao_no_site==="outra_versao_chirps"?"Outra versão CHIRPS — não convertida": "não processado")+"</td></tr>";}).join("")+"</tbody></table>":"";
+ if($("statusChirpsTabela"))$("statusChirpsTabela").innerHTML=keys.length?'<table><thead><tr><th>Mês</th><th>Fonte CHIRPS v3</th><th>Disponibilidade</th><th>Valor municipal no site</th></tr></thead><tbody>'+keys.map(k=>{const x=rows[k];return "<tr><td>"+k+"</td><td>"+label(x.situacao_na_origem)+"</td><td>"+x.dias_final+"/"+x.dias_necessarios+" dias finais</td><td>"+(x.situacao_no_site==="definitivo"?"CHIRPS v3 definitivo":x.situacao_no_site==="preliminar"?"CHIRPS v3 preliminar":x.situacao_no_site==="parcial"?"CHIRPS v3 parcial":x.situacao_no_site==="outra_versao_chirps"?"Outra versão CHIRPS — não convertida": "não processado")+"</td></tr>";}).join("")+"</tbody></table>":"";
 }
 function loadStatusChirps(){fetch("dados/status_chirps.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.meses){CHIRPS_STATUS=j;statusChirpsRender();}}).catch(()=>{});}
 
