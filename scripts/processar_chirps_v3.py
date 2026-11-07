@@ -9,6 +9,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -28,13 +30,28 @@ CACHE.mkdir(parents=True, exist_ok=True)
 
 
 def download(url, target):
-    req = Request(url, headers={"User-Agent": "Chuva-MT research precipitation 1.0"})
-    with urlopen(req, timeout=120) as src, open(target, "wb") as out:
-        while True:
-            block = src.read(2 * 1024 * 1024)
-            if not block:
-                break
-            out.write(block)
+    # Evita sobrecarregar a origem CHC; respeita Retry-After e limita tentativas.
+    for attempt in range(5):
+        req = Request(url, headers={"User-Agent": "Chuva-MT academic precipitation analysis (contact via GitHub ernandes-sobreira/chuva-MT)"})
+        try:
+            with urlopen(req, timeout=120) as src, open(target, "wb") as out:
+                while True:
+                    block = src.read(2 * 1024 * 1024)
+                    if not block:
+                        break
+                    out.write(block)
+            return
+        except urllib.error.HTTPError as exc:
+            target.unlink(missing_ok=True)
+            if exc.code not in (429, 503):
+                raise
+            retry = exc.headers.get("Retry-After")
+            pause = min(300, max(30, int(retry) if retry and retry.isdigit() else 45 * (attempt + 1)))
+            print(f"CHIRPS limitou acesso (HTTP {exc.code}); tentativa {attempt+1}/5, respeitando pausa de {pause}s", flush=True)
+            if attempt == 4:
+                raise RuntimeError("Servidor CHIRPS limitou downloads. Arquivos municipais não foram alterados.") from exc
+            time.sleep(pause)
+    raise RuntimeError("Falha no download CHIRPS")
 
 
 def grid_values(path, shapes, bounds):
@@ -121,6 +138,7 @@ def main():
             raise RuntimeError(f"Sem pixel para {int(np.sum(counts == 0))} municípios no dia {date}; valores não publicados")
         sums += x / counts
         path.unlink(missing_ok=True)
+        time.sleep(2)
     vals = {code: round(float(value), 2) for (code, _), value in zip(shapes, sums)}
     if len(vals) != 142 or not all(np.isfinite(list(vals.values()))):
         raise RuntimeError("Saída incompleta: não publicar")
