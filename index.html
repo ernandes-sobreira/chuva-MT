@@ -684,7 +684,7 @@ function lastYear(){let y=YREF;for(const k in EXTRA){const a=+k.slice(0,4);if(a>
 function mval(i,y,m){ /* chuva do municipio i no ano y, mes m (0 a 11) */
   if(y<Y0)return null;
   if(y<=YREF)return MUN[i].d[(y-Y0)*12+m];
-  const e=EXTRA[y+"-"+String(m+1).padStart(2,"0")]; if(!e)return null; const v=e.v[MUN[i].c]; return v==null?null:+v;}
+  const e=EXTRA[y+"-"+String(m+1).padStart(2,"0")]; if(!e||e.parcial)return null; const v=e.v[MUN[i].c]; return v==null?null:+v;}
 function isPrelim(p,y){const e=(p.s+p.len-1)%12;for(let k=0;k<p.len;k++){const ab=y*12+e-k,yy=Math.floor(ab/12),mm=ab-yy*12,x=EXTRA[yy+"-"+String(mm+1).padStart(2,"0")];if(x&&x.preliminar)return true;}return false;}
 function pval(i,p,y){ /* total do periodo p com rotulo de ano y */
   const e=(p.s+p.len-1)%12; let s=0;
@@ -1487,13 +1487,13 @@ function cpRender(){
  const bars=[{v:d.a,y:CP.a,color:"#2a78d6"},{v:d.b,y:CP.b,color:"#0a6b62"}];
  return '<div style="display:grid;grid-template-columns:90px 1fr;gap:8px;margin:12px 0;align-items:center"><b>'+cap(MESES[d.m-1])+'</b><div>'+bars.map(z=>'<div style="display:flex;align-items:center;gap:8px;margin:3px 0"><span style="width:36px;font-size:12px">'+z.y+'</span><div style="flex:1;background:#eef2f7;height:17px;border-radius:4px"><div style="width:'+(z.v==null?0:Math.max(1,100*z.v/max))+'%;background:'+z.color+';height:100%;border-radius:4px"></div></div><span style="width:80px;text-align:right;font-variant-numeric:tabular-nums">'+fmt(z.v)+'</span></div>').join("")+'</div></div>';
  }).join("")+'</div>';
- $("cpResumoNovo").textContent=!valid?"O mês inicial deve ser anterior ou igual ao final.":!complete?"Período incompleto: pelo menos um dos meses selecionados não está disponível nos dois anos. Não calculamos totais ou porcentagens com meses faltantes.":"Em "+u.nome+", comparação "+MESES[ini-1]+"–"+MESES[fim-1]+": "+CP.a+" = "+fmt(sa)+"; "+CP.b+" = "+fmt(sb)+". Diferença = "+sg(sb-sa,1)+" mm.";
+ $("cpResumoNovo").textContent=!valid?"O mês inicial deve ser anterior ou igual ao final.":!complete?"Período incompleto: pelo menos um dos meses selecionados não está disponível nos dois anos. Não calculamos totais ou porcentagens com meses faltantes."+aviso:"Em "+u.nome+", comparação "+MESES[ini-1]+"–"+MESES[fim-1]+": "+CP.a+" = "+fmt(sa)+"; "+CP.b+" = "+fmt(sb)+". Diferença = "+sg(sb-sa,1)+" mm.";
 }
 
 function loadRepo(){ /* no GitHub Pages: meses calculados pelo agendamento ficam em dados/meses.json */
   if(typeof fetch!="function")return;
   fetch("dados/meses.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object")return;REPO_META=j._meta||{};const o=Object.assign({},EXTRA);let n=0;
-    for(const k in j){if(k=="_meta"||!j[k]||!j[k].v)continue;const e=j[k];o[k]={ano:e.ano,mes:e.mes,v:e.v,n:e.n,fonte:e.fonte,preliminar:!!e.preliminar,repo:true,atualizado_em:e.atualizado_em};n++;}
+    for(const k in j){if(k=="_meta"||!j[k]||!j[k].v)continue;const e=j[k];o[k]={ano:e.ano,mes:e.mes,v:e.v,n:e.n,fonte:e.fonte,preliminar:!!e.preliminar,parcial:!!e.parcial,dias_observados:e.dias_observados,dias_no_mes:e.dias_no_mes,repo:true,atualizado_em:e.atualizado_em};n++;}
     setExtra(o);S.year=null;CP.ready=false;render();}).catch(()=>{});}
 function loadDailyRepo(){
   if(typeof fetch!="function")return;
