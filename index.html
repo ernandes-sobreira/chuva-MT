@@ -253,14 +253,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
     </div>
   </div>
 
-<div class="card" id="diaHistoricoBox" style="margin:18px 0">
-<div class="chead"><h2>Mesmo dia em anos diferentes</h2><p class="note">Comparação por mesma fonte: CHIRPS v3 histórico ou GSMaP para períodos recentes. Dados ausentes nunca viram zero.</p></div>
-<div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
-<label class="field">Data-base<input type="date" id="diaHistData"></label>
-<label class="field">Ano de comparação<select id="diaHistAno"></select></label>
-<label class="field">Janela<select id="diaHistModo"><option value="day">Mesmo dia</option><option value="7d">7 dias até a data</option><option value="30d">30 dias até a data</option><option value="mtd">Mês até a data</option></select></label>
-</div><div class="kpis" id="diaHistValores"></div><p class="note" id="diaHistNota" aria-live="polite"></p>
-</div>
+
   <div class="card soft">
     <div class="chead"><h2>Resumo pronto para texto</h2><button class="btn ghost sm" id="btnCopy" type="button">Copiar</button></div>
     <p id="resumo" style="max-width:85ch"></p>
@@ -394,6 +387,14 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
       <div class="rank" id="rankDay"></div>
     </div>
   </div>
+<div class="card" id="diaHistoricoBox" style="margin:18px 0">
+<div class="chead"><h2>Mesmo dia em anos diferentes</h2><p class="note">Comparação por mesma fonte: CHIRPS v3 histórico ou GSMaP para períodos recentes. Dados ausentes nunca viram zero.</p></div>
+<div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
+<label class="field">Data-base<input type="date" id="diaHistData"></label>
+<label class="field">Ano de comparação<select id="diaHistAno"></select></label>
+<label class="field">Janela<select id="diaHistModo"><option value="day">Mesmo dia</option><option value="7d">7 dias até a data</option><option value="30d">30 dias até a data</option><option value="mtd">Mês até a data</option></select></label>
+</div><div class="kpis" id="diaHistValores"></div><p class="note" id="diaHistNota" aria-live="polite"></p>
+</div>
   <div class="card soft">
     <div class="chead"><h2>Resumo pronto para texto</h2><button class="btn ghost sm" id="btnCopyDay" type="button">Copiar</button></div>
     <p id="resumoDay" style="max-width:90ch"></p>
