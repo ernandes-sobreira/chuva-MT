@@ -1594,7 +1594,7 @@ function loadRepo(){ /* no GitHub Pages: meses calculados pelo agendamento ficam
     setExtra(o);S.year=null;CP.ready=false;render();}).catch(()=>{});}
 function loadDailyRepo(){
   if(typeof fetch!="function")return;
-  fetch("dados/diario.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object"||!j.dias)return;DAILY=j;if(!S.dayDate||!j.dias[S.dayDate]){const ks=Object.keys(j.dias).sort();S.dayDate=ks.length?ks[ks.length-1]:null;}if(S.tab=="diario")render();}).catch(()=>{});
+  fetch("dados/diario.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||typeof j!="object"||!j.dias)return;DAILY=j;if(!S.dayDate||!j.dias[S.dayDate]){const ks=Object.keys(j.dias).sort();S.dayDate=ks.length?ks[ks.length-1]:null;}if(S.tab=="diario"||S.tab=="local")render();}).catch(()=>{});
 }
 function loadLocal(){try{const s=localStorage.getItem(LSM);if(s)setExtra(JSON.parse(s)||{});}catch(_){}}
 let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==lastW)return;lastW=innerWidth;clearTimeout(rzT);rzT=setTimeout(render,180);});
