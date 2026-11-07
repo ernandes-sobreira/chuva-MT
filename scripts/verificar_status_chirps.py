@@ -71,7 +71,7 @@ def load_months():
 def audit(now=None):
     today = now or dt.datetime.now(dt.timezone.utc).date()
     # Últimos seis meses, incluindo o mês corrente, atravessando anos.
-    first_y = today.year + (today.month <= 6) - 1
+    first_y = today.year - (today.month <= 5)
     first_m = (today.month - 6) % 12 + 1
     first = dt.date(first_y, first_m, 1)
     months = []
