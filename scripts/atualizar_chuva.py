@@ -159,6 +159,9 @@ def main():
     for a, m in candidatos:
         k = "%d-%02d" % (a, m)
         ja = meses.get(k)
+        # Evita que a rotina legada do Earth Engine sobrescreva um mês CHIRPS v3 oficial.
+        if ja and ja.get("colecao") == "CHIRPS-v3.0-sat-official":
+            continue
         ok, n = mes_completo(ee, colecao, a, m)
         if n == 0:
             log("  %s sem imagens CHIRPS disponíveis." % k)
