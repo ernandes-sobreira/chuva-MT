@@ -313,6 +313,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 
 <!-- ================= LOCAL ================= -->
 <section class="view" id="v-local" hidden>
+  <p class="note" id="statusChirpsLocal" aria-live="polite">Conferindo situação do CHIRPS...</p>
   <div class="hero"><div class="eyebrow" id="lcEye"></div><p class="verdict" id="lcVer" style="max-width:46ch"></p></div>
   <div class="kpis" id="kpis3"></div>
   <div class="grid2 eq">
@@ -454,6 +455,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 
 <!-- ================= DADOS ================= -->
 <section class="view" id="v-dados" hidden>
+  <div class="card" style="margin-bottom:16px"><h2>CHIRPS — conferência diária da fonte</h2><p class="note" id="statusChirpsDados" aria-live="polite">Aguardando a primeira auditoria.</p><div id="statusChirpsTabela" style="overflow-x:auto"></div><p class="note">A existência de um arquivo final na fonte não significa que o valor do município já foi reprocessado. O sistema não converte dados de versões diferentes automaticamente.</p></div>
   <div class="drop" id="drop">
     <div class="txt"><h2>Atualizar com um novo mês</h2><p class="note">Solte aqui o CSV exportado do GEE ou escolha o arquivo. Todas as análises passam a incluir o mês novo.</p></div>
     <label class="field">Mês do arquivo<select id="fbMes"></select></label>
@@ -930,6 +932,7 @@ function render(){
   ["mapa","diario","comparar","local","estat","dados"].forEach(t=>$("v-"+t).hidden=t!=S.tab);
   ({mapa:rMapa,diario:rDiario,comparar:rComparar,local:rLocal,estat:rEstat,dados:rDados})[S.tab]();
   if(S.tab=="comparar")cpRender();
+  if(S.tab=="local"||S.tab=="dados")statusChirpsRender();
 }
 function metOptions(el){el.innerHTML=Object.keys(METRICAS).map(k=>'<option value="'+k+'"'+(k==S.met?" selected":"")+'>'+METRICAS[k].nome+'</option>').join("");}
 
@@ -1485,7 +1488,18 @@ $("btnDrive").addEventListener("click",()=>driveSync(true));
 
 /* ---------- estado e inicio ---------- */
 function saveLocal(){try{const o={};for(const k in EXTRA)if(!EXTRA[k].repo)o[k]=EXTRA[k];localStorage.setItem(LSM,JSON.stringify(o));}catch(_){}}
-let REPO_META=null;
+let REPO_META=null,CHIRPS_STATUS=null;
+function statusChirpsRender(){
+ const rows=CHIRPS_STATUS&&CHIRPS_STATUS.meses||{},keys=Object.keys(rows).sort().reverse(),meta=CHIRPS_STATUS&&CHIRPS_STATUS._meta||{};
+ const ultimo=keys[0],entry=rows[ultimo];
+ const label=v=>v==="final"?"definitivo disponível na fonte":v==="preliminar"?"preliminar disponível na fonte":"ainda indisponível na fonte";
+ const msg=entry?"CHIRPS v3 · "+ultimo+": "+label(entry.situacao_na_origem)+". "+entry.dias_final+"/"+entry.dias_necessarios+" dias finais; "+entry.dias_preliminar+"/"+entry.dias_necessarios+" preliminares. Verificado em "+(meta.verificado_em||"—")+".":"A auditoria diária CHIRPS ainda não publicou seu primeiro relatório.";
+ if($("statusChirpsLocal"))$("statusChirpsLocal").textContent=msg;
+ if($("statusChirpsDados"))$("statusChirpsDados").textContent=msg;
+ if($("statusChirpsTabela"))$("statusChirpsTabela").innerHTML=keys.length?'<table><thead><tr><th>Mês</th><th>Fonte CHIRPS v3</th><th>Disponibilidade</th><th>Valor municipal no site</th></tr></thead><tbody>'+keys.map(k=>{const x=rows[k];return "<tr><td>"+k+"</td><td>"+label(x.situacao_na_origem)+"</td><td>"+x.dias_final+"/"+x.dias_necessarios+" dias finais</td><td>"+(x.situacao_no_site==="definitivo"?"CHIRPS v3 definitivo":x.situacao_no_site==="preliminar"?"CHIRPS v3 preliminar":x.situacao_no_site==="outra_versao_chirps"?"Outra versão CHIRPS — não convertida": "não processado")+"</td></tr>";}).join("")+"</tbody></table>":"";
+}
+function loadStatusChirps(){fetch("dados/status_chirps.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.meses){CHIRPS_STATUS=j;statusChirpsRender();}}).catch(()=>{});}
+
 
 /* Comparador de periodos mensais coerentes, inclusive anos parciais. */
 const CP={tipo:"acum",a:2025,b:2026,ini:1,fim:12,ready:false};
@@ -1545,7 +1559,7 @@ let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==last
   $("fbMes").innerHTML=MESES.map((m,i)=>'<option value="'+(i+1)+'">'+cap(m)+'</option>').join("");
   const now=new Date(),prev=new Date(now.getFullYear(),now.getMonth()-1,1);$("fbMes").value=prev.getMonth()+1;$("fbAno").value=prev.getFullYear();
   $("cardDrive").hidden=true;loadUI();loadLocal();render();
-  loadRepo();loadDailyRepo();
+  loadRepo();loadDailyRepo();loadStatusChirps();
   const cl=window.claude;
   if(cl&&cl.use){
     cl.use("mcp").then(m=>{if(!m)return;MCP=m;$("cardDrive").hidden=false;let auto=false;try{auto=localStorage.getItem(LSD+".auto")=="1";}catch(_){}if(auto)setTimeout(()=>driveSync(false),1500);});
