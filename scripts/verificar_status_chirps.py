@@ -106,16 +106,16 @@ def audit(now=None):
         loaded = data.get(key, {})
         # Uma série legada CHIRPS v2 não é convertida para CHIRPS v3 por metadados.
         loaded_collection = str(loaded.get("colecao") or "")
-        loaded_v3 = "CHIRPS/V3/" in loaded_collection.upper()
+        loaded_v3 = loaded_collection == "CHIRPS-v3.0-sat-official" or "CHIRPS/V3/" in loaded_collection.upper()
         if loaded_v3 and loaded.get("v") and not loaded.get("preliminar") and not loaded.get("parcial"):
             processed_status = "definitivo"
         elif loaded_v3 and loaded.get("v"):
-            processed_status = "preliminar"
+            processed_status = "parcial" if loaded.get("parcial") else "preliminar"
         elif loaded.get("v"):
             processed_status = "outra_versao_chirps"
         else:
             processed_status = "sem_dados_municipais"
-        available = "final" if nf == count else ("preliminar" if np else "indisponivel")
+        available = "final" if nf == count else ("preliminar" if np == count else ("parcial" if np else "indisponivel"))
         output[key] = {
             "fonte": "CHIRPS v3.0 sat",
             "situacao_na_origem": available,
@@ -126,7 +126,7 @@ def audit(now=None):
             "preliminar_completo": np == count,
             "situacao_no_site": processed_status,
             "versao_no_site": loaded_collection or None,
-            "requer_reprocessamento": nf == count and processed_status != "definitivo",
+            "requer_reprocessamento": (nf == count and processed_status != "definitivo") or (np and processed_status not in ("definitivo", "preliminar") or (processed_status in ("preliminar", "parcial") and int(loaded.get("dias_observados") or 0) < np)),
             "origem_final": "%s/final/sat/%d/" % (BASE, y),
             "origem_preliminar": "%s/prelim/sat/%d/" % (BASE, y),
         }
