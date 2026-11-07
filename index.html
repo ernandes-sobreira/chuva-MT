@@ -269,12 +269,12 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 <!-- ================= COMPARAR ================= -->
 <section class="view" id="v-comparar" hidden>
 <div class="card" id="comparadorPeriodos" style="margin-bottom:18px">
- <div class="chead"><h2>Comparar qualquer período — inclusive 2026</h2><p class="note">CHIRPS mensal · mesma janela de meses, sem comparar ano parcial com ano completo</p></div>
+ <div class="chead"><h2>Comparar períodos históricos</h2><p class="note">CHIRPS mensal · anos disponíveis atualizados automaticamente</p></div>
  <div class="ctl" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:12px 0">
  <label class="field">Comparar<select id="cpTipoNovo"><option value="mes">Mesmo mês</option><option value="acum" selected>Acumulado de janeiro até o mês</option><option value="intervalo">Intervalo de meses</option></select></label>
  <label class="field">Ano de referência<select id="cpAnoNovoA"></select></label><label class="field">Ano comparado<select id="cpAnoNovoB"></select></label>
  <label class="field">Mês inicial<select id="cpMesNovoA"></select></label><label class="field">Mês final<select id="cpMesNovoB"></select></label>
- </div><p id="cpResumoNovo" class="note" aria-live="polite"></p>
+ </div><p id="cpFonteStatus" class="note" aria-live="polite"></p><p id="cpResumoNovo" class="note" aria-live="polite"></p>
  <div id="cpValoresNovo" class="kpis" style="margin:12px 0"></div>
  <div id="cpGraficoNovo" style="overflow-x:auto"></div>
  <p class="note" style="margin-top:10px">Valores estimados por satélite, média espacial ponderada no recorte escolhido. Meses indisponíveis não são preenchidos. A comparação de um mesmo dia em anos distintos exige uma série histórica diária CHIRPS; a aba Diário / Agora usa GSMaP e não é comparável diretamente ao CHIRPS.</p>
@@ -1458,7 +1458,7 @@ function cpConfig(){
  const options=ls.reverse().map(a=>'<option value="'+a+'">'+a+'</option>').join("");
  for(const id of ["cpAnoNovoA","cpAnoNovoB"])$(id).innerHTML=options;
  for(const id of ["cpMesNovoA","cpMesNovoB"])$(id).innerHTML=MESES.map((m,i)=>'<option value="'+(i+1)+'">'+cap(m)+'</option>').join("");
- CP.b=y;CP.a=y-1;CP.fim=y>YREF?Math.max(1,...Array.from({length:12},(_,i)=>i+1).filter(m=>EXTRA[y+"-"+String(m).padStart(2,"0")])):12;
+ CP.b=y;CP.a=y-1;CP.fim=y>YREF?Math.max(1,...Array.from({length:12},(_,i)=>i+1).filter(m=>{const e=EXTRA[y+"-"+String(m).padStart(2,"0")];return e&&!e.parcial;})):12;
  CP.ready=true;
  ["cpTipoNovo","cpAnoNovoA","cpAnoNovoB","cpMesNovoA","cpMesNovoB"].forEach(id=>$(id).addEventListener("change",()=>{
  CP.tipo=$("cpTipoNovo").value;CP.a=+$("cpAnoNovoA").value;CP.b=+$("cpAnoNovoB").value;
@@ -1487,6 +1487,10 @@ function cpRender(){
  const bars=[{v:d.a,y:CP.a,color:"#2a78d6"},{v:d.b,y:CP.b,color:"#0a6b62"}];
  return '<div style="display:grid;grid-template-columns:90px 1fr;gap:8px;margin:12px 0;align-items:center"><b>'+cap(MESES[d.m-1])+'</b><div>'+bars.map(z=>'<div style="display:flex;align-items:center;gap:8px;margin:3px 0"><span style="width:36px;font-size:12px">'+z.y+'</span><div style="flex:1;background:#eef2f7;height:17px;border-radius:4px"><div style="width:'+(z.v==null?0:Math.max(1,100*z.v/max))+'%;background:'+z.color+';height:100%;border-radius:4px"></div></div><span style="width:80px;text-align:right;font-variant-numeric:tabular-nums">'+fmt(z.v)+'</span></div>').join("")+'</div></div>';
  }).join("")+'</div>';
+ const parcialAtual=EXTRA[CP.b+"-"+String(fim).padStart(2,"0")];
+ const aviso=parcialAtual&&parcialAtual.parcial?" Há CHIRPS parcial para "+CP.b+"-"+String(fim).padStart(2,"0")+" ("+parcialAtual.dias_observados+"/"+parcialAtual.dias_no_mes+" dias), excluído da comparação de meses fechados.":"";
+ const meta=REPO_META||{},mensais=dlMonthKeys(),ultimo=mensais.length?mensais[mensais.length-1]:"indisponível",dias=dayKeys();
+ $("cpFonteStatus").textContent="CHIRPS mensal: último mês completo disponível "+ultimo+". "+(meta.verificado_em?"Verificado pela rotina em "+meta.verificado_em+". ":"")+(dias.length?"GSMaP diário: dados até "+dias[dias.length-1]+". ":"")+"O mês atual não aparece como completo antes de terminar; a atualização da fonte pode atrasar.";
  $("cpResumoNovo").textContent=!valid?"O mês inicial deve ser anterior ou igual ao final.":!complete?"Período incompleto: pelo menos um dos meses selecionados não está disponível nos dois anos. Não calculamos totais ou porcentagens com meses faltantes."+aviso:"Em "+u.nome+", comparação "+MESES[ini-1]+"–"+MESES[fim-1]+": "+CP.a+" = "+fmt(sa)+"; "+CP.b+" = "+fmt(sb)+". Diferença = "+sg(sb-sa,1)+" mm.";
 }
 
