@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "verificado_em": "2026-11-07T14:13:51+00:00",
+    "data_verificacao": "2026-11-07",
+    "fonte": "Climate Hazards Center, CHIRPS v3.0, daily/sat",
+    "observacao": "Arquivo final encontrado não implica que os valores municipais já foram recalculados. Versões distintas não são misturadas."
+  },
+  "meses": {
+    "2026-06": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "final",
+      "dias_final": 30,
+      "dias_preliminar": 0,
+      "dias_necessarios": 30,
+      "final_completo": true,
+      "preliminar_completo": false,
+      "situacao_no_site": "outra_versao_chirps",
+      "versao_no_site": "UCSB-CHG/CHIRPS/DAILY",
+      "requer_reprocessamento": true,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    },
+    "2026-07": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "final",
+      "dias_final": 31,
+      "dias_preliminar": 0,
+      "dias_necessarios": 31,
+      "final_completo": true,
+      "preliminar_completo": false,
+      "situacao_no_site": "outra_versao_chirps",
+      "versao_no_site": "UCSB-CHG/CHIRPS/DAILY",
+      "requer_reprocessamento": true,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    },
+    "2026-08": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "final",
+      "dias_final": 31,
+      "dias_preliminar": 0,
+      "dias_necessarios": 31,
+      "final_completo": true,
+      "preliminar_completo": false,
+      "situacao_no_site": "outra_versao_chirps",
+      "versao_no_site": "UCSB-CHG/CHIRPS/DAILY",
+      "requer_reprocessamento": true,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    },
+    "2026-09": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "final",
+      "dias_final": 30,
+      "dias_preliminar": 0,
+      "dias_necessarios": 30,
+      "final_completo": true,
+      "preliminar_completo": false,
+      "situacao_no_site": "outra_versao_chirps",
+      "versao_no_site": "UCSB-CHG/CHIRPS/DAILY",
+      "requer_reprocessamento": true,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    },
+    "2026-10": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "indisponivel",
+      "dias_final": 0,
+      "dias_preliminar": 0,
+      "dias_necessarios": 31,
+      "final_completo": false,
+      "preliminar_completo": false,
+      "situacao_no_site": "sem_dados_municipais",
+      "versao_no_site": null,
+      "requer_reprocessamento": false,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    },
+    "2026-11": {
+      "fonte": "CHIRPS v3.0 sat",
+      "situacao_na_origem": "indisponivel",
+      "dias_final": 0,
+      "dias_preliminar": 0,
+      "dias_necessarios": 30,
+      "final_completo": false,
+      "preliminar_completo": false,
+      "situacao_no_site": "sem_dados_municipais",
+      "versao_no_site": null,
+      "requer_reprocessamento": false,
+      "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
+      "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
+    }
+  }
+}
