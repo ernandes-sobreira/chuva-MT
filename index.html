@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Chuva mensal por municipio de Mato Grosso (CHIRPS), com mapa no tempo, comparacao entre anos e estatistica. Idealizado por Ernandes Sobreira.">
 <meta name="author" content="Ernandes Sobreira">
-<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Linha do tempo acessível permanentemente no mapa; pode ser recolhida e reaberta. */
+#timelineMapYears.timeline-drawer{position:fixed;z-index:42;left:50%;transform:translateX(-50%);bottom:14px;width:min(780px,calc(100vw - 24px));margin:0;box-shadow:0 8px 30px rgba(18,35,58,.19)}
+#timelineMapYears.timeline-drawer[hidden]{display:none!important}
+#btnLinhaTempo[hidden]{display:none!important}
+@media(max-width:640px){#timelineMapYears.timeline-drawer{bottom:8px;width:calc(100vw - 16px);padding:10px!important}#timelineMapYears .player{gap:5px!important}#timelineMapYears #timelineFirst,#timelineMapYears #timelineLast{font-size:11px}}
+</style>
 <title>Chuva MT</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap">
 <style>
@@ -211,6 +217,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
   <label class="field" id="fBusca" hidden>Município<input type="search" id="buscaMun" list="dlMun" placeholder="Digite o nome"><datalist id="dlMun"></datalist></label>
   <label class="field">Período<select id="selPer"></select></label>
   <button class="btn ghost sm" id="btnLimpa" type="button" hidden>Limpar seleção</button>
+  <button class="btn ghost sm" id="btnLinhaTempo" type="button" aria-controls="timelineMapYears" aria-expanded="true">Ocultar linha do tempo</button>
   <div class="now" id="agora"></div>
 </div></div>
 
@@ -228,9 +235,9 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
             <label class="field">Contorno<select id="selCont"><option value="">Nenhum</option><option value="meso">Mesorregiões</option><option value="rgi">Regiões intermediárias</option><option value="bio">Biomas</option></select></label>
           </div>
         </div>
-        <div class="card" id="timelineMapYears" style="padding:12px 14px;margin:10px 0 14px;background:#edf5fc;border:1px solid #c6dbef;border-radius:12px">
+        <div class="card timeline-drawer" id="timelineMapYears" style="padding:12px 14px;background:#edf5fc;border:1px solid #c6dbef;border-radius:12px">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-            <strong style="font-size:1rem">Linha do tempo — deslize entre os anos</strong>
+            <strong style="font-size:1rem">Linha do tempo — deslize entre os anos</strong><button type="button" class="btn ghost sm" id="btnFecharLinhaTempo" aria-label="Recolher linha do tempo">Recolher</button>
             <button type="button" class="btn ghost sm" id="btnIrComparar">Comparar dois anos no mapa</button>
           </div>
           <div class="player" style="margin-top:10px;display:flex;align-items:center;gap:12px">
@@ -906,6 +913,7 @@ function scatter(svg,o){
 const S={tab:"mapa",tipo:"uf",id:"",custom:[],per:"m8",year:null,met:"anom",cont:"",a:null,b:null,cmp:"swipe",regAno:null,hm:"z",spi:3,split:null,esp:"sen",k:4,ret:null,sort:{k:"anom",dir:"desc"},q:"",sw:50,dayDate:null,dayMet:"day"};
 const LSUI="chuvaMT.ui", LSM="chuvaMT.meses2";
 let DB=null, DL=null, playing=null, DAILY=null;
+let timelineVisible=true;
 const M1=Mapa($("map1")), MDay=Mapa($("mapDay")), MA=Mapa($("mapA")), MB=Mapa($("mapB")), MD=Mapa($("mapD")), ME=Mapa($("mapE"));
 
 function U(){if(S.tipo=="custom"&&!S.custom.length)return unidade("uf");if(S.tipo!="uf"&&S.tipo!="custom"&&!S.id)return unidade("uf");return unidade(S.tipo,S.id,S.custom);}
@@ -947,6 +955,10 @@ document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",
 /* ---------- render geral ---------- */
 function render(){
   fixYear();fillScope();saveUI();
+  $("btnLinhaTempo").hidden=S.tab!=="mapa";
+  $("timelineMapYears").hidden=S.tab!=="mapa"||!timelineVisible;
+  $("btnLinhaTempo").textContent=timelineVisible?"Ocultar linha do tempo":"Mostrar linha do tempo";
+  $("btnLinhaTempo").setAttribute("aria-expanded",String(timelineVisible));
   document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab==S.tab));
   ["mapa","diario","comparar","local","estat","dados"].forEach(t=>$("v-"+t).hidden=t!=S.tab);
   ({mapa:rMapa,diario:rDiario,comparar:rComparar,local:rLocal,estat:rEstat,dados:rDados})[S.tab]();
@@ -999,6 +1011,9 @@ $("rank1").addEventListener("click",e=>{const b=e.target.closest("button[data-i]
 $("rank2").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(b)selMun(+b.dataset.i);});
 $("selMet").addEventListener("change",e=>{S.met=e.target.value;saveUI();rMapa();});
 $("selCont").addEventListener("change",e=>{S.cont=e.target.value;saveUI();rMapa();});
+function setTimelineVisible(show){timelineVisible=!!show;try{localStorage.setItem("chuvaMT.timelineVisible",timelineVisible?"1":"0");}catch(_){}$("timelineMapYears").hidden=!timelineVisible||S.tab!=="mapa";$("btnLinhaTempo").textContent=timelineVisible?"Ocultar linha do tempo":"Mostrar linha do tempo";$("btnLinhaTempo").setAttribute("aria-expanded",String(timelineVisible));}
+$("btnLinhaTempo").addEventListener("click",()=>setTimelineVisible(!timelineVisible));
+$("btnFecharLinhaTempo").addEventListener("click",()=>setTimelineVisible(false));
 $("btnIrComparar").addEventListener("click",()=>{S.a=S.year;S.b=years().filter(x=>x!==S.a).slice(-1)[0]||S.a;S.cmp="swipe";S.tab="comparar";render();window.scrollTo({top:0,behavior:"smooth"});});
 $("rngAno").addEventListener("input",e=>{S.year=+e.target.value;rMapa();});
 function stopPlay(){if(playing){clearInterval(playing);playing=null;$("btnPlay").innerHTML="&#9654;";$("btnPlay").setAttribute("aria-label","Animar os anos");}}
@@ -1592,7 +1607,7 @@ let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==last
 (function init(){
   $("fbMes").innerHTML=MESES.map((m,i)=>'<option value="'+(i+1)+'">'+cap(m)+'</option>').join("");
   const now=new Date(),prev=new Date(now.getFullYear(),now.getMonth()-1,1);$("fbMes").value=prev.getMonth()+1;$("fbAno").value=prev.getFullYear();
-  $("cardDrive").hidden=true;loadUI();loadLocal();render();
+  $("cardDrive").hidden=true;loadUI();try{timelineVisible=localStorage.getItem("chuvaMT.timelineVisible")!=="0";}catch(_){}loadLocal();render();
   loadRepo();loadDailyRepo();loadStatusChirps();
   const cl=window.claude;
   if(cl&&cl.use){
