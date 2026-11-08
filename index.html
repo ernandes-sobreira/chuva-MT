@@ -476,7 +476,7 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
 
 <!-- ================= DADOS ================= -->
 <section class="view" id="v-dados" hidden>
-  <div class="card" style="margin-bottom:16px"><h2>CHIRPS — conferência diária da fonte</h2><p class="note" id="statusChirpsDados" aria-live="polite">Aguardando a primeira auditoria.</p><div id="statusChirpsTabela" style="overflow-x:auto"></div><p class="note">A existência de um arquivo final na fonte não significa que o valor do município já foi reprocessado. O sistema não converte dados de versões diferentes automaticamente.</p></div>
+  <div class="card" style="margin-bottom:16px"><h2>CHIRPS — conferência diária da fonte</h2><p class="note" id="statusChirpsDados" aria-live="polite">Aguardando a primeira auditoria.</p><div id="statusChirpsTabela" style="overflow-x:auto"></div><p class="note">A existência de um arquivo final na fonte não significa que o valor do município já foi reprocessado. A rotina diária recalcula os valores municipais com os arquivos finais antes de substituir a versão preliminar, sem misturar versões.</p></div>
   <div class="drop" id="drop">
     <div class="txt"><h2>Atualizar com um novo mês</h2><p class="note">Solte aqui o CSV exportado do GEE ou escolha o arquivo. Todas as análises passam a incluir o mês novo.</p></div>
     <label class="field">Mês do arquivo<select id="fbMes"></select></label>
@@ -542,13 +542,13 @@ th button[data-dir]::after{content:" \25BE"} th button[data-dir=asc]::after{cont
       <li><b>Ponto de mudança.</b> Teste de Pettitt (1979, Applied Statistics), com valor de p aproximado. Ele aponta um único ponto e não distingue mudança abrupta de tendência gradual.</li>
       <li><b>Concentração.</b> Índice de concentração da precipitação, de Oliver (1980, The Professional Geographer). Valores acima de 20 indicam chuva muito concentrada em poucos meses.</li>
       <li><b>Limites.</b> São estimativas de satélite, não medições de pluviômetro. O total mensal não mede a intensidade de cada evento. A série começa em 1996 porque foi o recorte que você extraiu, embora o CHIRPS exista desde 1981. Com 30 anos, testes de tendência detectam só mudanças fortes.</li>
-      <li><b>Setembro de 2026.</b> Vem do arquivo preliminar do CHIRPS v3, recortado por mim na malha municipal do IBGE de 2024. Substitua pelo CSV do GEE quando exportar.</li>
+      <li><b>Meses recentes.</b> Os dados CHIRPS v3 são calculados dos arquivos oficiais do Climate Hazards Center na malha municipal do IBGE de 2024. Consulte o quadro de conferência diária na aba Dados para ver quais meses estão definitivos, preliminares ou parciais. Um mês preliminar completo ainda está sujeito a revisão.</li>
     </ul>
   </div>
 </section>
 <footer class="foot">
   <p><b>Idealizado por Ernandes Sobreira.</b></p>
-  <p><b>Fonte dos dados:</b> CHIRPS (Climate Hazards Center, Universidade da Califórnia em Santa Barbara), estimativa de chuva por satélite ajustada com estações, extraída no Google Earth Engine como média mensal por município, de 1996 a 2025. Setembro de 2026: CHIRPS v3.0 preliminar. Malha municipal, mesorregiões, regiões intermediárias e biomas: IBGE.</p>
+  <p><b>Fonte dos dados:</b> CHIRPS (Climate Hazards Center, Universidade da Califórnia em Santa Barbara), estimativa de chuva por satélite ajustada com estações, extraída no Google Earth Engine como média mensal por município, de 1996 a 2025. Os meses recentes também utilizam arquivos oficiais CHIRPS v3.0 SAT do Climate Hazards Center, com versão e condição indicadas na aba Dados. A disponibilidade desses arquivos pode ser mais recente que a coleção consultada no Earth Engine. Malha municipal, mesorregiões, regiões intermediárias e biomas: IBGE.</p>
 </footer>
 </main>
 <div id="tip" hidden></div>
@@ -1622,3 +1622,4 @@ let lastW=innerWidth,rzT=null;addEventListener("resize",()=>{if(innerWidth==last
 </script>
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 {
 "_meta": {
-"obs": "semente inicial; setembro de 2026 veio do arquivo preliminar do CHIRPS v3.0 e sera substituido quando o mes estiver completo no Earth Engine",
+"obs": "Os campos colecao, verificado_em e ultimo_dia_disponivel registram a ultima consulta da rotina Earth Engine. A fonte, a versao, a cobertura e a condicao preliminar de cada mes estao no respectivo registro mensal. A disponibilidade CHIRPS v3 na origem e auditada separadamente em dados/status_chirps.json.",
 "validacao_pior_desvio_mediano_pct": 0.0,
 "verificado_em": "2026-11-08 15:58 UTC",
 "colecao": "UCSB-CHG/CHIRPS/DAILY",
