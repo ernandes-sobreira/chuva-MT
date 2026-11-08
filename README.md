@@ -64,3 +64,47 @@ A aba **Diário / Agora** usa uma série separada do histórico CHIRPS:
 - Essa série é operacional/provisória e **não entra nos recordes, anomalias ou tendências da série histórica CHIRPS**.
 
 O workflow `.github/workflows/atualizar-diario.yml` verifica a fonte diariamente.
+
+
+## Retomada dos downloads oficiais CHIRPS v3
+
+O conversor de GeoTIFFs (`processar_chirps_v3.py`) mantém a separação entre
+CHIRPS v3 preliminar e definitivo. O agendamento segue diário às 12:47 UTC.
+Uma execução busca no máximo cinco arquivos novos, em sequência, com intervalo
+mínimo de 60 segundos. Esses parâmetros são conservadores, não uma quota
+publicada pelo CHC. Nenhum download CHC é disparado por um push de código.
+
+- Cada dia validado é registrado, sem arredondamento antecipado, em
+  `.state/chirps-v3/work-<hash>.json`. O contexto identifica período, estágio,
+  cobertura, malha e método; checksum, grade e origem são guardados por dia.
+- Uma cobertura preliminar já iniciada é concluída antes de avançar para os
+  novos dias disponíveis, evitando reinícios contínuos. As coberturas não são
+  misturadas, e o número de dias publicado continua explícito.
+- O publicador salva o lote no Git mesmo se o processamento falhar normalmente.
+  Um cancelamento/encerramento abrupto pode perder apenas o lote ainda local
+  (até cinco dias). Checkpoints de execuções anteriores continuam no repositório.
+- O primeiro HTTP 429 ou 503 encerra os downloads daquela execução. O prazo
+  `Retry-After` é aceito em segundos ou como data HTTP e nunca é reduzido por
+  um teto de espera. Sem prazo utilizável, a pausa é de 24 horas. O próximo
+  agendamento verifica o controle persistido antes de consultar a origem.
+- Auditoria de disponibilidade e conversor compartilham uma fila e leem `main`
+  ao iniciar; a auditoria também respeita o cooldown publicado pelo conversor.
+  Um 429 recebido pela própria auditoria continua sendo sinalizado como erro.
+- Enquanto o lote está incompleto ou em pausa, `dados/meses.json` e os CSVs
+  permanecem intactos. A publicação requer todos os dias do período alvo,
+  142 municípios, valores finitos/não negativos e checkpoint íntegro.
+  Um preliminar só vira definitivo após recalcular com arquivos finais.
+- O publicador revalida o candidato e confere a versão remota de entrada.
+  Atualização concorrente ou mudança de malha não é sobrescrita; o checkpoint permanece disponível.
+- Falha ao salvar/publicar estado continua visível no workflow. Não há garantia
+  de que outro job conheça uma pausa que não chegou a ser persistida.
+
+Testes de orquestração, integridade e publicação, sem acesso à rede:
+
+```sh
+python -m unittest discover -s tests -p 'test_chirps_checkpoint.py' -v
+```
+
+Os testes usam fixtures sintéticas, leitura GeoTIFF simulada e um Git bare
+local. Não baixam dados, não instalam pacotes e não substituem uma validação
+científica com rasters reais. O kernel espacial existente foi preservado.

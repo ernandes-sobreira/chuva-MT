@@ -17,6 +17,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from chirps_checkpoint import load_control, may_request
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "dados" / "status_chirps.json"
 MONTHS = ROOT / "dados" / "meses.json"
@@ -142,6 +144,10 @@ def audit(now=None):
 
 
 def main():
+    state = ROOT / ".state" / "chirps-v3"
+    if not may_request(state):
+        print("Auditoria adiada: origem CHIRPS em pausa até " + load_control(state)["not_before"], flush=True)
+        return
     try:
         result = audit()
     except Exception as exc:

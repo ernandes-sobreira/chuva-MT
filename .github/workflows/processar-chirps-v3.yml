@@ -4,33 +4,47 @@ on:
   schedule:
     - cron: "47 12 * * *"
   workflow_dispatch:
-  push:
-    paths:
-      - "scripts/processar_chirps_v3.py"
-      - ".github/workflows/processar-chirps-v3.yml"
+# Pushes executam apenas testes offline, no workflow testar-chirps-offline.yml.
 
 permissions:
   contents: write
 
+# Compartilhado com a auditoria CHC: o próximo job lê o cooldown já publicado.
 concurrency:
-  group: chuva-mt-processar-v3
+  group: chuva-mt-chc
   cancel-in-progress: false
 
 jobs:
   processar:
     runs-on: ubuntu-latest
-    timeout-minutes: 100
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Testar retomada sem rede
+        run: python -m unittest discover -s tests -p 'test_chirps_checkpoint.py' -v
       - name: Instalar leitura GeoTIFF e geometrias
         run: pip install "numpy<3" rasterio shapely
-      - name: Processar próximo mês CHIRPS v3 pendente
+      - name: Processar lote CHIRPS v3 pendente
+        id: processar
+        continue-on-error: true
         run: python scripts/processar_chirps_v3.py
-      - name: Publicar mês sem conflito com atualizações concorrentes
+      - name: Preservar progresso e publicar somente resultado validado
+        if: ${{ always() && !cancelled() && (steps.processar.outcome == 'success' || steps.processar.outcome == 'failure') }}
+        env:
+          PROCESS_OUTCOME: ${{ steps.processar.outcome }}
         run: |
           git config user.name "chuva-mt-bot"
           git config user.email "chuva-mt-bot@users.noreply.github.com"
-          python scripts/publicar_chirps_v3.py
+          if [ "$PROCESS_OUTCOME" = "success" ]; then
+            python scripts/publicar_chirps_v3.py
+          else
+            python scripts/publicar_chirps_v3.py --checkpoint-only
+          fi
+      - name: Sinalizar erro de processamento preservando dados
+        if: ${{ steps.processar.outcome == 'failure' }}
+        run: exit 1

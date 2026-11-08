@@ -4,16 +4,13 @@ on:
   schedule:
     - cron: "23 11 * * *"
   workflow_dispatch:
-  push:
-    paths:
-      - "scripts/verificar_status_chirps.py"
-      - ".github/workflows/status-chirps.yml"
+# Pushes executam apenas testes offline.
 
 permissions:
   contents: write
 
 concurrency:
-  group: chuva-mt-status-chirps
+  group: chuva-mt-chc
   cancel-in-progress: false
 
 jobs:
@@ -22,6 +19,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"

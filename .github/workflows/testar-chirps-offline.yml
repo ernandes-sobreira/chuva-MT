@@ -1,0 +1,31 @@
+name: Testar retomada CHIRPS sem rede
+
+on:
+  push:
+    paths:
+      - "scripts/chirps_checkpoint.py"
+      - "scripts/processar_chirps_v3.py"
+      - "scripts/publicar_chirps_v3.py"
+      - "scripts/verificar_status_chirps.py"
+      - "tests/test_chirps_checkpoint.py"
+      - ".github/workflows/*chirps*.yml"
+  pull_request:
+    paths:
+      - "scripts/*chirps*.py"
+      - "tests/test_chirps_checkpoint.py"
+      - ".github/workflows/*chirps*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Testes offline com biblioteca padrão, sem instalar pacotes
+        run: python -m unittest discover -s tests -p 'test_chirps_checkpoint.py' -v
