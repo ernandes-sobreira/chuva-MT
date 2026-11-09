@@ -2,7 +2,7 @@
 "_meta": {
 "obs": "Os campos colecao, verificado_em e ultimo_dia_disponivel registram a ultima consulta da rotina Earth Engine. A fonte, a versao, a cobertura e a condicao preliminar de cada mes estao no respectivo registro mensal. A disponibilidade CHIRPS v3 na origem e auditada separadamente em dados/status_chirps.json.",
 "validacao_pior_desvio_mediano_pct": 0.0,
-"verificado_em": "2026-11-08 15:58 UTC",
+"verificado_em": "2026-11-09 19:49 UTC",
 "colecao": "UCSB-CHG/CHIRPS/DAILY",
 "ultimo_dia_disponivel": "2026-09-30",
 "ultimo_mes_chirps_v3_processado": "2026-09",
