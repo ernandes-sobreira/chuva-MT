@@ -1,7 +1,7 @@
 {
   "last_http_status": 429,
-  "last_request_at": "2026-11-10T20:02:54.750543+00:00",
-  "not_before": "2026-11-11T20:02:54.750543+00:00",
+  "last_request_at": "2026-11-12T20:30:06.236697+00:00",
+  "not_before": "2026-11-13T20:30:06.236697+00:00",
   "reason": "origin_rate_limit",
   "schema": 1
 }
