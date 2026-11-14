@@ -114,8 +114,20 @@ def read_geometry():
 
 
 def choose_target(report, data):
-    # Mantém a prioridade atual: mês recente, final antes de preliminar.
-    for key in sorted(report.get("meses", {}), reverse=True):
+    keys = sorted(report.get("meses", {}), reverse=True)
+    current_month = now_utc().strftime("%Y-%m")
+    # Consolida primeiro os meses v3 já publicados, do fechado mais recente
+    # para o mais antigo. Novos parciais não devem adiar essa confirmação.
+    # O legado continua na fila normal, sem bloquear todo o mês corrente.
+    for key in keys:
+        item, old = report["meses"][key], data.get(key) or {}
+        if key < current_month and item.get("final_completo") and \
+                old.get("colecao") == "CHIRPS-v3.0-sat-official" and \
+                (old.get("preliminar") or old.get("parcial")):
+            year, month = map(int, key.split("-"))
+            return key, "final", calendar.monthrange(year, month)[1]
+    # Demais alvos mantêm a ordem anterior: mês recente, final antes de preliminar.
+    for key in keys:
         item, old = report["meses"][key], data.get(key) or {}
         same_v3 = old.get("colecao") == "CHIRPS-v3.0-sat-official"
         final_done = same_v3 and not old.get("preliminar") and not old.get("parcial")

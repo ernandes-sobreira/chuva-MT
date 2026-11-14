@@ -16,7 +16,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import chirps_checkpoint as cp
@@ -335,6 +335,145 @@ class ProcessingTests(OfflineCase):
         with patch.object(audit, 'audit', side_effect=AssertionError('Must not request')):
             audit.main()
         self.assertEqual(fx.status.read_bytes(), original)
+
+
+class QueuePriorityTests(OfflineCase):
+    def setUp(self):
+        super().setUp()
+        self.enterContext(patch.object(process, 'now_utc', return_value=dt.datetime(2026, 11, 14, tzinfo=cp.UTC)))
+        self.report = {'meses': {
+            '2026-08': {'final_completo': True, 'dias_preliminar': 31},
+            '2026-09': {'final_completo': True, 'dias_preliminar': 30},
+            '2026-10': {'final_completo': True, 'dias_preliminar': 31},
+            '2026-11': {'final_completo': False, 'dias_preliminar': 10}}}
+        self.data = {
+            '2026-08': {'colecao': 'UCSB-CHG/CHIRPS/DAILY', 'preliminar': False},
+            '2026-09': {'colecao': 'CHIRPS-v3.0-sat-official', 'preliminar': False,
+                        'parcial': False, 'dias_observados': 30},
+            '2026-10': {'colecao': 'CHIRPS-v3.0-sat-official', 'preliminar': True,
+                        'parcial': False, 'dias_observados': 31},
+            '2026-11': {'colecao': 'CHIRPS-v3.0-sat-official', 'preliminar': True,
+                        'parcial': True, 'dias_observados': 5}}
+
+    def test_closed_month_final_precedes_new_current_partial(self):
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-10', 'final', 31))
+
+    def test_most_recent_closed_promotion_first(self):
+        self.data['2026-09']['preliminar'] = True
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-10', 'final', 31))
+        self.data['2026-10']['preliminar'] = False
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-09', 'final', 30))
+
+    def test_no_promotion_without_complete_final_source(self):
+        self.report['meses']['2026-10']['final_completo'] = False
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-11', 'prelim', 10))
+
+    def test_current_partial_resumes_after_closed_month_is_final(self):
+        self.data['2026-10']['preliminar'] = False
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-11', 'prelim', 10))
+
+    def test_legacy_does_not_preempt_current_partial(self):
+        self.data['2026-10']['colecao'] = 'UCSB-CHG/CHIRPS/DAILY'
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-11', 'prelim', 10))
+        self.report['meses']['2026-11']['dias_preliminar'] = 5
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-10', 'final', 31))
+
+    def test_current_month_cannot_preempt_closed_promotion(self):
+        self.report['meses']['2026-11']['final_completo'] = True
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-10', 'final', 31))
+
+    def test_closed_partial_can_be_consolidated(self):
+        self.data['2026-10'].update(parcial=True, dias_observados=20)
+        self.assertEqual(process.choose_target(self.report, self.data), ('2026-10', 'final', 31))
+
+    def test_selection_changes_neither_values_nor_flags(self):
+        report, data = copy.deepcopy(self.report), copy.deepcopy(self.data)
+        process.choose_target(self.report, self.data)
+        self.assertEqual(self.report, report)
+        self.assertEqual(self.data, data)
+
+    def fixture(self):
+        fx = Fixture(self)
+        fx.data['2026-11'] = {**self.data['2026-11'], 'v': {'5100000': 55}}
+        fx.months.write_text(json.dumps(fx.data, indent=2))
+        fx.original_bytes = fx.months.read_bytes()
+        fx.status.write_text(json.dumps(self.report))
+        return fx
+
+    def test_final_resumes_in_bounded_batches_while_current_month_grows(self):
+        fx = self.fixture()
+        fx.run()
+        self.assertEqual(len(fx.requests), 5)
+        self.assertTrue(all('/final/sat/' in url and '.2026.10.' in url for url, _ in fx.requests))
+        self.assertFalse(fx.candidate.exists())
+        self.assertEqual(fx.months.read_bytes(), fx.original_bytes)
+        fx.clock.tomorrow()
+        self.report['meses']['2026-11']['dias_preliminar'] = 15
+        fx.status.write_text(json.dumps(self.report))
+        fx.run()
+        self.assertEqual(len(fx.requests), 10)
+        self.assertTrue(fx.requests[5][0].endswith('.2026.10.06.tif'))
+        for (_, before), (_, after) in zip(fx.requests, fx.requests[1:]):
+            self.assertGreaterEqual((after-before).total_seconds(), 60)
+        self.assertEqual(fx.months.read_bytes(), fx.original_bytes)
+
+    def test_priority_never_bypasses_origin_cooldown(self):
+        fx = self.fixture()
+        cp.defer_origin(fx.state, '172800', 429, fx.clock.now())
+        fx.run()
+        self.assertEqual(fx.requests, [])
+        self.assertFalse(fx.candidate.exists())
+        self.assertEqual(fx.months.read_bytes(), fx.original_bytes)
+
+    def test_priority_preserves_unrelated_legacy_checkpoint(self):
+        fx = Fixture(self)
+        fx.run()  # Legacy August progress already persisted locally.
+        path = next(fx.state.glob('work-*.json'))
+        before = path.read_bytes()
+        fx.clock.tomorrow()
+        fx.status.write_text(json.dumps(self.report))
+        fx.run()
+        self.assertEqual(path.read_bytes(), before)
+        self.assertEqual(len(list(fx.state.glob('work-*.json'))), 2)
+        self.assertTrue(fx.requests[5][0].endswith('.2026.10.01.tif'))
+
+    def test_only_validated_final_replaces_month_then_partial_can_continue(self):
+        fx = self.fixture()
+        fx.init_git()
+        fx.finish()
+        self.assertEqual(len(fx.requests), 31)
+        self.assertEqual(fx.months.read_bytes(), fx.original_bytes)
+        candidate = json.loads(fx.candidate.read_text())
+        self.assertEqual(candidate['context']['month'], '2026-10')
+        self.assertFalse(candidate['record']['preliminar'])
+        self.assertFalse(candidate['record']['parcial'])
+        fx.publish()
+        updated = json.loads(fx.months.read_text())
+        self.assertEqual(updated['2026-10'], candidate['record'])
+        for month, record in fx.data.items():
+            if month != '2026-10' and month != '_meta':
+                self.assertEqual(updated[month], record)
+        fx.clock.tomorrow()
+        fx.run()
+        self.assertEqual(len(fx.requests), 36)
+        self.assertTrue(all('/prelim/sat/' in url and '.2026.11.' in url for url, _ in fx.requests[31:]))
+        self.assertEqual(json.loads(fx.months.read_text()), updated)
+
+    def test_timeout_preserves_completed_final_days_and_published_month(self):
+        fx = self.fixture()
+        fx.init_git()
+        fx.run()
+        path = next(fx.state.glob('work-*.json'))
+        before = path.read_bytes()
+        fx.clock.tomorrow()
+        with patch.object(process, 'urlopen', side_effect=URLError(TimeoutError('offline timeout'))):
+            with self.assertRaises(URLError):
+                fx.run()
+        self.assertEqual(path.read_bytes(), before)
+        self.assertFalse(fx.candidate.exists())
+        fx.publish(checkpoint_only=True)
+        self.assertEqual(fx.months.read_bytes(), fx.original_bytes)
+        self.assertIn('.state/chirps-v3/work-', fx.git('ls-tree', '-r', '--name-only', 'origin/main'))
 
 
 class PublicationTests(OfflineCase):

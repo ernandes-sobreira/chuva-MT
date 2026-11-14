@@ -74,6 +74,13 @@ Uma execução busca no máximo cinco arquivos novos, em sequência, com interva
 mínimo de 60 segundos. Esses parâmetros são conservadores, não uma quota
 publicada pelo CHC. Nenhum download CHC é disparado por um push de código.
 
+- A fila prioriza converter um mês CHIRPS v3 já publicado como preliminar ou
+  parcial para definitivo, quando o mês terminou e a fonte tem todos os dias
+  finais. Entre esses meses, começa pelo mais recente. Assim, novos parciais
+  do mês corrente não adiam a consolidação do mês fechado. Depois disso,
+  mantém a ordem anterior de atualização e conversão dos meses legados.
+  Essa prioridade muda somente o próximo alvo; os valores e os rótulos do site
+  só mudam após download, cálculo e validação completa dos arquivos finais.
 - Cada dia validado é registrado, sem arredondamento antecipado, em
   `.state/chirps-v3/work-<hash>.json`. O contexto identifica período, estágio,
   cobertura, malha e método; checksum, grade e origem são guardados por dia.
