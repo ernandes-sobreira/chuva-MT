@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "verificado_em": "2026-11-21T18:06:04+00:00",
-    "data_verificacao": "2026-11-21",
+    "verificado_em": "2026-11-22T18:35:19+00:00",
+    "data_verificacao": "2026-11-22",
     "fonte": "Climate Hazards Center, CHIRPS v3.0, daily/sat",
     "observacao": "Arquivo final encontrado não implica que os valores municipais já foram recalculados. Versões distintas não são misturadas."
   },
@@ -70,9 +70,9 @@
       "dias_necessarios": 31,
       "final_completo": true,
       "preliminar_completo": true,
-      "situacao_no_site": "preliminar",
+      "situacao_no_site": "definitivo",
       "versao_no_site": "CHIRPS-v3.0-sat-official",
-      "requer_reprocessamento": true,
+      "requer_reprocessamento": false,
       "origem_final": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/final/sat/2026/",
       "origem_preliminar": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/daily/prelim/sat/2026/"
     },
@@ -80,7 +80,7 @@
       "fonte": "CHIRPS v3.0 sat",
       "situacao_na_origem": "parcial",
       "dias_final": 0,
-      "dias_preliminar": 15,
+      "dias_preliminar": 20,
       "dias_necessarios": 30,
       "final_completo": false,
       "preliminar_completo": false,
