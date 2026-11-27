@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "verificado_em": "2026-11-26T20:19:17+00:00",
-    "data_verificacao": "2026-11-26",
+    "verificado_em": "2026-11-27T20:03:59+00:00",
+    "data_verificacao": "2026-11-27",
     "fonte": "Climate Hazards Center, CHIRPS v3.0, daily/sat",
     "observacao": "Arquivo final encontrado não implica que os valores municipais já foram recalculados. Versões distintas não são misturadas."
   },
@@ -80,7 +80,7 @@
       "fonte": "CHIRPS v3.0 sat",
       "situacao_na_origem": "parcial",
       "dias_final": 0,
-      "dias_preliminar": 20,
+      "dias_preliminar": 25,
       "dias_necessarios": 30,
       "final_completo": false,
       "preliminar_completo": false,
